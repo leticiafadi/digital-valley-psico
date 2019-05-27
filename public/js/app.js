@@ -3012,7 +3012,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['old'],
+  props: ['old', 'baseUrl'],
   components: {
     MaskedInput: vue_masked_input__WEBPACK_IMPORTED_MODULE_0__["default"],
     Cabecalho: _includes_CabecalhoComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -3253,12 +3253,14 @@ __webpack_require__.r(__webpack_exports__);
       nome: '',
       dataNascimento: '',
       genero: 'm',
-      pt: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_2__["ptBR"]
+      pt: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_2__["ptBR"],
+      disabled_dates: {},
+      open_date: new Date()
     };
   },
   methods: {
     validaNome: function validaNome() {
-      return this.nome.length >= 3 && /^[a-zA-Z]+$/.test(this.nome);
+      return this.nome.length >= 3 && /^[a-zA-Z ]+$/.test(this.nome);
     },
     validaData: function validaData() {
       return this.dataNascimento != '';
@@ -3271,6 +3273,14 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
+    //Desabilitando datas
+    var dia = 1000 * 60 * 60 * 24;
+    var hoje = new Date();
+    this.open_date = hoje.getTime() - 365 * 16 * dia;
+    this.disabled_dates = {
+      from: new Date(this.open_date),
+      to: new Date(hoje.getTime() - 365 * 120 * dia)
+    };
     this.nome = this.old.nome;
     this.genero = this.old.genero;
     this.dataNascimento = this.old.data_nascimento;
@@ -3520,7 +3530,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   props: {
     setError: Function,
     mudaAba: Function,
-    old: Object
+    old: Object,
+    baseUrl: String
   },
   data: function data() {
     return {
@@ -3553,8 +3564,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return new Promise(function (resolve, reject) {
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/paises').then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_this.baseUrl + '/paises').then(function (response) {
           _this.paises = response.data;
+          _this.estados = [];
+          _this.cidades = [];
+          _this.id_estado = [];
+          _this.id_cidade = [];
           resolve();
         });
       });
@@ -3563,7 +3578,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       return new Promise(function (resolve, reject) {
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/estados/' + _this2.id_pais).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_this2.baseUrl + '/estados/' + _this2.id_pais).then(function (response) {
           _this2.estados = response.data;
           _this2.cidades = [];
           _this2.id_cidade = 0;
@@ -3575,7 +3590,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     carregaCidades: function carregaCidades() {
       var _this3 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/cidades/' + this.id_estado).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/cidades/' + this.id_estado).then(function (response) {
         _this3.cidades = response.data;
       });
     },
@@ -3619,36 +3634,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   mounted: function () {
     var _mounted = _asyncToGenerator(
     /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
       var _this4 = this;
 
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
-          switch (_context2.prev = _context2.next) {
+          switch (_context.prev = _context.next) {
             case 0:
-              this.carregaPaises().then(
-              /*#__PURE__*/
-              _asyncToGenerator(
-              /*#__PURE__*/
-              _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-                return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-                  while (1) {
-                    switch (_context.prev = _context.next) {
-                      case 0:
-                        _this4.id_pais = _this4.old.id_pais != '' ? _this4.old.id_pais : 30;
-                        _context.next = 3;
-                        return _this4.carregaEstados();
-
-                      case 3:
-                        _this4.id_estado = 515;
-
-                      case 4:
-                      case "end":
-                        return _context.stop();
-                    }
-                  }
-                }, _callee);
-              })));
+              this.carregaPaises().then(function (response) {
+                _this4.id_pais = _this4.old.id_pais != '' ? _this4.old.id_pais : 30;
+              });
+              this.id_estado = this.old.id_estado != '' ? this.old.id_estado : 517;
               this.endereco = this.old.endereco;
               this.bairro = this.old.bairro;
               this.numero = this.old.numero;
@@ -3656,12 +3652,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               this.telefone_celular = this.old.telefone_celular;
               this.telefone_residencial = this.old.telefone_residencial;
 
-            case 7:
+            case 8:
             case "end":
-              return _context2.stop();
+              return _context.stop();
           }
         }
-      }, _callee2, this);
+      }, _callee, this);
     }));
 
     function mounted() {
@@ -9055,6 +9051,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 // module
 exports.push([module.i, "\n#erro-formulario{\n    min-height:80px\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/usuarios/includes/InformacoesPessoaisComponent.vue?vue&type=style&index=0&lang=css&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/usuarios/includes/InformacoesPessoaisComponent.vue?vue&type=style&index=0&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n[name=data_nascimento]{\n    background-color: red;\n}\n", ""]);
 
 // exports
 
@@ -63451,6 +63466,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/usuarios/includes/InformacoesPessoaisComponent.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/usuarios/includes/InformacoesPessoaisComponent.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../../node_modules/css-loader??ref--6-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./InformacoesPessoaisComponent.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/usuarios/includes/InformacoesPessoaisComponent.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/guest/alunos/CadastrarAlunoComponent.vue?vue&type=style&index=0&lang=css&":
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/guest/alunos/CadastrarAlunoComponent.vue?vue&type=style&index=0&lang=css& ***!
@@ -77875,7 +77920,11 @@ var render = function() {
                     expression: "this.aba == 'localizacaoEContato'"
                   }
                 ],
-                attrs: { mudaAba: this.mudaAba, old: this.old }
+                attrs: {
+                  mudaAba: this.mudaAba,
+                  old: this.old,
+                  baseUrl: this.baseUrl
+                }
               }),
               _vm._v(" "),
               _c("dados-de-conta", {
@@ -77943,7 +77992,7 @@ var render = function() {
           ],
           attrs: { type: "button" }
         },
-        [_c("i", { staticClass: "fa fa-user" })]
+        [_c("i", { staticClass: "fas fa-user" })]
       ),
       _vm._v(" "),
       _c("div", [_vm._v("\n            Informações pessoais\n        ")])
@@ -77964,7 +78013,7 @@ var render = function() {
             disabled: !_vm.aba == "informacoesProfissionais"
           }
         },
-        [_c("i", { staticClass: "fa fa-user-tie" })]
+        [_c("i", { staticClass: "fas fa-user-tie" })]
       ),
       _vm._v(" "),
       _c("div", [_vm._v("\n            Informações profissionais\n        ")])
@@ -78000,7 +78049,7 @@ var render = function() {
           ],
           attrs: { type: "button" }
         },
-        [_c("i", { staticClass: "fa fa-lock" })]
+        [_c("i", { staticClass: "fas fa-lock" })]
       ),
       _vm._v(" "),
       _c("div", [_vm._v("\n            Dados confidenciais\n        ")])
@@ -78323,7 +78372,10 @@ var render = function() {
                 "full-month-name": true,
                 "calendar-button": true,
                 "calendar-button-icon": "fa fa-calendar",
-                name: "data_nascimento"
+                name: "data_nascimento",
+                "input-class": "bg-white",
+                disabledDates: this.disabled_dates,
+                "open-date": this.open_date
               },
               model: {
                 value: _vm.dataNascimento,
@@ -78519,7 +78571,7 @@ var render = function() {
       _c("div", { staticClass: "col col-12 col-md-4" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-            _vm._v("Selecione seu pais")
+            _vm._v("Selecione seu país *")
           ]),
           _vm._v(" "),
           _c(
@@ -78579,7 +78631,7 @@ var render = function() {
       _c("div", { staticClass: "col col-12 col-md-4" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-            _vm._v("Selecione seu estado")
+            _vm._v("Selecione seu estado *")
           ]),
           _vm._v(" "),
           _c(
@@ -78639,7 +78691,7 @@ var render = function() {
       _c("div", { staticClass: "col col-12 col-md-4" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-            _vm._v("Selecione sua cidade")
+            _vm._v("Selecione sua cidade *")
           ]),
           _vm._v(" "),
           _c(
@@ -97971,7 +98023,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _InformacoesPessoaisComponent_vue_vue_type_template_id_b5505a4c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InformacoesPessoaisComponent.vue?vue&type=template&id=b5505a4c& */ "./resources/js/components/dashboard/usuarios/includes/InformacoesPessoaisComponent.vue?vue&type=template&id=b5505a4c&");
 /* harmony import */ var _InformacoesPessoaisComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InformacoesPessoaisComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/dashboard/usuarios/includes/InformacoesPessoaisComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _InformacoesPessoaisComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./InformacoesPessoaisComponent.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/dashboard/usuarios/includes/InformacoesPessoaisComponent.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -97979,7 +98033,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _InformacoesPessoaisComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _InformacoesPessoaisComponent_vue_vue_type_template_id_b5505a4c___WEBPACK_IMPORTED_MODULE_0__["render"],
   _InformacoesPessoaisComponent_vue_vue_type_template_id_b5505a4c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -98008,6 +98062,22 @@ component.options.__file = "resources/js/components/dashboard/usuarios/includes/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InformacoesPessoaisComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./InformacoesPessoaisComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/usuarios/includes/InformacoesPessoaisComponent.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InformacoesPessoaisComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/dashboard/usuarios/includes/InformacoesPessoaisComponent.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************************************!*\
+  !*** ./resources/js/components/dashboard/usuarios/includes/InformacoesPessoaisComponent.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_InformacoesPessoaisComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader!../../../../../../node_modules/css-loader??ref--6-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./InformacoesPessoaisComponent.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/usuarios/includes/InformacoesPessoaisComponent.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_InformacoesPessoaisComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_InformacoesPessoaisComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_InformacoesPessoaisComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_InformacoesPessoaisComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_InformacoesPessoaisComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -98773,8 +98843,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /opt/lampp/htdocs/projetos/psicologia-ufc/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/projetos/psicologia-ufc/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/aurliano/programas/php/laravel-transfer/psicologia-ufc/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/aurliano/programas/php/laravel-transfer/psicologia-ufc/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

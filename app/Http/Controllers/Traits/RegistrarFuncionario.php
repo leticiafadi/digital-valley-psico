@@ -20,7 +20,7 @@ trait RegistrarFuncionario{
         //Cadastrar o endereco
         $id_endereco = $this->cadastrarEndereco($request->only(['id_cidade','endereco','bairro','numero']));
 
-        //Cadastrar o usurio
+        //Cadastrar o usuario
         $dados_usuario = [
             'nome_completo'     => $request['nome'],
             'data_nascimento'   => Data::formataDataBrasileiroParaAmericano($request['data_nascimento']),
@@ -54,7 +54,7 @@ trait RegistrarFuncionario{
         //cadastrar os contatos
 
         $dados_contatos = [
-            'id_usuario'             => $id_usuario,
+            'id_usuario'            => $id_usuario,
             'email'                 => $request['email'],
             'telefone_celular'      => $request['telefone_celular'],
             'telefone_residencial'  => $request['telefone_residencial']

@@ -27,7 +27,7 @@
 	<div class="col col-12 col-md-5">
 		<div class="form-group">
 			<label for="tipo-auxilio">Tipo de auxílio</label>
-			<input type="text" class="form-control {{$errors->has('auxilio') ? 'is-invalid' : ''}}" id="tipo-auxilio" name="tipo_auxilio" placeholder="Tipo de auxilio" maxlength="31" value="{{old('tipo_auxilio')}}">
+			<input type="text" class="form-control {{$errors->has('auxilio') ? 'is-invalid' : ''}}" id="tipo-auxilio" name="tipo_auxilio" placeholder="Tipo de auxílio" maxlength="31" value="{{old('tipo_auxilio')}}">
 
 			@if ($errors->has('tipo_auxilio'))
 				<span class="invalid-feedback" role="alert">
@@ -75,7 +75,7 @@
 	<div class="col col-12 col-md-5">
 		<div class="form-group">
 			<label for="tipo-bolsa">Tipo de bolsa</label>
-			<input type="text" class="form-control {{$errors->has('tipo_bolsa') ? 'is-invalid' : ''}}" id="tipo-bolsa" name="tipo_bolsa" placeholder="Tipo de auxilio" maxlength="31" value="{{old('tipo_bolsa')}}">
+			<input type="text" class="form-control {{$errors->has('tipo_bolsa') ? 'is-invalid' : ''}}" id="tipo-bolsa" name="tipo_bolsa" placeholder="Tipo de bolsa" maxlength="31" value="{{old('tipo_bolsa')}}">
 
 			@if ($errors->has('tipo_bolsa'))
 				<span class="invalid-feedback" role="alert">

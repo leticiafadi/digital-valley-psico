@@ -14,7 +14,7 @@
 	<li class="nav-item">
 		<a class="nav-link" href=" {{route('usuarios.all')}} ">
 			<i class="fas fa-fw fa-users"></i>
-			<span>Gerenciar usuarios</span>
+			<span>Gerenciar usuários</span>
 		</a>
 	</li>
 	<li class="nav-item">

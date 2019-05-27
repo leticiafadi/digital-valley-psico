@@ -4,7 +4,7 @@
 			Horários disponíveis
 		</h2>
 		<span>
-			<p>Que horários você está disponível para um atendimento.</p>
+			<p>Marque os horários em que você está disponível para um atendimento.</p>
 		</span>
 	</div>
 </div>
@@ -144,7 +144,7 @@
 	<div class="col col-12">
 		<div class="form-group">
 			<label for="observacoes-horarios">Informações sobre os horários</label>
-			<input type="text" id="observacoes-horarios" class="form-control {{$errors->has('observacoes_horarios') ? 'is-invalid' : ''}}" name="observacoes_horarios" maxlenght="191" placeholder="Exemplo 'terca feira a cada 15 dias'" value="{{old('observacoes_horarios')}}">
+			<input type="text" id="observacoes-horarios" class="form-control {{$errors->has('observacoes_horarios') ? 'is-invalid' : ''}}" name="observacoes_horarios" maxlenght="191" placeholder="Exemplo 'Terça-feira a cada 15 dias.'" value="{{old('observacoes_horarios')}}">
 			
 			@if ($errors->has('observacoes_horarios'))
 				<span class="invalid-feedback" role="alert">

@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col col-12 col-lg-3 text-center">
             <button class="btn btn-circle btn-xl" v-bind:class="[aba == 'informacoesPessoais' ? 'btn-primary' : 'btn-outline-primary']" type="button">
-                <i class="fa fa-user"></i>
+                <i class="fas fa-user"></i>
             </button>
             <div>
                 Informações pessoais
@@ -10,7 +10,7 @@
         </div>
         <div class="col col-12 col-lg-3 text-center">
             <button class="btn btn-circle btn-xl" v-bind:class="[aba == 'informacoesProfissionais' ? 'btn-primary' : 'btn-outline-primary']" type="button" :disabled="!aba == 'informacoesProfissionais'">
-                <i class="fa fa-user-tie"></i>
+                <i class="fas fa-user-tie"></i>
             </button>
             <div>
                 Informações profissionais
@@ -26,7 +26,7 @@
         </div>
         <div class="col col-12 col-lg-3 text-center">
             <button class="btn btn-circle btn-xl" type="button"  v-bind:class="[aba == 'dadosConfidenciais' ? 'btn-primary' : 'btn-outline-primary']" >
-                <i class="fa fa-lock"></i>
+                <i class="fas fa-lock"></i>
             </button>
             <div>
                 Dados confidenciais

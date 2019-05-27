@@ -38,7 +38,7 @@
                 <div class="small-box bg-orange">
                     <div class="inner">
                         <h3>{{$numeroDeFuncionarios}}</h3>
-                        <p>Usuarios cadastrados</p>
+                        <p>Usuários cadastrados</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-user"></i>

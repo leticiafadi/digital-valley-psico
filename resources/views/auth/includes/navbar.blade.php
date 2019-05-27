@@ -18,7 +18,7 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}"> Entrar </a>
                             </li>
                         @else
                             <li class="nav-item dropdown">
@@ -28,7 +28,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}">
-                                        Fazer LouOut
+                                        <i class="fas fa-sign-out-alt"></i>&nbsp;Fazer LouOut
                                     </a>                                  
                                 </div>
                             </li>

@@ -20,7 +20,7 @@ class UsersController extends Controller
     }
 	
 	public function formularioCriarUsuarios(){
-		return view('auth.pages.registrar-funcionario.registrar-funcionario', ['paises' => Pais::all()]);
+		return view('auth.pages.registrar-funcionario.registrar-funcionario', ['paises' => Pais::all(), 'base_url' => config('app.url') ]);
 	}
 
 }

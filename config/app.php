@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => 'http://localhost:3002/projetos/psicologia-ufc/public/',
+    'url' => 'http://localhost:8000',
 
     /*
     |--------------------------------------------------------------------------

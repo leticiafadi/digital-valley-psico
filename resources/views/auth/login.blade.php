@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">
+                    <i class="fas fa-sign-in-alt"></i>&nbsp;Entrar no sistema
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -17,7 +19,9 @@
                             <label for="usuario" class="col-md-4 col-form-label text-md-right">Usuário</label>
 
                             <div class="col-md-6">
-                                <input id="usuario" type="text" class="form-control{{ $errors->has('usuario') ? ' is-invalid' : '' }}" name="usuario" value="{{ old('usuario') }}" required  placeholder="Matrícula, email ou siape." autofocus>
+                                {{--<input id="usuario" type="text" class="form-control{{ $errors->has('usuario') ? ' is-invalid' : '' }}" name="usuario" value="{{ old('usuario') }}" required  placeholder="Matrícula, email ou siape." autofocus>--}}
+
+                                <input id="usuario" type="text" class="form-control{{ $errors->has('usuario') ? ' is-invalid' : '' }}" name="usuario" value="{{ old('usuario') }}" required  placeholder="Email, siape ou CRP." autofocus>
 
                                 @if ($errors->has('usuario'))
                                     <span class="invalid-feedback" role="alert">
@@ -28,7 +32,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right"> Senha </label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -41,6 +45,8 @@
                             </div>
                         </div>
 
+                        {{--
+
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
@@ -52,12 +58,18 @@
                                 </div>
                             </div>
                         </div>
-
+                        --}}
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    Entrar no sistema
                                 </button>                                
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col col-md-6 offset-md-4 mt-2">
+                                *Disponível somente para funcionário no momento.
                             </div>
                         </div>
                     </form>

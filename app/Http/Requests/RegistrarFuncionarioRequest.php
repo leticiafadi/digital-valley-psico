@@ -33,9 +33,9 @@ class RegistrarFuncionarioRequest extends FormRequest
             //valida o usuario
             'nome'                  => 'required|string|min:3|max:191',
             'genero'                => 'required|in:m,f',
-            'data_nascimento'       => 'required|date|regex:/\d{2}\/\d{2}\/\d{4}/',
+            'data_nascimento'       => 'required|regex:/\d{2}\/\d{2}\/\d{4}/',
             //valida os itens do login
-            'email'                 => 'required|unique:contato,contato',
+            'email'                 => 'required|unique:contato,contato|unique:item_login,usuario',
             'siape'                 => 'required|unique:funcionario,siape|regex:/^\d{7}$/',
             'crp'                   => 'required|unique:funcionario,crp|regex:/^\d{2}\/\d{5}$/',
             //validar a senha do login
@@ -52,8 +52,7 @@ class RegistrarFuncionarioRequest extends FormRequest
             'email.required' => "O campo Email é obrigatório.",
             'email.unique'   => "O campo Email deve ser único, o inserido já pertence a outro usuário.",
             'siape.unique'   => "O campo Siape deve ser único, o inserido já pertence a outro usuário.",
-            'crp.unique'   => "O campo CRP deve ser único, o inserido já pertence a outro usuário."
-
+            'crp.unique'     => "O campo CRP deve ser único, o inserido já pertence a outro usuário."
         ];
     }
 }

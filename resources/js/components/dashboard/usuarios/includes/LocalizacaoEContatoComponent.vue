@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col col-12 col-md-4">
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Selecione seu pais</label>
+                    <label for="exampleFormControlSelect1">Selecione seu país *</label>
                     <select class="form-control" id="" :class="{'is-invalid' : errors.has('id_pais')}" v-model="id_pais" name="id_pais" v-validate="'required'" >
                         <option value="" selected>Selecione um pais</option>             
                         <option v-for="pais in paises" :value=pais.id>{{pais.name}}</option>
@@ -21,9 +21,9 @@
             </div>
             <div class="col col-12 col-md-4">
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Selecione seu estado</label>
+                    <label for="exampleFormControlSelect1">Selecione seu estado *</label>
                     <select class="form-control" id="" :class="{'is-invalid' : errors.has('id_estado')}"  v-model="id_estado" name="id_estado" v-validate="'required'">
-                        <option value="" selected>Selecione um pais</option>             
+                        <option value="" selected>Selecione um pais</option>           
                         <option v-for="estado in estados" :value=estado.id>{{estado.name}}</option>
                     </select>
 
@@ -33,7 +33,7 @@
             </div>
             <div class="col col-12 col-md-4">
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Selecione sua cidade</label>
+                    <label for="exampleFormControlSelect1">Selecione sua cidade *</label>
                     <select class="form-control" id="" :class="{'is-invalid' : errors.has('id_cidade')}"  name="id_cidade" v-model="id_cidade" v-validate="'required'">
                         <option value="" selected>Selecione uma cidade</option>             
                         <option v-for="cidade in cidades" :value=cidade.id>{{cidade.name}}</option>
@@ -126,7 +126,8 @@
         props:{
             setError: Function,
             mudaAba : Function,
-            old     : Object
+            old     : Object,
+            baseUrl : String
         },
         data:function(){
             return{
@@ -157,15 +158,19 @@
         methods:{
             carregaPaises: function(){
                 return new Promise((resolve, reject)=>{
-                    axios.get('http://localhost:8000/paises').then(response=>{
+                    axios.get(this.baseUrl+'/paises').then(response=>{
                         this.paises = response.data;
+                        this.estados = [];
+                        this.cidades = [];
+                        this.id_estado = [];
+                        this.id_cidade = [];
                         resolve();
                     });
                 });
             },
             carregaEstados:function(){
                 return new Promise((resolve, reject)=>{
-                    axios.get('http://localhost:8000/estados/' + this.id_pais).then(response=>{
+                    axios.get(this.baseUrl + '/estados/' + this.id_pais).then(response=>{
                         this.estados = response.data;
                         this.cidades = [];
                         this.id_cidade = 0;
@@ -175,7 +180,7 @@
                 });
             },
             carregaCidades:function(){
-                axios.get('http://localhost:8000/cidades/' + this.id_estado).then(response=>{
+                axios.get( this.baseUrl + '/cidades/' + this.id_estado).then(response=>{
                     this.cidades = response.data;
                 });
             },
@@ -218,12 +223,11 @@
             } 
         },
         async mounted(){
-            this.carregaPaises().then(async ()=>{
+
+            this.carregaPaises().then(response=>{
                 this.id_pais = this.old.id_pais != '' ? this.old.id_pais : 30;
-                await this.carregaEstados();
-                this.id_estado = 515;
-                
             });
+            this.id_estado = this.old.id_estado != '' ? this.old.id_estado : 517;
             this.endereco = this.old.endereco;
             this.bairro = this.old.bairro;
             this.numero = this.old.numero;

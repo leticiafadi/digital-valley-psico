@@ -20,6 +20,7 @@ class RegistrarFuncionarioController extends Controller
     use RegistrarFuncionario;
 
     public function registrarFuncionario(RegistrarFuncionarioRequest $request){
+
         $this->registra($request);
         return redirect('/users')->with('success', 'Cadastro do funcionário feito com sucesso !!');
     }

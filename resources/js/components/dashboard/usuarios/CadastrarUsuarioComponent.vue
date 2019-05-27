@@ -23,7 +23,7 @@
 
                     <informacoes-profissionais  :mudaAba="this.mudaAba" v-show="this.aba == 'informacoesProfissionais'" :old="this.old" />
 
-                    <localizacao-e-contato :mudaAba="this.mudaAba" v-show="this.aba == 'localizacaoEContato'" :old="this.old"/>
+                    <localizacao-e-contato :mudaAba="this.mudaAba" v-show="this.aba == 'localizacaoEContato'" :old="this.old" :baseUrl="this.baseUrl"/>
 
                     <dados-de-conta v-show="this.aba == 'dadosDeConta'"/>
                 </form>
@@ -43,7 +43,8 @@
     import DadosDeConta             from './includes/DadosDeContaComponent.vue'
     export default {
         props:[
-            'old'
+            'old',
+            'baseUrl'
         ],
         components:{
             MaskedInput,
