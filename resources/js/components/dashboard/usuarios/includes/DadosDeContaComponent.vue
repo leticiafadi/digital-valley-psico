@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col col-12">
                 <div class="fa-pull-right">
-                    <button type="submit" class="btn btn-primary btn-lg" :disabled="!this.isValid()">Cadastrar <i class="fa fa-plus"></i></button>
+                    <button type="submit" class="btn btn-primary btn-lg" :disabled="!this.isValid()">Cadastrar <i class="fas fa-plus"></i></button>
                 </div>
             </div>
         </div>

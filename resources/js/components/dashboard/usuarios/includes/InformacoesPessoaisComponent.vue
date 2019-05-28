@@ -23,7 +23,7 @@
             <label for="">Gênero *</label>
                 <div class="form-group">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genero" id="genero-masculino" value="m"  v-model="genero"  required>
+                        <input class="form-check-input" type="radio" name="genero" id="genero-masculino" value="m"  v-model="genero"  required checked>
                         <label class="form-check-label" for="genero-masculino">Masculino</label>
                     </div>
                     <div class="form-check form-check-inline">
@@ -35,7 +35,7 @@
             <div class="col col-9">
                 <div class="form-group">
                     <label for="nascimento">Data de nascimento *</label>
-                    <vue-calendar input-class="form-control" placeholder="Clique aqui e selecione sua data de nascimento" v-model="dataNascimento" format="dd/MM/yyyy" :language="pt" :bootstrap-styling="true" :full-month-name="true" :calendar-button="true" calendar-button-icon="fa fa-calendar" name="data_nascimento" v-validate="'date_format:dd/MM/yyyy'" :input-class="'bg-white'" :disabledDates="this.disabled_dates" :open-date="this.open_date">
+                    <vue-calendar input-class="form-control" placeholder="Clique aqui e selecione sua data de nascimento" v-model="dataNascimento" format="dd/MM/yyyy" :language="pt" :bootstrap-styling="true" :full-month-name="true" :calendar-button="true" calendar-button-icon="fas fa-calendar" name="data_nascimento" v-validate="'date_format:dd/MM/yyyy'" :input-class="'bg-white'" :disabledDates="this.disabled_dates" :open-date="this.open_date">
                     </vue-calendar>  
                 </div>
             </div>
@@ -43,7 +43,7 @@
         <div class="row">
             <div class="col col-12">
                 <div class="fa-pull-right">
-                    <button type="button" class="btn btn-primary btn-lg" :disabled="!this.isValid()"  @click="this.proximo" >Próximo <i class="fa fa-chevron-right"></i></button>
+                    <button type="button" class="btn btn-primary btn-lg" :disabled="!this.isValid()"  @click="this.proximo" >Próximo <i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>

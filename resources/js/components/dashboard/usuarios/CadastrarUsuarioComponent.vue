@@ -2,7 +2,7 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <i class="fa fa-user"></i>
+                <i class="fas fa-user"></i>
                 <span>Cadatrar funcinário</span>
             </div>
             <div class="card-body">
@@ -14,7 +14,7 @@
                 </div>
                 
 
-                <form action="/users/createFuncionario" method="POST">
+                <form :action="this.baseUrl + '/users/createFuncionario'" method="POST">
 
                     <input type="hidden" name="_token" :value="csrf">
 
