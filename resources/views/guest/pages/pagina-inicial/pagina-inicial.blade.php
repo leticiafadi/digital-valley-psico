@@ -9,7 +9,7 @@
 			<div class="col col-12">
 				<div class="card mt-4 mb-4">
 					<div class="card-header">
-						<i class="fa fa-calendar"></i>&nbsp;
+						<i class="fas fa-calendar"></i>&nbsp;
 						<span>Agende aqui seu atendimento</span>
 					</div>
 					<div class="card-body">

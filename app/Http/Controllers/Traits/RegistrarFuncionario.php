@@ -10,9 +10,7 @@ use App\Models\usuarios\ItemLogin;
 use App\Models\contato\Contato;
 use App\Models\funcionario\Funcionario;
 
-
 use App\Models\dataTempo\Data;
-
 
 trait RegistrarFuncionario{
 

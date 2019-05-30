@@ -39,9 +39,9 @@
 	<!-- Styles -->
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-		<!--Google captcha-->
-		<script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer>
-		</script>
+	<!--favicon-->
+	<link rel="shortcut icon" href="{{ asset('imagens/template/icone.png') }}">
+    
 
 </head>
 

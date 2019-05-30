@@ -79,7 +79,7 @@
         },
         methods:{
             validaNome:function(){
-                return this.nome.length >= 3 && /^[a-zA-Z ]+$/.test(this.nome);
+                return this.nome.length >= 3 && /^[a-zA-Zäáàãâëéèêẽíìîöóòôúùñûç ]+$/.test(this.nome);
             },
             validaData:function(){
                 return this.dataNascimento != '';

@@ -47,7 +47,7 @@
                                     <li class="list-group-item">
                                         <form class="form" v-on:submit="this.criarCurso">
                                             <div class="form-group">
-                                                <label for="novoCurso">Criar novo curso <i class="fa fa-plus m-2"></i></label>
+                                                <label for="novoCurso">Criar novo curso <i class="fas fa-plus m-2"></i></label>
                                                 <input type="text"  class="form-control" placeholder="Criar novo curso" id="novoCurso"/>
                                             </div>
                                             <div class="fa fa-pull-right">

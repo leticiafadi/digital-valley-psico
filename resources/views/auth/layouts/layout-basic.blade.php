@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
 
@@ -31,6 +31,10 @@
 	
 	<!--Date picker-->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gijgo@1.9.13/css/gijgo.min.css">
+
+
+	<!--favicon-->
+	<link rel="shortcut icon" href="{{ asset('imagens/template/icone.png') }}">
     
 
     <!-- Fonts -->

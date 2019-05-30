@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-header">
                 <i class="fas fa-user"></i>
-                <span>Cadatrar funcinário</span>
+                <span>Cadastrar funcionário</span>
             </div>
             <div class="card-body">
 

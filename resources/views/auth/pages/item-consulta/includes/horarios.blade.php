@@ -24,8 +24,6 @@
 					$horariosDisponiveis = $consulta->horarios;
 				@endphp
 		
-				{{$horariosDisponiveis}}
-				
 				@foreach ( $horarios as $horario )
 					<tr scope="row">
 					@foreach ( $dias as $dia )
@@ -40,7 +38,7 @@
 								<td>15:30 - 17:30</td>
 							@endif
 						@else 
-							@if( sizeof($horariosDisponiveis) > 0 and $horariosDisponiveis[$aux]->dia == $dia and $horariosDisponiveis[$aux]->horario == $horario)
+							@if( sizeof($horariosDisponiveis) > $aux and $horariosDisponiveis[$aux]->dia == $dia and $horariosDisponiveis[$aux]->horario == $horario)
 								<td>
 									<div class="text-center">
 										<i class="fas fa-times"></i>

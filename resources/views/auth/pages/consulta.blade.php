@@ -24,7 +24,7 @@
 											Curso
 										</th>
 										<th>
-											Data & horário de pedido
+											Data & horário do pedido
 										</th>
 										<th>
 											Opções
