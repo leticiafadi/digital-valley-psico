@@ -83,6 +83,7 @@
 
 <script>
     import Moment from 'moment';
+    import axios from 'axios';
     export default {
         data: function(){
             return {
@@ -99,29 +100,7 @@
                 anos : [],
                 data : new Date(),
                 semanas : [],
-                dias    : [
-                    {
-                        dia: new Date(),
-                        horarios: [1,1,0,1,0,1,1,0]
-                    },
-                    {
-                        dia: new Date(),
-                        horarios: [1,1,0,1,0,0,0,1]
-                    },
-                    {
-                        dia: new Date(),
-                        horarios: [1,1,0,1,0,1,1,1]
-                    },
-                    {
-                        dia: new Date(),
-                        horarios: [1,1,0,1,0,1,0,0]
-                    },
-                    {
-                        dia: new Date(),
-                        horarios: [1,1,0,1,1,0,0,0]
-                    },
-
-                ],
+                dias    : [],
                 anoSelecionado : '',
                 semanaSelecionada : ''
             }
@@ -134,7 +113,8 @@
         		return Moment(date).format('  DD/MM  ');
             },
             formatarDiaSemana: function(date){
-        		return Moment(date).format(' dddd DD/MM  ');
+                //formata o dia que aparece na tabela
+        		return Moment(date.dia).lang('pt-br').format(' ddd DD/MM  ');
             },
             carregaSemanas: function(){
 
@@ -149,10 +129,11 @@
                 var primeiro = new Date( this.anoSelecionado + '-01-02');
                 //primeira segunda feira
                 while(Moment(primeiro).format('dddd') != 'Monday')            
-                    primeiro = new Date(primeiro.getTime() + dia);
+                    primeiro = new Date(primeiro.getTime() - dia);
+                    
 
                 //pega cada semana ate 15 dias após o dia de hoje
-                while(primeiro < new Date(new Date().getTime() + dia * 15)){
+                while(primeiro < new Date(new Date().getTime() + dia * 20)){
                     this.semanas.push({inicio : primeiro, final : new Date(primeiro.getTime() + dia * 4)});
                     primeiro = new Date(primeiro.getTime() + dia*7);
                 }
@@ -165,10 +146,18 @@
                     this.anos.push(i);
                 }
 
-            }
+            },
+            carregaSemana: function(ano, semana){
+                axios.get('http://localhost:8000/horarios/2019/27').then(res=>{
+                    this.dias = res.data;
+                }).catch(err=>{
+                    window.alert(JSON.stringify(err));
+                });
+            }   
         },
         mounted(){
             this.carregaAnos();
+            this.carregaSemana(873804,7483721);
         }
         
     }

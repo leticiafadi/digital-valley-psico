@@ -2792,6 +2792,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -2876,6 +2878,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2883,22 +2886,7 @@ __webpack_require__.r(__webpack_exports__);
       anos: [],
       data: new Date(),
       semanas: [],
-      dias: [{
-        dia: new Date(),
-        horarios: [1, 1, 0, 1, 0, 1, 1, 0]
-      }, {
-        dia: new Date(),
-        horarios: [1, 1, 0, 1, 0, 0, 0, 1]
-      }, {
-        dia: new Date(),
-        horarios: [1, 1, 0, 1, 0, 1, 1, 1]
-      }, {
-        dia: new Date(),
-        horarios: [1, 1, 0, 1, 0, 1, 0, 0]
-      }, {
-        dia: new Date(),
-        horarios: [1, 1, 0, 1, 1, 0, 0, 0]
-      }],
+      dias: [],
       anoSelecionado: '',
       semanaSelecionada: ''
     };
@@ -2911,7 +2899,8 @@ __webpack_require__.r(__webpack_exports__);
       return moment__WEBPACK_IMPORTED_MODULE_0___default()(date).format('  DD/MM  ');
     },
     formatarDiaSemana: function formatarDiaSemana(date) {
-      return moment__WEBPACK_IMPORTED_MODULE_0___default()(date).format(' dddd DD/MM  ');
+      //formata o dia que aparece na tabela
+      return moment__WEBPACK_IMPORTED_MODULE_0___default()(date.dia).lang('pt-br').format(' ddd DD/MM  ');
     },
     carregaSemanas: function carregaSemanas() {
       if (this.anoSelecionado == '') {
@@ -2926,11 +2915,11 @@ __webpack_require__.r(__webpack_exports__);
       var primeiro = new Date(this.anoSelecionado + '-01-02'); //primeira segunda feira
 
       while (moment__WEBPACK_IMPORTED_MODULE_0___default()(primeiro).format('dddd') != 'Monday') {
-        primeiro = new Date(primeiro.getTime() + dia);
+        primeiro = new Date(primeiro.getTime() - dia);
       } //pega cada semana ate 15 dias após o dia de hoje
 
 
-      while (primeiro < new Date(new Date().getTime() + dia * 15)) {
+      while (primeiro < new Date(new Date().getTime() + dia * 20)) {
         this.semanas.push({
           inicio: primeiro,
           "final": new Date(primeiro.getTime() + dia * 4)
@@ -2945,10 +2934,20 @@ __webpack_require__.r(__webpack_exports__);
       for (var i = 2019; i <= anoAtual; i++) {
         this.anos.push(i);
       }
+    },
+    carregaSemana: function carregaSemana(ano, semana) {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/horarios/2019/27').then(function (res) {
+        _this.dias = res.data;
+      })["catch"](function (err) {
+        window.alert(JSON.stringify(err));
+      });
     }
   },
   mounted: function mounted() {
     this.carregaAnos();
+    this.carregaSemana(873804, 7483721);
   }
 });
 
