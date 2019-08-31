@@ -59,6 +59,7 @@
 			</div>
 		@endif
 		
+		
 		@if ($errors->any())
 			<div class="alert alert-danger alert-dismissible">
 				<ul>
@@ -80,7 +81,7 @@
 	<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
 	async defer>
 	document.getElementById("buttonSubmit").disabled = true;
-</script>
+	</script>
 
 	<script src="{{asset('js/mask/mymasks.js')}}"></script>
 
