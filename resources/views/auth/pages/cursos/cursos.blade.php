@@ -2,7 +2,7 @@
 @section('content')
 
    
-  {{-- 
+ 
     @if($cursos)
     <div class="container">
       
@@ -51,7 +51,7 @@
         </div>
     </div>
     @endif
-    --}}
+    
 
     
 
