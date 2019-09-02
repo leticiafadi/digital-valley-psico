@@ -69,6 +69,5 @@ Route::get('/cidades/{idEstado}', 'Site\LocalizacaoController@cidades');
 Route::get('/localizacao', 'Dashboard\LocalizacaoController@localizacao');
 
 //rota d eredefinir nova senha
-Route::get('/recuperarSenha', function(){
-    return view('aluno.layouts.layout-redefinir-senha');
-})->name('recuperarSenha');
+Route::get('/redefinirSenha', 'Auth\ForgotPasswordController@redefinirSenha')->name('redefinirSenha');
+    
