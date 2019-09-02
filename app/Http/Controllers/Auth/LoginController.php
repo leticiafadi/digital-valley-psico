@@ -48,8 +48,9 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function showLoginform(){
-        return view('auth.login');
+    public function showLoginform(Request $request){
+       
+        return view('auth.login')->with('nome_path', 'login');
     }
 
     //meu login
