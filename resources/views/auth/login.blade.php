@@ -35,13 +35,18 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right"> Senha </label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required  placeholder="Senha.">
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col col-md-8 offset-md-4">
+                                <a href="{{route('passwordreset.show-link-request-form')}}">Esqueceu sua senha ?</a>
                             </div>
                         </div>
 
@@ -70,7 +75,6 @@
                         <div class="row">
                             <div class="col col-md-6 offset-md-4 mt-2">
                                 *Disponível somente para funcionário no momento.
-                                {{$uri_tail }}
                             </div>
                         </div>
                     </form>
