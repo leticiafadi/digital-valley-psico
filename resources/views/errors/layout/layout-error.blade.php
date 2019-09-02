@@ -38,7 +38,6 @@
 
 	<!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/erro.css') }}" rel="stylesheet">
     
 
 	<!--favicon-->
@@ -57,9 +56,9 @@
                         <div class="notfound-404">
                             <h1>404</h1>
                         </div>
-                        <h2>Oops! This Page Could Not Be Found</h2>
-                        <p>Sorry but the page you are looking for does not exist, have been removed. name changed or is temporarily unavailable</p>
-                        <a href="home" class="button">Homepage</a>
+                        <h2>Opa! Não foi possível encontrar esta página</h2>
+                        <p>Desculpe, mas a página que você está procurando não existe, foi removida. nome alterado ou está temporariamente indisponível</p>
+                        <a href="home" class="button">Pagina Inicial</a>
                     </div>
             </div>
           
@@ -78,9 +77,9 @@
                         <div class="notfound-404">
                             <h1>405</h1>
                         </div>
-                        <h2>Oops! The request method is not allowed</h2>
-                        <p>Sorry but the method you are looking for does not allowed</p>
-                        <a href="home" class="button">Homepage</a>
+                        <h2>Opa! O método de solicitação não é permitido</h2>
+                        <p>Desculpe, mas o método que você está procurando não é permitido</p>
+                        <a href="home" class="button">Pagina Inicial</a>
                     </div>
             </div>
           

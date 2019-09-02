@@ -21,7 +21,7 @@
                             <div class="col-md-6">
                                 {{--<input id="usuario" type="text" class="form-control{{ $errors->has('usuario') ? ' is-invalid' : '' }}" name="usuario" value="{{ old('usuario') }}" required  placeholder="Matrícula, email ou siape." autofocus>--}}
 
-                                <input id="usuario" type="text" class="form-control{{ $errors->has('usuario') ? ' is-invalid' : '' }}" name="usuario" value="{{ old('usuario') }}" required  placeholder="Email, siape ou CRP." autofocus>
+                                <input id="usuario" type="text" class="form-control{{ $errors->has('usuario') ? ' is-invalid' : '' }}" name="usuario" value="{{ old('usuario') }}" required  placeholder="Email ou Matricula." autofocus>
 
                                 @if ($errors->has('usuario'))
                                     <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right"> Senha </label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required  placeholder="Senha.">
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
