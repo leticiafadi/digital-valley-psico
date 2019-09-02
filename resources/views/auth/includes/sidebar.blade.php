@@ -20,7 +20,7 @@
 	<li class="nav-item">
 		<a class="nav-link" href=" {{route('cursos.all')}} ">
 			<i class="fas fa-fw fa-graduation-cap"></i>
-			<span>Gerenciar cursos</span>
+			<span>Visualizar cursos</span>
 		</a>
 	</li>
 </ul>

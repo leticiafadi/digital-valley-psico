@@ -33,6 +33,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('passwordreset.show-link-request-form'); 
 $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('passwordreset.send-reset-link');
 Route::get('password/reset/{token}', 'Auth\ForgotPasswordController@resetForm')->name('passwordreset.show-form-reset');
+Route::get('/redefinirSenha', 'Auth\ForgotPasswordController@redefinirSenha')->name('redefinirSenha');
 $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
 //end Auth Routes
@@ -69,5 +70,5 @@ Route::get('/cidades/{idEstado}', 'Site\LocalizacaoController@cidades');
 Route::get('/localizacao', 'Dashboard\LocalizacaoController@localizacao');
 
 //rota d eredefinir nova senha
-Route::get('/redefinirSenha', 'Auth\ForgotPasswordController@redefinirSenha')->name('redefinirSenha');
+
     
