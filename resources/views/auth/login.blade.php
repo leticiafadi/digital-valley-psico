@@ -44,6 +44,11 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <div class="col col-md-8 offset-md-4">
+                                <a href="{{route('passwordreset.show-link-request-form')}}">Esqueceu sua senha ?</a>
+                            </div>
+                        </div>
 
                         {{--
 

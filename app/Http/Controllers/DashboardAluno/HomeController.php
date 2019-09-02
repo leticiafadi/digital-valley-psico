@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
-    public function __contruct(){
-        $this->middleware('auth');
+    public function __construct(){
+        $this->middleware('aluno');
     }
 
     public function home(){

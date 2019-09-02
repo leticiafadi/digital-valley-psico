@@ -8,10 +8,12 @@ use Illuminate\Foundation\Auth\User;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Auth\Passwords\CanResetPassword;
 
 class Usuario extends Authenticatable{
 
 	use Notifiable;
+	use CanResetPassword;
 	
 	protected $table 		= 'usuario';
 	protected $primaryKey 	= 'id';
