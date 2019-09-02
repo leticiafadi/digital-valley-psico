@@ -21,7 +21,7 @@
                             <div class="col-md-6">
                                 {{--<input id="usuario" type="text" class="form-control{{ $errors->has('usuario') ? ' is-invalid' : '' }}" name="usuario" value="{{ old('usuario') }}" required  placeholder="Matrícula, email ou siape." autofocus>--}}
 
-                                <input id="usuario" type="text" class="form-control{{ $errors->has('usuario') ? ' is-invalid' : '' }}" name="usuario" value="{{ old('usuario') }}" required  placeholder="Email, siape ou CRP." autofocus>
+                                <input id="usuario" type="text" class="form-control{{ $errors->has('usuario') ? ' is-invalid' : '' }}" name="usuario" value="{{ old('usuario') }}" required  placeholder="Email ou Matricula." autofocus>
 
                                 @if ($errors->has('usuario'))
                                     <span class="invalid-feedback" role="alert">
@@ -70,6 +70,7 @@
                         <div class="row">
                             <div class="col col-md-6 offset-md-4 mt-2">
                                 *Disponível somente para funcionário no momento.
+                                {{$uri_tail }}
                             </div>
                         </div>
                     </form>
