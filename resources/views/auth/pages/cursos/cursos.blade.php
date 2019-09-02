@@ -2,9 +2,16 @@
 @section('content')
 
    
+<<<<<<< HEAD
+ 
+    @if($cursos)
+    <div class="container">
+      
+=======
   
 @if($cursos)
     <div class="container">      
+>>>>>>> dfdb10e0b1a1df09e0e2bc57d2271fc5248bb694
         <div class="card">
             <div class="card-header">Cursos</div>
                 <div class="card-body">
@@ -29,7 +36,13 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
+    @endif
+    
+
+=======
 @endif
+>>>>>>> dfdb10e0b1a1df09e0e2bc57d2271fc5248bb694
     
 
 {{--
