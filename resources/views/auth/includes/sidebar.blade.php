@@ -14,13 +14,19 @@
 	<li class="nav-item">
 		<a class="nav-link" href=" {{route('usuarios.all')}} ">
 			<i class="fas fa-fw fa-users"></i>
-			<span>Gerenciar usuários</span>
+			<span>Gerenciar psicólogos</span>
 		</a>
 	</li>
 	<li class="nav-item">
 		<a class="nav-link" href=" {{route('cursos.all')}} ">
 			<i class="fas fa-fw fa-graduation-cap"></i>
-			<span>Gerenciar cursos</span>
+			<span>Visualizar cursos</span>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="">
+			<i class="fas fa-fw fa-user-graduate"></i>
+			<span>Gerenciar alunos</span>
 		</a>
 	</li>
 </ul>

@@ -51,4 +51,9 @@ class ForgotPasswordController extends Controller{
         return view('auth.passwords.reset',['token'=> $token, 'email' => $reset->email ]);
 
     }
+
+    public function redefinirSenha(){
+        return view('auth.passwords.redefinir-senha');
+    }
+
 }
