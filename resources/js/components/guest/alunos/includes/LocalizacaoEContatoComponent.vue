@@ -48,7 +48,7 @@
             <div class="row">
             <div class="col col-12 col-md-6">
                 <div class="form-group">
-                    <label for="endereco">Endereço *</label>
+                    <label for="endereco">Endereço de origem *</label>
                     <input type="text" class="form-control" :class="{'is-invalid' : errors.has('endereco')}"  name="endereco" id="endereco" placeholder="Digite seu endereço" v-model="endereco" maxlength="63" v-validate="'required|min:10'"/>
                 
                     <span>{{errors.first('endereco')}}</span>
@@ -108,6 +108,9 @@
         </div>
         <div class="row">
             <div class="col col-12">
+                <div class="fa fa-pull-left">
+                    <button type="button" class="btn btn-primary " @click="this.anterior"> <i class="fa fa-chevron-left"></i>Anterior</button>
+                </div>
                 <div class="fa-pull-right">
                     <button type="button" class="btn btn-primary btn-lg" :disabled="!this.isValid()"  @click="this.proximo" >Próximo <i class="fa fa-chevron-right"></i></button>
                 </div>
@@ -209,6 +212,9 @@
             },
             proximo:function(){
                 this.mudaAba('dadosDeConta'); 
+            },
+            anterior:function(){
+                this.mudaAba('informacoesUniversitarias');
             } 
         },
         mounted(){

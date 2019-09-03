@@ -12,8 +12,8 @@
 */
 
 Route::get('/', 'PaginaInicialController@mostrarPaginaInicial')->name("pagina-inicial");
-//Route::get('/realizarCadastro', 'Site\AlunoController@mostrarFormularioCadastrarAluno');
-//Route::post('/realizarCadastro', 'Aluno\RegistrarAlunoController@registrarAluno');
+Route::get('/realizarCadastro', 'Site\AlunoController@mostrarFormularioCadastrarAluno');
+Route::post('/realizarCadastro', 'Aluno\RegistrarAlunoController@registrarAluno');
 
 //Auth::routes();
 

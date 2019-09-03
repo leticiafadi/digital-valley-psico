@@ -23,7 +23,7 @@
             <label for="">Gênero *</label>
                 <div class="form-group">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genero" id="genero-masculino" value="m"  v-model="genero"  required checked> 
+                        <input class="form-check-input" type="radio" name="genero" id="genero-masculino" value="m"  v-model="genero"  required checked>
                         <label class="form-check-label" for="genero-masculino">Masculino</label>
                     </div>
                     <div class="form-check form-check-inline">
@@ -35,7 +35,7 @@
             <div class="col col-9">
                 <div class="form-group">
                     <label for="nascimento">Data de nascimento *</label>
-                    <vue-calendar input-class="form-control" placeholder="Clique aqui e selecione sua data de nascimento" v-model="dataNascimento" format="dd/MM/yyyy" :language="pt" :bootstrap-styling="true" full-month-name="true" calendar-button=true calendar-button-icon="fa fa-calendar" name="data_nascimento" v-validate="'date'">
+                    <vue-calendar input-class="form-control" placeholder="Clique aqui e selecione sua data de nascimento" v-model="dataNascimento" format="dd/MM/yyyy" :language="pt" :bootstrap-styling="true" :full-month-name="true" :calendar-button="true" calendar-button-icon="fas fa-calendar" name="data_nascimento" v-validate="'date_format:dd/MM/yyyy'" :input-class="'bg-white'" :disabledDates="this.disabled_dates" :open-date="this.open_date">
                     </vue-calendar>  
                 </div>
             </div>
@@ -43,7 +43,7 @@
         <div class="row">
             <div class="col col-12">
                 <div class="fa-pull-right">
-                    <button type="button" class="btn btn-primary btn-lg" :disabled="!this.isValid()"  @click="this.proximo">Próximo <i class="fa fa-chevron-right"></i></button>
+                    <button type="button" class="btn btn-primary btn-lg" :disabled="!this.isValid()"  @click="this.proximo" >Próximo <i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
@@ -72,12 +72,14 @@
                 nome: '',
                 dataNascimento : '',
                 genero : 'm',
-                pt: ptBR
+                pt: ptBR, 
+                disabled_dates: {},
+                open_date : new Date()
             }
         },
         methods:{
             validaNome:function(){
-                return this.nome.length >= 3 && /^[a-zA-Z]+$/.test(this.nome);
+                return this.nome.length >= 3 && /^[a-zA-Zäáàãâëéèêẽíìîöóòôúùñûç ]+$/.test(this.nome);
             },
             validaData:function(){
                 return this.dataNascimento != '';
@@ -90,9 +92,25 @@
             } 
         },
         mounted(){
+            //Desabilitando datas
+            const dia = 1000*60*60*24;
+            var hoje = new Date();
+            this.open_date = hoje.getTime()-365*16*dia
+
+            this.disabled_dates = {
+                from: new Date(this.open_date),
+                to: new Date(hoje.getTime()-365*120*dia),
+            }
+
             this.nome           = this.old.nome;
-            this.genero         = this.old.nome != '' ? this.old.genero : 'm';
+            this.genero         = this.old.genero;
             this.dataNascimento = this.old.data_nascimento;
         }
     }
  </script>
+
+ <style>
+    [name=data_nascimento]{
+        background-color: red;
+    }
+ </style>

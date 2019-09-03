@@ -10,7 +10,7 @@
         </div>
         <div class="col col-12 col-lg-3 text-center">
             <button class="btn btn-circle btn-xl" v-bind:class="[aba == 'informacoesProfissionais' ? 'btn-primary' : 'btn-outline-primary']" type="button" :disabled="!aba == 'informacoesProfissionais'">
-                <i class="fa fa-user-graduate"></i>
+                <i class="fas fa-user-graduate"></i>
             </button>
             <div>
                 Informações acadêmicas

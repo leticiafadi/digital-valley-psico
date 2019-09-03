@@ -30,6 +30,9 @@
         </div>
         <div class="row">
             <div class="col col-12">
+                <div class="fa fa-pull-left">
+                    <button type="button" class="btn btn-primary " @click="this.anterior"> <i class="fa fa-chevron-left"></i>Anterior</button>
+                </div>
                 <div class="fa fa-pull-right">
                     <button type="button" class="btn btn-primary btn-lg" :disabled="!this.isValid()" @click="this.proximo" >Próximo <i class="fa fa-chevron-right"></i></button>
                 </div>
@@ -79,6 +82,9 @@
             },
             proximo:function(){
                 this.mudaAba('localizacaoEContato');
+            },
+            anterior:function(){
+                this.mudaAba('informacoesPessoais');
             },
             isValid:function(){
                 return this.matriculasIsValid() && this.cursoIsValid() && this.semestreIsValid();
