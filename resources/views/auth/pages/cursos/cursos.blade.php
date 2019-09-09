@@ -1,17 +1,10 @@
 @extends('auth.layouts.layout-basic')
 @section('content')
 
-   
-<<<<<<< HEAD
- 
-    @if($cursos)
-    <div class="container">
-      
-=======
+{{--    
   
 @if($cursos)
     <div class="container">      
->>>>>>> dfdb10e0b1a1df09e0e2bc57d2271fc5248bb694
         <div class="card">
             <div class="card-header">Cursos</div>
                 <div class="card-body">
@@ -36,17 +29,11 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-    @endif
+@endif --}}
     
 
-=======
-@endif
->>>>>>> dfdb10e0b1a1df09e0e2bc57d2271fc5248bb694
-    
 
-{{--
-<curso :base-url="{{'"'.$base_url.'"'}}"></curso>   AQUI ERA OTRA FORMA DE LISTAR OS CURSOS
---}}
+<curso :base-url="{{'"'.$base_url.'"'}}"></curso> 
+
 
 @endsection

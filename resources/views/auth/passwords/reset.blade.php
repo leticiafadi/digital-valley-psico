@@ -1,23 +1,23 @@
-@extends('layouts.app')
+@extends('guest.layouts.layout-basic')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
-
+            <div class="card mt-4">
+                <div class="card-header"><i class="fas fa-key"></i> Redefinir senha</div>
                 <div class="card-body">
-                    <form method="POST" >
-                        <input type="hidden" name="token" value="{{ $token }}">
+                    <form method="POST" action="{{route('redefinirSenha')}}">
 
+                        {{csrf_field()}}
+
+                        <input type="hidden" name="token" value="{{ $token }}">
+                        <input type="hidden" name="email" value="{{ $email }}">
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
+                            <label for="email" class="col-md-4 col-form-label text-md-right">Digite a sua nova Senha</label>
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
+                                <input id="email" type="password" class="form-control" placeholder="Digite sua nova senha" name="senha">
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -27,12 +27,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
+                            <label for="email" class="col-md-4 col-form-label text-md-right">Digite novamente a senha</label>
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="email" type="password" class="form-control" placeholder="Digite novamente a senha" name="repetir_senha">
                             </div>
                         </div>
+
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

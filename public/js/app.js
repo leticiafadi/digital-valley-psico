@@ -98987,13 +98987,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-__webpack_require__(/*! C:\Users\paulo\Documents\digital-valley-psico\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\paulo\Documents\digital-valley-psico\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
 __webpack_require__(/*! /home/aurliano/programas/php/digital-valley-psico/resources/js/app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! /home/aurliano/programas/php/digital-valley-psico/resources/sass/app.scss */"./resources/sass/app.scss");
->>>>>>> 469aa85d2018a6f63106e138fea816f0baaebed9
 
 
 /***/ })

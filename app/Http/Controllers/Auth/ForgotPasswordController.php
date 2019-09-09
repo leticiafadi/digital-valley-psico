@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Requests\ResetPasswordRequestForm;
+use App\Http\Requests\ResetPasswordRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Support\Facades\Mail;
 
 use App\Models\usuarios\PasswordReset;
+use App\Models\usuarios\Login;
+use App\Models\usuarios\ItemLogin;
 use App\Mail\SendEmailToken;
 
 class ForgotPasswordController extends Controller{
@@ -45,15 +48,29 @@ class ForgotPasswordController extends Controller{
     }
 
 
-    public function resetForm(Request $request, $token){
+    public function resetForm(Request $request, $token)
+    {
         $reset = PasswordReset::where('token', $token)->firstOrFail();
 
         return view('auth.passwords.reset',['token'=> $token, 'email' => $reset->email ]);
 
     }
 
-    public function redefinirSenha(){
-        return view('auth.passwords.redefinir-senha');
+    public function redefinirSenha(ResetPasswordRequest $request)
+    {    
+        $reset =  PasswordReset::where('token', $request->token)->where('email',$request->email)->firstOrFail();
+        $item = ItemLogin::where("usuario", $reset->email)->firstOrFail();
+        
+        $login = Login::findOrFail($item->id_login);
+        $login->senha = bcrypt($request->senha);
+        $reset->delete();
+
+        $login->save();
+
+        return redirect('/login')->with('success', "Senha de usuário alterada com sucesso !!");
     }
 
+
 }
+
+
