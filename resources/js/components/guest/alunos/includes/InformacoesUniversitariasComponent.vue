@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col col-12">
                 <div class="fa fa-pull-left">
-                    <button type="button" class="btn btn-primary " @click="this.anterior"> <i class="fa fa-chevron-left"></i>Anterior</button>
+                    <button type="button" class="btn btn-primary " @click="this.anterior"> <i class="fa fa-chevron-left"></i> Anterior</button>
                 </div>
                 <div class="fa fa-pull-right">
                     <button type="button" class="btn btn-primary btn-lg" :disabled="!this.isValid()" @click="this.proximo" >Próximo <i class="fa fa-chevron-right"></i></button>
@@ -45,7 +45,7 @@
     import MaskedInput from 'vue-masked-input'
     export default {
         props:{
-            cursos: Object,
+            cursos: Array,
             mudaAba: Function
         },
         data: function(){
@@ -77,7 +77,7 @@
                     document.getElementById('label-curso').focus();
             },
             passaCurso:function(){
-                if(cursoIsValid())
+                if(this.cursoIsValid())
                     document.getElementById('semestre').focus();
             },
             proximo:function(){

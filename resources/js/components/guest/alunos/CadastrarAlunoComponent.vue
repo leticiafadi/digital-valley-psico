@@ -7,22 +7,24 @@
             </div>
             <div class="card-body">
 
+
                 <form action="/realizarCadastro" method="POST">
 
                     <cabecalho  id="cabecalho" /> 
 
                     <input type="hidden" name="_token" :value="csrf">
                     
-                    <informacoes-pessoais :setError="this.setError" :mudaAba="this.mudaAba"  v-show="this.aba == 'informacoesPessoais'" :old="old"/>
+                    <informacoes-pessoais :mudaAba="this.mudaAba"  v-show="this.aba == 'informacoesPessoais'" :old="old"/>
 
                     <informacoes-universitarias :cursos="cursos" :mudaAba="this.mudaAba" v-show="this.aba == 'informacoesUniversitarias'"/>
 
                     
-                    <localizacao-e-contato  :mudaAba="this.mudaAba" v-show="this.aba == 'localizacaoEContato'" :old="old"/>
+                    <localizacao-e-contato  :mudaAba="this.mudaAba" v-show="this.aba == 'localizacaoEContato'" :old="old" :url="this.url"/>
 
                     <dados-de-conta :mudaAba="this.mudaAba" v-show="this.aba == 'dadosDeConta'" :old="old"/>
                 
                 </form>
+
                 
             </div>
         </div>
@@ -39,7 +41,8 @@
 
     export default {
         props:{
-            cursos: Object,
+            url: String,
+            cursos: Array,
             old: Object
         },
         components:{
@@ -62,7 +65,8 @@
         },
         mounted(){
             this.aba = 'informacoesPessoais';
-            this.csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+
+            this.csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         }
     }
 </script>

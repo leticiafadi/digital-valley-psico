@@ -31,18 +31,21 @@
         "dateformat": "^3.0.3",
         "el-moment": "^1.0.0",
         "icheck-bootstrap": "^3.0.1",
+        "luxon": "^1.17.3",
         "moment": "^2.24.0",
         "pug": "^2.0.3",
         "pug-loader": "^2.4.0",
         "save": "^2.3.3",
         "vee-validate": "^2.2.3",
         "vue-datepicker-ui": "^0.1.2",
+        "vue-datetime": "^1.0.0-beta.10",
         "vue-masked-input": "^0.5.2",
         "vue-recaptcha": "^1.1.1",
         "vue-resource": "^1.5.1",
         "vue-snotify": "^3.2.1",
         "vue-toasted": "^1.1.26",
         "vue2-datatable-component": "^2.3.1",
-        "vuejs-datepicker": "^1.5.4"
+        "vuejs-datepicker": "^1.5.4",
+        "weekstart": "^1.0.0"
     }
 }

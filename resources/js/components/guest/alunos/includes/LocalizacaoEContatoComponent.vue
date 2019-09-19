@@ -3,13 +3,13 @@
     <div>
         <div>
             <div class="text-center">
-                <h3>Localizacao e contato</h3>
+                <h3>Localização e contato</h3>
             </div>
         </div>
         <div class="row">
             <div class="col col-12 col-md-4">
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Selecione seu pais</label>
+                    <label for="exampleFormControlSelect1">Selecione seu país *</label>
                     <select class="form-control" id="" :class="{'is-invalid' : errors.has('id_pais')}" v-model="id_pais" name="id_pais" v-validate="'required'" >
                         <option value="" selected>Selecione um pais</option>             
                         <option v-for="pais in paises" :value=pais.id>{{pais.name}}</option>
@@ -21,9 +21,8 @@
             </div>
             <div class="col col-12 col-md-4">
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Selecione seu estado</label>
-                    <select class="form-control" id="" :class="{'is-invalid' : errors.has('id_estado')}"  v-model="id_estado" name="id_estado" v-validate="'required'">
-                        <option value="" selected>Selecione um pais</option>             
+                    <label for="exampleFormControlSelect1">Selecione seu estado *</label>
+                    <select class="form-control" id="" :class="{'is-invalid' : errors.has('id_estado')}"  v-model="id_estado" name="id_estado" v-validate="'required'">          
                         <option v-for="estado in estados" :value=estado.id>{{estado.name}}</option>
                     </select>
 
@@ -33,9 +32,8 @@
             </div>
             <div class="col col-12 col-md-4">
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Selecione sua cidade</label>
-                    <select class="form-control" id="" :class="{'is-invalid' : errors.has('id_cidade')}"  name="id_cidade" v-model="id_cidade" v-validate="'required'">
-                        <option value="" selected>Selecione uma cidade</option>             
+                    <label for="exampleFormControlSelect1">Selecione sua cidade *</label>
+                    <select class="form-control" id="" :class="{'is-invalid' : errors.has('id_cidade')}"  name="id_cidade" v-model="id_cidade" v-validate="'required'">         
                         <option v-for="cidade in cidades" :value=cidade.id>{{cidade.name}}</option>
                     </select>
 
@@ -48,28 +46,31 @@
             <div class="row">
             <div class="col col-12 col-md-6">
                 <div class="form-group">
-                    <label for="endereco">Endereço de origem *</label>
-                    <input type="text" class="form-control" :class="{'is-invalid' : errors.has('endereco')}"  name="endereco" id="endereco" placeholder="Digite seu endereço" v-model="endereco" maxlength="63" v-validate="'required|min:10'"/>
+                    <label for="endereco">Endereço *</label>
+                    <input type="text" class="form-control" :class="{'is-invalid' : errors.has('endereco')}"  name="endereco" id="endereco" placeholder="Ex: Rua José Cornélio, perto do bar do bita" v-model="endereco" maxlength="63" v-validate="'required|min:10'"/>
                 
                     <span>{{errors.first('endereco')}}</span>
 
                 </div>
             </div>
-            <div class="col col-12 col-md-3">
-                <div class="form-group">
-                    <label for="bairro">Bairro *</label>
-                    <input type="text" class="form-control" :class="{'is-invalid' : errors.has('bairro')}"  name="bairro" id="bairro" placeholder="Digite seu bairro" v-model="bairro" v-validate="'required|min:5'">
 
-                    <span>{{errors.first('bairro')}}</span>
-
-                </div>
-            </div>
             <div class="col col-12 col-md-3">
                 <div class="form-group">
                     <label for="numero">Número *</label>
-                    <input type="text" class="form-control" :class="{'is-invalid' : errors.has('numero')}"  name="numero" id="numero" v-model="numero" placeholder="Somente números"  v-validate="'required|numeric'"/>
+                    <input type="text" class="form-control" :class="{'is-invalid' : errors.has('numero')}"  name="numero" id="numero" v-model="numero" placeholder="Ex: 198"  v-validate="'required|numeric'"/>
 
                     <span>{{errors.first('numero')}}</span>
+
+                </div>
+            </div>
+
+
+            <div class="col col-12 col-md-3">
+                <div class="form-group">
+                    <label for="bairro">Bairro *</label>
+                    <input type="text" class="form-control" :class="{'is-invalid' : errors.has('bairro')}"  name="bairro" id="bairro" placeholder="Ex: Centro" v-model="bairro" v-validate="'required|min:5'">
+
+                    <span>{{errors.first('bairro')}}</span>
 
                 </div>
             </div>
@@ -79,7 +80,7 @@
             <div class="col col-12 col-md-4">
                 <div class="form-group">
                     <label for="">Endereço de E-mail *</label>
-                    <input type="email" class="form-control" :class="{'is-invalid' : errors.has('email')}"  name="email" placeholder="Digite um endereço de emal válido" v-model="email" v-validate="'required|email'">
+                    <input type="email" class="form-control" :class="{'is-invalid' : errors.has('email')}"  name="email" placeholder="Ex: etevaldo21@gmail.com" v-model="email" v-validate="'required|email'">
 
                     <span>{{ errors.first('email') }}</span>
 
@@ -88,7 +89,7 @@
             <div class="col col-12 col-md-4">
                 <div class="form-group">
                     <label for="telefone-celular">Telefone celular *</label>
-                    <masked-input mask="(11) 111 11 1111" name="telefone_celular" :class="{'is-invalid' : errors.has('telefone_celular')}"  class="form-control" v-model="telefone_celular" v-validate="{required: true, regex:  /\([\d]{2}\)\ [\d]{3}\ [\d]{2}\ [\d]{4}/ }" />
+                    <masked-input mask="(11) 1 1111 1111" name="telefone_celular" :class="{'is-invalid' : errors.has('telefone_celular')}"  class="form-control" v-model="telefone_celular" v-validate="{required: true, regex:  /\([\d]{2}\)\ [\d]{1}\ [\d]{4}\ [\d]{4}/ }" />
 
 
                     <span>{{errors.first('telefone_celular')}}</span>
@@ -108,11 +109,8 @@
         </div>
         <div class="row">
             <div class="col col-12">
-                <div class="fa fa-pull-left">
-                    <button type="button" class="btn btn-primary " @click="this.anterior"> <i class="fa fa-chevron-left"></i>Anterior</button>
-                </div>
                 <div class="fa-pull-right">
-                    <button type="button" class="btn btn-primary btn-lg" :disabled="!this.isValid()"  @click="this.proximo" >Próximo <i class="fa fa-chevron-right"></i></button>
+                    <button type="button" class="btn btn-primary btn-lg" :disabled="!this.isValid()"  @click="this.proximo" >Próximo <i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
@@ -124,12 +122,12 @@
     import axios        from 'axios'
     import MaskedInput  from 'vue-masked-input'
     import VeeValidate  from  'vee-validate'
-
     export default {
         props:{
             setError: Function,
             mudaAba : Function,
-            old     :  Object
+            old     : Object,
+            url : String
         },
         data:function(){
             return{
@@ -159,21 +157,33 @@
         },
         methods:{
             carregaPaises: function(){
-                axios.get('http://localhost:8000/paises').then(response=>{
-                    this.paises = response.data;
+                return new Promise(async (resolve, reject)=>{
+                    axios.get(this.url+'/paises').then(response=>{
+                        this.paises = response.data;
+                        this.estados = [];
+                        this.cidades = [];
+                        this.id_estado = 0;
+                        this.id_cidade = 0;
+                        resolve();
+                    });
                 });
             },
             carregaEstados:function(){
-                axios.get('http://localhost:8000/estados/' + this.id_pais).then(response=>{
-                    this.estados = response.data;
-                    this.cidades = [];
-                    this.id_cidade = 0;
-                    this.id_estado = 0;
+                return new Promise((resolve, reject)=>{
+                    axios.get(this.url + '/estados/' + this.id_pais).then(response=>{
+                        this.estados = response.data;
+                        this.cidades = [];
+                        this.id_cidade = 0;
+                        resolve();
+                    });
                 });
             },
             carregaCidades:function(){
-                axios.get('http://localhost:8000/cidades/' + this.id_estado).then(response=>{
-                    this.cidades = response.data;
+                return new Promise((resolve, reject)=>{
+                    axios.get( this.url + '/cidades/' + this.id_estado).then(response=>{
+                        this.cidades = response.data;
+                        resolve();
+                    });
                 });
             },
             validaEstado :function(){
@@ -198,10 +208,10 @@
                 return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.email)
             },
             validaTelefoneCelular:function(){
-                return /\([\d]{2}\)\ [\d]{3}\ [\d]{2}\ [\d]{4}/.test(this.telefone_celular);
+                return /\([\d]{2}\)\ [\d]{1}\ [\d]{4}\ [\d]{4}/.test(this.telefone_celular);
             },
             passaCelular:function(){
-                if(/\([\d]{2}\)\ [\d]{3}\ [\d]{2}\ [\d]{4}/.test(this.telefone_celular))
+                if(/\([\d]{2}\)\ [\d]{1}\ [\d]{4}\ [\d]{4}/.test(this.telefone_celular))
                     document.getElementById('telefone').focus()
             },
             validaTelefoneResidencial:function(){
@@ -217,16 +227,16 @@
                 this.mudaAba('informacoesUniversitarias');
             } 
         },
-        mounted(){
-            this.carregaPaises();
+        async mounted(){
+            await this.carregaPaises();
             this.id_pais = this.old.id_pais != '' ? this.old.id_pais : 30;
-             axios.get('http://localhost:8000/estados/' + this.id_pais).then(response=>{
-                this.estados = response.data;
-                this.id_estado = 515;
-            });
-            if(this.id_estado != '')
-                this.carregaCidades();
-            this.id_cidade  = this.old.id_cidade != '' ? this.old.id_cidade : 0;
+
+            await this.carregaEstados();
+            this.id_estado = this.old.id_estado != '' ? this.old.id_estado : 517;
+
+            await this.carregaCidades();
+            this.id_cidade = this.old.id_cidade != '' ? this.old.id_cidade : 8942 ;
+            
             this.endereco = this.old.endereco;
             this.bairro = this.old.bairro;
             this.numero = this.old.numero;

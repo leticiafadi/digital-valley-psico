@@ -35,8 +35,7 @@
             <div class="col col-9">
                 <div class="form-group">
                     <label for="nascimento">Data de nascimento *</label>
-                    <vue-calendar input-class="form-control" placeholder="Clique aqui e selecione sua data de nascimento" v-model="dataNascimento" format="dd/MM/yyyy" :language="pt" :bootstrap-styling="true" :full-month-name="true" :calendar-button="true" calendar-button-icon="fas fa-calendar" name="data_nascimento" v-validate="'date_format:dd/MM/yyyy'" :input-class="'bg-white'" :disabledDates="this.disabled_dates" :open-date="this.open_date">
-                    </vue-calendar>  
+                    <datetime v-model="dataNascimento" format="dd/MM/yyyy" input-class="form-control" name="data_nascimento"></datetime> 
                 </div>
             </div>
         </div>        
@@ -51,10 +50,12 @@
 </template>
 
  <script>
-    import MaskedInput  from 'vue-masked-input'
-    import VueCalendar  from 'vuejs-datepicker' 
-    import {en, ptBR}   from 'vuejs-datepicker/dist/locale'
-    import VeeValidate  from 'vee-validate'
+    import MaskedInput  from 'vue-masked-input';
+    import { Datetime } from 'vue-datetime';
+    import {en, ptBR}   from 'vuejs-datepicker/dist/locale';
+    import VeeValidate  from 'vee-validate';
+
+    import 'vue-datetime/dist/vue-datetime.css'
     
     export default {
         props: {
@@ -64,7 +65,7 @@
         },
         components:{
             MaskedInput,
-            VueCalendar,
+            Datetime,
             ptBR
         },
         data:function(){
@@ -111,6 +112,6 @@
 
  <style>
     [name=data_nascimento]{
-        background-color: red;
+        background-color: #fff;
     }
  </style>
