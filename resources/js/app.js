@@ -12,6 +12,7 @@ Vue.component('example-component',  require('./components/Example.vue').default)
 Vue.component('cadastrar-usuario',  require('./components/dashboard/usuarios/CadastrarUsuarioComponent.vue').default);
 Vue.component('localizacao',        require('./components/dashboard/localizacao/LocalizacaoComponent.vue').default);
 Vue.component('curso',              require('./components/dashboard/cursos/CursoComponent.vue').default);
+Vue.component('aluno',              require('./components/dashboard/alunos/AlunoComponent.vue').default);
 Vue.component('manter-horarios',    require('./components/dashboard/manter_horarios/ManterHorariosComponent.vue').default);
 
 //alunos components

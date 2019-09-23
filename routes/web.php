@@ -72,3 +72,6 @@ Route::get('/localizacao', 'Dashboard\LocalizacaoController@localizacao');
 //rota d eredefinir nova senha
 
     
+//rota de listar os alunos
+Route::get('/alunos',           'Dashboard\AlunoController@mostrarPaginaAlunos')->name('alunos.all')->middleware('auth');
+Route::get('/alunos/get',       'Dashboard\AlunoController@getAlunos')->middleware('auth');

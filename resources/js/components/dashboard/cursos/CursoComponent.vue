@@ -28,10 +28,10 @@
                                 <ul class="list-group">
                                     <template v-for="(curso, index) in this.cursos">
                                        
-                                        <li class="list-group-item" v-if="curso.id != curso_selecionado" @dblclick="carregaCurso(curso,index)"> 
+                                        <li class="list-group-item" v-if="curso.id != curso_selecionado"> 
                                             {{curso.nome}} 
                                         </li>
-                                        <li class="list-group-item bg-selecionado" v-else>
+                                        <!--<li class="list-group-item bg-selecionado" v-else>
                                             <form @submit.prevent="alteraCurso(curso.id)">
                                                 <div class="form-group">
                                                     <label for="alterarCurso">Digite o novo nome do curso</label>
@@ -42,9 +42,9 @@
                                                     <button type="button" class="btn btn-danger ml-2" @click="cancelarCurso()">Cancelar</button>
                                                 </div>
                                             </form>
-                                        </li>
+                                        </li>-->
                                     </template>
-                                    <li class="list-group-item">
+                                    <!--<li class="list-group-item">
                                         <form class="form" v-on:submit="this.criarCurso">
                                             <div class="form-group">
                                                 <label for="novoCurso">Criar novo curso <i class="fas fa-plus m-2"></i></label>
@@ -54,7 +54,7 @@
                                                 <button class="btn btn-primary btn-lg ml-2">Criar</button>
                                             </div>
                                         </form>
-                                    </li>
+                                    </li>-->
                                 </ul>
                             </div>
                         </div>
