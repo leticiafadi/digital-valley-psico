@@ -17,7 +17,6 @@ class AlunoController extends Controller
 
     }
 
-    //atualizar a rota da view dos alunos
     public function mostrarPaginaAlunos(){
         return view('auth.pages.alunos.alunos', ['cursos' => Curso::all(), 'base_url' => config('app.url')]);
     }

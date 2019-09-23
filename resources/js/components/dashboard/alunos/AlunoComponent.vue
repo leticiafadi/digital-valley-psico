@@ -11,25 +11,27 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col col-12 col-md-4">
+                                    <div class="col col-12 col-md-5">
                                         <div class="form-group">
                                             <label for="maticula">Nome completo do Aluno</label>
                                             <input name="matricula" class="form-control" placeholder="Ex: Jose da Silva Brito"/>
                                         </div>
                                     </div>
-
-                                    <div class="col col-12 col-md-4">
+                                    <div class="col col-12 col-md-5">
                                         <div class="form-group">
-                                            <label for="curso" id="label-curso">Curso *</label>
-                                            <select name="id_curso" id="curso" class="form-control" v-model="curso">
-                                                <option value="">Selecione o filtro de busca</option>
+                                            <label id="label-curso">Selecione o filtro de busca</label>
+                                            <select name="id_curso" class="form-control">
+                                                <option value="">Todos</option>
                                                 <option v-for="curso in cursos" v-bind:value="curso.id">{{curso.nome}}</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    
-                                    <div class="col col-12 col-md-4">
-                                        <button type="button" class="btn btn-primary btn-lg">Buscar </button>
+                                    </div>    
+                                    <div class="col col-12 col-md-2">
+                                        <div class="form-group">
+                                            <div class="fa-pull-right mt-4">
+                                            <button type="button" class="btn btn-primary btn-lg">Buscar </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -57,14 +59,11 @@ import VeeValidate from 'vee-validate';
 
 export default {
     props:{
-            baseUrl: String,
+            base_url: String,
             cursos: Array
     },
     data:function(){
         return{
-            //curso_selecionado : -1,
-            //indexCursoSelecionado : -1,
-            //cursos : [],
             alunos: []
         }
     },
@@ -73,19 +72,14 @@ export default {
         Snotify
     },
     methods:{
-        /*carregaCursos: function(){
-            axios.get( this.baseUrl + '/cursos/get').then(response=>{
-                this.cursos = response.data;
-            });
-        },*/
         carregaAlunos: function(){
-            axios.get(this.baseUrl + '/alunos/get').then(response=>{
-                this.alunos = response.data;
+            axios.get(this.base_url + '/alunos/get').then(response=>{
+                this.alunos = response.data.alunos;
             });
-        },
-        mounted(){
-            this.carregaAlunos();
         }
+    },
+    mounted(){
+        this.carregaAlunos();
     }    
 }
 </script>

@@ -2601,19 +2601,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    baseUrl: String,
+    base_url: String,
     cursos: Array
   },
   data: function data() {
     return {
-      //curso_selecionado : -1,
-      //indexCursoSelecionado : -1,
-      //cursos : [],
       alunos: []
     };
   },
@@ -2622,21 +2621,16 @@ __webpack_require__.r(__webpack_exports__);
     Snotify: vue_snotify__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
-    /*carregaCursos: function(){
-        axios.get( this.baseUrl + '/cursos/get').then(response=>{
-            this.cursos = response.data;
-        });
-    },*/
     carregaAlunos: function carregaAlunos() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.baseUrl + '/alunos/get').then(function (response) {
-        _this.alunos = response.data;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.base_url + '/alunos/get').then(function (response) {
+        _this.alunos = response.data.alunos;
       });
-    },
-    mounted: function mounted() {
-      this.carregaAlunos();
     }
+  },
+  mounted: function mounted() {
+    this.carregaAlunos();
   }
 });
 
@@ -86621,46 +86615,21 @@ var render = function() {
                 _c("div", { staticClass: "row" }, [
                   _vm._m(1),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col col-12 col-md-4" }, [
+                  _c("div", { staticClass: "col col-12 col-md-5" }, [
                     _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        { attrs: { for: "curso", id: "label-curso" } },
-                        [_vm._v("Curso *")]
-                      ),
+                      _c("label", { attrs: { id: "label-curso" } }, [
+                        _vm._v("Selecione o filtro de busca")
+                      ]),
                       _vm._v(" "),
                       _c(
                         "select",
                         {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.curso,
-                              expression: "curso"
-                            }
-                          ],
                           staticClass: "form-control",
-                          attrs: { name: "id_curso", id: "curso" },
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.curso = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            }
-                          }
+                          attrs: { name: "id_curso" }
                         },
                         [
                           _c("option", { attrs: { value: "" } }, [
-                            _vm._v("Selecione o filtro de busca")
+                            _vm._v("Todos")
                           ]),
                           _vm._v(" "),
                           _vm._l(_vm.cursos, function(curso) {
@@ -86723,7 +86692,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col col-12 col-md-4" }, [
+    return _c("div", { staticClass: "col col-12 col-md-5" }, [
       _c("div", { staticClass: "form-group" }, [
         _c("label", { attrs: { for: "maticula" } }, [
           _vm._v("Nome completo do Aluno")
@@ -86740,12 +86709,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col col-12 col-md-4" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary btn-lg", attrs: { type: "button" } },
-        [_vm._v("Buscar ")]
-      )
+    return _c("div", { staticClass: "col col-12 col-md-2" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "fa-pull-right mt-4" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary btn-lg",
+              attrs: { type: "button" }
+            },
+            [_vm._v("Buscar ")]
+          )
+        ])
+      ])
     ])
   }
 ]
