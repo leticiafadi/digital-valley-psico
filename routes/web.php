@@ -74,4 +74,3 @@ Route::get('/localizacao', 'Dashboard\LocalizacaoController@localizacao');
 
 //Aluno
 Route::get('/alunos/get','Dashboard\AlunoController@getAlunos');
-

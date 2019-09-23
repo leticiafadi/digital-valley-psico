@@ -21,6 +21,8 @@ Vue.component('marcar-atendimento', require('./components/guest/atendimento/Marc
 //re-captcha
 Vue.component('submit-button', require("./components/guest/SubmitButtonComponent.vue").default);
 
+Vue.component('mostrar-senha',require("./components/form/mostrarSenhaComponent.vue").default);
+
 const app = new Vue({
     el: '#app'
 });
