@@ -3,6 +3,7 @@
 namespace App\Models\aluno;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\usuarios\Usuario;
 
 class Aluno extends Model
 {
@@ -19,6 +20,16 @@ class Aluno extends Model
         $aluno->save();
 
         return $aluno;
+    }
+
+    public static function buscaAlunos($data,$page){
+        $aluno =  Usuario::where('tipo','aluno')->where('nome_completo','like','%'.$data.'%')->skip(10*$page)->take(10)->get();
+        $tamanho = Usuario::where('tipo','aluno')->where('nome_completo','like','%'.$data.'%')->get()->count();
+        $data=[
+            'alunos' => $aluno,
+            'tamanho' => $tamanho
+        ];
+        return $data;
     }
 
 
