@@ -71,4 +71,7 @@ Route::get('/localizacao', 'Dashboard\LocalizacaoController@localizacao');
 
 //rota d eredefinir nova senha
 
-    
+
+//Aluno
+Route::get('/alunos/get','Dashboard\AlunoController@getAlunos');
+
