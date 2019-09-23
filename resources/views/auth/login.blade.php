@@ -72,9 +72,9 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col col-md-6 offset-md-4 mt-2">
-                                *Disponível somente para funcionário no momento.
+                        <div class="form-group row mt-3">
+                            <div class="col col-md-8 offset-md-4">
+                                <a href="">É novo aqui ? Registrar-se</a>
                             </div>
                         </div>
                     </form>

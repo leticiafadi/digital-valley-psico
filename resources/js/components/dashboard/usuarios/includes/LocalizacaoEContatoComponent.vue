@@ -12,7 +12,7 @@
                     <label for="exampleFormControlSelect1">Selecione seu país *</label>
                     <select class="form-control" id="" :class="{'is-invalid' : errors.has('id_pais')}" v-model="id_pais" name="id_pais" v-validate="'required'" >
                         <option value="" selected>Selecione um pais</option>             
-                        <option v-for="pais in paises" :value=pais.id>{{pais.name}}</option>
+                        <option v-for="pais in paises" :value="pais.id">{{pais.name}}</option>
                     </select>
 
                     <span>{{errors.first('id_pais')}}</span>
@@ -24,7 +24,7 @@
                     <label for="exampleFormControlSelect1">Selecione seu estado *</label>
                     <select class="form-control" id="" :class="{'is-invalid' : errors.has('id_estado')}"  v-model="id_estado" name="id_estado" v-validate="'required'">
                         <option value="" selected>Selecione um pais</option>           
-                        <option v-for="estado in estados" :value=estado.id>{{estado.name}}</option>
+                        <option v-for="estado in estados" :value="estado.id">{{estado.name}}</option>
                     </select>
 
                     <span>{{errors.first('id_estado')}}</span>
@@ -88,7 +88,7 @@
             <div class="col col-12 col-md-4">
                 <div class="form-group">
                     <label for="telefone-celular">Telefone celular *</label>
-                    <masked-input mask="(11) 111 11 1111" name="telefone_celular" :class="{'is-invalid' : errors.has('telefone_celular')}"  class="form-control" v-model="telefone_celular" v-validate="{required: true, regex:  /\([\d]{2}\)\ [\d]{3}\ [\d]{2}\ [\d]{4}/ }" />
+                    <masked-input mask="(11) 1 1111 1111" name="telefone_celular" :class="{'is-invalid' : errors.has('telefone_celular')}"  class="form-control" v-model="telefone_celular" v-validate="{required: true, regex:  /\([\d]{2}\)\ [\d]{1}\ [\d]{4}\ [\d]{4}/ }" />
 
 
                     <span>{{errors.first('telefone_celular')}}</span>
@@ -206,10 +206,10 @@
                 return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.email)
             },
             validaTelefoneCelular:function(){
-                return /\([\d]{2}\)\ [\d]{3}\ [\d]{2}\ [\d]{4}/.test(this.telefone_celular);
+                return /\([\d]{2}\)\ [\d]{1}\ [\d]{4}\ [\d]{4}/.test(this.telefone_celular);
             },
             passaCelular:function(){
-                if(/\([\d]{2}\)\ [\d]{3}\ [\d]{2}\ [\d]{4}/.test(this.telefone_celular))
+                if(/\([\d]{2}\)\ [\d]{1}\ [\d]{4}\ [\d]{4}/.test(this.telefone_celular))
                     document.getElementById('telefone').focus()
             },
             validaTelefoneResidencial:function(){
