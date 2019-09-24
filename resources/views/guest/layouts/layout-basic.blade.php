@@ -20,9 +20,7 @@
 
 	<!-- Custom styles for this template-->
 	<link href="{{asset('admin/css/sb-admin.css')}}" rel="stylesheet">
-
-	<!--formulario inicial-->
-	<link rel="stylesheet" href="{{asset('css/formulario-inicial.css')}}">
+	
 
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">

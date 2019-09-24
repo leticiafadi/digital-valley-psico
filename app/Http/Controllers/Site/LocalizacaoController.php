@@ -16,7 +16,7 @@ class LocalizacaoController extends Controller
     }
 
     public function pais(){
-        echo json_encode(Pais::all());
+        return response(Pais::all(), 200)->header('Content-Type', 'text/json');
     }
 
     public function estados($idPais){

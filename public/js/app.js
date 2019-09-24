@@ -3746,7 +3746,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -3830,8 +3829,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['aba'],
+  props: {
+    aba: String
+  },
   data: function data() {
     return {};
   }
@@ -4008,7 +4010,6 @@ __webpack_require__.r(__webpack_exports__);
     return {
       nome: '',
       dataNascimento: '',
-      genero: 'm',
       pt: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_2__["ptBR"],
       disabled_dates: {},
       open_date: new Date()
@@ -88304,7 +88305,7 @@ var render = function() {
           "form",
           { attrs: { action: "/realizarCadastro", method: "POST" } },
           [
-            _c("cabecalho", { attrs: { id: "cabecalho" } }),
+            _c("cabecalho", { attrs: { id: "cabecalho", aba: this.aba } }),
             _vm._v(" "),
             _c("input", {
               attrs: { type: "hidden", name: "_token" },
@@ -88423,7 +88424,7 @@ var render = function() {
         {
           staticClass: "btn btn-circle btn-xl",
           class: [
-            _vm.aba == "informacoesProfissionais"
+            _vm.aba == "informacoesUniversitarias"
               ? "btn-primary"
               : "btn-outline-primary"
           ],
@@ -88674,7 +88675,10 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            class: { "is-invalid": _vm.errors.has("nome") },
+            class: {
+              "is-invalid": _vm.errors.has("nome"),
+              "is-valid": this.validaNome()
+            },
             attrs: {
               type: "text",
               id: "nome",
@@ -88698,84 +88702,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col col-3" }, [
-        _c("label", { attrs: { for: "" } }, [_vm._v("Gênero *")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("div", { staticClass: "form-check form-check-inline" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.genero,
-                  expression: "genero"
-                }
-              ],
-              staticClass: "form-check-input",
-              attrs: {
-                type: "radio",
-                name: "genero",
-                id: "genero-masculino",
-                value: "m",
-                required: "",
-                checked: ""
-              },
-              domProps: { checked: _vm._q(_vm.genero, "m") },
-              on: {
-                change: function($event) {
-                  _vm.genero = "m"
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass: "form-check-label",
-                attrs: { for: "genero-masculino" }
-              },
-              [_vm._v("Masculino")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-check form-check-inline" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.genero,
-                  expression: "genero"
-                }
-              ],
-              staticClass: "form-check-input",
-              attrs: {
-                type: "radio",
-                name: "genero",
-                id: "genero-feminino",
-                value: "f",
-                required: ""
-              },
-              domProps: { checked: _vm._q(_vm.genero, "f") },
-              on: {
-                change: function($event) {
-                  _vm.genero = "f"
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass: "form-check-label",
-                attrs: { for: "genero-feminino" }
-              },
-              [_vm._v("Feminino")]
-            )
-          ])
-        ])
-      ]),
+      _vm._m(1),
       _vm._v(" "),
       _c("div", { staticClass: "col col-9" }, [
         _c(
@@ -88834,6 +88761,61 @@ var staticRenderFns = [
     return _c("div", [
       _c("div", { staticClass: "text-center" }, [
         _c("h3", [_vm._v("Informações pessoais")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col col-3" }, [
+      _c("label", { attrs: { for: "" } }, [_vm._v("Gênero *")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "form-check form-check-inline" }, [
+          _c("input", {
+            staticClass: "form-check-input",
+            attrs: {
+              type: "radio",
+              name: "genero",
+              id: "genero-masculino",
+              value: "m",
+              required: "",
+              checked: ""
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass: "form-check-label",
+              attrs: { for: "genero-masculino" }
+            },
+            [_vm._v("Masculino")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-check form-check-inline" }, [
+          _c("input", {
+            staticClass: "form-check-input",
+            attrs: {
+              type: "radio",
+              name: "genero",
+              id: "genero-feminino",
+              value: "f",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass: "form-check-label",
+              attrs: { for: "genero-feminino" }
+            },
+            [_vm._v("Feminino")]
+          )
+        ])
       ])
     ])
   }
@@ -89073,7 +89055,7 @@ var render = function() {
       _c("div", { staticClass: "col col-12 col-md-4" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-            _vm._v("Selecione seu país *")
+            _vm._v("País de origem*")
           ]),
           _vm._v(" "),
           _c(
@@ -89133,7 +89115,7 @@ var render = function() {
       _c("div", { staticClass: "col col-12 col-md-4" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-            _vm._v("Selecione seu estado *")
+            _vm._v("Estado de origem *")
           ]),
           _vm._v(" "),
           _c(
@@ -89187,7 +89169,7 @@ var render = function() {
       _c("div", { staticClass: "col col-12 col-md-4" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-            _vm._v("Selecione sua cidade *")
+            _vm._v("Cidade de origem *")
           ]),
           _vm._v(" "),
           _c(
@@ -89242,7 +89224,9 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col col-12 col-md-6" }, [
         _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "endereco" } }, [_vm._v("Endereço *")]),
+          _c("label", { attrs: { for: "endereco" } }, [
+            _vm._v("Endereço de origem*")
+          ]),
           _vm._v(" "),
           _c("input", {
             directives: [

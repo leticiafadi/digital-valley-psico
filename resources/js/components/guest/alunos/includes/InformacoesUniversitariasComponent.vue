@@ -39,7 +39,7 @@
             </div>
         </div>
     </div>
-</template>
+</template> 
  <script>
     import VeeValidate from 'vee-validate';
     import MaskedInput from 'vue-masked-input'
