@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col col-12 col-sm-6 col-lg-3">
                 <!-- small box -->
-                <div class="small-box bg-aqua">
+                <div class="small-box bg-blue">
                     <div class="inner">
                         <h3>{{--numeor de atendmentos marcados ainda nao lidos--}}{{$atendimentos}}</h3>
                         <p>Atendimentos agendados</p>
@@ -20,7 +20,7 @@
             </div>
             <div class="col col-12 col-sm-6 col-lg-3">
                 <!-- small box -->
-                <div class="small-box bg-success">
+                <div class="small-box bg-green">
                     <div class="inner">
                         <h3>{{$numeroDeCursos}}</h3>
                         <p>Cursos cadastrados</p>

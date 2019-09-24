@@ -12,7 +12,7 @@
                     <label for="exampleFormControlSelect1">País de origem*</label>
                     <select class="form-control" id="" :class="{'is-invalid' : errors.has('id_pais')}" v-model="id_pais" name="id_pais" v-validate="'required'" >
                         <option value="" selected>Selecione um pais</option>             
-                        <option v-for="pais in paises" :value=pais.id>{{pais.name}}</option>
+                        <option v-for="pais in paises" :value="pais.id">{{pais.name}}</option>
                     </select>
 
                     <span>{{errors.first('id_pais')}}</span>
@@ -23,7 +23,7 @@
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Estado de origem *</label>
                     <select class="form-control" id="" :class="{'is-invalid' : errors.has('id_estado')}"  v-model="id_estado" name="id_estado" v-validate="'required'">          
-                        <option v-for="estado in estados" :value=estado.id>{{estado.name}}</option>
+                        <option v-for="estado in estados" :value="estado.id">{{estado.name}}</option>
                     </select>
 
                     <span>{{errors.first('id_estado')}}</span>
@@ -34,7 +34,7 @@
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Cidade de origem *</label>
                     <select class="form-control" id="" :class="{'is-invalid' : errors.has('id_cidade')}"  name="id_cidade" v-model="id_cidade" v-validate="'required'">         
-                        <option v-for="cidade in cidades" :value=cidade.id>{{cidade.name}}</option>
+                        <option v-for="cidade in cidades" :value="cidade.id">{{cidade.name}}</option>
                     </select>
 
                     <span>{{errors.first('id_cidade')}}</span>
@@ -109,6 +109,9 @@
         </div>
         <div class="row">
             <div class="col col-12">
+                <div class="fa fa-pull-left">
+                    <button type="button" class="btn btn-primary " @click="this.anterior"> <i class="fa fa-chevron-left"></i> Anterior</button>
+                </div>
                 <div class="fa-pull-right">
                     <button type="button" class="btn btn-primary btn-lg" :disabled="!this.isValid()"  @click="this.proximo" >Próximo <i class="fas fa-chevron-right"></i></button>
                 </div>
