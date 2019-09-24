@@ -15,4 +15,8 @@ class AlunoController extends Controller
     public function mostrarFormularioCadastrarAluno(Request $request){
         return view('guest.pages.cadastrar-aluno',['cursos' => Curso::all(), 'base_url' => env('APP_URL')] );   
     }
+
+    public function mostrarFormularioSolicitarCadastro(){
+        return view('guest.pages.solicitarCadastro');
+    }
 }

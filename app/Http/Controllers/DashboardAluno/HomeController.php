@@ -14,4 +14,9 @@ class HomeController extends Controller
     public function home(){
         return view('aluno.home');
     }
+
+    public function mostrarPaginaMarcarAtendimento(){
+        return view('aluno.marcarAtendimento');
+    }
+
 }
