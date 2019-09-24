@@ -25,7 +25,7 @@
 
                     <localizacao-e-contato :mudaAba="this.mudaAba" v-show="this.aba == 'localizacaoEContato'" :old="this.old" :baseUrl="this.baseUrl"/>
 
-                    <dados-de-conta v-show="this.aba == 'dadosDeConta'"/>
+                    <dados-de-conta :mudaAba="this.mudaAba" v-show="this.aba == 'dadosDeConta'" :old="old"/>
                 </form>
 
             </div>

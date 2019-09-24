@@ -9,7 +9,7 @@
             <div class="col col-12">
                 <div class="form-group">
                     <label for="nome">Nome *</label>
-                    <input type="text" class="form-control"  :class="{'is-invalid' : errors.has('nome')}" id="nome" placeholder="Nome completo" name="nome" v-model="nome"  v-validate="'required|alpha_spaces|min:3|max:191'">
+                    <input type="text" class="form-control"  :class="{'is-invalid' : errors.has('nome'), 'is-valid': this.validaNome()}" id="nome" placeholder="Nome completo" name="nome" v-model="nome"  v-validate="'required|alpha_spaces|min:3|max:191'">
                     
                     <span>{{errors.first('nome')}}</span>
 
@@ -23,11 +23,11 @@
             <label for="">Gênero *</label>
                 <div class="form-group">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genero" id="genero-masculino" value="m"  v-model="genero"  required checked>
+                        <input class="form-check-input" type="radio" name="genero" id="genero-masculino" value="m"  required checked>
                         <label class="form-check-label" for="genero-masculino">Masculino</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genero" id="genero-feminino" value="f" v-model="genero"  required>
+                        <input class="form-check-input" type="radio" name="genero" id="genero-feminino" value="f"  required>
                         <label class="form-check-label" for="genero-feminino">Feminino</label>
                     </div>                    
                 </div>
@@ -53,7 +53,7 @@
     import MaskedInput  from 'vue-masked-input';
     import { Datetime } from 'vue-datetime';
     import {en, ptBR}   from 'vuejs-datepicker/dist/locale';
-    import VeeValidate  from 'vee-validate';
+    import VeeValidate  from 'vee-validate';    
 
     import 'vue-datetime/dist/vue-datetime.css'
     
@@ -72,7 +72,6 @@
             return {
                 nome: '',
                 dataNascimento : '',
-                genero : 'm',
                 pt: ptBR, 
                 disabled_dates: {},
                 open_date : new Date()
