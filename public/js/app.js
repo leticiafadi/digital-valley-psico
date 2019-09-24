@@ -3241,10 +3241,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     VeeValidate: vee_validate__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  props: {
+    mudaAba: Function
   },
   data: function data() {
     return {
@@ -3261,6 +3267,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     isValid: function isValid() {
       return this.validaSenha() && this.validaRepeteSenha();
+    },
+    anterior: function anterior() {
+      this.mudaAba('localizacaoEContato');
     }
   }
 });
@@ -3433,6 +3442,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3472,6 +3484,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     proximo: function proximo() {
       this.mudaAba('localizacaoEContato');
+    },
+    anterior: function anterior() {
+      this.mudaAba('informacoesPessoais');
     }
   },
   mounted: function mounted() {
@@ -3503,6 +3518,9 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
 //
 //
 //
@@ -3728,6 +3746,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     proximo: function proximo() {
       this.mudaAba('dadosDeConta');
+    },
+    anterior: function anterior() {
+      this.mudaAba('informacoesProfissionais');
     }
   },
   mounted: function () {
@@ -87351,7 +87372,8 @@ var render = function() {
                     value: this.aba == "dadosDeConta",
                     expression: "this.aba == 'dadosDeConta'"
                   }
-                ]
+                ],
+                attrs: { mudaAba: this.mudaAba, old: _vm.old }
               })
             ],
             1
@@ -87588,6 +87610,21 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col col-12" }, [
+        _c("div", { staticClass: "fa fa-pull-left" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary btn-lg",
+              attrs: { type: "button" },
+              on: { click: this.anterior }
+            },
+            [
+              _c("i", { staticClass: "fas fa-chevron-left" }),
+              _vm._v("Anterior")
+            ]
+          )
+        ]),
+        _vm._v(" "),
         _c("div", { staticClass: "fa-pull-right" }, [
           _c(
             "button",
@@ -87926,6 +87963,21 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col col-12" }, [
+        _c("div", { staticClass: "fa fa-pull-left" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary btn-lg",
+              attrs: { type: "button" },
+              on: { click: this.anterior }
+            },
+            [
+              _c("i", { staticClass: "fas fa-chevron-left" }),
+              _vm._v(" Anterior")
+            ]
+          )
+        ]),
+        _vm._v(" "),
         _c("div", { staticClass: "fa-pull-right" }, [
           _c(
             "button",
@@ -88426,6 +88478,21 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col col-12" }, [
+        _c("div", { staticClass: "fa fa-pull-left" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary btn-lg",
+              attrs: { type: "button" },
+              on: { click: this.anterior }
+            },
+            [
+              _c("i", { staticClass: "fas fa-chevron-left" }),
+              _vm._v(" Anterior")
+            ]
+          )
+        ]),
+        _vm._v(" "),
         _c("div", { staticClass: "fa-pull-right" }, [
           _c(
             "button",
@@ -88853,11 +88920,14 @@ var render = function() {
           _c(
             "button",
             {
-              staticClass: "btn btn-primary ",
+              staticClass: "btn btn-primary btn-lg",
               attrs: { type: "button" },
               on: { click: this.anterior }
             },
-            [_c("i", { staticClass: "fa fa-chevron-left" }), _vm._v("Anterior")]
+            [
+              _c("i", { staticClass: "fas fa-chevron-left" }),
+              _vm._v("Anterior")
+            ]
           )
         ]),
         _vm._v(" "),
@@ -89262,12 +89332,12 @@ var render = function() {
           _c(
             "button",
             {
-              staticClass: "btn btn-primary ",
+              staticClass: "btn btn-primary btn-lg",
               attrs: { type: "button" },
               on: { click: this.anterior }
             },
             [
-              _c("i", { staticClass: "fa fa-chevron-left" }),
+              _c("i", { staticClass: "fas fa-chevron-left" }),
               _vm._v(" Anterior")
             ]
           )
@@ -89761,12 +89831,12 @@ var render = function() {
           _c(
             "button",
             {
-              staticClass: "btn btn-primary ",
+              staticClass: "btn btn-primary btn-lg",
               attrs: { type: "button" },
               on: { click: this.anterior }
             },
             [
-              _c("i", { staticClass: "fa fa-chevron-left" }),
+              _c("i", { staticClass: "fas fa-chevron-left" }),
               _vm._v(" Anterior")
             ]
           )
@@ -108915,8 +108985,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Cliente\Documents\GitHub\digital-valley-psico\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Cliente\Documents\GitHub\digital-valley-psico\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\paulo\Documents\digital-valley-psico\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\paulo\Documents\digital-valley-psico\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
