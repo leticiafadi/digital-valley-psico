@@ -10,7 +10,7 @@
 
                 <form action="/realizarCadastro" method="POST">
 
-                    <cabecalho  id="cabecalho" /> 
+                    <cabecalho  id="cabecalho" :aba="this.aba"/> 
 
                     <input type="hidden" name="_token" :value="csrf">
                     
@@ -18,7 +18,6 @@
 
                     <informacoes-universitarias :cursos="cursos" :mudaAba="this.mudaAba" v-show="this.aba == 'informacoesUniversitarias'"/>
 
-                    
                     <localizacao-e-contato  :mudaAba="this.mudaAba" v-show="this.aba == 'localizacaoEContato'" :old="old" :url="this.url"/>
 
                     <dados-de-conta :mudaAba="this.mudaAba" v-show="this.aba == 'dadosDeConta'" :old="old"/>
