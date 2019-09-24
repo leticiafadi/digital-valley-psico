@@ -7,11 +7,13 @@
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| contains the "web" middleware group. Now createss something great!
 |
 */
 
 Route::get('/', 'PaginaInicialController@mostrarPaginaInicial')->name("pagina-inicial");
+route::get('/pedidoCadastro', 'Site\AlunoController@mostrarformularioPedidoCadastro');
+route::post('/pedidoCadastro', 'Site\AlunoController@verificarPedidoCadastro')->name('verificarPedidoCadastro');  
 Route::get('/realizarCadastro', 'Site\AlunoController@mostrarFormularioCadastrarAluno');
 Route::post('/realizarCadastro', 'Aluno\RegistrarAlunoController@registrarAluno');
 Route::get("/solicitarCadastro", 'Site\AlunoController@mostrarFormularioSolicitarCadastro')->name("solicitarCadastro");
