@@ -9,7 +9,7 @@
             <div class="col col-12">
                 <div class="form-group">
                     <label for="nome">Nome *</label>
-                    <input type="text" class="form-control"  :class="{'is-invalid' : errors.has('nome'), 'is-valid': this.validaNome()}" id="nome" placeholder="Nome completo" name="nome" v-model="nome"  v-validate="'required|alpha_spaces|min:3|max:191'">
+                    <input type="text" class="form-control"  :class="{'is-invalid' : errors.has('nome'), 'is-valid': this.validaNome()}" id="nome" placeholder="Nome completo" name="nome" v-model="nome"  v-validate="'required|alpha_spaces|min:3|max:191'" disabled="true">
                     
                     <span>{{errors.first('nome')}}</span>
 
