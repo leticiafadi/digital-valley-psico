@@ -4377,7 +4377,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     cursos: Array,
-    mudaAba: Function
+    mudaAba: Function,
+    old: Array
   },
   data: function data() {
     return {
@@ -4418,6 +4419,9 @@ __webpack_require__.r(__webpack_exports__);
     isValid: function isValid() {
       return this.matriculasIsValid() && this.cursoIsValid() && this.semestreIsValid();
     }
+  },
+  mounted: function mounted() {
+    this.matricula = this.old.matricula;
   }
 });
 
@@ -88877,7 +88881,7 @@ var render = function() {
                   expression: "this.aba == 'informacoesUniversitarias'"
                 }
               ],
-              attrs: { cursos: _vm.cursos, mudaAba: this.mudaAba }
+              attrs: { cursos: _vm.cursos, mudaAba: this.mudaAba, old: _vm.old }
             }),
             _vm._v(" "),
             _c("localizacao-e-contato", {
@@ -89230,7 +89234,8 @@ var render = function() {
               type: "text",
               id: "nome",
               placeholder: "Nome completo",
-              name: "nome"
+              name: "nome",
+              disabled: "true"
             },
             domProps: { value: _vm.nome },
             on: {
@@ -89406,7 +89411,8 @@ var render = function() {
               attrs: {
                 name: "matricula",
                 mask: "111111",
-                placeholder: "Somente números"
+                placeholder: "Somente números",
+                disabled: ""
               },
               model: {
                 value: _vm.matricula,

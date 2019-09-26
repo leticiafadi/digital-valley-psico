@@ -11,20 +11,19 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
-                    
 
                         <div class="form-group row">
-                            <label for="Nome" class="col-md-4 col-form-label text-md-right">Nome</label>
+                            <label for="Nome" class="col-md-4 col-form-label text-md-right"">Nome</label>
 
                             <div class="col-md-6">
-                                <input id="Nome" type="text" class="form-control"   required  placeholder="Nome Completo">
+                                <input id="Nome" type="text" class="form-control" required  placeholder="Nome Completo" name="nome">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="matricula" class="col-md-4 col-form-label text-md-right"> Matricula </label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" required  placeholder="Matricula">
+                                <input id="matricula" type="password" class="form-control" required  placeholder="Matricula" name="matricula">
                             </div>
                         </div>
                         <div class="form-group row mb-0">
