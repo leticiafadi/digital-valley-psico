@@ -16,7 +16,7 @@
                     
                     <informacoes-pessoais :mudaAba="this.mudaAba"  v-show="this.aba == 'informacoesPessoais'" :old="old"/>
 
-                    <informacoes-universitarias :cursos="cursos" :mudaAba="this.mudaAba" v-show="this.aba == 'informacoesUniversitarias'"/>
+                    <informacoes-universitarias :cursos="cursos" :mudaAba="this.mudaAba" v-show="this.aba == 'informacoesUniversitarias'" :old="old"/>
 
                     <localizacao-e-contato  :mudaAba="this.mudaAba" v-show="this.aba == 'localizacaoEContato'" :old="old" :url="this.url"/>
 

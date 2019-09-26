@@ -9,7 +9,7 @@
             <div class="col col-12 col-md-4">
                <div class="form-group">
                    <label for="maticula">Matrícula *</label>
-                   <masked-input name="matricula" mask="111111" class="form-control" placeholder="Somente números" v-model="matricula"/>
+                   <masked-input name="matricula" mask="111111" class="form-control" placeholder="Somente números" v-model="matricula" disabled/>
                </div>
             </div>
             <div class="col col-12 col-md-4">
@@ -46,7 +46,8 @@
     export default {
         props:{
             cursos: Array,
-            mudaAba: Function
+            mudaAba: Function,
+            old: Array
         },
         data: function(){
             return {
@@ -89,6 +90,9 @@
             isValid:function(){
                 return this.matriculasIsValid() && this.cursoIsValid() && this.semestreIsValid();
             }
+        },
+        mounted(){
+           this.matricula = this.old.matricula;
         }
     }
  </script>
