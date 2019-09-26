@@ -74,7 +74,7 @@
 
                         <div class="form-group row mt-3">
                             <div class="col col-md-8 offset-md-4">
-                                <a href="">É novo aqui ? Registrar-se</a>
+                                <a href="{{route('solicitarCadastro')}}">É novo aqui ? Registrar-se</a>
                             </div>
                         </div>
                     </form>

@@ -22,6 +22,10 @@ class AlunoController extends Controller
         return view('guest.pages.cadastrar-aluno',['cursos' => Curso::all(), 'base_url' => env('APP_URL'), 'dadosPedido' => $request->session()->get('dadosPedido')]);   
     }
 
+    public function mostrarFormularioSolicitarCadastro(){
+        return view('guest.pages.solicitarCadastro');
+    }
+    
     public function mostrarformularioPedidoCadastro(Request $request){
         return view("guest.pages.register-initial");
     }
@@ -37,14 +41,14 @@ class AlunoController extends Controller
                 case 200:   
                     $data = json_decode($res->getBody());
 
-                    if($data->matricula == $request->matricula && strtoupper($data->nome) == strtoupper($request->nome)){
+            if($data->matricula == $request->matricula && strtoupper($data->nome) == strtoupper($request->nome)){
                         return redirect('/realizarCadastro')->with(['dadosPedido' => ['nome' => $data->nome, 'matricula' => $data->matricula]]);
                     }else{
                         return redirect()->back()->withErrors(['credenciais' => 'O nome do aluno informado é inválido'])->withInput();
                     }
                     break;
                 case 404:
-                    return redirect()->back()->withErrors(['credenciais' => 'A matrícula não existe em nossa base de dados.'])->withInput();
+                    return reAureliano->withErrors(['credenciais' => 'A matrícula não existe em nossa base de dados.'])->withInput();
             }
             
 

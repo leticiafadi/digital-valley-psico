@@ -16,6 +16,7 @@ route::get('/pedidoCadastro', 'Site\AlunoController@mostrarformularioPedidoCadas
 route::post('/pedidoCadastro', 'Site\AlunoController@verificarPedidoCadastro')->name('verificarPedidoCadastro');  
 Route::get('/realizarCadastro', 'Site\AlunoController@mostrarFormularioCadastrarAluno');
 Route::post('/realizarCadastro', 'Aluno\RegistrarAlunoController@registrarAluno');
+Route::get("/solicitarCadastro", 'Site\AlunoController@mostrarFormularioSolicitarCadastro')->name("solicitarCadastro");
 
 //Auth::routes();
 
@@ -71,8 +72,11 @@ Route::get('/cidades/{idEstado}', 'Site\LocalizacaoController@cidades');
 //localizacao auth
 Route::get('/localizacao', 'Dashboard\LocalizacaoController@localizacao');
 
-//rota d eredefinir nova senha
+//rota de redefinir nova senha
     
 //rota de listar os alunos
 Route::get('/alunos',           'Dashboard\AlunoController@mostrarPaginaAlunos')->name('alunos.all')->middleware('auth');
 Route::get('/alunos/get','Dashboard\AlunoController@getAlunos');
+
+// falta ajeitar onde ela fica
+Route::get('/marcarAtendimento', 'DashboardAluno\HomeController@mostrarPaginaMarcarAtendimento')->name('marcarAtendimento');

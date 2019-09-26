@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col col-12">
                 <div class="fa fa-pull-left">
-                    <button type="button" class="btn btn-primary " @click="this.anterior"> <i class="fa fa-chevron-left"></i>Anterior</button>
+                    <button type="button" class="btn btn-primary btn-lg" @click="this.anterior"> <i class="fas fa-chevron-left"></i>Anterior</button>
                 </div>
                 <div class="fa-pull-right">
                     <button type="submit" class="btn btn-primary btn-lg" :disabled="!this.isValid()">Cadastrar <i class="fa fa-plus"></i></button>
