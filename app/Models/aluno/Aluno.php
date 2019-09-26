@@ -4,6 +4,7 @@ namespace App\Models\aluno;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\usuarios\Usuario;
+use Illuminate\Support\Facades\DB;
 
 class Aluno extends Model
 {
@@ -22,8 +23,9 @@ class Aluno extends Model
         return $aluno;
     }
 
+    //busca so os alunos REFATORAR
     public static function buscaAlunos($data,$page){
-        $aluno =  Usuario::where('tipo','aluno')->where('nome_completo','like','%'.$data.'%')->skip(10*$page)->take(10)->get();
+        $aluno = DB::select(DB::raw('select usuario.nome_completo, usuario.id,aluno.matricula,aluno.id,curso.nome FROM aluno, usuario, curso where usuario.tipo = "aluno" and aluno.id_usuario = usuario.id  and curso.id = aluno.id_curso and usuario.nome_completo like "%'.$data.'%"'));
         $tamanho = Usuario::where('tipo','aluno')->where('nome_completo','like','%'.$data.'%')->get()->count();
         $data=[
             'alunos' => $aluno,
@@ -31,6 +33,19 @@ class Aluno extends Model
         ];
         return $data;
     }
+    //busca alunos de acordo com o curso REFATORAR
+    public static function buscaAlunosCurso($data,$page,$id_curso){
+         $aluno = DB::select(DB::raw('select usuario.nome_completo, usuario.id,aluno.matricula,aluno.id,curso.nome FROM aluno, usuario, curso where usuario.tipo = "aluno" and aluno.id_usuario = usuario.id AND aluno.id_curso = '.$id_curso.' and curso.id ='.$id_curso.' and usuario.nome_completo like "%'.$data.'%"'));
+         $tamanho = Usuario::where('tipo','aluno')->where('nome_completo','like','%'.$data.'%')->get()->count();
+         $data=[
+             'alunos' => $aluno,
+             'tamanho' => $tamanho
+         ];
+         return $data;
+     }
 
+
+
+     
 
 }
