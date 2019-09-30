@@ -2618,6 +2618,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2628,17 +2651,22 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      aluno_selecionado: -1,
-      //indexAlunoSelecionado : -1,
-      curso_selecionado: -1,
-      indexCursoSelecionado: -1,
-      cursos: [],
-      alunos: []
+      alunos: [],
+      selected: '',
+      nomebusca: ''
     };
   },
   components: {
     axios: axios__WEBPACK_IMPORTED_MODULE_0___default.a,
     Snotify: vue_snotify__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  watch: {
+    selected: function selected() {
+      this.buscar();
+    },
+    nomebusca: function nomebusca() {
+      this.buscar();
+    }
   },
   methods: {
     carregaAlunos: function carregaAlunos() {
@@ -2646,6 +2674,13 @@ __webpack_require__.r(__webpack_exports__);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.base_url + '/alunos/get').then(function (response) {
         _this.alunos = response.data.alunos;
+      });
+    },
+    buscar: function buscar() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.base_url + '/alunos/get?query=' + this.nomebusca + '&id_curso=' + this.selected + '').then(function (response) {
+        _this2.alunos = response.data.alunos;
       });
     }
   },
@@ -86784,7 +86819,38 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
                 _c("div", { staticClass: "row" }, [
-                  _vm._m(1),
+                  _c("div", { staticClass: "col col-12 col-md-5" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "maticula" } }, [
+                        _vm._v("Nome completo do Aluno")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.nomebusca,
+                            expression: "nomebusca"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "matricula",
+                          placeholder: "Ex: Jose da Silva Brito"
+                        },
+                        domProps: { value: _vm.nomebusca },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.nomebusca = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col col-12 col-md-5" }, [
                     _c("div", { staticClass: "form-group" }, [
@@ -86795,8 +86861,31 @@ var render = function() {
                       _c(
                         "select",
                         {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.selected,
+                              expression: "selected"
+                            }
+                          ],
                           staticClass: "form-control",
-                          attrs: { name: "id_curso" }
+                          attrs: { name: "id_curso" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.selected = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            }
+                          }
                         },
                         [
                           _c("option", { attrs: { value: "" } }, [
@@ -86814,31 +86903,46 @@ var render = function() {
                         2
                       )
                     ])
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(2)
+                  ])
                 ])
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
-                _c(
-                  "ul",
-                  { staticClass: "list-group" },
-                  [
-                    _vm._l(this.alunos, function(aluno) {
-                      return [
-                        _c("li", { staticClass: "list-group-item" }, [
-                          _vm._v(
-                            " \n                                    " +
-                              _vm._s(aluno.nome_completo) +
-                              " \n                                "
-                          )
-                        ])
-                      ]
-                    })
-                  ],
-                  2
-                )
+                _c("ul", { staticClass: "list-group" }, [
+                  _c("table", { staticClass: "table table-bordered" }, [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c(
+                      "tbody",
+                      [
+                        _vm._l(this.alunos, function(aluno) {
+                          return [
+                            _c("tr", [
+                              _c("td", [_vm._v(_vm._s(aluno.nome_completo))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "\n\t\t\t\t\t\t\t\t\t\t\t\t\t    " +
+                                    _vm._s(aluno.matricula) +
+                                    "\n\t\t\t\t\t\t\t\t\t\t\t\t    "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "\n\t\t\t\t\t\t\t\t\t\t\t\t\t    " +
+                                    _vm._s(aluno.nome) +
+                                    "\n\t\t\t\t\t\t\t\t\t\t\t\t    "
+                                )
+                              ])
+                            ])
+                          ]
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                ])
               ])
             ])
           ])
@@ -86863,33 +86967,23 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col col-12 col-md-5" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "maticula" } }, [
-          _vm._v("Nome completo do Aluno")
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [
+          _vm._v(
+            "\n\t\t\t\t\t\t\t\t\t\t    \t    Nome\n\t\t\t\t\t\t\t\t\t\t        "
+          )
         ]),
         _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { name: "matricula", placeholder: "Ex: Jose da Silva Brito" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col col-12 col-md-2" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("div", { staticClass: "fa-pull-right mt-4" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary btn-lg",
-              attrs: { type: "button" }
-            },
-            [_vm._v("Buscar ")]
+        _c("th", [
+          _vm._v(
+            "\n\t\t\t\t\t\t\t\t\t\t\t        Matricula\n\t\t\t\t\t\t\t\t\t\t        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _vm._v(
+            "\n\t\t\t\t\t\t\t\t\t\t\t        Curso\n                                                "
           )
         ])
       ])

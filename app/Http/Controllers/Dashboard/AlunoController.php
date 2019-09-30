@@ -21,11 +21,20 @@ class AlunoController extends Controller
         return view('auth.pages.alunos.alunos', ['cursos' => Curso::all(), 'base_url' => config('app.url')]);
     }
 
-    //services
+    //services, refatorar 
     public function getAlunos(Request $request){
         $query = $request->get('query');
         $page = $request->get('page');
-        return json_encode(Aluno::buscaAlunos($query,$page));
+        $id_curso = $request->get('id_curso');
+        if($id_curso == null){
+            return response((Aluno::buscaAlunos($query,$page)),200)->header('Content-Type','text/json');
+        }else {
+            return response((Aluno::buscaAlunosCurso($query,$page,$id_curso)),200)->header('Content-Type','text/json');
+        }
+        
     }
+
+
+
 
 }
