@@ -23,11 +23,11 @@
             <label for="">Gênero *</label>
                 <div class="form-group">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genero" id="genero-masculino" value="m"  required checked>
+                        <input class="form-check-input" type="radio" name="genero" id="genero-masculino" value="m"  v-model="genero" required checked>
                         <label class="form-check-label" for="genero-masculino">Masculino</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genero" id="genero-feminino" value="f"  required>
+                        <input class="form-check-input" type="radio" name="genero" id="genero-feminino" value="f" v-model="genero"  required>
                         <label class="form-check-label" for="genero-feminino">Feminino</label>
                     </div>                    
                 </div>
@@ -35,7 +35,7 @@
             <div class="col col-9">
                 <div class="form-group">
                     <label for="nascimento">Data de nascimento *</label>
-                    <datetime v-model="dataNascimento" format="dd/MM/yyyy" input-class="form-control" name="data_nascimento"></datetime> 
+                    <datetime v-model="dataNascimento" format="dd/MM/yyyy" :class="{'is-invalid' : errors.has('dataNascimento'), 'is-valid': this.validaData()}" input-class="form-control" name="dataNascimento"></datetime> 
                 </div>
             </div>
         </div>        
@@ -72,6 +72,7 @@
             return {
                 nome: '',
                 dataNascimento : '',
+                genero: 'm',
                 pt: ptBR, 
                 disabled_dates: {},
                 open_date : new Date()
@@ -83,6 +84,9 @@
             },
             validaData:function(){
                 return this.dataNascimento != '';
+            },
+            validaGenero:function(){
+                return this.genero != '';
             },
             isValid:function(){
                 return this.validaNome() && this.validaData(); 

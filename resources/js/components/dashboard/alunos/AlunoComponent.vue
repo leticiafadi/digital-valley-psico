@@ -9,6 +9,21 @@
                             <i class="fas fa-fw fa-user-graduate"></i>
                                 <span>Visualizar alunos</span>
                             </div>
+                            <!--
+                            <div class="card-header">
+                                <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active bg-white" href="#">Cursos ativos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Cursos desativados</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Todos os cursos</a>
+                                </li>
+                                </ul>
+                            </div>
+                            -->
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col col-12 col-md-5">
@@ -71,8 +86,9 @@
                     </div>
                 </div>
             </div>
-    </div>
+        </div>
 </template>
+
 
 <script>
 import axios    from 'axios';
@@ -120,3 +136,4 @@ export default {
     }    
 }
 </script>
+
