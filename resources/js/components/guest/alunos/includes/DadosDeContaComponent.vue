@@ -9,7 +9,7 @@
             <div class="col col-md-6 col-12">
                 <div class="form-group">
                     <label for="senha">Digite sua senha</label>
-                    <input type="password" class="form-control" :class="{'is-invalid' : errors.has('senha')}" placeholder="Digite a sua senha" name="senha" v-model="senha" v-validate="'required|alpha_num|min:6|max:191'" ref="senha">
+                    <input type="password" class="form-control" :class="{'is-invalid' : errors.has('senha'), 'is-valid': this.validaSenha()}" placeholder="Digite a sua senha" name="senha" v-model="senha" v-validate="'required|alpha_num|min:6|max:191'" ref="senha">
 
                     <span>{{errors.first('senha')}}</span>
 
@@ -18,7 +18,7 @@
             <div class="col col-md-6 col-12">
                 <div class="form-group">
                     <label for="repete-senha">Repita a senha</label>
-                    <input type="password" class="form-control" :class="{'is-invalid' : errors.has('repete_senha')}" placeholder="Repita a sua senha" name="repete_senha" v-model="repeteSenha" v-validate="'required|min:6|confirmed:senha'">
+                    <input type="password" class="form-control" :class="{'is-invalid' : errors.has('repete_senha'), 'is-valid': this.validaRepeteSenha()}" placeholder="Repita a sua senha" name="repete_senha" v-model="repeteSenha" v-validate="'required|min:6|confirmed:senha'">
 
                     <span>{{errors.first('repete_senha')}}</span>
 

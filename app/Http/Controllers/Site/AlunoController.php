@@ -33,7 +33,7 @@ class AlunoController extends Controller
     public function verificarPedidoCadastro(Request $request){ 
 
             $client = new GuzzleHttp\Client(['http_errors' => false]);
-            $res = $client->request('GET', 'http://mock:10222/'.$request->matricula, ['timeout' => 10000 ]);
+            $res = $client->request('GET', 'http://localhost:3100/'.$request->matricula, ['timeout' => 10000 ]);
 
             $statusCode = $res->getStatusCode();
 
@@ -48,7 +48,7 @@ class AlunoController extends Controller
                     }
                     break;
                 case 404:
-                    return reAureliano->withErrors(['credenciais' => 'A matrícula não existe em nossa base de dados.'])->withInput();
+                    return redirect()->back()->withErrors(['credenciais' => 'A matrícula não existe em nossa base de dados.'])->withInput();
             }
             
 

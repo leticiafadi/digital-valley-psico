@@ -8,23 +8,29 @@
         <div class="row">
             <div class="col col-12 col-md-4">
                <div class="form-group">
-                   <label for="maticula">Matrícula *</label>
-                   <masked-input name="matricula" mask="111111" class="form-control" placeholder="Somente números" v-model="matricula" disabled/>
+                    <label for="maticula">Matrícula *</label>
+                    <masked-input name="matricula" mask="111111" :class="{'is-invalid' : errors.has('matricula'), 'is-valid': this.matriculasIsValid()}" class="form-control" placeholder="Somente números" v-model="matricula" disabled/>
+               
+                    <span>{{errors.first('matricula')}}</span>
                </div>
             </div>
             <div class="col col-12 col-md-4">
                 <div class="form-group">
                     <label for="curso" id="label-curso">Curso *</label>
-                    <select name="id_curso" id="curso" class="form-control" v-model="curso">
+                    <select name="id_curso" id="curso" :class="{'is-invalid' : errors.has('id_curso'), 'is-valid': this.cursoIsValid()}" class="form-control" v-model="curso">
                         <option value="">Selecione seu curso</option>
                         <option v-for="curso in cursos" v-bind:value="curso.id">{{curso.nome}}</option>
                     </select>
+
+                    <span>{{errors.first('curso')}}</span>
                 </div>
             </div>
              <div class="col col-12 col-md-4">
                 <div class="form-group">
                     <label for="semestre">Semestre de ingresso *</label>
-                    <masked-input name="semestre_matricula"  :mask="{pattern: 'mcuu.s', formatCharacters:{'m': { validate: char => /^2$/.test(char)}, 'c' : {validate: char => /^[0-1]$/.test(char)}, 'u' : { validate: char => /^\d$/.test(char)}, 's': {validate: char => /^[1-2]$/.test(char)}}}" class="form-control" placeholder="XXXX.X" v-model="semestre" id="semestre" />
+                    <masked-input name="semestre_matricula" :class="{'is-invalid' : errors.has('semestre'), 'is-valid': this.semestreIsValid()}" :mask="{pattern: 'mcuu.s', formatCharacters:{'m': { validate: char => /^2$/.test(char)}, 'c' : {validate: char => /^[0-1]$/.test(char)}, 'u' : { validate: char => /^\d$/.test(char)}, 's': {validate: char => /^[1-2]$/.test(char)}}}" class="form-control" placeholder="XXXX.X" v-model="semestre" id="semestre" />
+                
+                    <span>{{errors.first('semestre')}}</span>
                 </div>
             </div>
         </div>

@@ -2725,6 +2725,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3404,6 +3405,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuejs_datepicker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuejs-datepicker */ "./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js");
 /* harmony import */ var vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuejs-datepicker/dist/locale */ "./node_modules/vuejs-datepicker/dist/locale/index.js");
 /* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
+//
 //
 //
 //
@@ -4283,6 +4285,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       nome: '',
       dataNascimento: '',
+      genero: 'm',
       pt: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_2__["ptBR"],
       disabled_dates: {},
       open_date: new Date()
@@ -4294,6 +4297,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     validaData: function validaData() {
       return this.dataNascimento != '';
+    },
+    validaGenero: function validaGenero() {
+      return this.genero != '';
     },
     isValid: function isValid() {
       return this.validaNome() && this.validaData();
@@ -4330,6 +4336,12 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
 /* harmony import */ var vue_masked_input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-masked-input */ "./node_modules/vue-masked-input/dist/maskedInput.js");
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4664,6 +4676,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           resolve();
         });
       });
+    },
+    validaPais: function validaPais() {
+      return this.id_pais > 0;
     },
     validaEstado: function validaEstado() {
       return this.id_estado > 0;
@@ -86921,11 +86936,11 @@ var render = function() {
                       _vm._v("Selecione a data")
                     ]),
                     _vm._v(" "),
-                    _c("vue-calendar", {
+                    _c("datetime", {
                       attrs: {
                         id: "data-atendimento",
                         format: "dd/MM/yyyy",
-                        language: _vm.pt,
+                        "input-class": "form-control",
                         placeholder: "Selecione a data do atendimento"
                       },
                       model: {
@@ -88032,28 +88047,15 @@ var render = function() {
               _vm._v("Data de nascimento *")
             ]),
             _vm._v(" "),
-            _c("vue-calendar", {
-              directives: [
-                {
-                  name: "validate",
-                  rawName: "v-validate",
-                  value: "date_format:dd/MM/yyyy",
-                  expression: "'date_format:dd/MM/yyyy'"
-                }
-              ],
+            _c("datetime", {
+              class: {
+                "is-invalid": _vm.errors.has("dataNascimento"),
+                "is-valid": this.validaData()
+              },
               attrs: {
-                "input-class": "form-control",
-                placeholder: "Clique aqui e selecione sua data de nascimento",
                 format: "dd/MM/yyyy",
-                language: _vm.pt,
-                "bootstrap-styling": true,
-                "full-month-name": true,
-                "calendar-button": true,
-                "calendar-button-icon": "fas fa-calendar",
-                name: "data_nascimento",
-                "input-class": "bg-white",
-                disabledDates: this.disabled_dates,
-                "open-date": this.open_date
+                "input-class": "form-control",
+                name: "data_nascimento"
               },
               model: {
                 value: _vm.dataNascimento,
@@ -89073,7 +89075,10 @@ var render = function() {
             ],
             ref: "senha",
             staticClass: "form-control",
-            class: { "is-invalid": _vm.errors.has("senha") },
+            class: {
+              "is-invalid": _vm.errors.has("senha"),
+              "is-valid": this.validaSenha()
+            },
             attrs: {
               type: "password",
               placeholder: "Digite a sua senha",
@@ -89116,7 +89121,10 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            class: { "is-invalid": _vm.errors.has("repete_senha") },
+            class: {
+              "is-invalid": _vm.errors.has("repete_senha"),
+              "is-valid": this.validaRepeteSenha()
+            },
             attrs: {
               type: "password",
               placeholder: "Repita a sua senha",
@@ -89254,7 +89262,84 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _vm._m(1),
+      _c("div", { staticClass: "col col-3" }, [
+        _c("label", { attrs: { for: "" } }, [_vm._v("Gênero *")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("div", { staticClass: "form-check form-check-inline" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.genero,
+                  expression: "genero"
+                }
+              ],
+              staticClass: "form-check-input",
+              attrs: {
+                type: "radio",
+                name: "genero",
+                id: "genero-masculino",
+                value: "m",
+                required: "",
+                checked: ""
+              },
+              domProps: { checked: _vm._q(_vm.genero, "m") },
+              on: {
+                change: function($event) {
+                  _vm.genero = "m"
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "form-check-label",
+                attrs: { for: "genero-masculino" }
+              },
+              [_vm._v("Masculino")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-check form-check-inline" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.genero,
+                  expression: "genero"
+                }
+              ],
+              staticClass: "form-check-input",
+              attrs: {
+                type: "radio",
+                name: "genero",
+                id: "genero-feminino",
+                value: "f",
+                required: ""
+              },
+              domProps: { checked: _vm._q(_vm.genero, "f") },
+              on: {
+                change: function($event) {
+                  _vm.genero = "f"
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "form-check-label",
+                attrs: { for: "genero-feminino" }
+              },
+              [_vm._v("Feminino")]
+            )
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "col col-9" }, [
         _c(
@@ -89266,10 +89351,14 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("datetime", {
+              class: {
+                "is-invalid": _vm.errors.has("dataNascimento"),
+                "is-valid": this.validaData()
+              },
               attrs: {
                 format: "dd/MM/yyyy",
                 "input-class": "form-control",
-                name: "data_nascimento"
+                name: "dataNascimento"
               },
               model: {
                 value: _vm.dataNascimento,
@@ -89315,61 +89404,6 @@ var staticRenderFns = [
         _c("h3", [_vm._v("Informações pessoais")])
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col col-3" }, [
-      _c("label", { attrs: { for: "" } }, [_vm._v("Gênero *")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("div", { staticClass: "form-check form-check-inline" }, [
-          _c("input", {
-            staticClass: "form-check-input",
-            attrs: {
-              type: "radio",
-              name: "genero",
-              id: "genero-masculino",
-              value: "m",
-              required: "",
-              checked: ""
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            {
-              staticClass: "form-check-label",
-              attrs: { for: "genero-masculino" }
-            },
-            [_vm._v("Masculino")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-check form-check-inline" }, [
-          _c("input", {
-            staticClass: "form-check-input",
-            attrs: {
-              type: "radio",
-              name: "genero",
-              id: "genero-feminino",
-              value: "f",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            {
-              staticClass: "form-check-label",
-              attrs: { for: "genero-feminino" }
-            },
-            [_vm._v("Feminino")]
-          )
-        ])
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -89408,6 +89442,10 @@ var render = function() {
             _vm._v(" "),
             _c("masked-input", {
               staticClass: "form-control",
+              class: {
+                "is-invalid": _vm.errors.has("matricula"),
+                "is-valid": this.matriculasIsValid()
+              },
               attrs: {
                 name: "matricula",
                 mask: "111111",
@@ -89421,7 +89459,9 @@ var render = function() {
                 },
                 expression: "matricula"
               }
-            })
+            }),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(_vm.errors.first("matricula")))])
           ],
           1
         )
@@ -89445,6 +89485,10 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
+              class: {
+                "is-invalid": _vm.errors.has("id_curso"),
+                "is-valid": this.cursoIsValid()
+              },
               attrs: { name: "id_curso", id: "curso" },
               on: {
                 change: function($event) {
@@ -89474,7 +89518,9 @@ var render = function() {
               })
             ],
             2
-          )
+          ),
+          _vm._v(" "),
+          _c("span", [_vm._v(_vm._s(_vm.errors.first("curso")))])
         ])
       ]),
       _vm._v(" "),
@@ -89489,6 +89535,10 @@ var render = function() {
             _vm._v(" "),
             _c("masked-input", {
               staticClass: "form-control",
+              class: {
+                "is-invalid": _vm.errors.has("semestre"),
+                "is-valid": this.semestreIsValid()
+              },
               attrs: {
                 name: "semestre_matricula",
                 mask: {
@@ -89526,7 +89576,9 @@ var render = function() {
                 },
                 expression: "semestre"
               }
-            })
+            }),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(_vm.errors.first("semestre")))])
           ],
           1
         )
@@ -89629,7 +89681,10 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
-              class: { "is-invalid": _vm.errors.has("id_pais") },
+              class: {
+                "is-invalid": _vm.errors.has("id_pais"),
+                "is-valid": this.validaPais()
+              },
               attrs: { id: "", name: "id_pais" },
               on: {
                 change: function($event) {
@@ -89689,7 +89744,10 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
-              class: { "is-invalid": _vm.errors.has("id_estado") },
+              class: {
+                "is-invalid": _vm.errors.has("id_estado"),
+                "is-valid": this.validaEstado()
+              },
               attrs: { id: "", name: "id_estado" },
               on: {
                 change: function($event) {
@@ -89743,7 +89801,10 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
-              class: { "is-invalid": _vm.errors.has("id_cidade") },
+              class: {
+                "is-invalid": _vm.errors.has("id_cidade"),
+                "is-valid": this.validaCidade()
+              },
               attrs: { id: "", name: "id_cidade" },
               on: {
                 change: function($event) {
@@ -89797,7 +89858,10 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            class: { "is-invalid": _vm.errors.has("endereco") },
+            class: {
+              "is-invalid": _vm.errors.has("endereco"),
+              "is-valid": this.validaEndereco()
+            },
             attrs: {
               type: "text",
               name: "endereco",
@@ -89840,7 +89904,10 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            class: { "is-invalid": _vm.errors.has("numero") },
+            class: {
+              "is-invalid": _vm.errors.has("numero"),
+              "is-valid": this.validaNumeroPeloTamanho()
+            },
             attrs: {
               type: "text",
               name: "numero",
@@ -89882,7 +89949,10 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            class: { "is-invalid": _vm.errors.has("bairro") },
+            class: {
+              "is-invalid": _vm.errors.has("bairro"),
+              "is-valid": this.validaBairro()
+            },
             attrs: {
               type: "text",
               name: "bairro",
@@ -89928,7 +89998,10 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            class: { "is-invalid": _vm.errors.has("email") },
+            class: {
+              "is-invalid": _vm.errors.has("email"),
+              "is-valid": this.validaEmail()
+            },
             attrs: {
               type: "email",
               name: "email",
@@ -89972,7 +90045,10 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
-              class: { "is-invalid": _vm.errors.has("telefone_celular") },
+              class: {
+                "is-invalid": _vm.errors.has("telefone_celular"),
+                "is-valid": this.validaTelefoneCelular()
+              },
               attrs: { mask: "(11) 1 1111 1111", name: "telefone_celular" },
               model: {
                 value: _vm.telefone_celular,
@@ -90010,7 +90086,10 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
-              class: { "is-invalid": _vm.errors.has("telefone-residencial") },
+              class: {
+                "is-invalid": _vm.errors.has("telefone_residencial"),
+                "is-valid": this.validaTelefoneResidencial()
+              },
               attrs: {
                 mask: "(11) 1111 1111",
                 name: "telefone_residencial",
