@@ -3870,7 +3870,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return this.id_cidade > 0;
     },
     validaEndereco: function validaEndereco() {
-      return this.endereco.length >= 10;
+      return this.endereco.length >= 5;
     },
     validaBairro: function validaBairro() {
       return this.bairro.length >= 5;
@@ -4722,7 +4722,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return this.id_cidade > 0;
     },
     validaEndereco: function validaEndereco() {
-      return this.endereco.length >= 10;
+      return this.endereco.length >= 5;
     },
     validaBairro: function validaBairro() {
       return this.bairro.length >= 5;
@@ -88554,8 +88554,8 @@ var render = function() {
               {
                 name: "validate",
                 rawName: "v-validate",
-                value: "required|min:10",
-                expression: "'required|min:10'"
+                value: "required|min:5",
+                expression: "'required|min:5'"
               }
             ],
             staticClass: "form-control",
@@ -89947,8 +89947,8 @@ var render = function() {
               {
                 name: "validate",
                 rawName: "v-validate",
-                value: "required|min:10",
-                expression: "'required|min:10'"
+                value: "required|min:5",
+                expression: "'required|min:5'"
               }
             ],
             staticClass: "form-control",
@@ -109265,8 +109265,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Cliente\Documents\GitHub\digital-valley-psico\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Cliente\Documents\GitHub\digital-valley-psico\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\paulo\Documents\digital-valley-psico\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\paulo\Documents\digital-valley-psico\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

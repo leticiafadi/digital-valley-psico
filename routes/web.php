@@ -61,7 +61,7 @@ Route::post('/cursos/create',   'Dashboard\CursoController@createCurso')->middle
 route::post('/cursos/alter',    'Dashboard\CursoController@alterCurso')->name('curso.alterar')->middleware('auth');
 
 //gerenciamento de horarios
-Route::get('/horarios', 'Dashboard\ManterHorariosController@mostrarPaginaManterHorarios')->middleware('auth')->middleware('funcionario');
+Route::get('/horarios', 'Dashboard\ManterHorariosController@mostrarPaginaManterHorarios')->name('horario')->middleware('auth')->middleware('funcionario');
 Route::get('/horarios/{ano}/{semana}', 'Dashboard\ManterHorariosController@carregaDatas')->middleware('auth')->middleware('funcionario');
 
 //Localizacao Routes
