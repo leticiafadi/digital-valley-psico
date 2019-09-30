@@ -26,13 +26,13 @@
                             -->
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col col-12 col-md-5">
+                                    <div class="col col-12 col-md-6">
                                         <div class="form-group">
                                             <label for="maticula">Nome completo do Aluno</label>
                                             <input v-model="nomebusca" name="matricula" class="form-control" placeholder="Ex: Jose da Silva Brito"/>
                                         </div>
                                     </div>
-                                    <div class="col col-12 col-md-5">
+                                    <div class="col col-12 col-md-6">
                                         <div class="form-group">
                                             <label id="label-curso">Selecione o filtro de busca</label>
                                             <select name="id_curso" class="form-control" v-model="selected">
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <ul class="list-group">
+                                <ul class="list-group" v-if="alunos != ''">
                                     <table class="table table-bordered" >
                                         <thead>
 									        <tr>
@@ -80,6 +80,9 @@
                                             </template>
 								        </tbody>
                                     </table>
+                                </ul>
+                                <ul v-else>
+                                    <strong>Não existe nenhum aluno relacionado a esse filtro de busca... :(</strong>
                                 </ul>
                             </div>
                         </div>

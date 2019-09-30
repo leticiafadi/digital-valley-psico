@@ -21,15 +21,17 @@
             
             <div class="col col-3">
             <label for="">Gênero *</label>
-                <div class="form-group">
+                <div class="form-group" :class="{'is-invalid' : errors.has('genero'), 'is-valid': this.validaGenero()}">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genero" id="genero-masculino" value="m"  v-model="genero" required checked>
+                        <input class="form-check-input" type="radio" name="genero" id="genero-masculino" value="m" v-model="genero" required checked>
                         <label class="form-check-label" for="genero-masculino">Masculino</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genero" id="genero-feminino" value="f" v-model="genero"  required>
+                        <input class="form-check-input" type="radio" name="genero" id="genero-feminino" value="f" v-model="genero" required>
                         <label class="form-check-label" for="genero-feminino">Feminino</label>
-                    </div>                    
+                    </div> 
+
+                    <span>{{errors.first('genero')}}</span>                   
                 </div>
             </div>
             <div class="col col-9">
@@ -38,7 +40,8 @@
                     <datetime v-model="dataNascimento" format="dd/MM/yyyy" :class="{'is-invalid' : errors.has('dataNascimento'), 'is-valid': this.validaData()}" input-class="form-control" name="dataNascimento"></datetime> 
                 </div>
             </div>
-        </div>        
+        </div>    
+   
         <div class="row">
             <div class="col col-12">
                 <div class="fa-pull-right">
@@ -72,7 +75,7 @@
             return {
                 nome: '',
                 dataNascimento : '',
-                genero: 'm',
+                genero: '',
                 pt: ptBR, 
                 disabled_dates: {},
                 open_date : new Date()
@@ -89,7 +92,7 @@
                 return this.genero != '';
             },
             isValid:function(){
-                return this.validaNome() && this.validaData(); 
+                return this.validaNome() && this.validaData() && this.validaGenero(); 
             },
             proximo:function(){
                 this.mudaAba('informacoesUniversitarias');

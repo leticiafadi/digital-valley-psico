@@ -2641,6 +2641,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -4300,6 +4303,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -4320,7 +4326,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       nome: '',
       dataNascimento: '',
-      genero: 'm',
+      genero: '',
       pt: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_2__["ptBR"],
       disabled_dates: {},
       open_date: new Date()
@@ -4337,7 +4343,7 @@ __webpack_require__.r(__webpack_exports__);
       return this.genero != '';
     },
     isValid: function isValid() {
-      return this.validaNome() && this.validaData();
+      return this.validaNome() && this.validaData() && this.validaGenero();
     },
     proximo: function proximo() {
       this.mudaAba('informacoesUniversitarias');
@@ -86819,7 +86825,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
                 _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col col-12 col-md-5" }, [
+                  _c("div", { staticClass: "col col-12 col-md-6" }, [
                     _c("div", { staticClass: "form-group" }, [
                       _c("label", { attrs: { for: "maticula" } }, [
                         _vm._v("Nome completo do Aluno")
@@ -86852,7 +86858,7 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col col-12 col-md-5" }, [
+                  _c("div", { staticClass: "col col-12 col-md-6" }, [
                     _c("div", { staticClass: "form-group" }, [
                       _c("label", { attrs: { id: "label-curso" } }, [
                         _vm._v("Selecione o filtro de busca")
@@ -86908,41 +86914,51 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
-                _c("ul", { staticClass: "list-group" }, [
-                  _c("table", { staticClass: "table table-bordered" }, [
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _c(
-                      "tbody",
-                      [
-                        _vm._l(this.alunos, function(aluno) {
-                          return [
-                            _c("tr", [
-                              _c("td", [_vm._v(_vm._s(aluno.nome_completo))]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._v(
-                                  "\n\t\t\t\t\t\t\t\t\t\t\t\t\t    " +
-                                    _vm._s(aluno.matricula) +
-                                    "\n\t\t\t\t\t\t\t\t\t\t\t\t    "
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._v(
-                                  "\n\t\t\t\t\t\t\t\t\t\t\t\t\t    " +
-                                    _vm._s(aluno.nome) +
-                                    "\n\t\t\t\t\t\t\t\t\t\t\t\t    "
-                                )
-                              ])
-                            ])
-                          ]
-                        })
-                      ],
-                      2
-                    )
-                  ])
-                ])
+                _vm.alunos != ""
+                  ? _c("ul", { staticClass: "list-group" }, [
+                      _c("table", { staticClass: "table table-bordered" }, [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          [
+                            _vm._l(this.alunos, function(aluno) {
+                              return [
+                                _c("tr", [
+                                  _c("td", [
+                                    _vm._v(_vm._s(aluno.nome_completo))
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(
+                                      "\n\t\t\t\t\t\t\t\t\t\t\t\t\t    " +
+                                        _vm._s(aluno.matricula) +
+                                        "\n\t\t\t\t\t\t\t\t\t\t\t\t    "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(
+                                      "\n\t\t\t\t\t\t\t\t\t\t\t\t\t    " +
+                                        _vm._s(aluno.nome) +
+                                        "\n\t\t\t\t\t\t\t\t\t\t\t\t    "
+                                    )
+                                  ])
+                                ])
+                              ]
+                            })
+                          ],
+                          2
+                        )
+                      ])
+                    ])
+                  : _c("ul", [
+                      _c("strong", [
+                        _vm._v(
+                          "Não existe nenhum aluno relacionado a esse filtro de busca... :("
+                        )
+                      ])
+                    ])
               ])
             ])
           ])
@@ -89359,80 +89375,92 @@ var render = function() {
       _c("div", { staticClass: "col col-3" }, [
         _c("label", { attrs: { for: "" } }, [_vm._v("Gênero *")]),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("div", { staticClass: "form-check form-check-inline" }, [
-            _c("input", {
-              directives: [
+        _c(
+          "div",
+          {
+            staticClass: "form-group",
+            class: {
+              "is-invalid": _vm.errors.has("genero"),
+              "is-valid": this.validaGenero()
+            }
+          },
+          [
+            _c("div", { staticClass: "form-check form-check-inline" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.genero,
+                    expression: "genero"
+                  }
+                ],
+                staticClass: "form-check-input",
+                attrs: {
+                  type: "radio",
+                  name: "genero",
+                  id: "genero-masculino",
+                  value: "m",
+                  required: "",
+                  checked: ""
+                },
+                domProps: { checked: _vm._q(_vm.genero, "m") },
+                on: {
+                  change: function($event) {
+                    _vm.genero = "m"
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
                 {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.genero,
-                  expression: "genero"
-                }
-              ],
-              staticClass: "form-check-input",
-              attrs: {
-                type: "radio",
-                name: "genero",
-                id: "genero-masculino",
-                value: "m",
-                required: "",
-                checked: ""
-              },
-              domProps: { checked: _vm._q(_vm.genero, "m") },
-              on: {
-                change: function($event) {
-                  _vm.genero = "m"
-                }
-              }
-            }),
+                  staticClass: "form-check-label",
+                  attrs: { for: "genero-masculino" }
+                },
+                [_vm._v("Masculino")]
+              )
+            ]),
             _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass: "form-check-label",
-                attrs: { for: "genero-masculino" }
-              },
-              [_vm._v("Masculino")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-check form-check-inline" }, [
-            _c("input", {
-              directives: [
+            _c("div", { staticClass: "form-check form-check-inline" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.genero,
+                    expression: "genero"
+                  }
+                ],
+                staticClass: "form-check-input",
+                attrs: {
+                  type: "radio",
+                  name: "genero",
+                  id: "genero-feminino",
+                  value: "f",
+                  required: ""
+                },
+                domProps: { checked: _vm._q(_vm.genero, "f") },
+                on: {
+                  change: function($event) {
+                    _vm.genero = "f"
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
                 {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.genero,
-                  expression: "genero"
-                }
-              ],
-              staticClass: "form-check-input",
-              attrs: {
-                type: "radio",
-                name: "genero",
-                id: "genero-feminino",
-                value: "f",
-                required: ""
-              },
-              domProps: { checked: _vm._q(_vm.genero, "f") },
-              on: {
-                change: function($event) {
-                  _vm.genero = "f"
-                }
-              }
-            }),
+                  staticClass: "form-check-label",
+                  attrs: { for: "genero-feminino" }
+                },
+                [_vm._v("Feminino")]
+              )
+            ]),
             _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass: "form-check-label",
-                attrs: { for: "genero-feminino" }
-              },
-              [_vm._v("Feminino")]
-            )
-          ])
-        ])
+            _c("span", [_vm._v(_vm._s(_vm.errors.first("genero")))])
+          ]
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col col-9" }, [
