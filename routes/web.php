@@ -21,6 +21,8 @@ Route::get("/solicitarCadastro", 'Site\AlunoController@mostrarFormularioSolicita
 //Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/gerenciarPerfil', 'DashboardAluno\HomeController@mostrarPaginaGerenciarPerfil')->name('gerenciarPerfil');
+Route::get('/marcarAtendimento', 'DashboardAluno\HomeController@mostrarPaginaMarcarAtendimento')->name('marcarAtendimento');
 
 //consulta
 Route::post('/consulta', 'Site\ConsultaController@cadastrarConsulta')->name('consulta.marcar');
@@ -61,7 +63,7 @@ Route::post('/cursos/create',   'Dashboard\CursoController@createCurso')->middle
 route::post('/cursos/alter',    'Dashboard\CursoController@alterCurso')->name('curso.alterar')->middleware('auth');
 
 //gerenciamento de horarios
-Route::get('/horarios', 'Dashboard\ManterHorariosController@mostrarPaginaManterHorarios')->middleware('auth')->middleware('funcionario');
+Route::get('/horarios', 'Dashboard\ManterHorariosController@mostrarPaginaManterHorarios')->name('horario')->middleware('auth')->middleware('funcionario');
 Route::get('/horarios/{ano}/{semana}', 'Dashboard\ManterHorariosController@carregaDatas')->middleware('auth')->middleware('funcionario');
 
 //Localizacao Routes
@@ -78,5 +80,3 @@ Route::get('/localizacao', 'Dashboard\LocalizacaoController@localizacao');
 Route::get('/alunos',           'Dashboard\AlunoController@mostrarPaginaAlunos')->name('alunos.all')->middleware('auth');
 Route::get('/alunos/get','Dashboard\AlunoController@getAlunos');
 
-// falta ajeitar onde ela fica
-Route::get('/marcarAtendimento', 'DashboardAluno\HomeController@mostrarPaginaMarcarAtendimento')->name('marcarAtendimento');

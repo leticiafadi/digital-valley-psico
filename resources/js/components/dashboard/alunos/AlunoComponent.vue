@@ -9,48 +9,97 @@
                             <i class="fas fa-fw fa-user-graduate"></i>
                                 <span>Visualizar alunos</span>
                             </div>
+<<<<<<< HEAD
+=======
+                            <!--
+                            <div class="card-header">
+                                <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active bg-white" href="#">Cursos ativos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Cursos desativados</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Todos os cursos</a>
+                                </li>
+                                </ul>
+                            </div>
+                            -->
+>>>>>>> 8eb257164629e9a9d3da1f9f3f7598fbddbde2bc
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col col-12 col-md-5">
+                                    <div class="col col-12 col-md-6">
                                         <div class="form-group">
                                             <label for="maticula">Nome completo do Aluno</label>
-                                            <input name="matricula" class="form-control" placeholder="Ex: Jose da Silva Brito"/>
+                                            <input v-model="nomebusca" name="matricula" class="form-control" placeholder="Ex: Jose da Silva Brito"/>
                                         </div>
                                     </div>
-                                    <div class="col col-12 col-md-5">
+                                    <div class="col col-12 col-md-6">
                                         <div class="form-group">
                                             <label id="label-curso">Selecione o filtro de busca</label>
-                                            <select name="id_curso" class="form-control">
+                                            <select name="id_curso" class="form-control" v-model="selected">
                                                 <option value="">Todos</option>
                                                 <option v-for="curso in cursos" v-bind:value="curso.id">{{curso.nome}}</option>
                                             </select>
                                         </div>
                                     </div>    
-                                    <div class="col col-12 col-md-2">
+                                   <!-- <div class="col col-12 col-md-2">
                                         <div class="form-group">
                                             <div class="fa-pull-right mt-4">
-                                            <button type="button" class="btn btn-primary btn-lg">Buscar </button>
+                                            <button type="button" @click="buscar()" class="btn btn-primary btn-lg">Buscar </button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
                             <div class="card-body">
-                                <ul class="list-group">
-                                    <template v-for="aluno in this.alunos">
-                                        
-                                        <li class="list-group-item"> 
-                                            {{aluno.nome_completo}} 
-                                        </li>
-                                    </template>
+                                <ul class="list-group" v-if="alunos != ''">
+                                    <table class="table table-bordered" >
+                                        <thead>
+									        <tr>
+										        <th>
+										    	    Nome
+										        </th>
+										        <th>
+											        Matricula
+										        </th>
+										        <th>
+											        Curso
+                                                </th>
+									        </tr>
+								        </thead>
+                                        <tbody>
+                                            <template v-for="aluno in this.alunos">
+											    <tr>
+												    <td>{{aluno.nome_completo}}</td>
+												    <td>
+													    {{aluno.matricula}}
+												    </td>
+												    <td>
+													    {{aluno.nome}}
+												    </td>
+									            </tr>
+                                            </template>
+								        </tbody>
+                                    </table>
+                                </ul>
+                                <ul v-else>
+                                    <strong>Não existe nenhum aluno relacionado a esse filtro de busca... :(</strong>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
     </div>
 </template>
+=======
+        </div>
+</template>
+
+>>>>>>> 8eb257164629e9a9d3da1f9f3f7598fbddbde2bc
 
 <script>
 import axios    from 'axios';
@@ -64,22 +113,42 @@ export default {
     },
     data:function(){
         return{
-            alunos: []
+            alunos: [],
+            selected: '',
+            nomebusca: ''
         }
     },
     components:{
         axios,
         Snotify
     },
+    watch:{
+        selected(){
+            this.buscar();
+        },
+        nomebusca(){
+            this.buscar();
+        }
+    },
     methods:{
         carregaAlunos: function(){
             axios.get(this.base_url + '/alunos/get').then(response=>{
                 this.alunos = response.data.alunos;
             });
+        },
+        buscar: function() {
+            axios.get(this.base_url + '/alunos/get?query=' + this.nomebusca + '&id_curso=' + this.selected + '').then(response=>{
+                this.alunos = response.data.alunos;
+            })
         }
     },
     mounted(){
         this.carregaAlunos();
     }    
 }
+<<<<<<< HEAD
 </script>
+=======
+</script>
+
+>>>>>>> 8eb257164629e9a9d3da1f9f3f7598fbddbde2bc

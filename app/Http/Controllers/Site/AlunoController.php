@@ -33,7 +33,7 @@ class AlunoController extends Controller
     public function verificarPedidoCadastro(Request $request){ 
 
             $client = new GuzzleHttp\Client(['http_errors' => false]);
-            $res = $client->request('GET', 'http://mock:10222/'.$request->matricula, ['timeout' => 10000 ]);
+            $res = $client->request('GET', 'http://localhost:10222/'.$request->matricula, ['timeout' => 10000 ]);
 
             $statusCode = $res->getStatusCode();
 

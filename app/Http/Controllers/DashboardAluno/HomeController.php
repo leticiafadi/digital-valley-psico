@@ -19,4 +19,8 @@ class HomeController extends Controller
         return view('aluno.marcarAtendimento');
     }
 
+    public function mostrarPaginaGerenciarPerfil(){
+        return view('aluno.gerenciarPerfil');
+    }
+
 }

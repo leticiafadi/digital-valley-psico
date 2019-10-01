@@ -20,11 +20,11 @@ class LocalizacaoController extends Controller
     }
 
     public function estados($idPais){
-        echo json_encode(Pais::find($idPais)->estados);
+        return response((Pais::find($idPais)->estados),200)->header('Content-Type','text/json');
     }
 
     public function cidades($idEstado){
-        echo json_encode(Estado::find($idEstado)->cidades);
+        return response((Estado::find($idEstado)->cidades),200)->header('Content-Type','text/json');
     }
 
 }

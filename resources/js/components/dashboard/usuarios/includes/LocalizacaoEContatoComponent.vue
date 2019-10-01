@@ -49,7 +49,7 @@
             <div class="col col-12 col-md-6">
                 <div class="form-group">
                     <label for="endereco">Endereço *</label>
-                    <input type="text" class="form-control" :class="{'is-invalid' : errors.has('endereco')}"  name="endereco" id="endereco" placeholder="Digite seu endereço" v-model="endereco" maxlength="63" v-validate="'required|min:10'"/>
+                    <input type="text" class="form-control" :class="{'is-invalid' : errors.has('endereco')}"  name="endereco" id="endereco" placeholder="Digite seu endereço" v-model="endereco" maxlength="63" v-validate="'required|min:5'"/>
                 
                     <span>{{errors.first('endereco')}}</span>
 
@@ -194,7 +194,7 @@
                 return this.id_cidade > 0;                
             },
             validaEndereco:function(){
-                return this.endereco.length >= 10;
+                return this.endereco.length >= 5;
             },
             validaBairro:function(){
                 return this.bairro.length >= 5;
