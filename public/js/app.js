@@ -2644,6 +2644,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -87203,7 +87209,9 @@ var render = function() {
                                         _vm._s(aluno.nome) +
                                         "\n\t\t\t\t\t\t\t\t\t\t\t\t    "
                                     )
-                                  ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(2, true)
                                 ])
                               ]
                             })
@@ -87261,8 +87269,26 @@ var staticRenderFns = [
           _vm._v(
             "\n\t\t\t\t\t\t\t\t\t\t\t        Curso\n                                                "
           )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _vm._v(
+            "\n                                                    Opções\n                                                "
+          )
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "a",
+        { staticClass: "btn btn-primary fa-pull-right", attrs: { href: "" } },
+        [_vm._v("Ver detalhes")]
+      )
     ])
   }
 ]
