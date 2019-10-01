@@ -18,6 +18,7 @@ Vue.component('manter-horarios',    require('./components/dashboard/manter_horar
 //alunos components
 Vue.component('cadastrar-aluno', require('./components/guest/alunos/CadastrarAlunoComponent.vue').default);
 Vue.component('marcar-atendimento', require('./components/dashboard/alunos/atendimento/MarcarAtendimentoComponent.vue').default);
+Vue.component('gerenciar-perfil', require('./components/dashboard/alunos/perfil/GerenciarPerfilComponent.vue').default);
 
 //re-captcha
 Vue.component('submit-button', require("./components/guest/SubmitButtonComponent.vue").default);
