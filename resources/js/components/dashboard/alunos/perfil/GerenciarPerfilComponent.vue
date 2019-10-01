@@ -22,16 +22,22 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col col-6">
+                            <div class="col col-4">
                                 <div class="form-group">
                                     <label for="dataNascimento">Data de nascimento</label>
-                                    <input type="text" name="dataNascimento">
+                                    <input type="text" class="form-control" name="dataNascimento" v-model="dataNascimento" disabled="true">
                                 </div>
                             </div>
-                            <div class="col col-6">
+                            <div class="col col-4">
                                 <div class="form-group">
-                                    <label for="naturalidade">Naturalidade</label>
-                                    <input type="text" name="naturalidade" v-model="naturalidade" disabled="true">
+                                    <label for="cidadeNatal">Cidade natal</label>
+                                    <input type="text" class="form-control" name="cidadeNatal" v-model="cidadeNatal" disabled="true">
+                                </div>
+                            </div>
+                            <div class="col col-4">
+                                <div class="form-group">
+                                    <label for="estadoNatal">Estado natal</label>
+                                    <input type="text" class="form-control" name="estadoNatal" v-model="estadoNatal" disabled="true">
                                 </div>
                             </div>    
                         </div>
@@ -39,19 +45,19 @@
                             <div class="col col-4">
                                 <div class="form-group">
                                     <label for="estadoCivil">Estado civil</label>
-                                    <input type="text" name="estadoCivil">
+                                    <input type="text" class="form-control" name="estadoCivil" v-model="estadoCivil">
                                 </div>
                             </div>
                             <div class="col col-4">
                                 <div class="form-group">
                                     <label for="possuiFilhos">Possui filhos</label>
-                                    <input type="text" name="possuiFilhos">
+                                    <input type="text" class="form-control" v-model="possuiFilhos" name="possuiFilhos">
                                 </div>
                             </div>
                             <div class="col col-4">
                                 <div class="form-group">
                                     <label for="resideCom">Reside com</label>
-                                    <input type="text" name="resideCom">
+                                    <input type="text" class="form-control" v-model="resideCom" name="resideCom">
                                 </div>
                             </div>
                         </div>
@@ -59,13 +65,13 @@
                             <div class="col col-6">
                                 <div class="form-group">
                                     <label for="endereco">Endereço</label>
-                                    <input type="text" name="endereco">
+                                    <input type="text" class="form-control" v-model="endereco" name="endereco">
                                 </div>
                             </div>
                             <div class="col col-6">
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="text" name="email">
+                                    <input type="text" class="form-control" v-model="email" name="email">
                                 </div>
                             </div>
                         </div>
@@ -73,13 +79,13 @@
                             <div class="col col-6">
                                 <div class="form-group">
                                     <label for="telefoneCelular">Telefone celular</label>
-                                    <input type="text" name="telefoneCelular">
+                                    <input type="text" class="form-control" v-model="telefoneCelular" name="telefoneCelular">
                                 </div>
                             </div>
                             <div class="col col-6">
                                 <div class="form-group">
                                     <label for="telefoneResidencial">Telefone residencial</label>
-                                    <input type="text" name="telefoneResidencial">
+                                    <input type="text" class="form-control" v-model="telefoneResidencial" name="telefoneResidencial">
                                 </div>
                             </div>
                         </div>
@@ -92,25 +98,25 @@
                             <div class="col col-3">
                                 <div class="form-group">
                                     <label for="matricula">Matricula</label>
-                                    <input type="text" name="Matricula" v-model="matricula" disabled="true">
+                                    <input type="text" class="form-control" name="Matricula" v-model="matricula" disabled="true">
                                 </div>
                             </div>
                             <div class="col col-3">
                                 <div class="form-group">
-                                    <label for="turno">Turno do curso</label>
-                                    <input type="text" name="turno">
+                                    <label for="turnoCurso">Turno do curso</label>
+                                    <input type="text" class="form-control" v-model="turnoCurso" name="turnoCurso">
                                 </div>
                             </div>
                             <div class="col col-3">
                                 <div class="form-group">
                                     <label for="formacaoEscolar">Formação escolar básica</label>
-                                    <input type="text" name="formacaoEscolar">
+                                    <input type="text" class="form-control" v-model="formacaoEscolar" name="formacaoEscolar">
                                 </div>
                             </div>
                             <div class="col col-3">
                                 <div class="form-group">
                                     <label for="curso">Curso atual</label>
-                                    <input type="text" name="curso">
+                                    <input type="text" class="form-control" v-model="curso" name="curso">
                                 </div>
                             </div>
                         </div>
@@ -118,71 +124,71 @@
                             <div class="col col-4">
                                 <div class="form-group">
                                     <label for="semestreIngresso">Semestre de ingresso</label>
-                                    <input type="text" name="semestreIngresso">
+                                    <input type="text" class="form-control" v-model="semestreIngresso" name="semestreIngresso" disabled="true">
                                 </div>
                             </div>
                             <div class="col col-4">
                                 <div class="form-group">
                                     <label for="semestreAtual">Semestre atual</label>
-                                    <input type="text" name="semestreAtual">
+                                    <input type="text" class="form-control" v-model="semestreAtual" name="semestreAtual">
                                 </div>
                             </div>
                             <div class="col col-4">
                                 <div class="form-group">
                                     <label for="formacaIngresso">Forma de ingresso</label>
-                                    <input type="text" name="formaIngresso">
+                                    <input type="text" class="form-control" v-model="formaIngresso" name="formaIngresso">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col col-12">
                                 <div class="form-group">
-                                    <label for="cursosConcluidos">Cursos já concluidos</label>
-                                    <input type="text" name="cursosConcluidos">
+                                    <label for="cursosConcluidos">Cursos já concluídos</label>
+                                    <input type="text" class="form-control" v-model="cursosConcluidos" name="cursosConcluidos">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col col-12">
-                                <h2>Condição de víncolo com a UFC</h2>
+                                <h2>Condição de vínculo com a UFC</h2>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col col-4">
                                 <label for="possuiAuxilio">Possui auxílio</label>
-                                <input type="text" name="possuiAuxilio">
+                                <input type="text" class="form-control" v-model="possuiAuxilio" name="possuiAuxilio">
                             </div>
                             <div class="col col-4">
                                 <label for="tipoAuxilio">Tipo de auxílio</label>
-                                <input type="text" name="tipoAuxilio">
+                                <input type="text" class="form-control" v-model="tipoAuxilio" name="tipoAuxilio">
                             </div>
                             <div class="col col-4">
                                 <label for="periodoAuxilio">Período de auxílio</label>
-                                <input type="text" name="periodoAuxilio">
+                                <input type="text" class="form-control" v-model="periodoAuxilio" name="periodoAuxilio">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col col-4">
                                 <label for="possuiBolsa">Possui bolsa</label>
-                                <input type="text" name="possuiBolsa">
+                                <input type="text" class="form-control" v-model="possuiBolsa" name="possuiBolsa">
                             </div>
                             <div class="col col-4">
                                 <label for="tipoBolsa">Tipo de bolsa</label>
-                                <input type="text" name="tipoBolsa">
+                                <input type="text" class="form-control" v-model="tipoBolsa" name="tipoBolsa">
                             </div>
                             <div class="col col-4">
                                 <label for="periodoBolsa">Período de bolsa</label>
-                                <input type="text" name="periodoBolsa">
+                                <input type="text" class="form-control" v-model="periodoBolsa" name="periodoBolsa">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col col-6">
                                 <label for="outros">Outros</label>
-                                <input type="text" name="outros">
+                                <input type="text" class="form-control" v-model="outros" name="outros">
                             </div>
                             <div class="col col-6">
                                 <label for="periodoOutros">Período</label>
-                                <input type="text" name="periodoOutros">
+                                <input type="text" class="form-control" v-model="periodoOutros" name="periodoOutros">
                             </div>
                         </div>
                         <div class="row mt-1">
@@ -193,17 +199,17 @@
                         <div class="row">
                             <div class="col col-6">
                                 <label for="encaminhadoPor">Encaminhado por</label>
-                                <input type="text" name="encaminhadoPor">
+                                <input type="text" class="form-control" v-model="encaminhadoPor" name="encaminhadoPor">
                             </div>
                             <div class="col col-6">
                                 <label for="motivoEncaminhamento">Motivo do encaminhamento</label>
-                                <input type="text" name="motivoEncaminhamento">
+                                <input type="text" class="form-control" v-model="motivoEncaminhamento" name="motivoEncaminhamento">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col col-12">
                                 <div class="fa-pull-right">
-                                    <button type="submit" class="btn btn-primary btn-lg">
+                                    <button v-show="this.estadoCivil != ''" type="submit" class="btn btn-primary btn-lg">
                                             Salvar
                                     </button>
                                 </div>
@@ -227,8 +233,34 @@
         data: function(){
             return{
                 nomeCompleto: '',
+                dataNascimento: '',
+                cidadeNatal: '',
+                estadoNatal: '',
+                estadoCivil: '',
+                possuiFilhos: '',
+                resideCom: '',
+                endereco: '',
+                email: '',
+                telefoneCelular: '',
+                telefoneResidencial: '',
                 matricula: 0,
-                naturalidade: ''
+                turnoCurso: '',
+                formacaoEscolar: '',
+                cursoAtual: '',
+                semestreIngresso: '',
+                semestreAtual: '',
+                formaIngresso: '',
+                cursosConcluidos: '',
+                possuiAuxilio: '',
+                tipoAuxilio: '',
+                periodoAuxilio: '',
+                possuiBolsa: '',
+                tipoBolsa: '',
+                periodoBolsa: '',
+                outros: '',
+                periodoOutros: '',
+                encaminhadoPor: '',
+                motivoEncamonhamento: '',
             }
         },
         methods:{
