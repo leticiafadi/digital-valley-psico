@@ -64,6 +64,9 @@
 										        <th>
 											        Curso
                                                 </th>
+                                                <th>
+                                                    Opções
+                                                </th>
 									        </tr>
 								        </thead>
                                         <tbody>
@@ -76,6 +79,9 @@
 												    <td>
 													    {{aluno.nome}}
 												    </td>
+                                                    <td>
+                                                        <a href="" class="btn btn-primary fa-pull-right">Ver detalhes</a>
+                                                    </td>
 									            </tr>
                                             </template>
 								        </tbody>
