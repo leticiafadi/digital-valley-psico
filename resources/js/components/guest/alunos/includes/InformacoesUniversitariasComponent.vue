@@ -9,7 +9,7 @@
             <div class="col col-12 col-md-4">
                <div class="form-group">
                    <label for="maticula">Matrícula *</label>
-                   <masked-input name="matricula" mask="111111" class="form-control" placeholder="Somente números" v-model="matricula" disabled/>
+                   <input type="text" name="matricula" class="form-control"  v-bind:value="matricula" @change="()=>{return false}"/>
                </div>
             </div>
             <div class="col col-12 col-md-4">
@@ -47,7 +47,7 @@
         props:{
             cursos: Array,
             mudaAba: Function,
-            old: Array
+            old: Object
         },
         data: function(){
             return {

@@ -17,7 +17,7 @@ class AlunoController extends Controller
 
     public function mostrarFormularioCadastrarAluno(Request $request){
         if(!$request->session()->get('dadosPedido'))
-            return redirect('./pedidoCadastro');
+            dd($request);
 
         return view('guest.pages.cadastrar-aluno',['cursos' => Curso::all(), 'base_url' => env('APP_URL'), 'dadosPedido' => $request->session()->get('dadosPedido')]);   
     }
@@ -48,7 +48,7 @@ class AlunoController extends Controller
                     }
                     break;
                 case 404:
-                    return reAureliano->withErrors(['credenciais' => 'A matrícula não existe em nossa base de dados.'])->withInput();
+                    return redirect()->back()->withErrors(['credenciais' => 'A matrícula não existe em nossa base de dados.'])->withInput();
             }
             
 
