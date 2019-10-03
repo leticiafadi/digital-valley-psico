@@ -49,10 +49,18 @@ class RegistrarFuncionarioRequest extends FormRequest
 
     public function messages(){
         return [
-            'email.required' => "O campo Email é obrigatório.",
-            'email.unique'   => "O campo Email deve ser único, o inserido já pertence a outro usuário.",
-            'siape.unique'   => "O campo Siape deve ser único, o inserido já pertence a outro usuário.",
-            'crp.unique'     => "O campo CRP deve ser único, o inserido já pertence a outro usuário."
+            'email.required'     => "O campo Email é obrigatório.",
+            'email.unique'       => "O campo Email deve ser único, o inserido já pertence a outro usuário.",
+            'siape.unique'       => "O campo Siape deve ser único, o inserido já pertence a outro usuário.",
+            'crp.unique'         => "O campo CRP deve ser único, o inserido já pertence a outro usuário.",
+            'senha.required'     => "O campo Senha é obrigatório.",
+            'senha.same'         => "Senha incompatível.",
+            'repete_senha'       => "O campo Repete Senha é obrigatório.",
+            'telefone_celular'   => "O campo Telefone Celular deve ser único, o inserido já pertence a outro usuário.",
+            'endereco.required'  => "O campo Endereço é obrigatório",
+            'numero.required'    => "O campo Numero é obrigatório",
+            'bairro.required'    => "O campo Bairro é obrigatório",
+            'id_cidade.required' => "O campo Cidade é obrigatório"
         ];
     }
 }
