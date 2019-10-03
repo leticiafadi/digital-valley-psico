@@ -78,5 +78,5 @@ Route::get('/localizacao', 'Dashboard\LocalizacaoController@localizacao');
     
 //rota de listar os alunos
 Route::get('/alunos',           'Dashboard\AlunoController@mostrarPaginaAlunos')->name('alunos.all')->middleware('auth');
-Route::get('/alunos/get','Dashboard\AlunoController@getAlunos');
-
+Route::get('/alunos/get','Dashboard\AlunoController@getAlunos')->middleware('auth')->middleware('funcionario');
+Route::get('/alunos/{id}','Dashboard\AlunoController@getAluno')->middleware('auth')->middleware('funcionario');

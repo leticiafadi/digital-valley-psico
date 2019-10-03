@@ -46,6 +46,6 @@ class Aluno extends Model
 
 
 
-     
+
 
 }
