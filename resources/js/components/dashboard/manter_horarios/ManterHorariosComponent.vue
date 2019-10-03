@@ -48,17 +48,7 @@
                                             </thead>
                                             <tbody>
 
-                                                <tr v-for="aux in new Array(0,1,2,3,4,5,6,7)">
-                                                    <th scope="row">
-                                                        {{horas[aux]}}
-                                                    </th>
-                                                    <td v-for="aux2 in Array(0,1,2,3,4)">
-                                                        <div class="icheck-primary">
-                                                            <input type="checkbox" :id="'horario' + (5*aux + aux2)" :checked="dias[aux2].horarios[aux] == 1 "/>
-                                                            <label :for="'horario' + (5*aux + aux2)"></label>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                               
                                                 
                                             </tbody>
                                         </table>

@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="card mt-4">
+        <div class="card mt-4 mb-4">
             <div class="card-header">
                 <i class="fa fa-user"></i>
                 <span>&nbsp; Realize seu cadastro como aluno</span>
@@ -20,7 +20,7 @@
 
                     <localizacao-e-contato  :mudaAba="this.mudaAba" v-show="this.aba == 'localizacaoEContato'" :old="old" :url="this.url"/>
 
-                    <dados-de-conta :mudaAba="this.mudaAba" v-show="this.aba == 'dadosDeConta'" :old="old"/>
+                    <dados-de-conta :mudaAba="this.mudaAba" v-show="this.aba == 'dadosDeConta'"/>
                 
                 </form>
 

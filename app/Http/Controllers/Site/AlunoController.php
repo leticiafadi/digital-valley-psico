@@ -15,15 +15,13 @@ class AlunoController extends Controller
         $this->middleware("guest")->except('logout');
     }
 
-    public function mostrarFormularioCadastrarAluno(Request $request){
-        if(!$request->session()->get('dadosPedido'))
-            dd($request);
+    public function mostrarFormularioCadastrarAluno(Request $request)
+    {
+       // dd(!$request->session()->get('dadosPedido') && !$request->session()->get('_old_input'));
+        if(!$request->session()->get('dadosPedido') && !$request->session()->get('_old_input'))
+            return redirect('/pedidoCadastro')->withErrors(['credenciais' => 'Informe os dados abaixo para acessar o cadastro de aluno.'])->withInput();
 
         return view('guest.pages.cadastrar-aluno',['cursos' => Curso::all(), 'base_url' => env('APP_URL'), 'dadosPedido' => $request->session()->get('dadosPedido')]);   
-    }
-
-    public function mostrarFormularioSolicitarCadastro(){
-        return view('guest.pages.solicitarCadastro');
     }
     
     public function mostrarformularioPedidoCadastro(Request $request){
@@ -33,7 +31,7 @@ class AlunoController extends Controller
     public function verificarPedidoCadastro(Request $request){ 
 
             $client = new GuzzleHttp\Client(['http_errors' => false]);
-            $res = $client->request('GET', 'http://localhost:10222/'.$request->matricula, ['timeout' => 10000 ]);
+            $res = $client->request('GET', 'http://mock:10222/'.$request->matricula, ['timeout' => 10000 ]);
 
             $statusCode = $res->getStatusCode();
 

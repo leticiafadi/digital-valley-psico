@@ -8,15 +8,9 @@
         <div class="row">
             <div class="col col-12 col-md-4">
                <div class="form-group">
-<<<<<<< HEAD
                    <label for="maticula">Matrícula *</label>
-                   <input type="text" name="matricula" class="form-control"  v-bind:value="matricula" @change="()=>{return false}"/>
-=======
-                    <label for="maticula">Matrícula *</label>
-                    <masked-input name="matricula" mask="111111" :class="{'is-invalid' : errors.has('matricula'), 'is-valid': this.matriculasIsValid()}" class="form-control" placeholder="Somente números" v-model="matricula" disabled/>
-               
-                    <span>{{errors.first('matricula')}}</span>
->>>>>>> 8eb257164629e9a9d3da1f9f3f7598fbddbde2bc
+                   <h6 class="form-control is-valid">{{matricula}}</h6>
+                   <input type="hidden" name="matricula" class="form-control"  v-bind:value="matricula"/>
                </div>
             </div>
             <div class="col col-12 col-md-4">
@@ -104,6 +98,8 @@
         },
         mounted(){
            this.matricula = this.old.matricula;
+           this.curso = this.old.curso ? this.old.curso: '';
+           this.semestre = this.old.semestre ? this.old.semestre : '';
         }
     }
  </script>

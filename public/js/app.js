@@ -2603,8 +2603,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< HEAD
-=======
 //
 //
 //
@@ -2646,7 +2644,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
->>>>>>> 8eb257164629e9a9d3da1f9f3f7598fbddbde2bc
 
 
 
@@ -2657,21 +2654,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-<<<<<<< HEAD
-      alunos: []
-=======
       alunos: [],
       selected: '',
       nomebusca: ''
->>>>>>> 8eb257164629e9a9d3da1f9f3f7598fbddbde2bc
     };
   },
   components: {
     axios: axios__WEBPACK_IMPORTED_MODULE_0___default.a,
     Snotify: vue_snotify__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-<<<<<<< HEAD
-=======
   watch: {
     selected: function selected() {
       this.buscar();
@@ -2680,7 +2671,6 @@ __webpack_require__.r(__webpack_exports__);
       this.buscar();
     }
   },
->>>>>>> 8eb257164629e9a9d3da1f9f3f7598fbddbde2bc
   methods: {
     carregaAlunos: function carregaAlunos() {
       var _this = this;
@@ -2688,8 +2678,6 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.base_url + '/alunos/get').then(function (response) {
         _this.alunos = response.data.alunos;
       });
-<<<<<<< HEAD
-=======
     },
     buscar: function buscar() {
       var _this2 = this;
@@ -2697,7 +2685,6 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.base_url + '/alunos/get?query=' + this.nomebusca + '&id_curso=' + this.selected + '').then(function (response) {
         _this2.alunos = response.data.alunos;
       });
->>>>>>> 8eb257164629e9a9d3da1f9f3f7598fbddbde2bc
     }
   },
   mounted: function mounted() {
@@ -3061,16 +3048,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -4236,7 +4213,7 @@ __webpack_require__.r(__webpack_exports__);
       return this.senha.length >= 6 && !/\ /.test(this.senha);
     },
     validaRepeteSenha: function validaRepeteSenha() {
-      return this.repeteSenha === this.senha;
+      return this.repeteSenha && this.repeteSenha === this.senha;
     },
     isValid: function isValid() {
       return this.validaSenha() && this.validaRepeteSenha();
@@ -4319,6 +4296,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -4339,7 +4317,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       nome: '',
       dataNascimento: '',
-      genero: '',
+      genero: 'm',
       pt: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_2__["ptBR"],
       disabled_dates: {},
       open_date: new Date()
@@ -4367,13 +4345,8 @@ __webpack_require__.r(__webpack_exports__);
     var dia = 1000 * 60 * 60 * 24;
     var hoje = new Date();
     this.open_date = hoje.getTime() - 365 * 16 * dia;
-    this.disabled_dates = {
-      from: new Date(this.open_date),
-      to: new Date(hoje.getTime() - 365 * 120 * dia)
-    };
     this.nome = this.old.nome;
-    this.genero = this.old.genero;
-    this.dataNascimento = this.old.data_nascimento;
+    this.genero = this.old.genero ? this.old.genero : 'm';
   }
 });
 
@@ -4390,7 +4363,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
 /* harmony import */ var vue_masked_input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-masked-input */ "./node_modules/vue-masked-input/dist/maskedInput.js");
-//
 //
 //
 //
@@ -4488,6 +4460,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.matricula = this.old.matricula;
+    this.curso = this.old.curso ? this.old.curso : '';
+    this.semestre = this.old.semestre ? this.old.semestre : '';
   }
 });
 
@@ -9507,7 +9481,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.btn-show-pass {\r\n  font-size: 15px;\r\n  color: #999999;\r\n  display: flex;\r\n  align-items: center;\r\n  position: absolute;\r\n  height: 100%;\r\n  top: 0;\r\n  right: 20px;\r\n  padding: 0 5px;\r\n  cursor: pointer;\n}\n.btn-show-pass:hover {\r\n  color: #57b846;\n}\n.btn-show-pass.active {\r\n  color: #57b846;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.btn-show-pass {\n  font-size: 15px;\n  color: #999999;\n  display: flex;\n  align-items: center;\n  position: absolute;\n  height: 100%;\n  top: 0;\n  right: 20px;\n  padding: 0 5px;\n  cursor: pointer;\n}\n.btn-show-pass:hover {\n  color: #57b846;\n}\n.btn-show-pass.active {\n  color: #57b846;\n}\n\n", ""]);
 
 // exports
 
@@ -86838,11 +86812,6 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
                 _c("div", { staticClass: "row" }, [
-<<<<<<< HEAD
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col col-12 col-md-5" }, [
-=======
                   _c("div", { staticClass: "col col-12 col-md-6" }, [
                     _c("div", { staticClass: "form-group" }, [
                       _c("label", { attrs: { for: "maticula" } }, [
@@ -86877,7 +86846,6 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col col-12 col-md-6" }, [
->>>>>>> 8eb257164629e9a9d3da1f9f3f7598fbddbde2bc
                     _c("div", { staticClass: "form-group" }, [
                       _c("label", { attrs: { id: "label-curso" } }, [
                         _vm._v("Selecione o filtro de busca")
@@ -86886,10 +86854,6 @@ var render = function() {
                       _c(
                         "select",
                         {
-<<<<<<< HEAD
-                          staticClass: "form-control",
-                          attrs: { name: "id_curso" }
-=======
                           directives: [
                             {
                               name: "model",
@@ -86915,7 +86879,6 @@ var render = function() {
                                 : $$selectedVal[0]
                             }
                           }
->>>>>>> 8eb257164629e9a9d3da1f9f3f7598fbddbde2bc
                         },
                         [
                           _c("option", { attrs: { value: "" } }, [
@@ -86933,37 +86896,11 @@ var render = function() {
                         2
                       )
                     ])
-<<<<<<< HEAD
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(2)
-=======
                   ])
->>>>>>> 8eb257164629e9a9d3da1f9f3f7598fbddbde2bc
                 ])
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
-<<<<<<< HEAD
-                _c(
-                  "ul",
-                  { staticClass: "list-group" },
-                  [
-                    _vm._l(this.alunos, function(aluno) {
-                      return [
-                        _c("li", { staticClass: "list-group-item" }, [
-                          _vm._v(
-                            " \n                                        " +
-                              _vm._s(aluno.nome_completo) +
-                              " \n                                    "
-                          )
-                        ])
-                      ]
-                    })
-                  ],
-                  2
-                )
-=======
                 _vm.alunos != ""
                   ? _c("ul", { staticClass: "list-group" }, [
                       _c("table", { staticClass: "table table-bordered" }, [
@@ -87009,7 +86946,6 @@ var render = function() {
                         )
                       ])
                     ])
->>>>>>> 8eb257164629e9a9d3da1f9f3f7598fbddbde2bc
               ])
             ])
           ])
@@ -87034,35 +86970,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-<<<<<<< HEAD
-    return _c("div", { staticClass: "col col-12 col-md-5" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "maticula" } }, [
-          _vm._v("Nome completo do Aluno")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { name: "matricula", placeholder: "Ex: Jose da Silva Brito" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col col-12 col-md-2" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("div", { staticClass: "fa-pull-right mt-4" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary btn-lg",
-              attrs: { type: "button" }
-            },
-            [_vm._v("Buscar ")]
-=======
     return _c("thead", [
       _c("tr", [
         _c("th", [
@@ -87080,7 +86987,6 @@ var staticRenderFns = [
         _c("th", [
           _vm._v(
             "\n\t\t\t\t\t\t\t\t\t\t\t        Curso\n                                                "
->>>>>>> 8eb257164629e9a9d3da1f9f3f7598fbddbde2bc
           )
         ])
       ])
@@ -87613,61 +87519,7 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _c(
-                              "tbody",
-                              _vm._l(
-                                new Array(0, 1, 2, 3, 4, 5, 6, 7),
-                                function(aux) {
-                                  return _c(
-                                    "tr",
-                                    [
-                                      _c("th", { attrs: { scope: "row" } }, [
-                                        _vm._v(
-                                          "\n                                                    " +
-                                            _vm._s(_vm.horas[aux]) +
-                                            "\n                                                "
-                                        )
-                                      ]),
-                                      _vm._v(" "),
-                                      _vm._l(Array(0, 1, 2, 3, 4), function(
-                                        aux2
-                                      ) {
-                                        return _c("td", [
-                                          _c(
-                                            "div",
-                                            { staticClass: "icheck-primary" },
-                                            [
-                                              _c("input", {
-                                                attrs: {
-                                                  type: "checkbox",
-                                                  id:
-                                                    "horario" + (5 * aux + aux2)
-                                                },
-                                                domProps: {
-                                                  checked:
-                                                    _vm.dias[aux2].horarios[
-                                                      aux
-                                                    ] == 1
-                                                }
-                                              }),
-                                              _vm._v(" "),
-                                              _c("label", {
-                                                attrs: {
-                                                  for:
-                                                    "horario" + (5 * aux + aux2)
-                                                }
-                                              })
-                                            ]
-                                          )
-                                        ])
-                                      })
-                                    ],
-                                    2
-                                  )
-                                }
-                              ),
-                              0
-                            )
+                            _c("tbody")
                           ])
                         ]),
                         _vm._v(" "),
@@ -89038,7 +88890,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "card mt-4" }, [
+    _c("div", { staticClass: "card mt-4 mb-4" }, [
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
@@ -89098,7 +88950,7 @@ var render = function() {
                   expression: "this.aba == 'dadosDeConta'"
                 }
               ],
-              attrs: { mudaAba: this.mudaAba, old: _vm.old }
+              attrs: { mudaAba: this.mudaAba }
             })
           ],
           1
@@ -89409,6 +89261,10 @@ var render = function() {
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "nome" } }, [_vm._v("Nome *")]),
           _vm._v(" "),
+          _c("h6", { staticClass: "is-valid form-control" }, [
+            _vm._v(_vm._s(_vm.nome))
+          ]),
+          _vm._v(" "),
           _c("input", {
             staticClass: "form-control",
             class: {
@@ -89416,17 +89272,12 @@ var render = function() {
               "is-valid": this.validaNome()
             },
             attrs: {
-              type: "text",
+              type: "hidden",
               id: "nome",
               placeholder: "Nome completo",
               name: "nome"
             },
-            domProps: { value: _vm.nome },
-            on: {
-              change: function() {
-                return false
-              }
-            }
+            domProps: { value: _vm.nome }
           }),
           _vm._v(" "),
           _c("span", [_vm._v(_vm._s(_vm.errors.first("nome")))])
@@ -89464,10 +89315,9 @@ var render = function() {
                   name: "genero",
                   id: "genero-masculino",
                   value: "m",
-                  required: "",
-                  checked: ""
+                  required: ""
                 },
-                domProps: { checked: _vm._q(_vm.genero, "m") },
+                domProps: { checked: true, checked: _vm._q(_vm.genero, "m") },
                 on: {
                   change: function($event) {
                     _vm.genero = "m"
@@ -89500,8 +89350,7 @@ var render = function() {
                   type: "radio",
                   name: "genero",
                   id: "genero-feminino",
-                  value: "f",
-                  required: ""
+                  value: "f"
                 },
                 domProps: { checked: _vm._q(_vm.genero, "f") },
                 on: {
@@ -89536,14 +89385,10 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("datetime", {
-              class: {
-                "is-invalid": _vm.errors.has("dataNascimento"),
-                "is-valid": this.validaData()
-              },
               attrs: {
                 format: "dd/MM/yyyy",
                 "input-class": "form-control",
-                name: "dataNascimento"
+                name: "data_nascimento"
               },
               model: {
                 value: _vm.dataNascimento,
@@ -89617,56 +89462,19 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col col-12 col-md-4" }, [
-<<<<<<< HEAD
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "maticula" } }, [_vm._v("Matrícula *")]),
           _vm._v(" "),
+          _c("h6", { staticClass: "form-control is-valid" }, [
+            _vm._v(_vm._s(_vm.matricula))
+          ]),
+          _vm._v(" "),
           _c("input", {
             staticClass: "form-control",
-            attrs: { type: "text", name: "matricula" },
-            domProps: { value: _vm.matricula },
-            on: {
-              change: function() {
-                return false
-              }
-            }
+            attrs: { type: "hidden", name: "matricula" },
+            domProps: { value: _vm.matricula }
           })
         ])
-=======
-        _c(
-          "div",
-          { staticClass: "form-group" },
-          [
-            _c("label", { attrs: { for: "maticula" } }, [
-              _vm._v("Matrícula *")
-            ]),
-            _vm._v(" "),
-            _c("masked-input", {
-              staticClass: "form-control",
-              class: {
-                "is-invalid": _vm.errors.has("matricula"),
-                "is-valid": this.matriculasIsValid()
-              },
-              attrs: {
-                name: "matricula",
-                mask: "111111",
-                placeholder: "Somente números",
-                disabled: ""
-              },
-              model: {
-                value: _vm.matricula,
-                callback: function($$v) {
-                  _vm.matricula = $$v
-                },
-                expression: "matricula"
-              }
-            }),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(_vm.errors.first("matricula")))])
-          ],
-          1
-        )
->>>>>>> 8eb257164629e9a9d3da1f9f3f7598fbddbde2bc
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col col-12 col-md-4" }, [
@@ -109373,8 +109181,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\paulo\Documents\digital-valley-psico\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\paulo\Documents\digital-valley-psico\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /usr/src/app/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /usr/src/app/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

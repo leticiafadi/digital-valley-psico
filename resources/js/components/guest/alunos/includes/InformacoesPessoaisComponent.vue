@@ -9,7 +9,8 @@
             <div class="col col-12">
                 <div class="form-group">
                     <label for="nome">Nome *</label>
-                    <input type="text" class="form-control"  :class="{'is-invalid' : errors.has('nome'), 'is-valid': this.validaNome()}" id="nome" placeholder="Nome completo" name="nome" v-bind:value="nome"  v-on:change="()=>{return false}"/>
+                    <h6 class="is-valid form-control">{{nome}}</h6>
+                    <input type="hidden" class="form-control"  :class="{'is-invalid' : errors.has('nome'), 'is-valid': this.validaNome()}" id="nome" placeholder="Nome completo" name="nome" v-bind:value="nome"/>
                     
                     <span>{{errors.first('nome')}}</span>
 
@@ -23,11 +24,11 @@
             <label for="">Gênero *</label>
                 <div class="form-group" :class="{'is-invalid' : errors.has('genero'), 'is-valid': this.validaGenero()}">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genero" id="genero-masculino" value="m" v-model="genero" required checked>
-                        <label class="form-check-label" for="genero-masculino">Masculino</label>
+                        <input class="form-check-input" type="radio" name="genero" id="genero-masculino" value="m"  v-model="genero" required :checked="true">
+                        <label class="form-check-label" for="genero-masculino" >Masculino</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genero" id="genero-feminino" value="f" v-model="genero" required>
+                        <input class="form-check-input" type="radio" name="genero" id="genero-feminino" value="f" v-model="genero">
                         <label class="form-check-label" for="genero-feminino">Feminino</label>
                     </div> 
 
@@ -37,9 +38,9 @@
             <div class="col col-9">
                 <div class="form-group">
                     <label for="nascimento">Data de nascimento *</label>
-                    <datetime v-model="dataNascimento" format="dd/MM/yyyy" :class="{'is-invalid' : errors.has('dataNascimento'), 'is-valid': this.validaData()}" input-class="form-control" name="dataNascimento"></datetime> 
+                    <datetime v-model="dataNascimento" format="dd/MM/yyyy" input-class="form-control" name="data_nascimento"></datetime> 
                 </div>
-            </div>
+            </div>  
         </div>    
    
         <div class="row">
@@ -75,7 +76,7 @@
             return {
                 nome: '',
                 dataNascimento : '',
-                genero: '',
+                genero: 'm',
                 pt: ptBR, 
                 disabled_dates: {},
                 open_date : new Date()
@@ -104,14 +105,10 @@
             var hoje = new Date();
             this.open_date = hoje.getTime()-365*16*dia
 
-            this.disabled_dates = {
-                from: new Date(this.open_date),
-                to: new Date(hoje.getTime()-365*120*dia),
-            }
 
             this.nome           = this.old.nome;
-            this.genero         = this.old.genero;
-            this.dataNascimento = this.old.data_nascimento;
+            this.genero         = this.old.genero ? this.old.genero : 'm';
+
         }
     }
  </script>

@@ -9,8 +9,6 @@
                             <i class="fas fa-fw fa-user-graduate"></i>
                                 <span>Visualizar alunos</span>
                             </div>
-<<<<<<< HEAD
-=======
                             <!--
                             <div class="card-header">
                                 <ul class="nav nav-tabs card-header-tabs">
@@ -26,7 +24,6 @@
                                 </ul>
                             </div>
                             -->
->>>>>>> 8eb257164629e9a9d3da1f9f3f7598fbddbde2bc
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col col-12 col-md-6">
@@ -92,14 +89,9 @@
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
-    </div>
-</template>
-=======
         </div>
 </template>
 
->>>>>>> 8eb257164629e9a9d3da1f9f3f7598fbddbde2bc
 
 <script>
 import axios    from 'axios';
@@ -146,9 +138,4 @@ export default {
         this.carregaAlunos();
     }    
 }
-<<<<<<< HEAD
 </script>
-=======
-</script>
-
->>>>>>> 8eb257164629e9a9d3da1f9f3f7598fbddbde2bc
