@@ -23,11 +23,11 @@ class HomeController extends Controller
     }
 
     public function mostrarPaginaGerenciarPerfil(){
-        return view('aluno.gerenciarPerfil');
+        return view('aluno.gerenciarPerfil',['base_url' => config('app.url')]);
     }
 
     public function getAluno(Request $request,$id){
-        return response($this->Buscar($id),200)->header('Content-Type','text/json');
+        return response($this->BuscarInfo($id),200)->header('Content-Type','text/json');
     }
 
 }
