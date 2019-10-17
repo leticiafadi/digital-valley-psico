@@ -15,7 +15,7 @@
 
                         <situacao-programa> </situacao-programa>-->
 
-                    <div class="card-body">
+                    <!--<div class="card-body">
                         <div class="row">
                             <div class="col col-12">
                                 <div class="fa-pull-right">
@@ -25,7 +25,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>

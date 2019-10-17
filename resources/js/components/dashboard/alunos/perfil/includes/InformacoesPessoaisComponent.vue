@@ -1,24 +1,24 @@
 <template>
     <div class="card-body">
         <div class="row">
-            <div class="col col-12">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <h2>Informações pessoais</h2>
             </div>
         </div>
         <div class="row">
-            <div class="col col-4">
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="dataNascimento">Data de nascimento</label>
                     <input type="text" class="form-control" name="dataNascimento" v-model="dataNascimento" disabled="true">
                 </div>
             </div>
-            <div class="col col-4">
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="cidadeNatal">Cidade natal</label>
                     <input type="text" class="form-control" name="cidadeNatal" v-model="cidadeNatal" disabled="true">
                 </div>
             </div>
-            <div class="col col-4">
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="estadoNatal">Estado natal</label>
                     <input type="text" class="form-control" name="estadoNatal" v-model="estadoNatal" disabled="true">
@@ -46,13 +46,13 @@
             </div>
         </div>-->
         <div class="row">
-            <div class="col col-6">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="endereco">Endereço</label>
                     <input type="text" class="form-control" v-model="endereco" name="endereco">
                 </div>
             </div>
-            <div class="col col-6">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="text" class="form-control" v-model="email" name="email">
@@ -60,13 +60,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="col col-6">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="telefoneCelular">Telefone celular</label>
                     <input type="text" class="form-control" v-model="telefoneCelular" name="telefoneCelular">
                 </div>
             </div>
-            <div class="col col-6">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="telefoneResidencial">Telefone residencial</label>
                     <input type="text" class="form-control" v-model="telefoneResidencial" name="telefoneResidencial">

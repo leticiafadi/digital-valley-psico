@@ -17,27 +17,47 @@
                             </div>
                         </div>
                         <div class="row mt-1">
-                            <div class="col col-4">
-                                <label for="motivoAtendimento">Selecione o psicólogo para o atendimento</label>
-                                <select name="id_curso" class="form-control">
-                                        <option value="">Selecione um psicólogo</option>
-                                        <!--<option v-for="psicologo in p" v-bind:value="curso.id">{{curso.nome}}</option>-->
-                                </select>    
-                            </div>
-                            <div class="col col-4">
+                            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                                 <div class="form-group">
-                                    <label for="data-atendimento">Selecione a data</label>
+                                    <label for="motivoAtendimento">Psicólogo responsável</label>
+                                    <select name="id_curso" class="form-control">
+                                            <option value="">Selecione um psicólogo</option>
+                                            <!--<option v-for="psicologo in p" v-bind:value="curso.id">{{curso.nome}}</option>-->
+                                    </select>    
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label for="data-atendimento">Data de atendimento</label>
                                     <!--<vue-calendar id="data-atendimento" format="dd/MM/yyyy" :language="pt" placeholder="Selecione a data do atendimento" v-model="dataAtendimento" ></vue-calendar>-->
                                     <datetime id="data-atendimento" v-model="dataAtendimento" format="dd/MM/yyyy" input-class="form-control" placeholder="Selecione a data do atendimento"></datetime>
                                 </div>
                             </div>
-                            <div class="col col-4">
+                            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                                 <div class="form-group">
-                                    <label for="horarios-atendimento">Selecione o horário de atendimento</label>
+                                    <label for="horarios-atendimento">Horário de atendimento</label>
                                     <select name="" id="" class="form-control">
                                         <option value="">Selecione o horário de atendimento</option>
                                         <option value="" v-for="horario in horariosDisponiveis">{{horario}}</option>
                                     </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-1">
+                            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label for="horarios-atendimento">Encaminhado por</label>
+                                    <select name="formaEncaminhamento" id="" class="form-control" v-model="motivoEncaminhamento">
+                                        <option @click="limpaMotivo()" value="">Selecione a forma de encaminhamento</option>
+                                        <option @click="limpaMotivo()" value="espontaneo">Espontânea vontade</option>
+                                        <option value="recomendado">Outro motivo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12" v-show="motivoEncaminhamento == 'recomendado'">
+                                <div class="form-group">
+                                    <label for="motivoEncaminhamento">Descreva quem o encaminhou</label>
+                                    <input type="text" name="motivoEncaminhamento" placeholder="EX: encaminhado pela psicóloga" v-model="textMotivoEncaminhamento">
                                 </div>
                             </div>
                         </div>
@@ -69,12 +89,17 @@
             return{
                 pt:ptBR,
                 dataAtendimento: '',
-                horariosDisponiveis: []
+                horariosDisponiveis: [],
+                motivoEncaminhamento: '',
+                textMotivoEncaminhamento: ''
             }
         },
         methods:{
             carregaHorarios: function(){
                 this.horariosDisponiveis = [1,2,3];
+            },
+            limpaMotivo: function(){
+                this.textMotivoEncaminhamento = '';
             }
         },
         mounted(){
