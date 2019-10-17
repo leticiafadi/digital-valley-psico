@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header">
                         <i class="fas fa-fw fa-calendar"></i>
-                        Marcar atendimento 
+                        Gerenciar atendimentos 
                     </div>
                     <div class="card-body">
                         <strong>Aqui que sera inserido os atendimentos dos alunos...</strong>

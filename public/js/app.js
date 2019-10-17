@@ -2770,6 +2770,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2781,12 +2801,17 @@ __webpack_require__.r(__webpack_exports__);
     return {
       pt: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_1__["ptBR"],
       dataAtendimento: '',
-      horariosDisponiveis: []
+      horariosDisponiveis: [],
+      motivoEncaminhamento: '',
+      textMotivoEncaminhamento: ''
     };
   },
   methods: {
     carregaHorarios: function carregaHorarios() {
       this.horariosDisponiveis = [1, 2, 3];
+    },
+    limpaMotivo: function limpaMotivo() {
+      this.textMotivoEncaminhamento = '';
     }
   },
   mounted: function mounted() {
@@ -87484,7 +87509,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "card-header" }, [
               _c("i", { staticClass: "fas fa-fw fa-calendar" }),
               _vm._v(
-                "\n                    Marcar atendimento \n                "
+                "\n                    Gerenciar atendimentos \n                "
               )
             ]),
             _vm._v(" "),
@@ -87532,62 +87557,193 @@ var render = function() {
             _c("div", { staticClass: "row mt-1" }, [
               _vm._m(2),
               _vm._v(" "),
-              _c("div", { staticClass: "col col-4" }, [
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("label", { attrs: { for: "data-atendimento" } }, [
-                      _vm._v("Selecione a data")
-                    ]),
-                    _vm._v(" "),
-                    _c("datetime", {
-                      attrs: {
-                        id: "data-atendimento",
-                        format: "dd/MM/yyyy",
-                        "input-class": "form-control",
-                        placeholder: "Selecione a data do atendimento"
-                      },
-                      model: {
-                        value: _vm.dataAtendimento,
-                        callback: function($$v) {
-                          _vm.dataAtendimento = $$v
-                        },
-                        expression: "dataAtendimento"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col col-4" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "horarios-atendimento" } }, [
-                    _vm._v("Selecione o horário de atendimento")
-                  ]),
-                  _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" },
+                [
                   _c(
-                    "select",
-                    {
-                      staticClass: "form-control",
-                      attrs: { name: "", id: "" }
-                    },
+                    "div",
+                    { staticClass: "form-group" },
                     [
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("Selecione o horário de atendimento")
+                      _c("label", { attrs: { for: "data-atendimento" } }, [
+                        _vm._v("Data de atendimento")
                       ]),
                       _vm._v(" "),
-                      _vm._l(_vm.horariosDisponiveis, function(horario) {
-                        return _c("option", { attrs: { value: "" } }, [
-                          _vm._v(_vm._s(horario))
-                        ])
+                      _c("datetime", {
+                        attrs: {
+                          id: "data-atendimento",
+                          format: "dd/MM/yyyy",
+                          "input-class": "form-control",
+                          placeholder: "Selecione a data do atendimento"
+                        },
+                        model: {
+                          value: _vm.dataAtendimento,
+                          callback: function($$v) {
+                            _vm.dataAtendimento = $$v
+                          },
+                          expression: "dataAtendimento"
+                        }
                       })
                     ],
-                    2
+                    1
                   )
-                ])
-              ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "horarios-atendimento" } }, [
+                      _vm._v("Horário de atendimento")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        staticClass: "form-control",
+                        attrs: { name: "", id: "" }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Selecione o horário de atendimento")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.horariosDisponiveis, function(horario) {
+                          return _c("option", { attrs: { value: "" } }, [
+                            _vm._v(_vm._s(horario))
+                          ])
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row mt-1" }, [
+              _c(
+                "div",
+                { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "horarios-atendimento" } }, [
+                      _vm._v("Encaminhado por")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.motivoEncaminhamento,
+                            expression: "motivoEncaminhamento"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { name: "formaEncaminhamento", id: "" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.motivoEncaminhamento = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "" },
+                            on: {
+                              click: function($event) {
+                                return _vm.limpaMotivo()
+                              }
+                            }
+                          },
+                          [_vm._v("Selecione a forma de encaminhamento")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "espontaneo" },
+                            on: {
+                              click: function($event) {
+                                return _vm.limpaMotivo()
+                              }
+                            }
+                          },
+                          [_vm._v("Espontânea vontade")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "recomendado" } }, [
+                          _vm._v("Outro motivo")
+                        ])
+                      ]
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.motivoEncaminhamento == "recomendado",
+                      expression: "motivoEncaminhamento == 'recomendado'"
+                    }
+                  ],
+                  staticClass: "col-xl-8 col-lg-8 col-md-12 col-sm-12"
+                },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "motivoEncaminhamento" } }, [
+                      _vm._v("Descreva quem o encaminhou")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.textMotivoEncaminhamento,
+                          expression: "textMotivoEncaminhamento"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "motivoEncaminhamento",
+                        placeholder: "EX: encaminhado pela psicóloga"
+                      },
+                      domProps: { value: _vm.textMotivoEncaminhamento },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.textMotivoEncaminhamento = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]
+              )
             ]),
             _vm._v(" "),
             _vm._m(3)
@@ -87634,20 +87790,22 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col col-4" }, [
-      _c("label", { attrs: { for: "motivoAtendimento" } }, [
-        _vm._v("Selecione o psicólogo para o atendimento")
-      ]),
-      _vm._v(" "),
-      _c(
-        "select",
-        { staticClass: "form-control", attrs: { name: "id_curso" } },
-        [
-          _c("option", { attrs: { value: "" } }, [
-            _vm._v("Selecione um psicólogo")
-          ])
-        ]
-      )
+    return _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "motivoAtendimento" } }, [
+          _vm._v("Psicólogo responsável")
+        ]),
+        _vm._v(" "),
+        _c(
+          "select",
+          { staticClass: "form-control", attrs: { name: "id_curso" } },
+          [
+            _c("option", { attrs: { value: "" } }, [
+              _vm._v("Selecione um psicólogo")
+            ])
+          ]
+        )
+      ])
     ])
   },
   function() {
@@ -87706,36 +87864,7 @@ var render = function() {
             _vm._v(" "),
             _c("informacoes-pessoais"),
             _vm._v(" "),
-            _c("informacoes-academicas"),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col col-12" }, [
-                  _c("div", { staticClass: "fa-pull-right" }, [
-                    _c(
-                      "button",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: this.estadoCivil != "",
-                            expression: "this.estadoCivil != ''"
-                          }
-                        ],
-                        staticClass: "btn btn-primary btn-lg",
-                        attrs: { type: "submit" }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                        Salvar\n                                "
-                        )
-                      ]
-                    )
-                  ])
-                ])
-              ])
-            ])
+            _c("informacoes-academicas")
           ],
           1
         )
@@ -87779,7 +87908,7 @@ var render = function() {
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col col-4" }, [
+      _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "matricula" } }, [_vm._v("Matricula")]),
           _vm._v(" "),
@@ -87807,7 +87936,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col col-4" }, [
+      _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "curso" } }, [_vm._v("Curso atual")]),
           _vm._v(" "),
@@ -87835,7 +87964,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col col-4" }, [
+      _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "semestreIngresso" } }, [
             _vm._v("Semestre de ingresso")
@@ -87873,7 +88002,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col col-12" }, [
+      _c("div", { staticClass: "col-xl-12 col-lg-12 col-md-12 col-sm-12" }, [
         _c("h2", [_vm._v("Informações acadêmicas")])
       ])
     ])
@@ -87904,7 +88033,7 @@ var render = function() {
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col col-4" }, [
+      _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "dataNascimento" } }, [
             _vm._v("Data de nascimento")
@@ -87934,7 +88063,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col col-4" }, [
+      _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "cidadeNatal" } }, [
             _vm._v("Cidade natal")
@@ -87964,7 +88093,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col col-4" }, [
+      _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "estadoNatal" } }, [
             _vm._v("Estado natal")
@@ -87996,7 +88125,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col col-6" }, [
+      _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 col-sm-12" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "endereco" } }, [_vm._v("Endereço")]),
           _vm._v(" "),
@@ -88024,7 +88153,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col col-6" }, [
+      _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 col-sm-12" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
           _vm._v(" "),
@@ -88054,7 +88183,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col col-6" }, [
+      _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 col-sm-12" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "telefoneCelular" } }, [
             _vm._v("Telefone celular")
@@ -88084,7 +88213,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col col-6" }, [
+      _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 col-sm-12" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "telefoneResidencial" } }, [
             _vm._v("Telefone residencial")
@@ -88122,7 +88251,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col col-12" }, [
+      _c("div", { staticClass: "col-xl-12 col-lg-12 col-md-12 col-sm-12" }, [
         _c("h2", [_vm._v("Informações pessoais")])
       ])
     ])
