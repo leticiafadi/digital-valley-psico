@@ -2700,6 +2700,101 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/alunos/atendimento/GerenciarAtendimentosComponent.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/alunos/atendimento/GerenciarAtendimentosComponent.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_snotify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-snotify */ "./node_modules/vue-snotify/vue-snotify.esm.js");
+/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    baseUrl: String
+  },
+  components: {
+    axios: axios__WEBPACK_IMPORTED_MODULE_0___default.a,
+    Snotify: vue_snotify__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  data: function data() {
+    return {
+      atendimento_selecionado: -1,
+      indexAtendimentoSelecionado: -1,
+      atendimentos: []
+    };
+  },
+  methods: {
+    cancelarAtendimento: function cancelarAtendimento() {},
+    mostrarDetalhes: function mostrarDetalhes() {},
+    carregaAtendimentos: function carregaAtendimentos() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get().then(function (response) {
+        _this.atendimentos = response.data;
+      });
+    },
+    isValid: function isValid() {}
+  },
+  mounted: function mounted() {
+    this.carregaAtendimentos();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/alunos/atendimento/MarcarAtendimentoComponent.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/alunos/atendimento/MarcarAtendimentoComponent.vue?vue&type=script&lang=js& ***!
@@ -87495,33 +87590,99 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col col-12" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _c("i", { staticClass: "fas fa-fw fa-calendar" }),
-              _vm._v(
-                "\n                    Gerenciar atendimentos \n                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("strong", [
-                _vm._v("Aqui que sera inserido os atendimentos dos alunos...")
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col col-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("i", { staticClass: "fas fa-fw fa-home" }),
+          _vm._v(
+            "\n\t\t\t            Gerenciar atendimentos\n                    "
+          ),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table table-bordered" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("tbody", [
+                  _c("tr", [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary fa-pull-right",
+                          on: {
+                            click: function($event) {
+                              return _vm.mostrarDetalhes()
+                            }
+                          }
+                        },
+                        [_vm._v("Ver mais")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { disabled: !this.isValid() },
+                          on: {
+                            click: function($event) {
+                              return _vm.cancelarAtendimento()
+                            }
+                          }
+                        },
+                        [_vm._v("Cancelar")]
+                      )
+                    ])
+                  ])
+                ])
               ])
             ])
           ])
         ])
       ])
     ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [
+          _vm._v("\n\t\t\t\t\t\t\t\t\t\t\tAtendimento\n\t\t\t\t\t\t\t\t\t\t")
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _vm._v(
+            "\n\t\t\t\t\t\t\t\t\t\t\tData & horário do Atendimento\n\t\t\t\t\t\t\t\t\t\t"
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _vm._v("\n\t\t\t\t\t\t\t\t\t\t\tOpções\n\t\t\t\t\t\t\t\t\t\t")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("strong", [_vm._v("Adicionar as informações do Atendimento")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("strong", [_vm._v("Adicionar a data do Atendimento")])])
   }
 ]
 render._withStripped = true
@@ -109333,15 +109494,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _GerenciarAtendimentosComponent_vue_vue_type_template_id_da4dcc14___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GerenciarAtendimentosComponent.vue?vue&type=template&id=da4dcc14& */ "./resources/js/components/dashboard/alunos/atendimento/GerenciarAtendimentosComponent.vue?vue&type=template&id=da4dcc14&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _GerenciarAtendimentosComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GerenciarAtendimentosComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/dashboard/alunos/atendimento/GerenciarAtendimentosComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _GerenciarAtendimentosComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _GerenciarAtendimentosComponent_vue_vue_type_template_id_da4dcc14___WEBPACK_IMPORTED_MODULE_0__["render"],
   _GerenciarAtendimentosComponent_vue_vue_type_template_id_da4dcc14___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -109355,6 +109518,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/components/dashboard/alunos/atendimento/GerenciarAtendimentosComponent.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/dashboard/alunos/atendimento/GerenciarAtendimentosComponent.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************!*\
+  !*** ./resources/js/components/dashboard/alunos/atendimento/GerenciarAtendimentosComponent.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GerenciarAtendimentosComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./GerenciarAtendimentosComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/alunos/atendimento/GerenciarAtendimentosComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GerenciarAtendimentosComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 

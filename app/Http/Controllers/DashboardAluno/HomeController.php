@@ -4,9 +4,12 @@ namespace App\Http\Controllers\DashboardAluno;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\BuscarAluno;
 
 class HomeController extends Controller
 {
+    use BuscarAluno;
+
     public function __construct(){
         $this->middleware('aluno');
     }
@@ -21,6 +24,10 @@ class HomeController extends Controller
 
     public function mostrarPaginaGerenciarPerfil(){
         return view('aluno.gerenciarPerfil');
+    }
+
+    public function getAluno(Request $request,$id){
+        return response($this->Buscar($id),200)->header('Content-Type','text/json');
     }
 
 }

@@ -26,7 +26,7 @@ class RegistrarFuncionarioRequest extends FormRequest
     {
         return [
             //valida o endereco
-            'endereco'              => 'required|string|min:10|max:63',
+            'endereco'              => 'required|string|min:5|max:63',
             'numero'                => 'required|numeric|min:1',
             'bairro'                => 'required|string|min:5|max:31',
             'id_cidade'             => 'required|exists:cidade,id',
@@ -49,10 +49,21 @@ class RegistrarFuncionarioRequest extends FormRequest
 
     public function messages(){
         return [
-            'email.required' => "O campo Email é obrigatório.",
-            'email.unique'   => "O campo Email deve ser único, o inserido já pertence a outro usuário.",
-            'siape.unique'   => "O campo Siape deve ser único, o inserido já pertence a outro usuário.",
-            'crp.unique'     => "O campo CRP deve ser único, o inserido já pertence a outro usuário."
+            'email.required'     => "O campo Email é obrigatório.",
+            'email.unique'       => "O campo Email deve ser único, o inserido já pertence a outro usuário.",
+            'siape.unique'       => "O campo Siape deve ser único, o inserido já pertence a outro usuário.",
+            'crp.unique'         => "O campo CRP deve ser único, o inserido já pertence a outro usuário.",
+            'senha.required'     => "O campo Senha é obrigatório.",
+            'senha.same'         => "Senha incompatível.",
+            'repete_senha'       => "O campo Repete Senha é obrigatório.",
+            'telefone_celular.unique'   => "O campo Telefone Celular deve ser único, o inserido já pertence a outro usuário.",
+            'telefone_celular.required' => "O campo Telefone Celular é obrigatório.",
+            'endereco.required'  => "O campo Endereço é obrigatório.",
+            'numero.required'    => "O campo Numero é obrigatório.",
+            'bairro.required'    => "O campo Bairro é obrigatório.",
+            'id_cidade.required' => "O campo Cidade é obrigatório.",
+            'id_cidade.exists'   => "Essa cidade não existe.",
+            'genero.required'    => "O campo Genero é obrigatório."
         ];
     }
 }
