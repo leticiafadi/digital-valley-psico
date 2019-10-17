@@ -2902,12 +2902,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuejs-datepicker */ "./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js");
-/* harmony import */ var _includes_InformacoesPessoaisComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./includes/InformacoesPessoaisComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/includes/InformacoesPessoaisComponent.vue");
-/* harmony import */ var _includes_InformacoesAcademicasComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./includes/InformacoesAcademicasComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/includes/InformacoesAcademicasComponent.vue");
-/* harmony import */ var _includes_VinculoUfcComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./includes/VinculoUfcComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/includes/VinculoUfcComponent.vue");
-/* harmony import */ var _includes_SituacaoProgramaComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./includes/SituacaoProgramaComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/includes/SituacaoProgramaComponent.vue");
-/* harmony import */ var vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuejs-datepicker/dist/locale */ "./node_modules/vuejs-datepicker/dist/locale/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuejs_datepicker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuejs-datepicker */ "./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js");
+/* harmony import */ var _includes_InformacoesPessoaisComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./includes/InformacoesPessoaisComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/includes/InformacoesPessoaisComponent.vue");
+/* harmony import */ var _includes_InformacoesAcademicasComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./includes/InformacoesAcademicasComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/includes/InformacoesAcademicasComponent.vue");
+/* harmony import */ var _includes_VinculoUfcComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./includes/VinculoUfcComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/includes/VinculoUfcComponent.vue");
+/* harmony import */ var _includes_SituacaoProgramaComponent_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./includes/SituacaoProgramaComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/includes/SituacaoProgramaComponent.vue");
+/* harmony import */ var vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuejs-datepicker/dist/locale */ "./node_modules/vuejs-datepicker/dist/locale/index.js");
 //
 //
 //
@@ -2942,7 +2944,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
+
 
 
 
@@ -2951,17 +2953,35 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    VueCalendar: vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"],
-    ptBR: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_5__["ptBR"],
-    InformacoesPessoais: _includes_InformacoesPessoaisComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    InformacoesAcademicas: _includes_InformacoesAcademicasComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    VinculoUfc: _includes_VinculoUfcComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    SituacaoPrograma: _includes_SituacaoProgramaComponent_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+    axios: axios__WEBPACK_IMPORTED_MODULE_0___default.a,
+    VueCalendar: vuejs_datepicker__WEBPACK_IMPORTED_MODULE_1__["default"],
+    ptBR: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_6__["ptBR"],
+    InformacoesPessoais: _includes_InformacoesPessoaisComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    InformacoesAcademicas: _includes_InformacoesAcademicasComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    VinculoUfc: _includes_VinculoUfcComponent_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    SituacaoPrograma: _includes_SituacaoProgramaComponent_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+  },
+  props: {
+    base_url: String,
+    id_aluno: Number
   },
   data: function data() {
-    return {};
+    return {
+      aluno: []
+    };
   },
-  methods: {}
+  methods: {
+    carregaAluno: function carregaAluno() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.base_url + '/info/' + this.id_aluno).then(function (response) {
+        _this.aluno = response.data;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.carregaAluno();
+  }
 });
 
 /***/ }),
@@ -3041,6 +3061,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3048,9 +3069,12 @@ __webpack_require__.r(__webpack_exports__);
     VueCalendar: vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"],
     ptBR: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_1__["ptBR"]
   },
+  props: {
+    aluno: Array
+  },
   data: function data() {
     return {
-      matricula: 0,
+      matricula: '',
       turnoCurso: '',
       formacaoEscolar: '',
       cursoAtual: '',
@@ -3059,6 +3083,16 @@ __webpack_require__.r(__webpack_exports__);
       formaIngresso: '',
       cursosConcluidos: ''
     };
+  },
+  methods: {
+    carregaInfo: function carregaInfo() {
+      this.matricula = this.aluno.matricula;
+      this.cursoAtual = this.aluno.curso;
+      this.semestreIngresso = this.aluno.semestre_matricula;
+    }
+  },
+  mounted: function mounted() {
+    this.carregaInfo();
   }
 });
 
@@ -3159,6 +3193,9 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     VueCalendar: vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"],
     ptBR: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_1__["ptBR"]
+  },
+  props: {
+    aluno: Array
   },
   data: function data() {
     return {
@@ -87874,9 +87911,9 @@ var render = function() {
           [
             _vm._m(0),
             _vm._v(" "),
-            _c("informacoes-pessoais"),
+            _c("informacoes-pessoais", { attrs: { aluno: this.aluno } }),
             _vm._v(" "),
-            _c("informacoes-academicas"),
+            _c("informacoes-academicas", { attrs: { aluno: this.aluno } }),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
               _c("div", { staticClass: "row" }, [
@@ -88033,7 +88070,8 @@ var render = function() {
             }
           })
         ])
-      ])
+      ]),
+      _vm._v("\n        " + _vm._s(this.aluno.matricula) + "\n    ")
     ])
   ])
 }

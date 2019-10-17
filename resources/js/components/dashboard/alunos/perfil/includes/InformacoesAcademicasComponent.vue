@@ -36,6 +36,7 @@
                     <input type="text" class="form-control" v-model="semestreIngresso" name="semestreIngresso" disabled="true">
                 </div>
             </div>
+            {{this.aluno.matricula}}
         </div>
         <!--<div class="row">
             <div class="col col-4">
@@ -70,9 +71,12 @@ export default {
             VueCalendar,
             ptBR
     },
+    props:{
+        aluno: Array
+    },
     data: function(){
         return {
-            matricula: 0,
+            matricula: '',
             turnoCurso: '',
             formacaoEscolar: '',
             cursoAtual: '',
@@ -81,6 +85,17 @@ export default {
             formaIngresso: '',
             cursosConcluidos: ''
         }
+    },
+    methods:{
+        carregaInfo: function(){
+            this.matricula = this.aluno.matricula;
+            this.cursoAtual = this.aluno.curso;
+            this.semestreIngresso = this.aluno.semestre_matricula;
+        }
+
+    },
+    mounted(){
+        this.carregaInfo();
     }
 }
 </script>

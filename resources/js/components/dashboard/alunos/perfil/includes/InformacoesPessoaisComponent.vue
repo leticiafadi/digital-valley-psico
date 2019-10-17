@@ -84,6 +84,9 @@ export default {
             VueCalendar,
             ptBR
     },
+    props:{
+        aluno: Array
+    },
     data: function(){
         return {
             nomeCompleto: '',

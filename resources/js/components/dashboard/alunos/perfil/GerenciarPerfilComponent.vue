@@ -8,9 +8,8 @@
                         Gerenciar perfil 
                     </div>
 
-                        <informacoes-pessoais> </informacoes-pessoais>
-
-                        <informacoes-academicas> </informacoes-academicas>
+                        <informacoes-pessoais   :aluno="this.aluno"> </informacoes-pessoais>
+                        <informacoes-academicas :aluno="this.aluno"> </informacoes-academicas>
 
                        <!-- <vinculo-ufc> </vinculo-ufc>
 
@@ -34,14 +33,17 @@
 </template>
 
 <script>
+    import axios    from 'axios';
     import VueCalendar  from 'vuejs-datepicker' 
     import InformacoesPessoais from './includes/InformacoesPessoaisComponent.vue'
     import InformacoesAcademicas from './includes/InformacoesAcademicasComponent.vue'
     import VinculoUfc from './includes/VinculoUfcComponent.vue'
     import SituacaoPrograma from './includes/SituacaoProgramaComponent.vue'
     import {en, ptBR}   from 'vuejs-datepicker/dist/locale'
+    
     export default {
         components:{
+            axios,
             VueCalendar,
             ptBR,
             InformacoesPessoais,
@@ -49,13 +51,24 @@
             VinculoUfc,
             SituacaoPrograma
         },
+        props:{
+            base_url: String,
+            id_aluno: Number,
+        },
         data: function(){
             return{
-                
+                aluno: []
             }
         },
         methods:{
-            
+            carregaAluno: function(){
+                axios.get( this.base_url + '/info/'+this.id_aluno).then(response=>{
+                    this.aluno = response.data;
+                });
+            }
+        },
+        mounted(){
+            this.carregaAluno();
         }
     }
 </script>
