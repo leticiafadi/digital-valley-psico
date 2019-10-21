@@ -1,4 +1,7 @@
-<ul class="sidebar navbar-nav">
+
+
+
+<ul class="sidebar navbar-nav mynav">
     <li class="nav-item">
 		<a class="nav-link" href="{{ route('home') }}">
 			<i class="fas fa-fw fa-home"></i>
