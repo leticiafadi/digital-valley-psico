@@ -87561,27 +87561,27 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
+    return _c("thead", { staticClass: "mynav" }, [
       _c("tr", [
-        _c("th", [
+        _c("th", { staticClass: "corLinhaTabela" }, [
           _vm._v(
             "\n\t\t\t\t\t\t\t\t\t\t    \t    Nome\n\t\t\t\t\t\t\t\t\t\t        "
           )
         ]),
         _vm._v(" "),
-        _c("th", [
+        _c("th", { staticClass: "corLinhaTabela" }, [
           _vm._v(
             "\n\t\t\t\t\t\t\t\t\t\t\t        Matricula\n\t\t\t\t\t\t\t\t\t\t        "
           )
         ]),
         _vm._v(" "),
-        _c("th", [
+        _c("th", { staticClass: "corLinhaTabela" }, [
           _vm._v(
             "\n\t\t\t\t\t\t\t\t\t\t\t        Curso\n                                                "
           )
         ]),
         _vm._v(" "),
-        _c("th", [
+        _c("th", { staticClass: "corLinhaTabela" }, [
           _vm._v(
             "\n                                                    Opções\n                                                "
           )
@@ -87596,7 +87596,10 @@ var staticRenderFns = [
     return _c("td", [
       _c(
         "a",
-        { staticClass: "btn btn-primary fa-pull-right", attrs: { href: "" } },
+        {
+          staticClass: "btn btn-primary fa-pull-right mynav corLinhaTabela",
+          attrs: { href: "" }
+        },
         [_vm._v("Ver detalhes")]
       )
     ])
@@ -87657,7 +87660,7 @@ var render = function() {
                       _c(
                         "button",
                         {
-                          staticClass: "btn btn-danger",
+                          staticClass: "btn btn-danger fa-pull-left",
                           attrs: { disabled: !this.isValid() },
                           on: {
                             click: function($event) {
@@ -87692,19 +87695,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
+    return _c("thead", { staticClass: "mynav" }, [
       _c("tr", [
-        _c("th", [
+        _c("th", { staticClass: "corLinhaTabela" }, [
           _vm._v("\n\t\t\t\t\t\t\t\t\t\t\tAtendimento\n\t\t\t\t\t\t\t\t\t\t")
         ]),
         _vm._v(" "),
-        _c("th", [
+        _c("th", { staticClass: "corLinhaTabela" }, [
           _vm._v(
             "\n\t\t\t\t\t\t\t\t\t\t\tData & horário do Atendimento\n\t\t\t\t\t\t\t\t\t\t"
           )
         ]),
         _vm._v(" "),
-        _c("th", [
+        _c("th", { staticClass: "corLinhaTabela" }, [
           _vm._v("\n\t\t\t\t\t\t\t\t\t\t\tOpções\n\t\t\t\t\t\t\t\t\t\t")
         ])
       ])
@@ -111420,8 +111423,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Maria Clara\Documents\GitHub\digital-valley-psico\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Maria Clara\Documents\GitHub\digital-valley-psico\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Cliente\Documents\GitHub\digital-valley-psico\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Cliente\Documents\GitHub\digital-valley-psico\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

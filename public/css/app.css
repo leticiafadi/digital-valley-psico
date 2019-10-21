@@ -917,6 +917,10 @@
     opacity: 0.8;
    
 }
+.corLinhaTabela{
+    color: white;
+}
+
 
 .mybtn{
     background: #ffffff !important;
@@ -928,6 +932,7 @@
 
 
     
+
 
 
 @charset "UTF-8";

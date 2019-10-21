@@ -10,15 +10,15 @@
                     <div class="card-body">
 						<div class="table-responsive">
 							<table class="table table-bordered" >
-								<thead>
+								<thead class="mynav">
 									<tr>
-										<th>
+										<th class="corLinhaTabela">
 											Atendimento
 										</th>
-										<th>
+										<th class="corLinhaTabela">
 											Data & horário do Atendimento
 										</th>
-										<th>
+										<th class="corLinhaTabela">
 											Opções
 										</th>
 									</tr>
@@ -33,7 +33,7 @@
                                         </td>
                                         <td>
                                             <button class="btn btn-primary fa-pull-right" @click="mostrarDetalhes()">Ver mais</button>
-											<button @click="cancelarAtendimento()" class="btn btn-danger" :disabled="!this.isValid()" >Cancelar</button>
+											<button @click="cancelarAtendimento()" class="btn btn-danger fa-pull-left" :disabled="!this.isValid()" >Cancelar</button>
                                         </td>
 									</tr>
 								</tbody>
