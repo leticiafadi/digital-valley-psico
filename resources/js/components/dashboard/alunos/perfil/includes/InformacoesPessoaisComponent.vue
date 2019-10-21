@@ -6,22 +6,30 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label for="nomeCompleto">Nome Completo</label>
+                    <input type="text" class="form-control" name="nomeCompleto" v-model="this.aluno.nome_completo" disabled="true">
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="dataNascimento">Data de nascimento</label>
-                    <input type="text" class="form-control" name="dataNascimento" v-model="dataNascimento" disabled="true">
+                    <input type="text" class="form-control" name="dataNascimento" v-model="this.aluno.data_nascimento" disabled="true">
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="cidadeNatal">Cidade natal</label>
-                    <input type="text" class="form-control" name="cidadeNatal" v-model="cidadeNatal" disabled="true">
+                    <input type="text" class="form-control" name="cidadeNatal" v-model="this.aluno.endereco.cidade" disabled="true">
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="estadoNatal">Estado natal</label>
-                    <input type="text" class="form-control" name="estadoNatal" v-model="estadoNatal" disabled="true">
+                    <input type="text" class="form-control" name="estadoNatal" v-model="this.aluno.endereco.estado" disabled="true">
                 </div>
             </div>    
         </div>
@@ -49,13 +57,13 @@
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="endereco">Endereço</label>
-                    <input type="text" class="form-control" v-model="endereco" name="endereco">
+                    <input type="text" class="form-control" v-model="this.aluno.endereco.rua" name="endereco">
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" v-model="email" name="email">
+                    <input type="text" class="form-control" v-model="this.aluno.contatos[0].contato" name="email">
                 </div>
             </div>
         </div>
@@ -63,16 +71,27 @@
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="telefoneCelular">Telefone celular</label>
-                    <input type="text" class="form-control" v-model="telefoneCelular" name="telefoneCelular">
+                    <input type="text" class="form-control" v-model="this.aluno.contatos[1].contato" name="telefoneCelular">
                 </div>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+            </div>            
+            <template v-if="this.aluno.contatos.indexOf(2) == -1">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="telefoneResidencial">Telefone residencial</label>
-                    <input type="text" class="form-control" v-model="telefoneResidencial" name="telefoneResidencial">
+                    <input type="text" class="form-control" name="telefoneResidencial">
                 </div>
             </div>
+            </template>
+           <template v-else>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label for="telefoneResidencial">Telefone residencial</label>
+                    <input type="text" class="form-control" v-model="this.aluno.contatos[2].contato" name="telefoneResidencial">
+                </div>
+            </div>
+            </template>
         </div>
+    
     </div>
 </template>
 
@@ -89,22 +108,11 @@ export default {
     },
     data: function(){
         return {
-            nomeCompleto: '',
-            dataNascimento: '',
-            cidadeNatal: '',
-            estadoNatal: '',
-            estadoCivil: '',
-            possuiFilhos: '',
-            resideCom: '',
-            endereco: '',
-            email: '',
-            telefoneCelular: '',
-            telefoneResidencial: ''
         }
     },
     methods:{
-
     }
+
 }
 </script>
 

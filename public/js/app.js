@@ -3084,7 +3084,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3096,27 +3095,9 @@ __webpack_require__.r(__webpack_exports__);
     aluno: Array
   },
   data: function data() {
-    return {
-      matricula: '',
-      turnoCurso: '',
-      formacaoEscolar: '',
-      cursoAtual: '',
-      semestreIngresso: '',
-      semestreAtual: '',
-      formaIngresso: '',
-      cursosConcluidos: ''
-    };
+    return {};
   },
-  methods: {
-    carregaInfo: function carregaInfo() {
-      this.matricula = this.aluno.matricula;
-      this.cursoAtual = this.aluno.curso;
-      this.semestreIngresso = this.aluno.semestre_matricula;
-    }
-  },
-  mounted: function mounted() {
-    this.carregaInfo();
-  }
+  methods: {}
 });
 
 /***/ }),
@@ -3210,6 +3191,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3221,19 +3221,7 @@ __webpack_require__.r(__webpack_exports__);
     aluno: Array
   },
   data: function data() {
-    return {
-      nomeCompleto: '',
-      dataNascimento: '',
-      cidadeNatal: '',
-      estadoNatal: '',
-      estadoCivil: '',
-      possuiFilhos: '',
-      resideCom: '',
-      endereco: '',
-      email: '',
-      telefoneCelular: '',
-      telefoneResidencial: ''
-    };
+    return {};
   },
   methods: {}
 });
@@ -88115,19 +88103,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.matricula,
-                expression: "matricula"
+                value: this.aluno.matricula,
+                expression: "this.aluno.matricula"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "Matricula", disabled: "true" },
-            domProps: { value: _vm.matricula },
+            domProps: { value: this.aluno.matricula },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.matricula = $event.target.value
+                _vm.$set(this.aluno, "matricula", $event.target.value)
               }
             }
           })
@@ -88143,19 +88131,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.curso,
-                expression: "curso"
+                value: this.aluno.curso,
+                expression: "this.aluno.curso"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "curso" },
-            domProps: { value: _vm.curso },
+            domProps: { value: this.aluno.curso },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.curso = $event.target.value
+                _vm.$set(this.aluno, "curso", $event.target.value)
               }
             }
           })
@@ -88173,25 +88161,24 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.semestreIngresso,
-                expression: "semestreIngresso"
+                value: this.aluno.semestre_matricula,
+                expression: "this.aluno.semestre_matricula"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "semestreIngresso", disabled: "true" },
-            domProps: { value: _vm.semestreIngresso },
+            domProps: { value: this.aluno.semestre_matricula },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.semestreIngresso = $event.target.value
+                _vm.$set(this.aluno, "semestre_matricula", $event.target.value)
               }
             }
           })
         ])
-      ]),
-      _vm._v("\n        " + _vm._s(this.aluno.matricula) + "\n    ")
+      ])
     ])
   ])
 }
@@ -88232,6 +88219,38 @@ var render = function() {
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-xl-12 col-lg-12 col-md-12 col-sm-12" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "nomeCompleto" } }, [
+            _vm._v("Nome Completo")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: this.aluno.nome_completo,
+                expression: "this.aluno.nome_completo"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "nomeCompleto", disabled: "true" },
+            domProps: { value: this.aluno.nome_completo },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(this.aluno, "nome_completo", $event.target.value)
+              }
+            }
+          })
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "dataNascimento" } }, [
@@ -88243,19 +88262,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.dataNascimento,
-                expression: "dataNascimento"
+                value: this.aluno.data_nascimento,
+                expression: "this.aluno.data_nascimento"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "dataNascimento", disabled: "true" },
-            domProps: { value: _vm.dataNascimento },
+            domProps: { value: this.aluno.data_nascimento },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.dataNascimento = $event.target.value
+                _vm.$set(this.aluno, "data_nascimento", $event.target.value)
               }
             }
           })
@@ -88273,19 +88292,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.cidadeNatal,
-                expression: "cidadeNatal"
+                value: this.aluno.endereco.cidade,
+                expression: "this.aluno.endereco.cidade"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "cidadeNatal", disabled: "true" },
-            domProps: { value: _vm.cidadeNatal },
+            domProps: { value: this.aluno.endereco.cidade },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.cidadeNatal = $event.target.value
+                _vm.$set(this.aluno.endereco, "cidade", $event.target.value)
               }
             }
           })
@@ -88303,19 +88322,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.estadoNatal,
-                expression: "estadoNatal"
+                value: this.aluno.endereco.estado,
+                expression: "this.aluno.endereco.estado"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "estadoNatal", disabled: "true" },
-            domProps: { value: _vm.estadoNatal },
+            domProps: { value: this.aluno.endereco.estado },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.estadoNatal = $event.target.value
+                _vm.$set(this.aluno.endereco, "estado", $event.target.value)
               }
             }
           })
@@ -88333,19 +88352,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.endereco,
-                expression: "endereco"
+                value: this.aluno.endereco.rua,
+                expression: "this.aluno.endereco.rua"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "endereco" },
-            domProps: { value: _vm.endereco },
+            domProps: { value: this.aluno.endereco.rua },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.endereco = $event.target.value
+                _vm.$set(this.aluno.endereco, "rua", $event.target.value)
               }
             }
           })
@@ -88361,19 +88380,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.email,
-                expression: "email"
+                value: this.aluno.contatos[0].contato,
+                expression: "this.aluno.contatos[0].contato"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "email" },
-            domProps: { value: _vm.email },
+            domProps: { value: this.aluno.contatos[0].contato },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.email = $event.target.value
+                _vm.$set(this.aluno.contatos[0], "contato", $event.target.value)
               }
             }
           })
@@ -88381,67 +88400,88 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 col-sm-12" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "telefoneCelular" } }, [
-            _vm._v("Telefone celular")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.telefoneCelular,
-                expression: "telefoneCelular"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text", name: "telefoneCelular" },
-            domProps: { value: _vm.telefoneCelular },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+    _c(
+      "div",
+      { staticClass: "row" },
+      [
+        _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 col-sm-12" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "telefoneCelular" } }, [
+              _vm._v("Telefone celular")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: this.aluno.contatos[1].contato,
+                  expression: "this.aluno.contatos[1].contato"
                 }
-                _vm.telefoneCelular = $event.target.value
-              }
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 col-sm-12" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "telefoneResidencial" } }, [
-            _vm._v("Telefone residencial")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.telefoneResidencial,
-                expression: "telefoneResidencial"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text", name: "telefoneResidencial" },
-            domProps: { value: _vm.telefoneResidencial },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", name: "telefoneCelular" },
+              domProps: { value: this.aluno.contatos[1].contato },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    this.aluno.contatos[1],
+                    "contato",
+                    $event.target.value
+                  )
                 }
-                _vm.telefoneResidencial = $event.target.value
               }
-            }
-          })
-        ])
-      ])
-    ])
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        this.aluno.contatos.indexOf(2) == -1
+          ? [_vm._m(1)]
+          : [
+              _c(
+                "div",
+                { staticClass: "col-xl-6 col-lg-6 col-md-12 col-sm-12" },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "telefoneResidencial" } }, [
+                      _vm._v("Telefone residencial")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: this.aluno.contatos[2].contato,
+                          expression: "this.aluno.contatos[2].contato"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "telefoneResidencial" },
+                      domProps: { value: this.aluno.contatos[2].contato },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            this.aluno.contatos[2],
+                            "contato",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ])
+                ]
+              )
+            ]
+      ],
+      2
+    )
   ])
 }
 var staticRenderFns = [
@@ -88452,6 +88492,23 @@ var staticRenderFns = [
     return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-xl-12 col-lg-12 col-md-12 col-sm-12" }, [
         _c("h2", [_vm._v("Informações pessoais")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 col-sm-12" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "telefoneResidencial" } }, [
+          _vm._v("Telefone residencial")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", name: "telefoneResidencial" }
+        })
       ])
     ])
   }
