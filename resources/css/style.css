@@ -1,0 +1,12 @@
+.mynav {
+    background: #407AB9;
+}
+.wi{
+    color: #ffffff;
+}
+.mylink li a span{
+    color: #ffffff;
+}
+.mylink li a span:hover{
+    color: #D3D3D3;
+}

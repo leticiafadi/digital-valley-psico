@@ -2650,6 +2650,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -2867,6 +2869,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2878,12 +2900,17 @@ __webpack_require__.r(__webpack_exports__);
     return {
       pt: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_1__["ptBR"],
       dataAtendimento: '',
-      horariosDisponiveis: []
+      horariosDisponiveis: [],
+      motivoEncaminhamento: '',
+      textMotivoEncaminhamento: ''
     };
   },
   methods: {
     carregaHorarios: function carregaHorarios() {
       this.horariosDisponiveis = [1, 2, 3];
+    },
+    limpaMotivo: function limpaMotivo() {
+      this.textMotivoEncaminhamento = '';
     }
   },
   mounted: function mounted() {
@@ -2902,12 +2929,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuejs-datepicker */ "./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js");
-/* harmony import */ var _includes_InformacoesPessoaisComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./includes/InformacoesPessoaisComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/includes/InformacoesPessoaisComponent.vue");
-/* harmony import */ var _includes_InformacoesAcademicasComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./includes/InformacoesAcademicasComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/includes/InformacoesAcademicasComponent.vue");
-/* harmony import */ var _includes_VinculoUfcComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./includes/VinculoUfcComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/includes/VinculoUfcComponent.vue");
-/* harmony import */ var _includes_SituacaoProgramaComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./includes/SituacaoProgramaComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/includes/SituacaoProgramaComponent.vue");
-/* harmony import */ var vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuejs-datepicker/dist/locale */ "./node_modules/vuejs-datepicker/dist/locale/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuejs_datepicker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuejs-datepicker */ "./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js");
+/* harmony import */ var _includes_InformacoesPessoaisComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./includes/InformacoesPessoaisComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/includes/InformacoesPessoaisComponent.vue");
+/* harmony import */ var _includes_InformacoesAcademicasComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./includes/InformacoesAcademicasComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/includes/InformacoesAcademicasComponent.vue");
+/* harmony import */ var _includes_VinculoUfcComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./includes/VinculoUfcComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/includes/VinculoUfcComponent.vue");
+/* harmony import */ var _includes_SituacaoProgramaComponent_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./includes/SituacaoProgramaComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/includes/SituacaoProgramaComponent.vue");
+/* harmony import */ var vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuejs-datepicker/dist/locale */ "./node_modules/vuejs-datepicker/dist/locale/index.js");
 //
 //
 //
@@ -2942,7 +2971,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
+
 
 
 
@@ -2951,17 +2980,35 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    VueCalendar: vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"],
-    ptBR: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_5__["ptBR"],
-    InformacoesPessoais: _includes_InformacoesPessoaisComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    InformacoesAcademicas: _includes_InformacoesAcademicasComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    VinculoUfc: _includes_VinculoUfcComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    SituacaoPrograma: _includes_SituacaoProgramaComponent_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+    axios: axios__WEBPACK_IMPORTED_MODULE_0___default.a,
+    VueCalendar: vuejs_datepicker__WEBPACK_IMPORTED_MODULE_1__["default"],
+    ptBR: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_6__["ptBR"],
+    InformacoesPessoais: _includes_InformacoesPessoaisComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    InformacoesAcademicas: _includes_InformacoesAcademicasComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    VinculoUfc: _includes_VinculoUfcComponent_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    SituacaoPrograma: _includes_SituacaoProgramaComponent_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+  },
+  props: {
+    base_url: String,
+    id_aluno: Number
   },
   data: function data() {
-    return {};
+    return {
+      aluno: []
+    };
   },
-  methods: {}
+  methods: {
+    carregaAluno: function carregaAluno() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.base_url + '/info/' + this.id_aluno).then(function (response) {
+        _this.aluno = response.data;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.carregaAluno();
+  }
 });
 
 /***/ }),
@@ -3048,18 +3095,13 @@ __webpack_require__.r(__webpack_exports__);
     VueCalendar: vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"],
     ptBR: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_1__["ptBR"]
   },
+  props: {
+    aluno: Array
+  },
   data: function data() {
-    return {
-      matricula: 0,
-      turnoCurso: '',
-      formacaoEscolar: '',
-      cursoAtual: '',
-      semestreIngresso: '',
-      semestreAtual: '',
-      formaIngresso: '',
-      cursosConcluidos: ''
-    };
-  }
+    return {};
+  },
+  methods: {}
 });
 
 /***/ }),
@@ -3153,6 +3195,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3160,20 +3221,11 @@ __webpack_require__.r(__webpack_exports__);
     VueCalendar: vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"],
     ptBR: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_1__["ptBR"]
   },
+  props: {
+    aluno: Array
+  },
   data: function data() {
-    return {
-      nomeCompleto: '',
-      dataNascimento: '',
-      cidadeNatal: '',
-      estadoNatal: '',
-      estadoCivil: '',
-      possuiFilhos: '',
-      resideCom: '',
-      endereco: '',
-      email: '',
-      telefoneCelular: '',
-      telefoneResidencial: ''
-    };
+    return {};
   },
   methods: {}
 });
@@ -87446,7 +87498,11 @@ var render = function() {
                               return [
                                 _c("tr", [
                                   _c("td", [
-                                    _vm._v(_vm._s(aluno.nome_completo))
+                                    _vm._v(
+                                      "\n                                                        " +
+                                        _vm._s(aluno.nome_completo) +
+                                        "\n                                                    "
+                                    )
                                   ]),
                                   _vm._v(" "),
                                   _c("td", [
@@ -87702,62 +87758,193 @@ var render = function() {
             _c("div", { staticClass: "row mt-1" }, [
               _vm._m(2),
               _vm._v(" "),
-              _c("div", { staticClass: "col col-4" }, [
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("label", { attrs: { for: "data-atendimento" } }, [
-                      _vm._v("Selecione a data")
-                    ]),
-                    _vm._v(" "),
-                    _c("datetime", {
-                      attrs: {
-                        id: "data-atendimento",
-                        format: "dd/MM/yyyy",
-                        "input-class": "form-control",
-                        placeholder: "Selecione a data do atendimento"
-                      },
-                      model: {
-                        value: _vm.dataAtendimento,
-                        callback: function($$v) {
-                          _vm.dataAtendimento = $$v
-                        },
-                        expression: "dataAtendimento"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col col-4" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "horarios-atendimento" } }, [
-                    _vm._v("Selecione o horário de atendimento")
-                  ]),
-                  _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" },
+                [
                   _c(
-                    "select",
-                    {
-                      staticClass: "form-control",
-                      attrs: { name: "", id: "" }
-                    },
+                    "div",
+                    { staticClass: "form-group" },
                     [
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("Selecione o horário de atendimento")
+                      _c("label", { attrs: { for: "data-atendimento" } }, [
+                        _vm._v("Data de atendimento")
                       ]),
                       _vm._v(" "),
-                      _vm._l(_vm.horariosDisponiveis, function(horario) {
-                        return _c("option", { attrs: { value: "" } }, [
-                          _vm._v(_vm._s(horario))
-                        ])
+                      _c("datetime", {
+                        attrs: {
+                          id: "data-atendimento",
+                          format: "dd/MM/yyyy",
+                          "input-class": "form-control",
+                          placeholder: "Selecione a data do atendimento"
+                        },
+                        model: {
+                          value: _vm.dataAtendimento,
+                          callback: function($$v) {
+                            _vm.dataAtendimento = $$v
+                          },
+                          expression: "dataAtendimento"
+                        }
                       })
                     ],
-                    2
+                    1
                   )
-                ])
-              ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "horarios-atendimento" } }, [
+                      _vm._v("Horário de atendimento")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        staticClass: "form-control",
+                        attrs: { name: "", id: "" }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Selecione o horário de atendimento")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.horariosDisponiveis, function(horario) {
+                          return _c("option", { attrs: { value: "" } }, [
+                            _vm._v(_vm._s(horario))
+                          ])
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row mt-1" }, [
+              _c(
+                "div",
+                { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "horarios-atendimento" } }, [
+                      _vm._v("Encaminhado por")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.motivoEncaminhamento,
+                            expression: "motivoEncaminhamento"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { name: "formaEncaminhamento", id: "" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.motivoEncaminhamento = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "" },
+                            on: {
+                              click: function($event) {
+                                return _vm.limpaMotivo()
+                              }
+                            }
+                          },
+                          [_vm._v("Selecione a forma de encaminhamento")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "espontaneo" },
+                            on: {
+                              click: function($event) {
+                                return _vm.limpaMotivo()
+                              }
+                            }
+                          },
+                          [_vm._v("Espontânea vontade")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "recomendado" } }, [
+                          _vm._v("Outro motivo")
+                        ])
+                      ]
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.motivoEncaminhamento == "recomendado",
+                      expression: "motivoEncaminhamento == 'recomendado'"
+                    }
+                  ],
+                  staticClass: "col-xl-8 col-lg-8 col-md-12 col-sm-12"
+                },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "motivoEncaminhamento" } }, [
+                      _vm._v("Descreva quem o encaminhou")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.textMotivoEncaminhamento,
+                          expression: "textMotivoEncaminhamento"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "motivoEncaminhamento",
+                        placeholder: "EX: encaminhado pela psicóloga"
+                      },
+                      domProps: { value: _vm.textMotivoEncaminhamento },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.textMotivoEncaminhamento = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]
+              )
             ]),
             _vm._v(" "),
             _vm._m(3)
@@ -87804,20 +87991,22 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col col-4" }, [
-      _c("label", { attrs: { for: "motivoAtendimento" } }, [
-        _vm._v("Selecione o psicólogo para o atendimento")
-      ]),
-      _vm._v(" "),
-      _c(
-        "select",
-        { staticClass: "form-control", attrs: { name: "id_curso" } },
-        [
-          _c("option", { attrs: { value: "" } }, [
-            _vm._v("Selecione um psicólogo")
-          ])
-        ]
-      )
+    return _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "motivoAtendimento" } }, [
+          _vm._v("Psicólogo responsável")
+        ]),
+        _vm._v(" "),
+        _c(
+          "select",
+          { staticClass: "form-control", attrs: { name: "id_curso" } },
+          [
+            _c("option", { attrs: { value: "" } }, [
+              _vm._v("Selecione um psicólogo")
+            ])
+          ]
+        )
+      ])
     ])
   },
   function() {
@@ -87874,38 +88063,9 @@ var render = function() {
           [
             _vm._m(0),
             _vm._v(" "),
-            _c("informacoes-pessoais"),
+            _c("informacoes-pessoais", { attrs: { aluno: this.aluno } }),
             _vm._v(" "),
-            _c("informacoes-academicas"),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col col-12" }, [
-                  _c("div", { staticClass: "fa-pull-right" }, [
-                    _c(
-                      "button",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: this.estadoCivil != "",
-                            expression: "this.estadoCivil != ''"
-                          }
-                        ],
-                        staticClass: "btn btn-primary btn-lg",
-                        attrs: { type: "submit" }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                        Salvar\n                                "
-                        )
-                      ]
-                    )
-                  ])
-                ])
-              ])
-            ])
+            _c("informacoes-academicas", { attrs: { aluno: this.aluno } })
           ],
           1
         )
@@ -87949,7 +88109,7 @@ var render = function() {
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col col-4" }, [
+      _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "matricula" } }, [_vm._v("Matricula")]),
           _vm._v(" "),
@@ -87958,26 +88118,26 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.matricula,
-                expression: "matricula"
+                value: this.aluno.matricula,
+                expression: "this.aluno.matricula"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "Matricula", disabled: "true" },
-            domProps: { value: _vm.matricula },
+            domProps: { value: this.aluno.matricula },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.matricula = $event.target.value
+                _vm.$set(this.aluno, "matricula", $event.target.value)
               }
             }
           })
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col col-4" }, [
+      _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "curso" } }, [_vm._v("Curso atual")]),
           _vm._v(" "),
@@ -87986,26 +88146,26 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.curso,
-                expression: "curso"
+                value: this.aluno.curso,
+                expression: "this.aluno.curso"
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", name: "curso" },
-            domProps: { value: _vm.curso },
+            attrs: { type: "text", name: "curso", disabled: "true" },
+            domProps: { value: this.aluno.curso },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.curso = $event.target.value
+                _vm.$set(this.aluno, "curso", $event.target.value)
               }
             }
           })
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col col-4" }, [
+      _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "semestreIngresso" } }, [
             _vm._v("Semestre de ingresso")
@@ -88016,19 +88176,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.semestreIngresso,
-                expression: "semestreIngresso"
+                value: this.aluno.semestre_matricula,
+                expression: "this.aluno.semestre_matricula"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "semestreIngresso", disabled: "true" },
-            domProps: { value: _vm.semestreIngresso },
+            domProps: { value: this.aluno.semestre_matricula },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.semestreIngresso = $event.target.value
+                _vm.$set(this.aluno, "semestre_matricula", $event.target.value)
               }
             }
           })
@@ -88043,7 +88203,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col col-12" }, [
+      _c("div", { staticClass: "col-xl-12 col-lg-12 col-md-12 col-sm-12" }, [
         _c("h2", [_vm._v("Informações acadêmicas")])
       ])
     ])
@@ -88074,7 +88234,39 @@ var render = function() {
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col col-4" }, [
+      _c("div", { staticClass: "col-xl-12 col-lg-12 col-md-12 col-sm-12" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "nomeCompleto" } }, [
+            _vm._v("Nome Completo")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: this.aluno.nome_completo,
+                expression: "this.aluno.nome_completo"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "nomeCompleto", disabled: "true" },
+            domProps: { value: this.aluno.nome_completo },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(this.aluno, "nome_completo", $event.target.value)
+              }
+            }
+          })
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "dataNascimento" } }, [
             _vm._v("Data de nascimento")
@@ -88085,26 +88277,26 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.dataNascimento,
-                expression: "dataNascimento"
+                value: this.aluno.data_nascimento,
+                expression: "this.aluno.data_nascimento"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "dataNascimento", disabled: "true" },
-            domProps: { value: _vm.dataNascimento },
+            domProps: { value: this.aluno.data_nascimento },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.dataNascimento = $event.target.value
+                _vm.$set(this.aluno, "data_nascimento", $event.target.value)
               }
             }
           })
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col col-4" }, [
+      _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "cidadeNatal" } }, [
             _vm._v("Cidade natal")
@@ -88115,26 +88307,26 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.cidadeNatal,
-                expression: "cidadeNatal"
+                value: this.aluno.endereco.cidade,
+                expression: "this.aluno.endereco.cidade"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "cidadeNatal", disabled: "true" },
-            domProps: { value: _vm.cidadeNatal },
+            domProps: { value: this.aluno.endereco.cidade },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.cidadeNatal = $event.target.value
+                _vm.$set(this.aluno.endereco, "cidade", $event.target.value)
               }
             }
           })
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col col-4" }, [
+      _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "estadoNatal" } }, [
             _vm._v("Estado natal")
@@ -88145,19 +88337,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.estadoNatal,
-                expression: "estadoNatal"
+                value: this.aluno.endereco.estado,
+                expression: "this.aluno.endereco.estado"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "estadoNatal", disabled: "true" },
-            domProps: { value: _vm.estadoNatal },
+            domProps: { value: this.aluno.endereco.estado },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.estadoNatal = $event.target.value
+                _vm.$set(this.aluno.endereco, "estado", $event.target.value)
               }
             }
           })
@@ -88166,7 +88358,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col col-6" }, [
+      _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 col-sm-12" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "endereco" } }, [_vm._v("Endereço")]),
           _vm._v(" "),
@@ -88175,26 +88367,26 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.endereco,
-                expression: "endereco"
+                value: this.aluno.endereco.rua,
+                expression: "this.aluno.endereco.rua"
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", name: "endereco" },
-            domProps: { value: _vm.endereco },
+            attrs: { type: "text", name: "endereco", disabled: "true" },
+            domProps: { value: this.aluno.endereco.rua },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.endereco = $event.target.value
+                _vm.$set(this.aluno.endereco, "rua", $event.target.value)
               }
             }
           })
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col col-6" }, [
+      _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 col-sm-12" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
           _vm._v(" "),
@@ -88203,19 +88395,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.email,
-                expression: "email"
+                value: this.aluno.contatos[0].contato,
+                expression: "this.aluno.contatos[0].contato"
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", name: "email" },
-            domProps: { value: _vm.email },
+            attrs: { type: "text", name: "email", disabled: "true" },
+            domProps: { value: this.aluno.contatos[0].contato },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.email = $event.target.value
+                _vm.$set(this.aluno.contatos[0], "contato", $event.target.value)
               }
             }
           })
@@ -88223,67 +88415,96 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col col-6" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "telefoneCelular" } }, [
-            _vm._v("Telefone celular")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.telefoneCelular,
-                expression: "telefoneCelular"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text", name: "telefoneCelular" },
-            domProps: { value: _vm.telefoneCelular },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+    _c(
+      "div",
+      { staticClass: "row" },
+      [
+        _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 col-sm-12" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "telefoneCelular" } }, [
+              _vm._v("Telefone celular")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: this.aluno.contatos[1].contato,
+                  expression: "this.aluno.contatos[1].contato"
                 }
-                _vm.telefoneCelular = $event.target.value
-              }
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col col-6" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "telefoneResidencial" } }, [
-            _vm._v("Telefone residencial")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.telefoneResidencial,
-                expression: "telefoneResidencial"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text", name: "telefoneResidencial" },
-            domProps: { value: _vm.telefoneResidencial },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                name: "telefoneCelular",
+                disabled: "true"
+              },
+              domProps: { value: this.aluno.contatos[1].contato },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    this.aluno.contatos[1],
+                    "contato",
+                    $event.target.value
+                  )
                 }
-                _vm.telefoneResidencial = $event.target.value
               }
-            }
-          })
-        ])
-      ])
-    ])
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        this.aluno.contatos.indexOf(2) == -1
+          ? [_vm._m(1)]
+          : [
+              _c(
+                "div",
+                { staticClass: "col-xl-6 col-lg-6 col-md-12 col-sm-12" },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "telefoneResidencial" } }, [
+                      _vm._v("Telefone residencial")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: this.aluno.contatos[2].contato,
+                          expression: "this.aluno.contatos[2].contato"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        name: "telefoneResidencial",
+                        disabled: "true"
+                      },
+                      domProps: { value: this.aluno.contatos[2].contato },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            this.aluno.contatos[2],
+                            "contato",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ])
+                ]
+              )
+            ]
+      ],
+      2
+    )
   ])
 }
 var staticRenderFns = [
@@ -88292,8 +88513,25 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col col-12" }, [
+      _c("div", { staticClass: "col-xl-12 col-lg-12 col-md-12 col-sm-12" }, [
         _c("h2", [_vm._v("Informações pessoais")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 col-sm-12" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "telefoneResidencial" } }, [
+          _vm._v("Telefone residencial")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", name: "telefoneResidencial", disabled: "true" }
+        })
       ])
     ])
   }

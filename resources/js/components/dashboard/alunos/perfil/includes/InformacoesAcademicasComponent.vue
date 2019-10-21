@@ -1,15 +1,15 @@
 <template>
     <div class="card-body">
         <div class="row">
-            <div class="col col-12">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <h2>Informações acadêmicas</h2>
             </div>
         </div>
         <div class="row">
-            <div class="col col-4">
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="matricula">Matricula</label>
-                    <input type="text" class="form-control" name="Matricula" v-model="matricula" disabled="true">
+                    <input type="text" class="form-control" name="Matricula" v-model="this.aluno.matricula" disabled="true">
                 </div>
             </div>
             <!--<div class="col col-3">
@@ -24,16 +24,16 @@
                     <input type="text" class="form-control" v-model="formacaoEscolar" name="formacaoEscolar">
                 </div>
             </div>-->
-            <div class="col col-4">
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="curso">Curso atual</label>
-                    <input type="text" class="form-control" v-model="curso" name="curso">
+                    <input type="text" class="form-control" v-model="this.aluno.curso" name="curso" disabled="true">
                 </div>
             </div>
-            <div class="col col-4">
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="semestreIngresso">Semestre de ingresso</label>
-                    <input type="text" class="form-control" v-model="semestreIngresso" name="semestreIngresso" disabled="true">
+                    <input type="text" class="form-control" v-model="this.aluno.semestre_matricula" name="semestreIngresso" disabled="true">
                 </div>
             </div>
         </div>
@@ -70,17 +70,16 @@ export default {
             VueCalendar,
             ptBR
     },
+    props:{
+        aluno: Array
+    },
     data: function(){
         return {
-            matricula: 0,
-            turnoCurso: '',
-            formacaoEscolar: '',
-            cursoAtual: '',
-            semestreIngresso: '',
-            semestreAtual: '',
-            formaIngresso: '',
-            cursosConcluidos: ''
+
         }
+    },
+    methods:{
+
     }
 }
 </script>

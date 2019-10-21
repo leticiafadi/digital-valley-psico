@@ -72,7 +72,9 @@
                                         <tbody>
                                             <template v-for="aluno in this.alunos">
 											    <tr>
-												    <td>{{aluno.nome_completo}}</td>
+												    <td>
+                                                        {{aluno.nome_completo}}
+                                                    </td>
 												    <td>
 													    {{aluno.matricula}}
 												    </td>
