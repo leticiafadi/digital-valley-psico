@@ -2650,6 +2650,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -2713,6 +2715,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_snotify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-snotify */ "./node_modules/vue-snotify/vue-snotify.esm.js");
 /* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
+//
+//
 //
 //
 //
@@ -87494,7 +87498,11 @@ var render = function() {
                               return [
                                 _c("tr", [
                                   _c("td", [
-                                    _vm._v(_vm._s(aluno.nome_completo))
+                                    _vm._v(
+                                      "\n                                                        " +
+                                        _vm._s(aluno.nome_completo) +
+                                        "\n                                                    "
+                                    )
                                   ]),
                                   _vm._v(" "),
                                   _c("td", [
@@ -87619,20 +87627,18 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col col-12" }, [
         _c("div", { staticClass: "card" }, [
-          _c("i", { staticClass: "fas fa-fw fa-home" }),
-          _vm._v(
-            "\n\t\t\t            Gerenciar atendimentos\n                    "
-          ),
+          _vm._m(0),
+          _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "table-responsive" }, [
               _c("table", { staticClass: "table table-bordered" }, [
-                _vm._m(0),
+                _vm._m(1),
                 _vm._v(" "),
                 _c("tbody", [
                   _c("tr", [
-                    _vm._m(1),
-                    _vm._v(" "),
                     _vm._m(2),
+                    _vm._v(" "),
+                    _vm._m(3),
                     _vm._v(" "),
                     _c("td", [
                       _c(
@@ -87673,6 +87679,15 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("i", { staticClass: "fas fa-fw fa-home" }),
+      _vm._v("\n\t\t\t            Gerenciar atendimentos\n                    ")
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -111405,8 +111420,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Cliente\Documents\GitHub\digital-valley-psico\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Cliente\Documents\GitHub\digital-valley-psico\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\paulo\Documents\digital-valley-psico\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\paulo\Documents\digital-valley-psico\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -3,8 +3,10 @@
         <div class="row">
             <div class="col col-12">
                 <div class="card">
+                    <div class="card-header">
                         <i class="fas fa-fw fa-home"></i>
 			            Gerenciar atendimentos
+                    </div>
                     <div class="card-body">
 						<div class="table-responsive">
 							<table class="table table-bordered" >
