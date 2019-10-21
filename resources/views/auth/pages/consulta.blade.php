@@ -7,26 +7,25 @@
 					<div class="card-header">
 						<i class="fa fa-calendar"></i>
 						<span>Atendimentos</span>
-						
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
 							<table class="table table-bordered" id="myTable">
-								<thead>
+								<thead class="mynav">
 									<tr>
-										<th>
+										<th class="corLinhaTabela">
 											Nome
 										</th>
-										<th>
+										<th class="corLinhaTabela">
 											Matricula
 										</th>
-										<th>
+										<th class="corLinhaTabela">
 											Curso
 										</th>
-										<th>
+										<th class="corLinhaTabela">
 											Data & horário do pedido
 										</th>
-										<th>
+										<th class="corLinhaTabela">
 											Opções
 										</th>
 									</tr>
