@@ -909,10 +909,13 @@
     border-bottom: 1px solid #ffffff;
 }
 
-.mynav .nav-link:hover{
-    background-color: #ffffff;
-    color: #407AB9 !important;
-    font-weight: bold;
+.mynav .nav-link span{
+    color:#ffffff;
+}
+
+.mynav .nav-link span:hover{
+    opacity: 0.8;
+   
 }
 .corLinhaTabela{
     color: white;
