@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col col-12 col-sm-6 col-lg-3">
                 <!-- small box -->
-                <div class="small-box bg-blue">
+                <div class="small-box mynav">
                     <!--<div class="inner">
                         <h3>{{--numeor de atendmentos marcados ainda nao lidos--}}{{$atendimentos}}</h3>
                         <p>Atendimentos agendados</p>
@@ -21,7 +21,7 @@
             </div>
             <div class="col col-12 col-sm-6 col-lg-3">
                 <!-- small box -->
-                <div class="small-box bg-blue">
+                <div class="small-box mynav">
                     <!--<div class="inner">
                         <h3>{{$numeroDeCursos}}</h3>
                         <p>Cursos cadastrados</p>
@@ -36,11 +36,10 @@
                 </div>
             </div>
             
-        </div>
-        <div class="row">
+        
             <div class="col col-12 col-sm-6 col-lg-3">
-                <div class="small-box bg-blue">
-                    <img src="{{ asset ('imagens/template/estatisticas.jpg') }}" class="img-fluid" alt="">
+                <div class="small-box mynav">
+                    <img src="{{ asset ('imagens/template/estatisticas.png') }}" class="img-fluid" alt="">
                     <a href="" class="small-box-footer">
                         Estatísticas <i class="fas fa-arrow-circle-right"></i>
                     </a>
@@ -48,7 +47,7 @@
             </div>
             <div class="col col-12 col-sm-6 col-lg-3">
                     <!-- small box -->
-                    <div class="small-box bg-blue">
+                    <div class="small-box mynav">
                         <!--<div class="inner">
                             <h3>{{$numeroDeFuncionarios}}</h3>
                             <p>Usuários cadastrados</p>
@@ -56,7 +55,7 @@
                         <div class="icon">
                             <i class="fas fa-user"></i>
                         </div>-->
-                        <img src="{{ asset ('imagens/template/psicologos.jpg') }}" class="img-fluid" alt="">
+                        <img src="{{ asset ('imagens/template/psicologo-trabalhando.jpg') }}" class="img-fluid" alt="">
                         <a href="{{route('usuarios.all')}}" class="small-box-footer">
                             Psicólogos <i class="fas fa-arrow-circle-right"></i>
                         </a>
