@@ -1,20 +1,37 @@
 .mynav {
     background: #407AB9;
+    
 }
+
 .wi{
     color: #ffffff;
 }
-.mylink li a span{
+/*.mylink li a span{
     color: #ffffff;
 }
-.mylink li a span:hover{
-    color: #D3D3D3;
+/*.mylink li a span:hover{
+    color: #407AB9;
+    background-color: #ffffff;
+}*/
+
+
+.myborder{
+    border-bottom: 1px solid #ffffff;
 }
-.corhr{
-    background: white;
+
+.mynav .nav-link:hover{
+    background-color: #ffffff;
+    color: #407AB9 !important;
+    font-weight: bold;
 }
 .corLinhaTabela{
     color: white;
 }
+
+
+
+
+    
+
 
 
