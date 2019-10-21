@@ -53,18 +53,18 @@
                             <div class="card-body">
                                 <ul class="list-group" v-if="alunos != ''">
                                     <table class="table table-bordered" >
-                                        <thead>
+                                        <thead class="mynav">
 									        <tr>
-										        <th>
+										        <th class="corLinhaTabela">
 										    	    Nome
 										        </th>
-										        <th>
+										        <th class="corLinhaTabela">
 											        Matricula
 										        </th>
-										        <th>
+										        <th class="corLinhaTabela">
 											        Curso
                                                 </th>
-                                                <th>
+                                                <th class="corLinhaTabela">
                                                     Opções
                                                 </th>
 									        </tr>
@@ -82,7 +82,11 @@
 													    {{aluno.nome}}
 												    </td>
                                                     <td>
+<<<<<<< HEAD
                                                         <a href="  " class="btn btn-primary fa-pull-right">Ver detalhes</a>
+=======
+                                                        <a href="" class="btn btn-primary fa-pull-right mynav corLinhaTabela">Ver detalhes</a>
+>>>>>>> c59b169aa2a67a4e16f549a4f76317f9014db055
                                                     </td>
 									            </tr>
                                             </template>
