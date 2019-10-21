@@ -82,11 +82,7 @@
 													    {{aluno.nome}}
 												    </td>
                                                     <td>
-<<<<<<< HEAD
-                                                        <a href="  " class="btn btn-primary fa-pull-right">Ver detalhes</a>
-=======
                                                         <a href="" class="btn btn-primary fa-pull-right mynav corLinhaTabela">Ver detalhes</a>
->>>>>>> c59b169aa2a67a4e16f549a4f76317f9014db055
                                                     </td>
 									            </tr>
                                             </template>
