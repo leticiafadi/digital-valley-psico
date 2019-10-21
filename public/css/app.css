@@ -903,7 +903,9 @@
 .corhr{
     background: white;
 }
-    
+.corLinhaTabela{
+    color: white;
+}
 
 
 @charset "UTF-8";
