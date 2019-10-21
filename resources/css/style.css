@@ -39,6 +39,15 @@
 
 }
 
+.mybtn:hover{
+    /* background: rgba(240, 132, 0, 0.84) !important; */
+    background: rgb(242, 133, 0, 0.8) !important;
+
+    color: #ffffff !important;
+    border-radius: 20px!important;
+
+}
+
 
 
     
