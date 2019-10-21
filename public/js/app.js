@@ -87715,14 +87715,10 @@ var staticRenderFns = [
     return _c("td", [
       _c(
         "a",
-<<<<<<< HEAD
-        { staticClass: "btn btn-primary fa-pull-right", attrs: { href: "  " } },
-=======
         {
           staticClass: "btn btn-primary fa-pull-right mynav corLinhaTabela",
           attrs: { href: "" }
         },
->>>>>>> c59b169aa2a67a4e16f549a4f76317f9014db055
         [_vm._v("Ver detalhes")]
       )
     ])

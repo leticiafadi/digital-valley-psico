@@ -40,7 +40,6 @@ class AlunoController extends Controller
     
     public function getAluno(Request $request,$id){
         return response($this->Buscar($id),200)->header('Content-Type','text/json');
-        //return view('auth.pages.alunos.informacoes', ['base_url' => config('app.url'),'aluno' => $this->Buscar($id)]);
     }
 
     public function mostrarPerfilAluno(Request $request,$id){
