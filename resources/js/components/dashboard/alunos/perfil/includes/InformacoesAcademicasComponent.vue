@@ -36,7 +36,6 @@
                     <input type="text" class="form-control" v-model="semestreIngresso" name="semestreIngresso" disabled="true">
                 </div>
             </div>
-            {{this.aluno.matricula}}
         </div>
         <!--<div class="row">
             <div class="col col-4">
