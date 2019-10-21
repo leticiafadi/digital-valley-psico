@@ -27,7 +27,7 @@
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="curso">Curso atual</label>
-                    <input type="text" class="form-control" v-model="this.aluno.curso" name="curso">
+                    <input type="text" class="form-control" v-model="this.aluno.curso" name="curso" disabled="true">
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">

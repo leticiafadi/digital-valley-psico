@@ -88136,7 +88136,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", name: "curso" },
+            attrs: { type: "text", name: "curso", disabled: "true" },
             domProps: { value: this.aluno.curso },
             on: {
               input: function($event) {
@@ -88357,7 +88357,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", name: "endereco" },
+            attrs: { type: "text", name: "endereco", disabled: "true" },
             domProps: { value: this.aluno.endereco.rua },
             on: {
               input: function($event) {
@@ -88385,7 +88385,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", name: "email" },
+            attrs: { type: "text", name: "email", disabled: "true" },
             domProps: { value: this.aluno.contatos[0].contato },
             on: {
               input: function($event) {
@@ -88420,7 +88420,11 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
-              attrs: { type: "text", name: "telefoneCelular" },
+              attrs: {
+                type: "text",
+                name: "telefoneCelular",
+                disabled: "true"
+              },
               domProps: { value: this.aluno.contatos[1].contato },
               on: {
                 input: function($event) {
@@ -88460,7 +88464,11 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", name: "telefoneResidencial" },
+                      attrs: {
+                        type: "text",
+                        name: "telefoneResidencial",
+                        disabled: "true"
+                      },
                       domProps: { value: this.aluno.contatos[2].contato },
                       on: {
                         input: function($event) {
@@ -88507,7 +88515,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("input", {
           staticClass: "form-control",
-          attrs: { type: "text", name: "telefoneResidencial" }
+          attrs: { type: "text", name: "telefoneResidencial", disabled: "true" }
         })
       ])
     ])
