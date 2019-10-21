@@ -82,7 +82,7 @@
 													    {{aluno.nome}}
 												    </td>
                                                     <td>
-                                                        <a href="" class="btn btn-primary fa-pull-right">Ver detalhes</a>
+                                                        <a href="  " class="btn btn-primary fa-pull-right">Ver detalhes</a>
                                                     </td>
 									            </tr>
                                             </template>

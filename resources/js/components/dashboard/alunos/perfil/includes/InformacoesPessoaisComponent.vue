@@ -9,7 +9,7 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="nomeCompleto">Nome Completo</label>
-                    <input type="text" class="form-control" name="nomeCompleto" v-model="this.aluno.nome_completo" disabled="true">
+                    <input type="text" class="form-control" name="nomeCompleto" v-model="this.aluno.nome_completo" :disabled="verifica()">
                 </div>
             </div>
         </div>
@@ -17,19 +17,19 @@
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="dataNascimento">Data de nascimento</label>
-                    <input type="text" class="form-control" name="dataNascimento" v-model="this.aluno.data_nascimento" disabled="true">
+                    <input type="text" class="form-control" name="dataNascimento" v-model="this.aluno.data_nascimento" :disabled="verifica()">
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="cidadeNatal">Cidade natal</label>
-                    <input type="text" class="form-control" name="cidadeNatal" v-model="this.aluno.endereco.cidade" disabled="true">
+                    <input type="text" class="form-control" name="cidadeNatal" v-model="this.aluno.endereco.cidade" :disabled="verifica()">
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="estadoNatal">Estado natal</label>
-                    <input type="text" class="form-control" name="estadoNatal" v-model="this.aluno.endereco.estado" disabled="true">
+                    <input type="text" class="form-control" name="estadoNatal" v-model="this.aluno.endereco.estado" :disabled="verifica()">
                 </div>
             </div>    
         </div>
@@ -57,13 +57,13 @@
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="endereco">Endereço</label>
-                    <input type="text" class="form-control" v-model="this.aluno.endereco.rua" name="endereco" disabled="true">
+                    <input type="text" class="form-control" v-model="this.aluno.endereco.rua" name="endereco" :disabled="verifica()">
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" v-model="this.aluno.contatos[0].contato" name="email" disabled="true">
+                    <input type="text" class="form-control" v-model="this.aluno.contatos[0].contato" name="email" :disabled="verifica()">
                 </div>
             </div>
         </div>
@@ -71,14 +71,14 @@
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="telefoneCelular">Telefone celular</label>
-                    <input type="text" class="form-control" v-model="this.aluno.contatos[1].contato" name="telefoneCelular" disabled="true">
+                    <input type="text" class="form-control" v-model="this.aluno.contatos[1].contato" name="telefoneCelular" :disabled="verifica()">
                 </div>
             </div>            
             <template v-if="this.aluno.contatos.indexOf(2) == -1">
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="telefoneResidencial">Telefone residencial</label>
-                    <input type="text" class="form-control" name="telefoneResidencial" disabled="true">
+                    <input type="text" class="form-control" name="telefoneResidencial" :disabled="verifica()">
                 </div>
             </div>
             </template>
@@ -86,7 +86,7 @@
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="telefoneResidencial">Telefone residencial</label>
-                    <input type="text" class="form-control" v-model="this.aluno.contatos[2].contato" name="telefoneResidencial" disabled="true">
+                    <input type="text" class="form-control" v-model="this.aluno.contatos[2].contato" name="telefoneResidencial" :disabled="verifica()">
                 </div>
             </div>
             </template>
@@ -104,13 +104,21 @@ export default {
             ptBR
     },
     props:{
-        aluno: Array
+        aluno: Array,
+        tipo: Number
     },
     data: function(){
         return {
         }
     },
     methods:{
+        verifica: function(){
+            if (this.tipo==1) {
+                return false;
+            }else{
+                return true;
+            }
+        }
     }
 
 }

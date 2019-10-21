@@ -2920,6 +2920,101 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuejs_datepicker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuejs-datepicker */ "./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js");
+/* harmony import */ var _includes_InformacoesPessoaisComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./includes/InformacoesPessoaisComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/includes/InformacoesPessoaisComponent.vue");
+/* harmony import */ var _includes_InformacoesAcademicasComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./includes/InformacoesAcademicasComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/includes/InformacoesAcademicasComponent.vue");
+/* harmony import */ var _includes_VinculoUfcComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./includes/VinculoUfcComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/includes/VinculoUfcComponent.vue");
+/* harmony import */ var _includes_SituacaoProgramaComponent_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./includes/SituacaoProgramaComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/includes/SituacaoProgramaComponent.vue");
+/* harmony import */ var vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuejs-datepicker/dist/locale */ "./node_modules/vuejs-datepicker/dist/locale/index.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    axios: axios__WEBPACK_IMPORTED_MODULE_0___default.a,
+    VueCalendar: vuejs_datepicker__WEBPACK_IMPORTED_MODULE_1__["default"],
+    ptBR: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_6__["ptBR"],
+    InformacoesPessoais: _includes_InformacoesPessoaisComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    InformacoesAcademicas: _includes_InformacoesAcademicasComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    VinculoUfc: _includes_VinculoUfcComponent_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    SituacaoPrograma: _includes_SituacaoProgramaComponent_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+  },
+  props: {
+    base_url: String,
+    id_aluno: Number,
+    tipo: Number
+  },
+  data: function data() {
+    return {
+      aluno: []
+    };
+  },
+  methods: {
+    carregaAluno: function carregaAluno() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.base_url + '/alunos/' + this.id_aluno).then(function (response) {
+        _this.aluno = response.data;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.carregaAluno();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/alunos/perfil/GerenciarPerfilComponent.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/alunos/perfil/GerenciarPerfilComponent.vue?vue&type=script&lang=js& ***!
@@ -3001,9 +3096,15 @@ __webpack_require__.r(__webpack_exports__);
     carregaAluno: function carregaAluno() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.base_url + '/info/' + this.id_aluno).then(function (response) {
-        _this.aluno = response.data;
-      });
+      if (this.tipo == 1) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.base_url + '/alunos/' + this.id_aluno).then(function (response) {
+          _this.aluno = response.data;
+        });
+      } else {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.base_url + '/info/' + this.id_aluno).then(function (response) {
+          _this.aluno = response.data;
+        });
+      }
     }
   },
   mounted: function mounted() {
@@ -3096,12 +3197,21 @@ __webpack_require__.r(__webpack_exports__);
     ptBR: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_1__["ptBR"]
   },
   props: {
-    aluno: Array
+    aluno: Array,
+    tipo: Number
   },
   data: function data() {
     return {};
   },
-  methods: {}
+  methods: {
+    verifica: function verifica() {
+      if (this.tipo == 1) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -3222,12 +3332,21 @@ __webpack_require__.r(__webpack_exports__);
     ptBR: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_1__["ptBR"]
   },
   props: {
-    aluno: Array
+    aluno: Array,
+    tipo: Number
   },
   data: function data() {
     return {};
   },
-  methods: {}
+  methods: {
+    verifica: function verifica() {
+      if (this.tipo == 1) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -87596,7 +87715,7 @@ var staticRenderFns = [
     return _c("td", [
       _c(
         "a",
-        { staticClass: "btn btn-primary fa-pull-right", attrs: { href: "" } },
+        { staticClass: "btn btn-primary fa-pull-right", attrs: { href: "  " } },
         [_vm._v("Ver detalhes")]
       )
     ])
@@ -88039,6 +88158,63 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue?vue&type=template&id=c5101518&":
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue?vue&type=template&id=c5101518& ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col col-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "card-body" },
+            [
+              _c("informacoes-pessoais", {
+                attrs: { aluno: this.aluno, tipo: this.tipo }
+              }),
+              _vm._v(" "),
+              _c("informacoes-academicas", {
+                attrs: { aluno: this.aluno, tipo: this.tipo }
+              })
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("i", { staticClass: "fas fa-fw fa-user" }),
+      _vm._v("\n                    Gerenciar perfil Aluno\n                ")
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/alunos/perfil/GerenciarPerfilComponent.vue?vue&type=template&id=7066a05f&":
 /*!***************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/alunos/perfil/GerenciarPerfilComponent.vue?vue&type=template&id=7066a05f& ***!
@@ -88123,7 +88299,11 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", name: "Matricula", disabled: "true" },
+            attrs: {
+              type: "text",
+              name: "Matricula",
+              disabled: _vm.verifica()
+            },
             domProps: { value: this.aluno.matricula },
             on: {
               input: function($event) {
@@ -88151,7 +88331,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", name: "curso", disabled: "true" },
+            attrs: { type: "text", name: "curso", disabled: _vm.verifica() },
             domProps: { value: this.aluno.curso },
             on: {
               input: function($event) {
@@ -88181,7 +88361,11 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", name: "semestreIngresso", disabled: "true" },
+            attrs: {
+              type: "text",
+              name: "semestreIngresso",
+              disabled: _vm.verifica()
+            },
             domProps: { value: this.aluno.semestre_matricula },
             on: {
               input: function($event) {
@@ -88250,7 +88434,11 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", name: "nomeCompleto", disabled: "true" },
+            attrs: {
+              type: "text",
+              name: "nomeCompleto",
+              disabled: _vm.verifica()
+            },
             domProps: { value: this.aluno.nome_completo },
             on: {
               input: function($event) {
@@ -88282,7 +88470,11 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", name: "dataNascimento", disabled: "true" },
+            attrs: {
+              type: "text",
+              name: "dataNascimento",
+              disabled: _vm.verifica()
+            },
             domProps: { value: this.aluno.data_nascimento },
             on: {
               input: function($event) {
@@ -88312,7 +88504,11 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", name: "cidadeNatal", disabled: "true" },
+            attrs: {
+              type: "text",
+              name: "cidadeNatal",
+              disabled: _vm.verifica()
+            },
             domProps: { value: this.aluno.endereco.cidade },
             on: {
               input: function($event) {
@@ -88342,7 +88538,11 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", name: "estadoNatal", disabled: "true" },
+            attrs: {
+              type: "text",
+              name: "estadoNatal",
+              disabled: _vm.verifica()
+            },
             domProps: { value: this.aluno.endereco.estado },
             on: {
               input: function($event) {
@@ -88372,7 +88572,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", name: "endereco", disabled: "true" },
+            attrs: { type: "text", name: "endereco", disabled: _vm.verifica() },
             domProps: { value: this.aluno.endereco.rua },
             on: {
               input: function($event) {
@@ -88400,7 +88600,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", name: "email", disabled: "true" },
+            attrs: { type: "text", name: "email", disabled: _vm.verifica() },
             domProps: { value: this.aluno.contatos[0].contato },
             on: {
               input: function($event) {
@@ -88438,7 +88638,7 @@ var render = function() {
               attrs: {
                 type: "text",
                 name: "telefoneCelular",
-                disabled: "true"
+                disabled: _vm.verifica()
               },
               domProps: { value: this.aluno.contatos[1].contato },
               on: {
@@ -88458,7 +88658,28 @@ var render = function() {
         ]),
         _vm._v(" "),
         this.aluno.contatos.indexOf(2) == -1
-          ? [_vm._m(1)]
+          ? [
+              _c(
+                "div",
+                { staticClass: "col-xl-6 col-lg-6 col-md-12 col-sm-12" },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "telefoneResidencial" } }, [
+                      _vm._v("Telefone residencial")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        name: "telefoneResidencial",
+                        disabled: _vm.verifica()
+                      }
+                    })
+                  ])
+                ]
+              )
+            ]
           : [
               _c(
                 "div",
@@ -88482,7 +88703,7 @@ var render = function() {
                       attrs: {
                         type: "text",
                         name: "telefoneResidencial",
-                        disabled: "true"
+                        disabled: _vm.verifica()
                       },
                       domProps: { value: this.aluno.contatos[2].contato },
                       on: {
@@ -88515,23 +88736,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-xl-12 col-lg-12 col-md-12 col-sm-12" }, [
         _c("h2", [_vm._v("Informações pessoais")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 col-sm-12" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "telefoneResidencial" } }, [
-          _vm._v("Telefone residencial")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", name: "telefoneResidencial", disabled: "true" }
-        })
       ])
     ])
   }
@@ -109391,7 +109595,8 @@ Vue.component('cadastrar-usuario', __webpack_require__(/*! ./components/dashboar
 Vue.component('localizacao', __webpack_require__(/*! ./components/dashboard/localizacao/LocalizacaoComponent.vue */ "./resources/js/components/dashboard/localizacao/LocalizacaoComponent.vue")["default"]);
 Vue.component('curso', __webpack_require__(/*! ./components/dashboard/cursos/CursoComponent.vue */ "./resources/js/components/dashboard/cursos/CursoComponent.vue")["default"]);
 Vue.component('aluno', __webpack_require__(/*! ./components/dashboard/alunos/AlunoComponent.vue */ "./resources/js/components/dashboard/alunos/AlunoComponent.vue")["default"]);
-Vue.component('manter-horarios', __webpack_require__(/*! ./components/dashboard/manter_horarios/ManterHorariosComponent.vue */ "./resources/js/components/dashboard/manter_horarios/ManterHorariosComponent.vue")["default"]); //alunos components
+Vue.component('manter-horarios', __webpack_require__(/*! ./components/dashboard/manter_horarios/ManterHorariosComponent.vue */ "./resources/js/components/dashboard/manter_horarios/ManterHorariosComponent.vue")["default"]);
+Vue.component('perfil-aluno', __webpack_require__(/*! ./components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue */ "./resources/js/components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue")["default"]); //alunos components
 
 Vue.component('cadastrar-aluno', __webpack_require__(/*! ./components/guest/alunos/CadastrarAlunoComponent.vue */ "./resources/js/components/guest/alunos/CadastrarAlunoComponent.vue")["default"]);
 Vue.component('marcar-atendimento', __webpack_require__(/*! ./components/dashboard/alunos/atendimento/MarcarAtendimentoComponent.vue */ "./resources/js/components/dashboard/alunos/atendimento/MarcarAtendimentoComponent.vue")["default"]);
@@ -109753,6 +109958,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MarcarAtendimentoComponent_vue_vue_type_template_id_5343721a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MarcarAtendimentoComponent_vue_vue_type_template_id_5343721a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _GerenciarAlunoComponent_vue_vue_type_template_id_c5101518___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GerenciarAlunoComponent.vue?vue&type=template&id=c5101518& */ "./resources/js/components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue?vue&type=template&id=c5101518&");
+/* harmony import */ var _GerenciarAlunoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GerenciarAlunoComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _GerenciarAlunoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _GerenciarAlunoComponent_vue_vue_type_template_id_c5101518___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _GerenciarAlunoComponent_vue_vue_type_template_id_c5101518___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GerenciarAlunoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./GerenciarAlunoComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GerenciarAlunoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue?vue&type=template&id=c5101518&":
+/*!********************************************************************************************************************!*\
+  !*** ./resources/js/components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue?vue&type=template&id=c5101518& ***!
+  \********************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GerenciarAlunoComponent_vue_vue_type_template_id_c5101518___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./GerenciarAlunoComponent.vue?vue&type=template&id=c5101518& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue?vue&type=template&id=c5101518&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GerenciarAlunoComponent_vue_vue_type_template_id_c5101518___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GerenciarAlunoComponent_vue_vue_type_template_id_c5101518___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -111420,8 +111694,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Cliente\Documents\GitHub\digital-valley-psico\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Cliente\Documents\GitHub\digital-valley-psico\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\paulo\Documents\digital-valley-psico\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\paulo\Documents\digital-valley-psico\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

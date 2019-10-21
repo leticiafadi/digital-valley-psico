@@ -14,6 +14,7 @@ Vue.component('localizacao',        require('./components/dashboard/localizacao/
 Vue.component('curso',              require('./components/dashboard/cursos/CursoComponent.vue').default);
 Vue.component('aluno',              require('./components/dashboard/alunos/AlunoComponent.vue').default);
 Vue.component('manter-horarios',    require('./components/dashboard/manter_horarios/ManterHorariosComponent.vue').default);
+Vue.component('perfil-aluno',        require('./components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue').default)
 
 //alunos components
 Vue.component('cadastrar-aluno', require('./components/guest/alunos/CadastrarAlunoComponent.vue').default);
