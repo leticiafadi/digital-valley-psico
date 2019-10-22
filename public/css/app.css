@@ -920,6 +920,11 @@
 .corLinhaTabela{
     color: white;
 }
+.mybg-azul{
+    background: #407AB9 !important;
+    color:#ffffff;
+    font-weight: normal;
+}
 
 
 .mybtn{

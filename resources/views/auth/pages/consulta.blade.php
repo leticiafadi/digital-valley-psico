@@ -11,21 +11,21 @@
 					<div class="card-body">
 						<div class="table-responsive">
 							<table class="table table-bordered" id="myTable">
-								<thead class="mynav">
+								<thead>
 									<tr>
-										<th class="corLinhaTabela">
+										<th class="mybg-azul">
 											Nome
 										</th>
-										<th class="corLinhaTabela">
+										<th class="mybg-azul">
 											Matricula
 										</th>
-										<th class="corLinhaTabela">
+										<th class="mybg-azul">
 											Curso
 										</th>
-										<th class="corLinhaTabela">
+										<th class="mybg-azul">
 											Data & horário do pedido
 										</th>
-										<th class="corLinhaTabela">
+										<th class="mybg-azul">
 											Opções
 										</th>
 									</tr>

@@ -90944,27 +90944,27 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "mynav" }, [
+    return _c("thead", [
       _c("tr", [
-        _c("th", { staticClass: "corLinhaTabela" }, [
+        _c("th", { staticClass: "mybg-azul" }, [
           _vm._v(
             "\n\t\t\t\t\t\t\t\t\t\t    \t    Nome\n\t\t\t\t\t\t\t\t\t\t        "
           )
         ]),
         _vm._v(" "),
-        _c("th", { staticClass: "corLinhaTabela" }, [
+        _c("th", { staticClass: "mybg-azul" }, [
           _vm._v(
             "\n\t\t\t\t\t\t\t\t\t\t\t        Matricula\n\t\t\t\t\t\t\t\t\t\t        "
           )
         ]),
         _vm._v(" "),
-        _c("th", { staticClass: "corLinhaTabela" }, [
+        _c("th", { staticClass: "mybg-azul" }, [
           _vm._v(
             "\n\t\t\t\t\t\t\t\t\t\t\t        Curso\n                                                "
           )
         ]),
         _vm._v(" "),
-        _c("th", { staticClass: "corLinhaTabela" }, [
+        _c("th", { staticClass: "mybg-azul" }, [
           _vm._v(
             "\n                                                    Opções\n                                                "
           )
