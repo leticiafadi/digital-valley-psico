@@ -81,3 +81,4 @@ Route::get('/localizacao', 'Dashboard\LocalizacaoController@localizacao');
 Route::get('/alunos',           'Dashboard\AlunoController@mostrarPaginaAlunos')->name('alunos.all')->middleware('auth');
 Route::get('/alunos/get','Dashboard\AlunoController@getAlunos')->middleware('auth')->middleware('funcionario');
 Route::get('/alunos/{id}','Dashboard\AlunoController@getAluno')->middleware('auth')->middleware('funcionario');
+Route::get('/aluno/{id}', "Dashboard\AlunoController@mostrarPerfilAluno")->middleware('auth')->middleware('funcionario')->name('aluno.buscar');
