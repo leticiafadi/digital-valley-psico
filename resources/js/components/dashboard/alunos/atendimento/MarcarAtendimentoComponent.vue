@@ -18,18 +18,18 @@
                         </div>
                         <div class="row mt-1">
                             <div class="col col-4">
-                                <div class="form-group">
-                                    <label for="data-atendimento">Selecione a data</label>
-                                    <!--<vue-calendar id="data-atendimento" format="dd/MM/yyyy" :language="pt" placeholder="Selecione a data do atendimento" v-model="dataAtendimento" ></vue-calendar>-->
-                                    <datetime id="data-atendimento" v-model="dataAtendimento" format="dd/MM/yyyy" input-class="form-control" placeholder="Selecione a data do atendimento"></datetime>
-                                </div>
-                            </div>
-                            <div class="col col-4">
                                 <label for="motivoAtendimento">Selecione o psicólogo para o atendimento</label>
                                 <select name="id_curso" class="form-control">
                                         <option value="">Selecione um psicólogo</option>
                                         <!--<option v-for="psicologo in p" v-bind:value="curso.id">{{curso.nome}}</option>-->
                                 </select>    
+                            </div>
+                            <div class="col col-4">
+                                <div class="form-group">
+                                    <label for="data-atendimento">Selecione a data</label>
+                                    <!--<vue-calendar id="data-atendimento" format="dd/MM/yyyy" :language="pt" placeholder="Selecione a data do atendimento" v-model="dataAtendimento" ></vue-calendar>-->
+                                    <datetime id="data-atendimento" v-model="dataAtendimento" format="dd/MM/yyyy" input-class="form-control" placeholder="Selecione a data do atendimento"></datetime>
+                                </div>
                             </div>
                             <div class="col col-4">
                                 <div class="form-group">

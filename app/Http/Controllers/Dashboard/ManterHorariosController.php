@@ -10,8 +10,12 @@ use App\Models\horarios\Semana;
 use App\Models\funcionario\Funcionario;
 use App\Models\dataTempo\Data;
 
+use App\Http\Controllers\Traits\SalvarSemana;
+
 
 class ManterHorariosController extends Controller{
+
+    use salvarSemana;
 
     public function __construct(){
         $this->middleware('auth');
@@ -22,39 +26,47 @@ class ManterHorariosController extends Controller{
         return view('auth.pages.manter-horarios.manter-horarios');
     }
 
-    public function carregaDatas(Request $request){
+    public function carregarSemana(Request $request, int $ano, int $numeroSemana){
         //pega a semana do banco de dados
-        $semana = Semana::where('ano', $request->ano)->where('numero_semana', $request->semana)->where('id_funcionario', Funcionario::where('id_usuario', Auth::user()->id)->first()->id)->first();
+        $semana = Semana::where('ano', $ano)->where('numero_semana', $numeroSemana)->where('id_funcionario', Funcionario::where('id_usuario', Auth::user()->id)->first()->id)->first();
+
 
         //se a semana ainda não existir
         if($semana == null){
             //verifica se uma nova semana pode ser criada.
             //Criei uma regra de negocio, o funcionario so pode agendar seu horarios 03 semanas posteriores a semana atual.
-            if(date('W') < $request->semana && $request->semana <= ( date('W', strtotime( '+3 weeks') ) )){
+            if(date('W') < $semana && $numeroSemana <= ( date('W', strtotime( '+3 weeks') ) )){
                 $arraySemana = [
-                    'ano'               => $request->ano,
+                    'ano'               => $ano,
                     //o id do funcionario
                     'id_funcionario'    => Funcionario::where('id_usuario', Auth::user()->id)->first()->id,
-                    'numero_semana'     => $request->semana,
+                    'numero_semana'     => $numeroSemana,
                     //pega a primeira segundafeira daquela semana
-                    'data_inicio'       => Data::primeiraSegundaFeiraSemana($request->ano, $request->semana)
+                    'data_inicio'       => Data::primeiraSegundaFeiraSemana($ano, $numeroSemana)
                 ];
                 $semana = Semana::create($arraySemana);
-                echo $semana;
+
+                return response(json_encode($semana), 200)->header("Content-type", "text/json");
+
             }else{
-                echo '{}';
+                return response(json_encode(["errors" => "Semana não encontrada."]), 404)->header("Content-type", "text/json");
             }
         }else{
-            $dias = [];
-            for($i = 0; $i < 5; $i++ ){
-                
-            }
-
-            echo json_encode($semana->horarios());
+            return response(json_encode($semana->horarios()), 200)->header("Content-type", "text/json");
         }
 
-
-       
     }
+
+    public function salvarSemana(Request $request, int $ano, int $numeroSemana) {
+        $semana = Semana::where('ano', $ano)->where('numero_semana', $numeroSemana)->where('id_funcionario', Funcionario::where('id_usuario', Auth::user()->id)->first()->id)->first();
+
+        $dias = $this->manterSemana($semana,
+                                    $request->semana,
+                                    $ano,
+                                    $request->numeroSemana );
+       
+        return response(json_encode($dias), 200)->header("Content-type", "text/json");
+    }
+
 
 }

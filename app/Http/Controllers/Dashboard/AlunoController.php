@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Hashidds\Hashids;
 use App\Models\aluno\Aluno;
 use App\Models\curso\Curso;
+use App\Http\Controllers\Traits\BuscarAluno;
 
 class AlunoController extends Controller
 {
@@ -16,6 +17,8 @@ class AlunoController extends Controller
 		$this->middleware('funcionario');   
 
     }
+
+    use BuscarAluno;
 
     public function mostrarPaginaAlunos(){
         return view('auth.pages.alunos.alunos', ['cursos' => Curso::all(), 'base_url' => config('app.url')]);
@@ -32,6 +35,11 @@ class AlunoController extends Controller
             return response((Aluno::buscaAlunosCurso($query,$page,$id_curso)),200)->header('Content-Type','text/json');
         }
         
+    }
+
+    
+    public function getAluno(Request $request,$id){
+        return response($this->Buscar($id),200)->header('Content-Type','text/json');
     }
 
 
