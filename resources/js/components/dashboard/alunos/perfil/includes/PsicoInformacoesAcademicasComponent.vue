@@ -9,7 +9,7 @@
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="matricula">Matricula</label>
-                    <input type="text" class="form-control" name="Matricula" v-model="this.aluno.matricula" :disabled="true">
+                    <input type="text" class="form-control" name="Matricula" v-model="this.aluno.matricula" :disabled="false">
                 </div>
             </div>
             <!--<div class="col col-3">
@@ -27,13 +27,13 @@
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="curso">Curso atual</label>
-                    <input type="text" class="form-control" v-model="this.aluno.curso" name="curso" :disabled="true">
+                    <input type="text" class="form-control" v-model="this.aluno.curso" name="curso" :disabled="false">
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="semestreIngresso">Semestre de ingresso</label>
-                    <input type="text" class="form-control" v-model="this.aluno.semestre_matricula" name="semestreIngresso" :disabled="true">
+                    <input type="text" class="form-control" v-model="this.aluno.semestre_matricula" name="semestreIngresso" :disabled="false">
                 </div>
             </div>
         </div>
@@ -71,8 +71,7 @@ export default {
             ptBR
     },
     props:{
-        aluno: Array,
-        tipo: Number
+        aluno: Array
     },
     data: function(){
         return {

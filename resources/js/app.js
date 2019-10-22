@@ -2,9 +2,11 @@ require("./bootstrap");
 window.Vue = require("vue");
 const VeeValidate = require("vee-validate");
 const Snotify = require("vue-snotify");
+const VueRouter = require("vue-router");
 
 Vue.use(VeeValidate);
 Vue.use(Snotify);
+Vue.use(VueRouter);
 
 Vue.component("example-component", require("./components/Example.vue").default);
 //Dashboard components
@@ -35,6 +37,14 @@ Vue.component(
   require("./components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue")
     .default
 );
+Vue.component(
+  "infopessoal-aluno",
+  require("./components/dashboard/alunos/perfil/includes/PsicoInformacoesPessoaisComponent.vue").default
+);
+Vue.component(
+  "infoacademica-aluno",
+  require("./components/dashboard/alunos/perfil/includes/PsicoInformacoesAcademicasComponent.vue").default
+)
 
 //alunos components
 Vue.component(
