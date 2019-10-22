@@ -6,7 +6,7 @@
                    <div class="col col-12">
                         <div class="card">
                             <div class="card-header">
-                            <i class="fas fa-fw fa-user-graduate"></i>
+                            <i class="fas fa-fw fa-user-graduate pr-2 mycolor-azul"></i>
                                 <span>Visualizar alunos</span>
                             </div>
                             <!--
@@ -81,9 +81,8 @@
 												    <td>
 													    {{aluno.nome}}
 												    </td>
-                                                    <td>
-                                                        <a href="" class="btn btn-primary fa-pull-right mynav corLinhaTabela">Ver detalhes</a>
-                                                        <button type="button" class="btn mybtn py-2 px-5">Acessar</button>
+                                                    <td class="d-flex justify-content-center">
+                                                         <a href="" class="btn mybtn-table py-2 px-4 ">Ver detalhes</a>
                                                     </td>
 									            </tr>
                                             </template>

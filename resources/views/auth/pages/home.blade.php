@@ -3,9 +3,9 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center mb-5">
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 ">
                 <!-- small box -->
-                <div class="small-box mynav text-center pb-2">
+                <div class="small-box mynav text-center pb-2 mysombra-card">
                     <!--<div class="inner">
                         <h3>{{--numeor de atendmentos marcados ainda nao lidos--}}{{$atendimentos}}</h3>
                         <p>Atendimentos agendados</p>
@@ -22,7 +22,7 @@
             </div>
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12  ">
                 <!-- small box -->
-                <div class="small-box mynav  text-center pb-2">
+                <div class="small-box mynav  text-center pb-2  mysombra-card">
                     <!--<div class="inner">
                         <h3>{{$numeroDeCursos}}</h3>
                         <p>Cursos cadastrados</p>
@@ -46,7 +46,7 @@
 
         <div class="row justify-content-center">
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                <div class="small-box mynav  text-center pb-2">
+                <div class="small-box mynav  text-center pb-2  mysombra-card">
                     <img src="{{ asset ('imagens/template/estatisticas.png') }}" class="img-fluid" alt="">
                     <a href="" class="small-box-footer">
                         <h4>Estatísticas</h4>
@@ -56,7 +56,7 @@
             </div>
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12  ">
                     <!-- small box -->
-                    <div class="small-box mynav  text-center pb-2">
+                    <div class="small-box mynav  text-center pb-2 mysombra-card">
                         <!--<div class="inner">
                             <h3>{{$numeroDeFuncionarios}}</h3>
                             <p>Usuários cadastrados</p>

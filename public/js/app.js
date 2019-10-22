@@ -2652,7 +2652,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -90981,7 +90980,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _c("i", { staticClass: "fas fa-fw fa-user-graduate" }),
+      _c("i", { staticClass: "fas fa-fw fa-user-graduate pr-2 mycolor-azul" }),
       _vm._v(" "),
       _c("span", [_vm._v("Visualizar alunos")])
     ])
@@ -91022,20 +91021,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
+    return _c("td", { staticClass: "d-flex justify-content-center" }, [
       _c(
         "a",
-        {
-          staticClass: "btn btn-primary fa-pull-right mynav corLinhaTabela",
-          attrs: { href: "" }
-        },
+        { staticClass: "btn mybtn-table py-2 px-4 ", attrs: { href: "" } },
         [_vm._v("Ver detalhes")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn mybtn py-2 px-5", attrs: { type: "button" } },
-        [_vm._v("Acessar")]
       )
     ])
   }
