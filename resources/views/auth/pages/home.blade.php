@@ -17,7 +17,7 @@
                     <a href="{{route('consultas.all')}}" class="small-box-footer">
                         Atendimentos<i class="fas fa-arrow-circle-right"></i>
                     </a>
-                    <button type="button" class="btn mybtn p-3 px-5">Acessar</button>
+                    <button type="button" class="btn mybtn py-2 px-5">Acessar</button>
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12  ">
@@ -34,7 +34,7 @@
                     <a href="{{route('alunos.all')}}" class="small-box-footer">
                         Alunos <i class="fas fa-arrow-circle-right"></i>
                     </a>
-                    <button type="button" class="btn mybtn p-3 px-5">Acessar</button>
+                    <button type="button" class="btn mybtn py-2 px-5">Acessar</button>
                 </div>
             </div>
             
@@ -51,7 +51,7 @@
                     <a href="" class="small-box-footer">
                         Estatísticas <i class="fas fa-arrow-circle-right"></i>
                     </a>
-                    <button type="button" class="btn mybtn p-3 px-5">Acessar</button>
+                    <button type="button" class="btn mybtn py-2 px-5">Acessar</button>
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12  ">
@@ -68,7 +68,7 @@
                         <a href="{{route('usuarios.all')}}" class="small-box-footer">
                             Psicólogos <i class="fas fa-arrow-circle-right"></i>
                         </a>
-                        <button type="button" class="btn mybtn p-3 px-5">Acessar</button>
+                        <button type="button" class="btn mybtn py-2 px-5">Acessar</button>
                     </div>
             </div>
         </div>

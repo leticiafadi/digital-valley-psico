@@ -41,10 +41,11 @@
 
 .mybtn:hover{
     /* background: rgba(240, 132, 0, 0.84) !important; */
-    background: rgb(242, 133, 0, 0.8) !important;
+    background: rgb(64,122,185, 0.5) !important;
 
     color: #ffffff !important;
-    border-radius: 20px!important;
+   
+    border: 3px solid #ffffff;
 
 }
 
