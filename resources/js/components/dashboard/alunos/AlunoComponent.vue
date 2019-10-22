@@ -6,7 +6,7 @@
                    <div class="col col-12">
                         <div class="card">
                             <div class="card-header">
-                            <i class="fas fa-fw fa-user-graduate"></i>
+                            <i class="fas fa-fw fa-user-graduate pr-2 mycolor-azul"></i>
                                 <span>Visualizar alunos</span>
                             </div>
                             <!--
@@ -81,9 +81,15 @@
 												    <td>
 													    {{aluno.nome}}
 												    </td>
+<<<<<<< HEAD
                                                     <td>
                                                         <a href="" class="btn btn-primary fa-pull-right mynav corLinhaTabela">Ver detalhes</a>
-                                                        <button type="button" class="btn mybtn py-2 px-5">Acessar</button>
+                                                       <!-- <router-link :to="{name:'alu'}"> teste </router-link>
+                                                        <router-view></router-view>-->
+=======
+                                                    <td class="d-flex justify-content-center">
+                                                         <a href="" class="btn mybtn-table py-2 px-4 ">Ver detalhes</a>
+>>>>>>> 660b1f347e3560578e0d12bba0b8b68986cbeada
                                                     </td>
 									            </tr>
                                             </template>
@@ -106,6 +112,24 @@
 import axios    from 'axios';
 import Snotify  from 'vue-snotify';
 import VeeValidate from 'vee-validate';
+import VueRouter from 'vue-router';
+import perfilAluno from './perfil/GerenciarAlunoComponent';
+
+/*const router = new VueRouter({
+    routes: [
+        {
+            path: '/',
+            component: perfilAluno,
+            name: 'alu',
+        },
+        {
+            path: '/:id',
+            component: perfilAluno,
+            name: 'teste'
+        }
+    
+    ]
+})*/
 
 export default {
     props:{
@@ -121,7 +145,8 @@ export default {
     },
     components:{
         axios,
-        Snotify
+        Snotify,
+        VueRouter
     },
     watch:{
         selected(){

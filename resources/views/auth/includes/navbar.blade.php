@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+<nav class="navbar navbar-expand-md navbar-light navbar-laravel mysombra">
     <div class="container-fluid">
         <a class="navbar-brand " href="{{ url('/') }}">
             <img class="img-fluid" src="{{ asset ('imagens/template/psico.png') }}" alt="" width="170" >
@@ -10,7 +10,7 @@
     <div class="container">
         
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
 
