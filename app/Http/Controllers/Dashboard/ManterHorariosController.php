@@ -35,7 +35,8 @@ class ManterHorariosController extends Controller{
         if($semana == null){
             //verifica se uma nova semana pode ser criada.
             //Criei uma regra de negocio, o funcionario so pode agendar seu horarios 03 semanas posteriores a semana atual.
-            if(date('W') < $semana && $numeroSemana <= ( date('W', strtotime( '+3 weeks') ) )){
+
+            if(date('W') < $numeroSemana && $numeroSemana <= ( date('W', strtotime( '+3 weeks') ) )){
                 $arraySemana = [
                     'ano'               => $ano,
                     //o id do funcionario
@@ -46,7 +47,7 @@ class ManterHorariosController extends Controller{
                 ];
                 $semana = Semana::create($arraySemana);
 
-                return response(json_encode($semana), 200)->header("Content-type", "text/json");
+                return response(json_encode($semana->horarios()), 200)->header("Content-type", "text/json");
 
             }else{
                 return response(json_encode(["errors" => "Semana não encontrada."]), 404)->header("Content-type", "text/json");
