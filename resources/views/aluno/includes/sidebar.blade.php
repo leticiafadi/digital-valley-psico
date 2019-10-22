@@ -6,7 +6,7 @@
 		</a>
 	</li>
     <li class="nav-item">
-		<hr class="corhr">
+		<hr class="bg-white">
 	</li>
     <li class="nav-item">
 		<a class="nav-link" href="{{ route('marcarAtendimento') }}">
@@ -15,7 +15,7 @@
 		</a>
     </li>
     <li class="nav-item">
-		<hr class="corhr">
+		<hr class="bg-white">
 	</li>
     <li class="nav-item">
 		<a class="nav-link" href=" {{route('gerenciarPerfil')}} ">
@@ -24,6 +24,6 @@
 		</a>
 	</li>
 	<li class="nav-item">
-		<hr class="corhr">
+		<hr class="bg-white">
 	</li>
 </ul>
