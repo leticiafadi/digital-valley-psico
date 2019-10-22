@@ -53,18 +53,18 @@
                             <div class="card-body">
                                 <ul class="list-group" v-if="alunos != ''">
                                     <table class="table table-bordered" >
-                                        <thead class="mynav">
+                                        <thead>
 									        <tr>
-										        <th class="corLinhaTabela">
+										        <th class="mybg-azul">
 										    	    Nome
 										        </th>
-										        <th class="corLinhaTabela">
+										        <th class="mybg-azul">
 											        Matricula
 										        </th>
-										        <th class="corLinhaTabela">
+										        <th class="mybg-azul">
 											        Curso
                                                 </th>
-                                                <th class="corLinhaTabela">
+                                                <th class="mybg-azul">
                                                     Opções
                                                 </th>
 									        </tr>
@@ -83,6 +83,7 @@
 												    </td>
                                                     <td>
                                                         <a href="" class="btn btn-primary fa-pull-right mynav corLinhaTabela">Ver detalhes</a>
+                                                        <button type="button" class="btn mybtn py-2 px-5">Acessar</button>
                                                     </td>
 									            </tr>
                                             </template>

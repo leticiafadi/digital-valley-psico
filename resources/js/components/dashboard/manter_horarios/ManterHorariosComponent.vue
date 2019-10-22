@@ -1,6 +1,10 @@
 <template>
     <div>
         <div class="container">
+
+            <loading :active.sync="isLoading" 
+                :can-cancel="false" 
+                :is-full-page="true"></loading>
             <div class="row">
                 <div class="col col-12">
 
@@ -264,13 +268,18 @@
     import axios from 'axios';
     import Vue from 'vue';
     import VueSweetalert2 from 'vue-sweetalert2';
+    import Loading from 'vue-loading-overlay';
+
+    import 'vue-loading-overlay/dist/vue-loading.css';
 
     Vue.use(VueSweetalert2);
+    Vue.use(Loading);
 
     export default {
 
         data: function(){
             return {
+                isLoading: false,
                 horas : [
                     "08:00-09:00", 
                     "09:00-10:00", 
@@ -336,6 +345,9 @@
 
             }
         },
+        components: {
+            Loading
+        },
         watch:{
             anoSelecionado : "carregaSemanas",
             semanaSelecionada: "carregaSemana"
@@ -349,6 +361,8 @@
         		return Moment(date.dia).lang('pt-br').format(' ddd DD/MM  ');
             },
             carregaSemanas: function(){
+
+                this.isLoading = true;
 
                 if(this.anoSelecionado == ''){
                     this.semanas = [];
@@ -369,6 +383,9 @@
                     this.semanas.push({inicio : primeiro, final : new Date(primeiro.getTime() + dia * 4)});
                     primeiro = new Date(primeiro.getTime() + dia*7);
                 }
+
+                this.isLoading = false;
+
             },
             carregaAnos : function(){
                 var hoje = new Date();
@@ -432,8 +449,13 @@
 
             },   
             carregaSemana: function(){
+
+                this.isLoading = true;
+
                 axios.get('http://localhost:8000/horarios/' + this.anoSelecionado + '/' + this.semanaSelecionada).then(res=>{
                     this.setarSemana(res.data);
+                    this.isLoading = false;
+
                 }).catch(err=>{
               
                     const Toast = Vue.swal.mixin({
@@ -448,9 +470,14 @@
                         title: 'Semana não encontrada. Talvez você não possa alterar essa semana.'
                     });
 
+                    this.isLoading = false;
+
+
                 });
             },
             salvarSemana: function() {
+
+                this.isLoading = true;
 
                 var semana = {
                     segunda : {
@@ -521,8 +548,9 @@
                         title: 'Os dados foram salvos com sucesso.'
                     });
 
+                    this.isLoading = false;
 
-                    console.log(res);
+
                 });
             }
         },
