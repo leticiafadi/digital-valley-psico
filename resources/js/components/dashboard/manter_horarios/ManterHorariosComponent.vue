@@ -10,17 +10,17 @@
                     </div>
                     <div class="card-body">
                         <div class="text-center">
-                            <h5>Selecione o ano e a semana.</h5>
+                            <h4>Selecione o ano e a semana.</h4>
                         </div>
                         <div class="container mt-3">
                             <div class="row">
-                                <div class="col col-6">
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-3">
                                     <select id="" class="form-control" v-model="anoSelecionado">
                                         <option value="">Selecione o ano</option>
                                         <option value="" v-for="ano in anos" v-bind:value="ano">{{ano}}</option>
                                     </select>
                                 </div>
-                                <div class="col col-6">
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                     <select name="" id="" class="form-control" v-model="semanaSelecionada">
                                         <option value="" >Selecione uma semana</option>
                                         <option value="" v-for="(semana, idx) in semanas" v-bind:value="idx+1">Semana {{idx + 1}} de {{formatarData(semana.inicio)}} até {{formatarData(semana.final)}} </option>

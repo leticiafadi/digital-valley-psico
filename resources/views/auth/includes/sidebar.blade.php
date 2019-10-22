@@ -32,4 +32,11 @@
 		</a>
 	</li>
 
+	<li class="nav-item ">
+		<a class="nav-link pt-4 myborder pb-4" href="{{route('horario')}}">
+			<i class="fas fa-fw fa-clock-o wi"></i>
+			<span>Gerenciar horários</span>
+		</a>
+	</li>
+
 </ul>
