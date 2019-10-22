@@ -10574,7 +10574,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.btn-show-pass {\n  font-size: 15px;\n  color: #999999;\n  display: flex;\n  align-items: center;\n  position: absolute;\n  height: 100%;\n  top: 0;\n  right: 20px;\n  padding: 0 5px;\n  cursor: pointer;\n}\n.btn-show-pass:hover {\n  color: #57b846;\n}\n.btn-show-pass.active {\n  color: #57b846;\n}\n\n", ""]);
+exports.push([module.i, "\n.btn-show-pass {\r\n  font-size: 15px;\r\n  color: #999999;\r\n  display: flex;\r\n  align-items: center;\r\n  position: absolute;\r\n  height: 100%;\r\n  top: 0;\r\n  right: 20px;\r\n  padding: 0 5px;\r\n  cursor: pointer;\n}\n.btn-show-pass:hover {\r\n  color: #57b846;\n}\n.btn-show-pass.active {\r\n  color: #57b846;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -90989,27 +90989,27 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "mynav" }, [
+    return _c("thead", [
       _c("tr", [
-        _c("th", { staticClass: "corLinhaTabela" }, [
+        _c("th", { staticClass: "mybg-azul" }, [
           _vm._v(
             "\n\t\t\t\t\t\t\t\t\t\t    \t    Nome\n\t\t\t\t\t\t\t\t\t\t        "
           )
         ]),
         _vm._v(" "),
-        _c("th", { staticClass: "corLinhaTabela" }, [
+        _c("th", { staticClass: "mybg-azul" }, [
           _vm._v(
             "\n\t\t\t\t\t\t\t\t\t\t\t        Matricula\n\t\t\t\t\t\t\t\t\t\t        "
           )
         ]),
         _vm._v(" "),
-        _c("th", { staticClass: "corLinhaTabela" }, [
+        _c("th", { staticClass: "mybg-azul" }, [
           _vm._v(
             "\n\t\t\t\t\t\t\t\t\t\t\t        Curso\n                                                "
           )
         ]),
         _vm._v(" "),
-        _c("th", { staticClass: "corLinhaTabela" }, [
+        _c("th", { staticClass: "mybg-azul" }, [
           _vm._v(
             "\n                                                    Opções\n                                                "
           )
@@ -116903,8 +116903,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /usr/src/app/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /usr/src/app/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Maria Clara\Documents\GitHub\digital-valley-psico\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Maria Clara\Documents\GitHub\digital-valley-psico\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
