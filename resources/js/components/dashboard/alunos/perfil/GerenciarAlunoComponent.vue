@@ -5,11 +5,11 @@
                 <div class="card">
                     <div class="card-header">
                         <i class="fas fa-fw fa-user"></i>
-                        Gerenciar perfil 
+                        Gerenciar perfil Aluno
                     </div>
-
-                        <informacoes-pessoais   :aluno="this.aluno"> </informacoes-pessoais>
-                        <informacoes-academicas :aluno="this.aluno"> </informacoes-academicas>
+                    <div class="card-body">
+                        <informacoes-pessoais   :aluno="this.aluno" :tipo="this.tipo"> </informacoes-pessoais>
+                        <informacoes-academicas :aluno="this.aluno" :tipo="this.tipo"> </informacoes-academicas>
 
                        <!-- <vinculo-ufc> </vinculo-ufc>
 
@@ -26,6 +26,7 @@
                             </div>
                         </div>
                     </div>-->
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,6 +55,7 @@
         props:{
             base_url: String,
             id_aluno: Number,
+            tipo: Number
         },
         data: function(){
             return{
@@ -62,15 +64,9 @@
         },
         methods:{
             carregaAluno: function(){
-                if(this.tipo==1){
-                    axios.get( this.base_url + '/alunos/'+this.id_aluno).then(response=>{
+                axios.get( this.base_url + '/alunos/'+this.id_aluno).then(response=>{
                     this.aluno = response.data;
                 });
-                }else{
-                    axios.get( this.base_url + '/info/'+this.id_aluno).then(response=>{
-                        this.aluno = response.data;
-                    });
-                }
             }
         },
         mounted(){

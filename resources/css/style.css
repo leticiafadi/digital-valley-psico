@@ -1,0 +1,47 @@
+.mynav {
+    background: #407AB9;
+    
+}
+
+.wi{
+    color: #ffffff;
+}
+/*.mylink li a span{
+    color: #ffffff;
+}
+/*.mylink li a span:hover{
+    color: #407AB9;
+    background-color: #ffffff;
+}*/
+
+
+.myborder{
+    border-bottom: 1px solid #ffffff;
+}
+
+.mynav .nav-link span{
+    color:#ffffff;
+}
+
+.mynav .nav-link span:hover{
+    opacity: 0.8;
+   
+}
+.corLinhaTabela{
+    color: white;
+}
+
+
+.mybtn{
+    background: #ffffff !important;
+    color: #407AB9 !important;
+    border-radius: 20px!important;
+
+}
+
+
+
+    
+
+
+

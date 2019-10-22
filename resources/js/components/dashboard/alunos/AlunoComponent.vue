@@ -53,18 +53,18 @@
                             <div class="card-body">
                                 <ul class="list-group" v-if="alunos != ''">
                                     <table class="table table-bordered" >
-                                        <thead>
+                                        <thead class="mynav">
 									        <tr>
-										        <th>
+										        <th class="corLinhaTabela">
 										    	    Nome
 										        </th>
-										        <th>
+										        <th class="corLinhaTabela">
 											        Matricula
 										        </th>
-										        <th>
+										        <th class="corLinhaTabela">
 											        Curso
                                                 </th>
-                                                <th>
+                                                <th class="corLinhaTabela">
                                                     Opções
                                                 </th>
 									        </tr>
@@ -72,7 +72,9 @@
                                         <tbody>
                                             <template v-for="aluno in this.alunos">
 											    <tr>
-												    <td>{{aluno.nome_completo}}</td>
+												    <td>
+                                                        {{aluno.nome_completo}}
+                                                    </td>
 												    <td>
 													    {{aluno.matricula}}
 												    </td>
@@ -80,7 +82,7 @@
 													    {{aluno.nome}}
 												    </td>
                                                     <td>
-                                                        <a href="" class="btn btn-primary fa-pull-right">Ver detalhes</a>
+                                                        <a href="" class="btn btn-primary fa-pull-right mynav corLinhaTabela">Ver detalhes</a>
                                                     </td>
 									            </tr>
                                             </template>
