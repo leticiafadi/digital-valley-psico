@@ -6,7 +6,7 @@
                    <div class="col col-12">
                         <div class="card">
                             <div class="card-header">
-                            <i class="fas fa-fw fa-user-graduate"></i>
+                            <i class="fas fa-fw fa-user-graduate pr-2 mycolor-azul"></i>
                                 <span>Visualizar alunos</span>
                             </div>
                             <!--
@@ -53,18 +53,18 @@
                             <div class="card-body">
                                 <ul class="list-group" v-if="alunos != ''">
                                     <table class="table table-bordered" >
-                                        <thead class="mynav">
+                                        <thead>
 									        <tr>
-										        <th class="corLinhaTabela">
+										        <th class="mybg-azul">
 										    	    Nome
 										        </th>
-										        <th class="corLinhaTabela">
+										        <th class="mybg-azul">
 											        Matricula
 										        </th>
-										        <th class="corLinhaTabela">
+										        <th class="mybg-azul">
 											        Curso
                                                 </th>
-                                                <th class="corLinhaTabela">
+                                                <th class="mybg-azul">
                                                     Opções
                                                 </th>
 									        </tr>
@@ -81,10 +81,15 @@
 												    <td>
 													    {{aluno.nome}}
 												    </td>
+<<<<<<< HEAD
                                                     <td>
                                                         <a href="" class="btn btn-primary fa-pull-right mynav corLinhaTabela">Ver detalhes</a>
                                                        <!-- <router-link :to="{name:'alu'}"> teste </router-link>
                                                         <router-view></router-view>-->
+=======
+                                                    <td class="d-flex justify-content-center">
+                                                         <a href="" class="btn mybtn-table py-2 px-4 ">Ver detalhes</a>
+>>>>>>> 660b1f347e3560578e0d12bba0b8b68986cbeada
                                                     </td>
 									            </tr>
                                             </template>

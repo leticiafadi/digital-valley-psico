@@ -2656,6 +2656,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -3954,6 +3959,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-sweetalert2 */ "./node_modules/vue-sweetalert2/dist/index.js");
+!(function webpackMissingModule() { var e = new Error("Cannot find module 'vue-loading-overlay'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+!(function webpackMissingModule() { var e = new Error("Cannot find module 'vue-loading-overlay/dist/vue-loading.css'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 //
 //
 //
@@ -4215,14 +4222,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+
+
 
 
 
 
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_3__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(!(function webpackMissingModule() { var e = new Error("Cannot find module 'vue-loading-overlay'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      isLoading: false,
       horas: ["08:00-09:00", "09:00-10:00", "10:00-11:00", "11:00-12:00", "13:30-14:30", "14:30-15:30", "15:30-16:30", "16:30-17:30"],
       anos: [],
       data: new Date(),
@@ -4272,6 +4287,9 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_sweetalert2__WEBPACK_IMPORTED
       sexta_h: false
     };
   },
+  components: {
+    Loading: !(function webpackMissingModule() { var e = new Error("Cannot find module 'vue-loading-overlay'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+  },
   watch: {
     anoSelecionado: "carregaSemanas",
     semanaSelecionada: "carregaSemana"
@@ -4285,6 +4303,8 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_sweetalert2__WEBPACK_IMPORTED
       return moment__WEBPACK_IMPORTED_MODULE_0___default()(date.dia).lang('pt-br').format(' ddd DD/MM  ');
     },
     carregaSemanas: function carregaSemanas() {
+      this.isLoading = true;
+
       if (this.anoSelecionado == '') {
         this.semanas = [];
         return 0;
@@ -4308,6 +4328,8 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_sweetalert2__WEBPACK_IMPORTED
         });
         primeiro = new Date(primeiro.getTime() + dia * 7);
       }
+
+      this.isLoading = false;
     },
     carregaAnos: function carregaAnos() {
       var hoje = new Date();
@@ -4364,8 +4386,11 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_sweetalert2__WEBPACK_IMPORTED
     carregaSemana: function carregaSemana() {
       var _this = this;
 
+      this.isLoading = true;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/horarios/' + this.anoSelecionado + '/' + this.semanaSelecionada).then(function (res) {
         _this.setarSemana(res.data);
+
+        _this.isLoading = false;
       })["catch"](function (err) {
         var Toast = vue__WEBPACK_IMPORTED_MODULE_2___default.a.swal.mixin({
           toast: true,
@@ -4377,9 +4402,13 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_sweetalert2__WEBPACK_IMPORTED
           type: 'error',
           title: 'Semana não encontrada. Talvez você não possa alterar essa semana.'
         });
+        _this.isLoading = false;
       });
     },
     salvarSemana: function salvarSemana() {
+      var _this2 = this;
+
+      this.isLoading = true;
       var semana = {
         segunda: {
           a: this.segunda_a,
@@ -4446,7 +4475,7 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_sweetalert2__WEBPACK_IMPORTED
           type: 'success',
           title: 'Os dados foram salvos com sucesso.'
         });
-        console.log(res);
+        _this2.isLoading = false;
       });
     }
   },
@@ -91115,8 +91144,11 @@ var render = function() {
                                         "\n\t\t\t\t\t\t\t\t\t\t\t\t    "
                                     )
                                   ]),
-                                  _vm._v(" "),
-                                  _vm._m(2, true)
+                                  _vm._v(
+                                    "\n<<<<<<< HEAD\n                                                    "
+                                  ),
+                                  _vm._m(2, true),
+                                  _vm._m(3, true)
                                 ])
                               ]
                             })
@@ -91147,7 +91179,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _c("i", { staticClass: "fas fa-fw fa-user-graduate" }),
+      _c("i", { staticClass: "fas fa-fw fa-user-graduate pr-2 mycolor-azul" }),
       _vm._v(" "),
       _c("span", [_vm._v("Visualizar alunos")])
     ])
@@ -91156,27 +91188,27 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "mynav" }, [
+    return _c("thead", [
       _c("tr", [
-        _c("th", { staticClass: "corLinhaTabela" }, [
+        _c("th", { staticClass: "mybg-azul" }, [
           _vm._v(
             "\n\t\t\t\t\t\t\t\t\t\t    \t    Nome\n\t\t\t\t\t\t\t\t\t\t        "
           )
         ]),
         _vm._v(" "),
-        _c("th", { staticClass: "corLinhaTabela" }, [
+        _c("th", { staticClass: "mybg-azul" }, [
           _vm._v(
             "\n\t\t\t\t\t\t\t\t\t\t\t        Matricula\n\t\t\t\t\t\t\t\t\t\t        "
           )
         ]),
         _vm._v(" "),
-        _c("th", { staticClass: "corLinhaTabela" }, [
+        _c("th", { staticClass: "mybg-azul" }, [
           _vm._v(
             "\n\t\t\t\t\t\t\t\t\t\t\t        Curso\n                                                "
           )
         ]),
         _vm._v(" "),
-        _c("th", { staticClass: "corLinhaTabela" }, [
+        _c("th", { staticClass: "mybg-azul" }, [
           _vm._v(
             "\n                                                    Opções\n                                                "
           )
@@ -91196,6 +91228,23 @@ var staticRenderFns = [
           attrs: { href: "" }
         },
         [_vm._v("Ver detalhes")]
+      ),
+      _vm._v(" "),
+      _vm._v("\n=======\n                                                    ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "d-flex justify-content-center" }, [
+      _c(
+        "a",
+        { staticClass: "btn mybtn-table py-2 px-4 ", attrs: { href: "" } },
+        [_vm._v("Ver detalhes")]
+      ),
+      _vm._v(
+        "\n>>>>>>> 660b1f347e3560578e0d12bba0b8b68986cbeada\n                                                    "
       )
     ])
   }
@@ -93182,1885 +93231,1986 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col col-12" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v(
-                "\n                    Gerenciar horários\n                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._m(0),
+    _c(
+      "div",
+      { staticClass: "container" },
+      [
+        _c("loading", {
+          attrs: {
+            active: _vm.isLoading,
+            "can-cancel": false,
+            "is-full-page": true
+          },
+          on: {
+            "update:active": function($event) {
+              _vm.isLoading = $event
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col col-12" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._v(
+                  "\n                    Gerenciar horários\n                "
+                )
+              ]),
               _vm._v(" "),
-              _c("div", { staticClass: "container mt-3" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col col-6" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "container mt-3" }, [
+                  _c("div", { staticClass: "row" }, [
                     _c(
-                      "select",
+                      "div",
                       {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.anoSelecionado,
-                            expression: "anoSelecionado"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { id: "" },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.anoSelecionado = $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          }
-                        }
+                        staticClass: "col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-3"
                       },
                       [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("Selecione o ano")
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.anos, function(ano) {
-                          return _c(
-                            "option",
-                            { attrs: { value: "" }, domProps: { value: ano } },
-                            [_vm._v(_vm._s(ano))]
-                          )
-                        })
-                      ],
-                      2
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.anoSelecionado,
+                                expression: "anoSelecionado"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { id: "" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.anoSelecionado = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "" } }, [
+                              _vm._v("Selecione o ano")
+                            ]),
+                            _vm._v(" "),
+                            _vm._l(_vm.anos, function(ano) {
+                              return _c(
+                                "option",
+                                {
+                                  attrs: { value: "" },
+                                  domProps: { value: ano }
+                                },
+                                [_vm._v(_vm._s(ano))]
+                              )
+                            })
+                          ],
+                          2
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-xl-6 col-lg-6 col-md-6 col-sm-12" },
+                      [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.semanaSelecionada,
+                                expression: "semanaSelecionada"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { name: "", id: "" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.semanaSelecionada = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "" } }, [
+                              _vm._v("Selecione uma semana")
+                            ]),
+                            _vm._v(" "),
+                            _vm._l(_vm.semanas, function(semana, idx) {
+                              return _c(
+                                "option",
+                                {
+                                  attrs: { value: "" },
+                                  domProps: { value: idx + 1 }
+                                },
+                                [
+                                  _vm._v(
+                                    "Semana " +
+                                      _vm._s(idx + 1) +
+                                      " de " +
+                                      _vm._s(_vm.formatarData(semana.inicio)) +
+                                      " até " +
+                                      _vm._s(_vm.formatarData(semana.final)) +
+                                      " "
+                                  )
+                                ]
+                              )
+                            })
+                          ],
+                          2
+                        )
+                      ]
                     )
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col col-6" }, [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.semanaSelecionada,
-                            expression: "semanaSelecionada"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { name: "", id: "" },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.semanaSelecionada = $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("Selecione uma semana")
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.semanas, function(semana, idx) {
-                          return _c(
-                            "option",
-                            {
-                              attrs: { value: "" },
-                              domProps: { value: idx + 1 }
-                            },
-                            [
-                              _vm._v(
-                                "Semana " +
-                                  _vm._s(idx + 1) +
-                                  " de " +
-                                  _vm._s(_vm.formatarData(semana.inicio)) +
-                                  " até " +
-                                  _vm._s(_vm.formatarData(semana.final)) +
-                                  " "
-                              )
-                            ]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col col-12" }, [
-                  this.anoSelecionado != "" && this.semanaSelecionada != ""
-                    ? _c("div", [
-                        _c("div", { staticClass: "mt-4 mb-4" }, [
+                  _c("div", { staticClass: "col col-12" }, [
+                    this.anoSelecionado != "" && this.semanaSelecionada != ""
+                      ? _c("div", [
+                          _c("div", { staticClass: "mt-4 mb-4" }, [
+                            _vm._v(
+                              "\n                                    Semana " +
+                                _vm._s(this.semanaSelecionada) +
+                                " do ano de " +
+                                _vm._s(this.anoSelecionado) +
+                                "\n                                "
+                            )
+                          ]),
                           _vm._v(
-                            "\n                                    Semana " +
-                              _vm._s(this.semanaSelecionada) +
-                              " do ano de " +
-                              _vm._s(this.anoSelecionado) +
-                              "\n                                "
-                          )
-                        ]),
-                        _vm._v(
-                          "\n                            \n                                " +
-                            _vm._s(_vm.dias.segunda) +
-                            "\n\n                                "
-                        ),
-                        _c("div", { staticClass: "table-responsive" }, [
-                          _c("table", { staticClass: "table table-striped" }, [
-                            _c("thead", [
-                              _c(
-                                "tr",
-                                [
-                                  _c("th", { attrs: { scope: "col" } }, [
-                                    _vm._v("Horas/Dias")
+                            "\n                            \n                                " +
+                              _vm._s(_vm.dias.segunda) +
+                              "\n\n                                "
+                          ),
+                          _c("div", { staticClass: "table-responsive" }, [
+                            _c(
+                              "table",
+                              { staticClass: "table table-striped" },
+                              [
+                                _c("thead", [
+                                  _c(
+                                    "tr",
+                                    [
+                                      _c("th", { attrs: { scope: "col" } }, [
+                                        _vm._v("Horas/Dias")
+                                      ]),
+                                      _vm._v(" "),
+                                      _vm._l(_vm.dias, function(dia) {
+                                        return _c("th", [
+                                          _vm._v(
+                                            _vm._s(_vm.formatarDiaSemana(dia))
+                                          )
+                                        ])
+                                      })
+                                    ],
+                                    2
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("tbody", [
+                                  _vm._m(1),
+                                  _vm._v(" "),
+                                  _c("tr", [
+                                    _vm._m(2),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.segunda_a,
+                                            expression: "segunda_a"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.segunda_a)
+                                            ? _vm._i(_vm.segunda_a, null) > -1
+                                            : _vm.segunda_a
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.segunda_a,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.segunda_a = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.segunda_a = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.segunda_a = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.terca_a,
+                                            expression: "terca_a"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.terca_a)
+                                            ? _vm._i(_vm.terca_a, null) > -1
+                                            : _vm.terca_a
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.terca_a,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.terca_a = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.terca_a = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.terca_a = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.quarta_a,
+                                            expression: "quarta_a"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.quarta_a)
+                                            ? _vm._i(_vm.quarta_a, null) > -1
+                                            : _vm.quarta_a
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.quarta_a,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.quarta_a = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.quarta_a = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.quarta_a = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.quinta_a,
+                                            expression: "quinta_a"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.quinta_a)
+                                            ? _vm._i(_vm.quinta_a, null) > -1
+                                            : _vm.quinta_a
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.quinta_a,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.quinta_a = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.quinta_a = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.quinta_a = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.sexta_a,
+                                            expression: "sexta_a"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.sexta_a)
+                                            ? _vm._i(_vm.sexta_a, null) > -1
+                                            : _vm.sexta_a
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.sexta_a,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.sexta_a = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.sexta_a = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.sexta_a = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ])
                                   ]),
                                   _vm._v(" "),
-                                  _vm._l(_vm.dias, function(dia) {
-                                    return _c("th", [
-                                      _vm._v(_vm._s(_vm.formatarDiaSemana(dia)))
+                                  _c("tr", [
+                                    _vm._m(3),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.segunda_b,
+                                            expression: "segunda_b"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.segunda_b)
+                                            ? _vm._i(_vm.segunda_b, null) > -1
+                                            : _vm.segunda_b
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.segunda_b,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.segunda_b = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.segunda_b = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.segunda_b = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.terca_b,
+                                            expression: "terca_b"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.terca_b)
+                                            ? _vm._i(_vm.terca_b, null) > -1
+                                            : _vm.terca_b
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.terca_b,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.terca_b = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.terca_b = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.terca_b = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.quarta_b,
+                                            expression: "quarta_b"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.quarta_b)
+                                            ? _vm._i(_vm.quarta_b, null) > -1
+                                            : _vm.quarta_b
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.quarta_b,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.quarta_b = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.quarta_b = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.quarta_b = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.quinta_b,
+                                            expression: "quinta_b"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.quinta_b)
+                                            ? _vm._i(_vm.quinta_b, null) > -1
+                                            : _vm.quinta_b
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.quinta_b,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.quinta_b = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.quinta_b = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.quinta_b = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.sexta_b,
+                                            expression: "sexta_b"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.sexta_b)
+                                            ? _vm._i(_vm.sexta_b, null) > -1
+                                            : _vm.sexta_b
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.sexta_b,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.sexta_b = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.sexta_b = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.sexta_b = $$c
+                                            }
+                                          }
+                                        }
+                                      })
                                     ])
-                                  })
-                                ],
-                                2
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("tbody", [
-                              _vm._m(1),
-                              _vm._v(" "),
-                              _c("tr", [
-                                _vm._m(2),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.segunda_a,
-                                        expression: "segunda_a"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.segunda_a)
-                                        ? _vm._i(_vm.segunda_a, null) > -1
-                                        : _vm.segunda_a
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.segunda_a,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.segunda_a = $$a.concat([
-                                                $$v
-                                              ]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.segunda_a = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("tr", [
+                                    _vm._m(4),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.segunda_c,
+                                            expression: "segunda_c"
                                           }
-                                        } else {
-                                          _vm.segunda_a = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.terca_a,
-                                        expression: "terca_a"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.terca_a)
-                                        ? _vm._i(_vm.terca_a, null) > -1
-                                        : _vm.terca_a
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.terca_a,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.terca_a = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.terca_a = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.segunda_c)
+                                            ? _vm._i(_vm.segunda_c, null) > -1
+                                            : _vm.segunda_c
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.segunda_c,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.segunda_c = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.segunda_c = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.segunda_c = $$c
+                                            }
                                           }
-                                        } else {
-                                          _vm.terca_a = $$c
                                         }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.quarta_a,
-                                        expression: "quarta_a"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.quarta_a)
-                                        ? _vm._i(_vm.quarta_a, null) > -1
-                                        : _vm.quarta_a
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.quarta_a,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.quarta_a = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.quarta_a = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.terca_c,
+                                            expression: "terca_c"
                                           }
-                                        } else {
-                                          _vm.quarta_a = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.quinta_a,
-                                        expression: "quinta_a"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.quinta_a)
-                                        ? _vm._i(_vm.quinta_a, null) > -1
-                                        : _vm.quinta_a
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.quinta_a,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.quinta_a = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.quinta_a = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.terca_c)
+                                            ? _vm._i(_vm.terca_c, null) > -1
+                                            : _vm.terca_c
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.terca_c,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.terca_c = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.terca_c = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.terca_c = $$c
+                                            }
                                           }
-                                        } else {
-                                          _vm.quinta_a = $$c
                                         }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.sexta_a,
-                                        expression: "sexta_a"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.sexta_a)
-                                        ? _vm._i(_vm.sexta_a, null) > -1
-                                        : _vm.sexta_a
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.sexta_a,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.sexta_a = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.sexta_a = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.quarta_c,
+                                            expression: "quarta_c"
                                           }
-                                        } else {
-                                          _vm.sexta_a = $$c
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.quarta_c)
+                                            ? _vm._i(_vm.quarta_c, null) > -1
+                                            : _vm.quarta_c
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.quarta_c,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.quarta_c = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.quarta_c = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.quarta_c = $$c
+                                            }
+                                          }
                                         }
-                                      }
-                                    }
-                                  })
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.quinta_c,
+                                            expression: "quinta_c"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.quinta_c)
+                                            ? _vm._i(_vm.quinta_c, null) > -1
+                                            : _vm.quinta_c
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.quinta_c,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.quinta_c = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.quinta_c = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.quinta_c = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.sexta_c,
+                                            expression: "sexta_c"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.sexta_c)
+                                            ? _vm._i(_vm.sexta_c, null) > -1
+                                            : _vm.sexta_c
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.sexta_c,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.sexta_c = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.sexta_c = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.sexta_c = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("tr", [
+                                    _vm._m(5),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.segunda_d,
+                                            expression: "segunda_d"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.segunda_d)
+                                            ? _vm._i(_vm.segunda_d, null) > -1
+                                            : _vm.segunda_d
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.segunda_d,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.segunda_d = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.segunda_d = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.segunda_d = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.terca_d,
+                                            expression: "terca_d"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.terca_d)
+                                            ? _vm._i(_vm.terca_d, null) > -1
+                                            : _vm.terca_d
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.terca_d,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.terca_d = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.terca_d = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.terca_d = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.quarta_d,
+                                            expression: "quarta_d"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.quarta_d)
+                                            ? _vm._i(_vm.quarta_d, null) > -1
+                                            : _vm.quarta_d
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.quarta_d,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.quarta_d = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.quarta_d = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.quarta_d = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.quinta_d,
+                                            expression: "quinta_d"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.quinta_d)
+                                            ? _vm._i(_vm.quinta_d, null) > -1
+                                            : _vm.quinta_d
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.quinta_d,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.quinta_d = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.quinta_d = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.quinta_d = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.sexta_d,
+                                            expression: "sexta_d"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.sexta_d)
+                                            ? _vm._i(_vm.sexta_d, null) > -1
+                                            : _vm.sexta_d
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.sexta_d,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.sexta_d = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.sexta_d = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.sexta_d = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(6),
+                                  _vm._v(" "),
+                                  _c("tr", [
+                                    _vm._m(7),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.segunda_e,
+                                            expression: "segunda_e"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.segunda_e)
+                                            ? _vm._i(_vm.segunda_e, null) > -1
+                                            : _vm.segunda_e
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.segunda_e,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.segunda_e = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.segunda_e = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.segunda_e = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.terca_e,
+                                            expression: "terca_e"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.terca_e)
+                                            ? _vm._i(_vm.terca_e, null) > -1
+                                            : _vm.terca_e
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.terca_e,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.terca_e = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.terca_e = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.terca_e = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.quarta_e,
+                                            expression: "quarta_e"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.quarta_e)
+                                            ? _vm._i(_vm.quarta_e, null) > -1
+                                            : _vm.quarta_e
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.quarta_e,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.quarta_e = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.quarta_e = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.quarta_e = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.quinta_e,
+                                            expression: "quinta_e"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.quinta_e)
+                                            ? _vm._i(_vm.quinta_e, null) > -1
+                                            : _vm.quinta_e
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.quinta_e,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.quinta_e = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.quinta_e = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.quinta_e = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.sexta_e,
+                                            expression: "sexta_e"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.sexta_e)
+                                            ? _vm._i(_vm.sexta_e, null) > -1
+                                            : _vm.sexta_e
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.sexta_e,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.sexta_e = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.sexta_e = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.sexta_e = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("tr", [
+                                    _vm._m(8),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.segunda_f,
+                                            expression: "segunda_f"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.segunda_f)
+                                            ? _vm._i(_vm.segunda_f, null) > -1
+                                            : _vm.segunda_f
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.segunda_f,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.segunda_f = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.segunda_f = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.segunda_f = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.terca_f,
+                                            expression: "terca_f"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.terca_f)
+                                            ? _vm._i(_vm.terca_f, null) > -1
+                                            : _vm.terca_f
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.terca_f,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.terca_f = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.terca_f = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.terca_f = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.quarta_f,
+                                            expression: "quarta_f"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.quarta_f)
+                                            ? _vm._i(_vm.quarta_f, null) > -1
+                                            : _vm.quarta_f
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.quarta_f,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.quarta_f = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.quarta_f = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.quarta_f = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.quinta_f,
+                                            expression: "quinta_f"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.quinta_f)
+                                            ? _vm._i(_vm.quinta_f, null) > -1
+                                            : _vm.quinta_f
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.quinta_f,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.quinta_f = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.quinta_f = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.quinta_f = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.sexta_f,
+                                            expression: "sexta_f"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.sexta_f)
+                                            ? _vm._i(_vm.sexta_f, null) > -1
+                                            : _vm.sexta_f
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.sexta_f,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.sexta_f = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.sexta_f = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.sexta_f = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("tr", [
+                                    _vm._m(9),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.segunda_g,
+                                            expression: "segunda_g"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.segunda_g)
+                                            ? _vm._i(_vm.segunda_g, null) > -1
+                                            : _vm.segunda_g
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.segunda_g,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.segunda_g = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.segunda_g = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.segunda_g = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.terca_g,
+                                            expression: "terca_g"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.terca_g)
+                                            ? _vm._i(_vm.terca_g, null) > -1
+                                            : _vm.terca_g
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.terca_g,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.terca_g = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.terca_g = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.terca_g = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.quarta_g,
+                                            expression: "quarta_g"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.quarta_g)
+                                            ? _vm._i(_vm.quarta_g, null) > -1
+                                            : _vm.quarta_g
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.quarta_g,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.quarta_g = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.quarta_g = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.quarta_g = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.quinta_g,
+                                            expression: "quinta_g"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.quinta_g)
+                                            ? _vm._i(_vm.quinta_g, null) > -1
+                                            : _vm.quinta_g
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.quinta_g,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.quinta_g = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.quinta_g = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.quinta_g = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.sexta_g,
+                                            expression: "sexta_g"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.sexta_g)
+                                            ? _vm._i(_vm.sexta_g, null) > -1
+                                            : _vm.sexta_g
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.sexta_g,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.sexta_g = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.sexta_g = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.sexta_g = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("tr", [
+                                    _vm._m(10),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.segunda_h,
+                                            expression: "segunda_h"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.segunda_h)
+                                            ? _vm._i(_vm.segunda_h, null) > -1
+                                            : _vm.segunda_h
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.segunda_h,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.segunda_h = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.segunda_h = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.segunda_h = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.terca_h,
+                                            expression: "terca_h"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.terca_h)
+                                            ? _vm._i(_vm.terca_h, null) > -1
+                                            : _vm.terca_h
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.terca_h,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.terca_h = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.terca_h = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.terca_h = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.quarta_h,
+                                            expression: "quarta_h"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.quarta_h)
+                                            ? _vm._i(_vm.quarta_h, null) > -1
+                                            : _vm.quarta_h
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.quarta_h,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.quarta_h = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.quarta_h = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.quarta_h = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.quinta_h,
+                                            expression: "quinta_h"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.quinta_h)
+                                            ? _vm._i(_vm.quinta_h, null) > -1
+                                            : _vm.quinta_h
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.quinta_h,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.quinta_h = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.quinta_h = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.quinta_h = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.sexta_h,
+                                            expression: "sexta_h"
+                                          }
+                                        ],
+                                        attrs: { type: "checkbox", id: "" },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.sexta_h)
+                                            ? _vm._i(_vm.sexta_h, null) > -1
+                                            : _vm.sexta_h
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.sexta_h,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.sexta_h = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.sexta_h = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
+                                            } else {
+                                              _vm.sexta_h = $$c
+                                            }
+                                          }
+                                        }
+                                      })
+                                    ])
+                                  ])
                                 ])
-                              ]),
-                              _vm._v(" "),
-                              _c("tr", [
-                                _vm._m(3),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.segunda_b,
-                                        expression: "segunda_b"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.segunda_b)
-                                        ? _vm._i(_vm.segunda_b, null) > -1
-                                        : _vm.segunda_b
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.segunda_b,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.segunda_b = $$a.concat([
-                                                $$v
-                                              ]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.segunda_b = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.segunda_b = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.terca_b,
-                                        expression: "terca_b"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.terca_b)
-                                        ? _vm._i(_vm.terca_b, null) > -1
-                                        : _vm.terca_b
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.terca_b,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.terca_b = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.terca_b = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.terca_b = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.quarta_b,
-                                        expression: "quarta_b"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.quarta_b)
-                                        ? _vm._i(_vm.quarta_b, null) > -1
-                                        : _vm.quarta_b
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.quarta_b,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.quarta_b = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.quarta_b = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.quarta_b = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.quinta_b,
-                                        expression: "quinta_b"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.quinta_b)
-                                        ? _vm._i(_vm.quinta_b, null) > -1
-                                        : _vm.quinta_b
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.quinta_b,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.quinta_b = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.quinta_b = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.quinta_b = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.sexta_b,
-                                        expression: "sexta_b"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.sexta_b)
-                                        ? _vm._i(_vm.sexta_b, null) > -1
-                                        : _vm.sexta_b
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.sexta_b,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.sexta_b = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.sexta_b = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.sexta_b = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("tr", [
-                                _vm._m(4),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.segunda_c,
-                                        expression: "segunda_c"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.segunda_c)
-                                        ? _vm._i(_vm.segunda_c, null) > -1
-                                        : _vm.segunda_c
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.segunda_c,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.segunda_c = $$a.concat([
-                                                $$v
-                                              ]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.segunda_c = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.segunda_c = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.terca_c,
-                                        expression: "terca_c"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.terca_c)
-                                        ? _vm._i(_vm.terca_c, null) > -1
-                                        : _vm.terca_c
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.terca_c,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.terca_c = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.terca_c = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.terca_c = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.quarta_c,
-                                        expression: "quarta_c"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.quarta_c)
-                                        ? _vm._i(_vm.quarta_c, null) > -1
-                                        : _vm.quarta_c
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.quarta_c,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.quarta_c = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.quarta_c = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.quarta_c = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.quinta_c,
-                                        expression: "quinta_c"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.quinta_c)
-                                        ? _vm._i(_vm.quinta_c, null) > -1
-                                        : _vm.quinta_c
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.quinta_c,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.quinta_c = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.quinta_c = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.quinta_c = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.sexta_c,
-                                        expression: "sexta_c"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.sexta_c)
-                                        ? _vm._i(_vm.sexta_c, null) > -1
-                                        : _vm.sexta_c
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.sexta_c,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.sexta_c = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.sexta_c = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.sexta_c = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("tr", [
-                                _vm._m(5),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.segunda_d,
-                                        expression: "segunda_d"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.segunda_d)
-                                        ? _vm._i(_vm.segunda_d, null) > -1
-                                        : _vm.segunda_d
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.segunda_d,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.segunda_d = $$a.concat([
-                                                $$v
-                                              ]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.segunda_d = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.segunda_d = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.terca_d,
-                                        expression: "terca_d"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.terca_d)
-                                        ? _vm._i(_vm.terca_d, null) > -1
-                                        : _vm.terca_d
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.terca_d,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.terca_d = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.terca_d = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.terca_d = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.quarta_d,
-                                        expression: "quarta_d"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.quarta_d)
-                                        ? _vm._i(_vm.quarta_d, null) > -1
-                                        : _vm.quarta_d
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.quarta_d,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.quarta_d = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.quarta_d = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.quarta_d = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.quinta_d,
-                                        expression: "quinta_d"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.quinta_d)
-                                        ? _vm._i(_vm.quinta_d, null) > -1
-                                        : _vm.quinta_d
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.quinta_d,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.quinta_d = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.quinta_d = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.quinta_d = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.sexta_d,
-                                        expression: "sexta_d"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.sexta_d)
-                                        ? _vm._i(_vm.sexta_d, null) > -1
-                                        : _vm.sexta_d
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.sexta_d,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.sexta_d = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.sexta_d = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.sexta_d = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(6),
-                              _vm._v(" "),
-                              _c("tr", [
-                                _vm._m(7),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.segunda_e,
-                                        expression: "segunda_e"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.segunda_e)
-                                        ? _vm._i(_vm.segunda_e, null) > -1
-                                        : _vm.segunda_e
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.segunda_e,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.segunda_e = $$a.concat([
-                                                $$v
-                                              ]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.segunda_e = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.segunda_e = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.terca_e,
-                                        expression: "terca_e"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.terca_e)
-                                        ? _vm._i(_vm.terca_e, null) > -1
-                                        : _vm.terca_e
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.terca_e,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.terca_e = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.terca_e = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.terca_e = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.quarta_e,
-                                        expression: "quarta_e"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.quarta_e)
-                                        ? _vm._i(_vm.quarta_e, null) > -1
-                                        : _vm.quarta_e
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.quarta_e,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.quarta_e = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.quarta_e = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.quarta_e = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.quinta_e,
-                                        expression: "quinta_e"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.quinta_e)
-                                        ? _vm._i(_vm.quinta_e, null) > -1
-                                        : _vm.quinta_e
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.quinta_e,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.quinta_e = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.quinta_e = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.quinta_e = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.sexta_e,
-                                        expression: "sexta_e"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.sexta_e)
-                                        ? _vm._i(_vm.sexta_e, null) > -1
-                                        : _vm.sexta_e
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.sexta_e,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.sexta_e = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.sexta_e = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.sexta_e = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("tr", [
-                                _vm._m(8),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.segunda_f,
-                                        expression: "segunda_f"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.segunda_f)
-                                        ? _vm._i(_vm.segunda_f, null) > -1
-                                        : _vm.segunda_f
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.segunda_f,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.segunda_f = $$a.concat([
-                                                $$v
-                                              ]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.segunda_f = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.segunda_f = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.terca_f,
-                                        expression: "terca_f"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.terca_f)
-                                        ? _vm._i(_vm.terca_f, null) > -1
-                                        : _vm.terca_f
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.terca_f,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.terca_f = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.terca_f = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.terca_f = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.quarta_f,
-                                        expression: "quarta_f"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.quarta_f)
-                                        ? _vm._i(_vm.quarta_f, null) > -1
-                                        : _vm.quarta_f
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.quarta_f,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.quarta_f = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.quarta_f = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.quarta_f = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.quinta_f,
-                                        expression: "quinta_f"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.quinta_f)
-                                        ? _vm._i(_vm.quinta_f, null) > -1
-                                        : _vm.quinta_f
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.quinta_f,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.quinta_f = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.quinta_f = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.quinta_f = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.sexta_f,
-                                        expression: "sexta_f"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.sexta_f)
-                                        ? _vm._i(_vm.sexta_f, null) > -1
-                                        : _vm.sexta_f
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.sexta_f,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.sexta_f = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.sexta_f = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.sexta_f = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("tr", [
-                                _vm._m(9),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.segunda_g,
-                                        expression: "segunda_g"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.segunda_g)
-                                        ? _vm._i(_vm.segunda_g, null) > -1
-                                        : _vm.segunda_g
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.segunda_g,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.segunda_g = $$a.concat([
-                                                $$v
-                                              ]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.segunda_g = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.segunda_g = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.terca_g,
-                                        expression: "terca_g"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.terca_g)
-                                        ? _vm._i(_vm.terca_g, null) > -1
-                                        : _vm.terca_g
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.terca_g,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.terca_g = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.terca_g = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.terca_g = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.quarta_g,
-                                        expression: "quarta_g"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.quarta_g)
-                                        ? _vm._i(_vm.quarta_g, null) > -1
-                                        : _vm.quarta_g
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.quarta_g,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.quarta_g = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.quarta_g = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.quarta_g = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.quinta_g,
-                                        expression: "quinta_g"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.quinta_g)
-                                        ? _vm._i(_vm.quinta_g, null) > -1
-                                        : _vm.quinta_g
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.quinta_g,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.quinta_g = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.quinta_g = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.quinta_g = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.sexta_g,
-                                        expression: "sexta_g"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.sexta_g)
-                                        ? _vm._i(_vm.sexta_g, null) > -1
-                                        : _vm.sexta_g
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.sexta_g,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.sexta_g = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.sexta_g = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.sexta_g = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("tr", [
-                                _vm._m(10),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.segunda_h,
-                                        expression: "segunda_h"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.segunda_h)
-                                        ? _vm._i(_vm.segunda_h, null) > -1
-                                        : _vm.segunda_h
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.segunda_h,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.segunda_h = $$a.concat([
-                                                $$v
-                                              ]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.segunda_h = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.segunda_h = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.terca_h,
-                                        expression: "terca_h"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.terca_h)
-                                        ? _vm._i(_vm.terca_h, null) > -1
-                                        : _vm.terca_h
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.terca_h,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.terca_h = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.terca_h = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.terca_h = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.quarta_h,
-                                        expression: "quarta_h"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.quarta_h)
-                                        ? _vm._i(_vm.quarta_h, null) > -1
-                                        : _vm.quarta_h
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.quarta_h,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.quarta_h = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.quarta_h = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.quarta_h = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.quinta_h,
-                                        expression: "quinta_h"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.quinta_h)
-                                        ? _vm._i(_vm.quinta_h, null) > -1
-                                        : _vm.quinta_h
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.quinta_h,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.quinta_h = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.quinta_h = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.quinta_h = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.sexta_h,
-                                        expression: "sexta_h"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox", id: "" },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.sexta_h)
-                                        ? _vm._i(_vm.sexta_h, null) > -1
-                                        : _vm.sexta_h
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.sexta_h,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.sexta_h = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.sexta_h = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.sexta_h = $$c
-                                        }
-                                      }
-                                    }
-                                  })
-                                ])
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col col-12" }, [
+                              _c("div", { staticClass: "fa fa-pull-right" }, [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-primary btn-lg",
+                                    on: { click: _vm.salvarSemana }
+                                  },
+                                  [_vm._v("Salvar")]
+                                )
                               ])
                             ])
                           ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col col-12" }, [
-                            _c("div", { staticClass: "fa fa-pull-right" }, [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-primary btn-lg",
-                                  on: { click: _vm.salvarSemana }
-                                },
-                                [_vm._v("Salvar")]
-                              )
-                            ])
-                          ])
                         ])
-                      ])
-                    : _vm._e()
+                      : _vm._e()
+                  ])
                 ])
               ])
             ])
           ])
         ])
-      ])
-    ])
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = [
@@ -95069,7 +95219,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "text-center" }, [
-      _c("h5", [_vm._v("Selecione o ano e a semana.")])
+      _c("h4", [_vm._v("Selecione o ano e a semana.")])
     ])
   },
   function() {

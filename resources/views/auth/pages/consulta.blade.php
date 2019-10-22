@@ -5,27 +5,27 @@
 			<div class="col col-12">
 				<div class="card">
 					<div class="card-header">
-						<i class="fa fa-calendar"></i>
+						<i class="fa fa-calendar pr-2 mycolor-azul"></i>
 						<span>Atendimentos</span>
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
 							<table class="table table-bordered" id="myTable">
-								<thead class="mynav">
+								<thead>
 									<tr>
-										<th class="corLinhaTabela">
+										<th class="mybg-azul">
 											Nome
 										</th>
-										<th class="corLinhaTabela">
+										<th class="mybg-azul">
 											Matricula
 										</th>
-										<th class="corLinhaTabela">
+										<th class="mybg-azul">
 											Curso
 										</th>
-										<th class="corLinhaTabela">
+										<th class="mybg-azul">
 											Data & horário do pedido
 										</th>
-										<th class="corLinhaTabela">
+										<th class="mybg-azul">
 											Opções
 										</th>
 									</tr>
@@ -45,8 +45,10 @@
 												{{date('d/m/Y h:m', strtotime($consulta->created_at))}}
 												</td>
 												<td>
-												<a href=" {{route('consulta.visualizar', $hashVisualizar->encode($consulta->id))}} " class="btn btn-primary fa-pull-right">Ver detalhes</a>
 												<a href=" {{route('consulta.excluir', $hashVisualizar->encode($consulta->id))}}  "><i class="fas fa-trash text-danger"></i> </a>
+												<a href=" {{route('consulta.visualizar', $hashVisualizar->encode($consulta->id))}} " class="btn mybtn-table py-2 px-4 fa-pull-right">Ver detalhes</a>
+								
+												
 												</td>
 											</tr>
 										@endforeach
