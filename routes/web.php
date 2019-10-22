@@ -65,7 +65,8 @@ route::post('/cursos/alter',    'Dashboard\CursoController@alterCurso')->name('c
 
 //gerenciamento de horarios
 Route::get('/horarios', 'Dashboard\ManterHorariosController@mostrarPaginaManterHorarios')->name('horario')->middleware('auth')->middleware('funcionario');
-Route::get('/horarios/{ano}/{semana}', 'Dashboard\ManterHorariosController@carregaDatas')->middleware('auth')->middleware('funcionario');
+Route::get('/horarios/{ano}/{numeroSemana}', 'Dashboard\ManterHorariosController@carregarSemana')->middleware('funcionario');
+Route::post('/horarios/{ano}/{numeroSemana}', "Dashboard\ManterHorariosController@salvarSemana")->middleware('funcionario');
 
 //Localizacao Routes
 Route::get('/paises', 'Site\LocalizacaoController@pais');
@@ -81,3 +82,4 @@ Route::get('/localizacao', 'Dashboard\LocalizacaoController@localizacao');
 Route::get('/alunos',           'Dashboard\AlunoController@mostrarPaginaAlunos')->name('alunos.all')->middleware('auth');
 Route::get('/alunos/get','Dashboard\AlunoController@getAlunos')->middleware('auth')->middleware('funcionario');
 Route::get('/alunos/{id}','Dashboard\AlunoController@getAluno')->middleware('auth')->middleware('funcionario');
+Route::get('/aluno/{id}', "Dashboard\AlunoController@mostrarPerfilAluno")->middleware('auth')->middleware('funcionario')->name('aluno.buscar');

@@ -8,10 +8,9 @@
         <div class="row">
             <div class="col col-12 col-md-4">
                <div class="form-group">
-                    <label for="maticula">Matrícula *</label>
-                    <masked-input name="matricula" mask="111111" :class="{'is-invalid' : errors.has('matricula'), 'is-valid': this.matriculasIsValid()}" class="form-control" placeholder="Somente números" v-model="matricula" disabled/>
-               
-                    <span>{{errors.first('matricula')}}</span>
+                   <label for="maticula">Matrícula *</label>
+                   <h6 class="form-control is-valid">{{matricula}}</h6>
+                   <input type="hidden" name="matricula" class="form-control"  v-bind:value="matricula"/>
                </div>
             </div>
             <div class="col col-12 col-md-4">
@@ -53,7 +52,7 @@
         props:{
             cursos: Array,
             mudaAba: Function,
-            old: Array
+            old: Object
         },
         data: function(){
             return {
@@ -99,6 +98,8 @@
         },
         mounted(){
            this.matricula = this.old.matricula;
+           this.curso = this.old.curso ? this.old.curso: '';
+           this.semestre = this.old.semestre ? this.old.semestre : '';
         }
     }
  </script>

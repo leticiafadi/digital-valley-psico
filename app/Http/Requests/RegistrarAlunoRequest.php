@@ -45,4 +45,12 @@ class RegistrarAlunoRequest extends FormRequest
             'telefone_residencial'  => 'nullable|string|min:14|max:14'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'required' => 'O campo :attribute é obrigatório.',
+            'email.unique' => 'Digite outro endereço de Email, esse já pertence a outro usuário'
+        ];
+    }
 }

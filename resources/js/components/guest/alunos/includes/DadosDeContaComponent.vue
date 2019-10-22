@@ -58,7 +58,7 @@
                 return this.senha.length >= 6 && !(/\ /.test(this.senha));
             },
             validaRepeteSenha:function(){
-                return this.repeteSenha === this.senha;
+                return this.repeteSenha && this.repeteSenha === this.senha;
             },
             isValid:function(){
                 return this.validaSenha() && this.validaRepeteSenha()
