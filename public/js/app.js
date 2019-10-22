@@ -2652,6 +2652,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -90984,6 +90985,12 @@ var staticRenderFns = [
           attrs: { href: "" }
         },
         [_vm._v("Ver detalhes")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn mybtn py-2 px-5", attrs: { type: "button" } },
+        [_vm._v("Acessar")]
       )
     ])
   }

@@ -83,6 +83,7 @@
 												    </td>
                                                     <td>
                                                         <a href="" class="btn btn-primary fa-pull-right mynav corLinhaTabela">Ver detalhes</a>
+                                                        <button type="button" class="btn mybtn py-2 px-5">Acessar</button>
                                                     </td>
 									            </tr>
                                             </template>
