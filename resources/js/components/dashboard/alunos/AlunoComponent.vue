@@ -105,6 +105,9 @@
 import axios    from 'axios';
 import Snotify  from 'vue-snotify';
 import VeeValidate from 'vee-validate';
+import VueRouter from 'vue-router';
+import perfilAluno from './perfil/GerenciarAlunoComponent';
+
 
 export default {
     props:{
@@ -120,7 +123,8 @@ export default {
     },
     components:{
         axios,
-        Snotify
+        Snotify,
+        VueRouter
     },
     watch:{
         selected(){
