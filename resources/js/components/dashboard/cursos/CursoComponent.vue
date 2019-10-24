@@ -6,7 +6,7 @@
                    <div class="col col-12">
                         <div class="card">
                             <div class="card-header">
-                            <i class="fas fa-fw fa-graduation-cap"></i>
+                            <i class="fas fa-fw fa-graduation-cap pr-2 mycolor-azul"></i>
                                 <span>Gerenciar cursos</span>
                             </div>
                             <!--

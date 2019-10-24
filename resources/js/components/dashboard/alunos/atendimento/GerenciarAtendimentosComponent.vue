@@ -4,7 +4,7 @@
             <div class="col col-12">
                 <div class="card">
                     <div class="card-header">
-                        <i class="fas fa-fw fa-home"></i>
+                        <i class="fas fa-fw fa-home  pr-2 mycolor-azul"></i>
 			            Gerenciar atendimentos
                     </div>
                     <div class="card-body">

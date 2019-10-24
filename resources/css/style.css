@@ -69,13 +69,13 @@
     background: #407AB9 !important;
     color: #ffffff !important;
     border-radius: 20px!important;
-    border: 3px solid #407AB9;
+    border: 3px solid #407AB9 !important;
 }
 .mybtn-table:hover{
     background: #ffffff !important;
     color: #407AB9 !important;
     border-radius: 20px!important;
-    border: 3px solid #407AB9;
+ 
 }
 
 

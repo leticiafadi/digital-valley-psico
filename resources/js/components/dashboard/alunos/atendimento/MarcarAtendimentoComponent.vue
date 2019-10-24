@@ -4,7 +4,7 @@
             <div class="col col-12">
                 <div class="card">
                     <div class="card-header">
-                        <i class="fas fa-fw fa-calendar"></i>
+                        <i class="fas fa-fw fa-calendar pr-2 mycolor-azul"></i>
                         Marcar atendimento 
                     </div>
                     <div class="card-body">

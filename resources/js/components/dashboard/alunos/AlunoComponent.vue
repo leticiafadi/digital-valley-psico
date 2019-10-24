@@ -6,7 +6,7 @@
                    <div class="col col-12">
                         <div class="card">
                             <div class="card-header">
-                            <i class="fas fa-fw fa-user-graduate pr-2 mycolor-azul"></i>
+                            <i class="fas fa-fw fa-user-graduate  pr-2 mycolor-azul"></i>
                                 <span>Visualizar alunos</span>
                             </div>
                             <!--
@@ -28,7 +28,7 @@
                                 <div class="row">
                                     <div class="col col-12 col-md-6">
                                         <div class="form-group">
-                                            <label for="maticula">Nome completo do Aluno</label>
+                                            <label for="maticula">Nome do aluno</label>
                                             <input v-model="nomebusca" name="matricula" class="form-control" placeholder="Ex: Jose da Silva Brito"/>
                                         </div>
                                     </div>
@@ -82,7 +82,7 @@
 													    {{aluno.nome}}
 												    </td>
                                                     <td class="d-flex justify-content-center">
-                                                         <a href="" class="btn mybtn-table py-2 px-4 ">Ver detalhes</a>
+                                                         <a href="" class="btn mybtn-table py-1 px-4 ">Ver detalhes</a>
                                                     </td>
 									            </tr>
                                             </template>
