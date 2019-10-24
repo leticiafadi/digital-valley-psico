@@ -2,7 +2,7 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <i class="fas fa-user  pr-2 mycolor-azul"></i>
+                <i class="fas fa-user "></i>
                 <span>Cadastrar funcionário</span>
             </div>
             <div class="card-body">

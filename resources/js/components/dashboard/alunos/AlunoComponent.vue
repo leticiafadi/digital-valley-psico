@@ -6,7 +6,7 @@
                    <div class="col col-12">
                         <div class="card">
                             <div class="card-header">
-                            <i class="fas fa-fw fa-user-graduate  pr-2 mycolor-azul"></i>
+                            <i class="fas fa-fw fa-user-graduate pr-2 mycolor-azul"></i>
                                 <span>Visualizar alunos</span>
                             </div>
                             <!--
