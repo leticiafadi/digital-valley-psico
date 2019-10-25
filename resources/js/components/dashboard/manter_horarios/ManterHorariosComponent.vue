@@ -452,7 +452,7 @@
 
                 this.isLoading = true;
 
-                axios.get('http://localhost:8000/horarios/' + this.anoSelecionado + '/' + this.semanaSelecionada).then(res=>{
+                this.$http.get('horarios/' + this.anoSelecionado + '/' + this.semanaSelecionada).then(res=>{
                     this.setarSemana(res.data);
                     this.isLoading = false;
 

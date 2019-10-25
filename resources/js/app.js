@@ -3,6 +3,13 @@ window.Vue = require("vue");
 const VeeValidate = require("vee-validate");
 const Snotify = require("vue-snotify");
 
+const axios = require('axios');
+
+Vue.prototype.$http = axios.create({
+    baseURL: 'http://127.0.0.1:8000/',
+    timeout: 5000,
+});
+
 Vue.use(VeeValidate);
 Vue.use(Snotify);
 
@@ -25,6 +32,12 @@ Vue.component(
   "aluno",
   require("./components/dashboard/alunos/AlunoComponent.vue").default
 );
+
+Vue.component(
+  "aluno-router",
+  require("./components/dashboard/alunos/AlunoRouterComponent.vue").default
+);
+
 Vue.component(
   "manter-horarios",
   require("./components/dashboard/manter_horarios/ManterHorariosComponent.vue")
