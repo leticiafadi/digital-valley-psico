@@ -74,6 +74,18 @@
 import VeeValidate from "vee-validate";
 import perfilAluno from "./perfil/GerenciarAlunoComponent";
 
+/*const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+})
+
+Toast.fire({
+  type: 'error',
+  title: 'Não existe um aluno associado a esse filtro de busca'
+})*/
+
 export default {
   props: {
     mudaAba: Function,

@@ -2621,6 +2621,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 
+/*const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+})
+
+Toast.fire({
+  type: 'error',
+  title: 'Não existe um aluno associado a esse filtro de busca'
+})*/
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     mudaAba: Function,
