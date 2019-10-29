@@ -2660,7 +2660,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -2680,6 +2679,18 @@ __webpack_require__.r(__webpack_exports__);
         }
     
     ]
+})*/
+
+/*const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+})
+
+Toast.fire({
+  type: 'error',
+  title: 'Não existe um aluno associado a esse filtro de busca'
 })*/
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -91133,58 +91144,66 @@ var render = function() {
               _c("div", { staticClass: "card-body" }, [
                 _vm.alunos != ""
                   ? _c("ul", { staticClass: "list-group" }, [
-                      _c("table", { staticClass: "table table-bordered" }, [
-                        _vm._m(1),
-                        _vm._v(" "),
-                        _c(
-                          "tbody",
-                          [
-                            _vm._l(this.alunos, function(aluno) {
-                              return [
-                                _c("tr", [
-                                  _c("td", [
-                                    _vm._v(
-                                      "\n                                                        " +
-                                        _vm._s(aluno.nome_completo) +
-                                        "\n                                                    "
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td", [
-                                    _vm._v(
-                                      "\n\t\t\t\t\t\t\t\t\t\t\t\t\t    " +
-                                        _vm._s(aluno.matricula) +
-                                        "\n\t\t\t\t\t\t\t\t\t\t\t\t    "
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td", [
-                                    _vm._v(
-                                      "\n\t\t\t\t\t\t\t\t\t\t\t\t\t    " +
-                                        _vm._s(aluno.nome) +
-                                        "\n\t\t\t\t\t\t\t\t\t\t\t\t    "
-                                    )
-                                  ]),
-                                  _vm._v(
-                                    "\n<<<<<<< HEAD\n                                                    "
-                                  ),
-                                  _vm._m(2, true),
-                                  _vm._m(3, true)
-                                ])
-                              ]
-                            })
-                          ],
-                          2
-                        )
-                      ])
+                      _c(
+                        "table",
+                        {
+                          staticClass:
+                            "table table-bordered table-responsive-sm  table-hover"
+                        },
+                        [
+                          _vm._m(1),
+                          _vm._v(" "),
+                          _c(
+                            "tbody",
+                            [
+                              _vm._l(this.alunos, function(aluno) {
+                                return [
+                                  _c("tr", [
+                                    _c("td", [
+                                      _vm._v(
+                                        "\n                                                        " +
+                                          _vm._s(aluno.nome_completo) +
+                                          "\n                                                    "
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(
+                                        "\n\t\t\t\t\t\t\t\t\t\t\t\t\t    " +
+                                          _vm._s(aluno.matricula) +
+                                          "\n\t\t\t\t\t\t\t\t\t\t\t\t    "
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(
+                                        "\n\t\t\t\t\t\t\t\t\t\t\t\t\t    " +
+                                          _vm._s(aluno.nome) +
+                                          "\n\t\t\t\t\t\t\t\t\t\t\t\t    "
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._m(2, true)
+                                  ])
+                                ]
+                              })
+                            ],
+                            2
+                          )
+                        ]
+                      )
                     ])
-                  : _c("ul", [
-                      _c("strong", [
-                        _vm._v(
-                          "Não existe nenhum aluno relacionado a esse filtro de busca... :("
-                        )
-                      ])
-                    ])
+                  : _c(
+                      "ul",
+                      [
+                        _c("Strong", [
+                          _vm._v(
+                            "Não existe um aluno associado a esse filtro de busca..."
+                          )
+                        ])
+                      ],
+                      1
+                    )
               ])
             ])
           ])
@@ -91249,23 +91268,6 @@ var staticRenderFns = [
           attrs: { href: "" }
         },
         [_vm._v("Ver detalhes")]
-      ),
-      _vm._v(" "),
-      _vm._v("\n=======\n                                                    ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "d-flex justify-content-center" }, [
-      _c(
-        "a",
-        { staticClass: "btn mybtn-table py-2 px-4 ", attrs: { href: "" } },
-        [_vm._v("Ver detalhes")]
-      ),
-      _vm._v(
-        "\n>>>>>>> 660b1f347e3560578e0d12bba0b8b68986cbeada\n                                                    "
       )
     ])
   }
@@ -120608,8 +120610,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\paulo\Documents\digital-valley-psico\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\paulo\Documents\digital-valley-psico\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Cliente\Documents\GitHub\digital-valley-psico\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Cliente\Documents\GitHub\digital-valley-psico\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

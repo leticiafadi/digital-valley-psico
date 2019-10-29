@@ -52,7 +52,7 @@
                             </div>
                             <div class="card-body">
                                 <ul class="list-group" v-if="alunos != ''">
-                                    <table class="table table-bordered" >
+                                    <table class="table table-bordered table-responsive-sm  table-hover" >
                                         <thead>
 									        <tr>
 										        <th class="mybg-azul">
@@ -81,15 +81,14 @@
 												    <td>
 													    {{aluno.nome}}
 												    </td>
-<<<<<<< HEAD
+
                                                     <td>
                                                         <a href="" class="btn btn-primary fa-pull-right mynav corLinhaTabela">Ver detalhes</a>
                                                        <!-- <router-link :to="{name:'alu'}"> teste </router-link>
                                                         <router-view></router-view>-->
-=======
-                                                    <td class="d-flex justify-content-center">
-                                                         <a href="" class="btn mybtn-table py-2 px-4 ">Ver detalhes</a>
->>>>>>> 660b1f347e3560578e0d12bba0b8b68986cbeada
+
+                                                    <!--<td class="d-flex justify-content-center">
+                                                         <a href="" class="btn mybtn-table py-2 px-4 ">Ver detalhes</a>-->
                                                     </td>
 									            </tr>
                                             </template>
@@ -97,7 +96,7 @@
                                     </table>
                                 </ul>
                                 <ul v-else>
-                                    <strong>Não existe nenhum aluno relacionado a esse filtro de busca... :(</strong>
+                                    <Strong>Não existe um aluno associado a esse filtro de busca...</Strong>
                                 </ul>
                             </div>
                         </div>
@@ -129,6 +128,18 @@ import perfilAluno from './perfil/GerenciarAlunoComponent';
         }
     
     ]
+})*/
+
+/*const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+})
+
+Toast.fire({
+  type: 'error',
+  title: 'Não existe um aluno associado a esse filtro de busca'
 })*/
 
 export default {
