@@ -9,18 +9,10 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<!-- Bootstrap core CSS-->
-	<link href="{{asset('admin/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-
-	<!-- Custom fonts for this template-->
-	<link href="{{asset('admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
 
 	<!-- Page level plugin CSS-->
 	<link href="{{asset('admin/vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
 
-	<!-- Custom styles for this template-->
-	<link href="{{asset('admin/css/sb-admin.css')}}" rel="stylesheet">
-	
 
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
@@ -74,14 +66,12 @@
 
 	</div>
 	<script type="text/javascript" src="{{asset('js/libs/jquery-1.9.1.js')}}"></script>
-	<script src="{{asset('js/mask/jquery-mask.js')}}"></script>
 
 	<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
 	async defer>
 	document.getElementById("buttonSubmit").disabled = true;
 	</script>
 
-	<script src="{{asset('js/mask/mymasks.js')}}"></script>
 
 </body>
 

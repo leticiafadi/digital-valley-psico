@@ -4,7 +4,7 @@
             <div class="col col-12">
                 <div class="card">
                     <div class="card-header">
-                        <i class="fas fa-fw fa-user"></i>
+                        <i class="fas fa-fw fa-user  pr-2 mycolor-azul"></i>
                         Gerenciar perfil Aluno
                     </div>
                     <div class="card-body">

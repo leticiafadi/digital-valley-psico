@@ -46,7 +46,7 @@
 												</td>
 												<td>
 												<a href=" {{route('consulta.excluir', $hashVisualizar->encode($consulta->id))}}  "><i class="fas fa-trash text-danger"></i> </a>
-												<a href=" {{route('consulta.visualizar', $hashVisualizar->encode($consulta->id))}} " class="btn mybtn-table py-2 px-4 fa-pull-right">Ver detalhes</a>
+												<a href=" {{route('consulta.visualizar', $hashVisualizar->encode($consulta->id))}} " class="btn mybtn-table py-1 px-4 fa-pull-right">Ver detalhes</a>
 								
 												
 												</td>

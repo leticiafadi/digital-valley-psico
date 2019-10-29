@@ -83,3 +83,11 @@ Route::get('/alunos',           'Dashboard\AlunoController@mostrarPaginaAlunos')
 Route::get('/alunos/get','Dashboard\AlunoController@getAlunos')->middleware('auth')->middleware('funcionario');
 Route::get('/alunos/{id}','Dashboard\AlunoController@getAluno')->middleware('auth')->middleware('funcionario');
 Route::get('/aluno/{id}', "Dashboard\AlunoController@mostrarPerfilAluno")->middleware('auth')->middleware('funcionario')->name('aluno.buscar');
+
+
+Route::options('{any}', function () {
+    return response('OK', \Illuminate\Http\Response::HTTP_NO_CONTENT)
+          ->header('Access-Control-Allow-Origin', implode(',', config('cors.default_profile.allow_origins')))
+          ->header('Access-Control-Allow-Methods', implode(',', config('cors.default_profile.allow_methods')))
+          ->header('Access-Control-Allow-Headers', implode(',', config('cors.default_profile.allow_headers')));
+});

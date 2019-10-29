@@ -1,41 +1,41 @@
-
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
+//font awesome
+@import "../libs/fontawesome-free-5.11.2-web/css/all.css";
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+//sb-admin
+@import "../css/sb-admin.css";
 
 //Admin lte css's
-@import url('../../node_modules/admin-lte/bower_components/font-awesome/css/font-awesome.min.css');
-@import url('../../node_modules/admin-lte/bower_components/Ionicons/css/ionicons.min.css');
-@import url('../../node_modules/admin-lte/dist/css/AdminLTE.min.css');
-@import url('../../node_modules/admin-lte/dist/css/skins/_all-skins.min.css');
+@import url("../../node_modules/admin-lte/bower_components/font-awesome/css/font-awesome.min.css");
+@import url("../../node_modules/admin-lte/bower_components/Ionicons/css/ionicons.min.css");
+@import url("../../node_modules/admin-lte/dist/css/AdminLTE.min.css");
+@import url("../../node_modules/admin-lte/dist/css/skins/_all-skins.min.css");
 
 //css from vue notify
-@import url('../../node_modules/vue-snotify/styles/material.css');
-
-
+@import "../../node_modules/vue-snotify/styles/material.css";
 
 //rounded buttons
-@import './../css/buttons-rounded.css';
+@import "./../css/buttons-rounded.css";
 
 //imprt navbar rules
-@import './../css/nav.css';
-
+@import "./../css/nav.css";
 
 //icheck-bootstrap
 
-@import url('../../node_modules/icheck-bootstrap/icheck-bootstrap.min.css');
+@import url("../../node_modules/icheck-bootstrap/icheck-bootstrap.min.css");
 
-@import url('../css/erro.css');
-@import url('../css/style.css');
+@import url("../css/erro.css");
+@import url("../css/style.css");
 
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
-

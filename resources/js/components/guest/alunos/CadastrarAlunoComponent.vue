@@ -2,7 +2,7 @@
     <div class="container">
         <div class="card mt-4 mb-4">
             <div class="card-header">
-                <i class="fa fa-user"></i>
+                <i class="fa fa-user "></i>
                 <span>&nbsp; Realize seu cadastro como aluno</span>
             </div>
             <div class="card-body">
