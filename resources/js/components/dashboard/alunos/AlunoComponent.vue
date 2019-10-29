@@ -44,13 +44,8 @@
                   </thead>
                   <tbody>
                     <template v-for="aluno in this.alunos">
-                      <tr>
-                        <td>
-                          <a
-                            href
-                            v-on:click.prevent="perfilAluno(aluno.id)"
-                          >{{aluno.nome_completo}}</a>
-                        </td>
+                      <tr v-on:click.prevent="perfilAluno(aluno.id)" style="cursor: pointer">
+                        <td>{{aluno.nome_completo}}</td>
                         <td>{{aluno.matricula}}</td>
                         <td>{{aluno.nome}}</td>
                       </tr>
@@ -142,4 +137,5 @@ export default {
     this.carregarCursos();
   }
 };
+
 </script>
