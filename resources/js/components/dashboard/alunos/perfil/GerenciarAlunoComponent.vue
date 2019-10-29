@@ -46,22 +46,17 @@
         },
         props:{
             base_url: String,
-            id_aluno: Number
+            aluno: Object
         },
         data: function(){
             return{
-                aluno: []
             }
         },
         methods:{
-            carregaAluno: function(){
-                axios.get( this.base_url + '/alunos/'+this.id_aluno).then(response=>{
-                    this.aluno = response.data;
-                });
-            }
+            
         },
         mounted(){
-            this.carregaAluno();
+            
         }
     }
 </script>

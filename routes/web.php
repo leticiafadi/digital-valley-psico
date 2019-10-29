@@ -84,6 +84,7 @@ Route::get('/alunos/get','Dashboard\AlunoController@getAlunos')->middleware('aut
 Route::get('/alunos/{id}','Dashboard\AlunoController@getAluno')->middleware('auth')->middleware('funcionario');
 Route::get('/aluno/{id}', "Dashboard\AlunoController@mostrarPerfilAluno")->middleware('auth')->middleware('funcionario')->name('aluno.buscar');
 
+Route::get('/tes',"DashboardAluno\HomeController@teste");
 
 Route::options('{any}', function () {
     return response('OK', \Illuminate\Http\Response::HTTP_NO_CONTENT)

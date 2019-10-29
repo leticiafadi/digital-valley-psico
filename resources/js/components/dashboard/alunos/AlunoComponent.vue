@@ -48,7 +48,7 @@
                         <td>
                           <a
                             href
-                            v-on:click.prevent="mudaAba('paginaAluno')"
+                            v-on:click.prevent="perfilAluno(aluno.id)"
                           >{{aluno.nome_completo}}</a>
                         </td>
                         <td>{{aluno.matricula}}</td>
@@ -74,9 +74,22 @@
 import VeeValidate from "vee-validate";
 import perfilAluno from "./perfil/GerenciarAlunoComponent";
 
+/*const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+})
+
+Toast.fire({
+  type: 'error',
+  title: 'Não existe um aluno associado a esse filtro de busca'
+})*/
+
 export default {
   props: {
-    mudaAba: Function
+    mudaAba: Function,
+    carregaAluno: Function
   },
   data: function() {
     return {
@@ -117,7 +130,12 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+    perfilAluno(id_aluno){
+      //this.mudaAba('paginaAluno');
+      this.carregaAluno(id_aluno);
     }
+
   },
   mounted() {
     this.buscar();

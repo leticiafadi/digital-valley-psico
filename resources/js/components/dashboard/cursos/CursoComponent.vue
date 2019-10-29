@@ -65,7 +65,6 @@
 </template>
 
 <script>
-    import axios    from 'axios';
     import Snotify  from 'vue-snotify';
     import VeeValidate from 'vee-validate';
     export default {
@@ -80,25 +79,21 @@
             }
         },
         components:{
-            axios,
             Snotify
         },
         methods:{
-            carregaCurso : function(curso, index){
+            carregaCurso(curso, index){
                 this.curso_selecionado = curso.id;
                 this.indexCursoSelecionado = index;
             },
-            cancelarCurso:function(){
+            cancelarCurso(){
                 this.curso_selecionado = -1;
                 this.indexCursoSelecionado = -1;
             },
-            criarCurso: function(event){
+            criarCurso(event){
                 event.preventDefault();
-                axios({
-                    method  : 'post',
-                    url     : this.baseUrl + '/cursos/create',
-                    data    : {nome: document.getElementById('novoCurso').value, _token : document.querySelector('meta[name="csrf-token"]').getAttribute('content')}
-                }).then(response => {
+                this.$http.post(`/cursos/create`,{nome: document.getElementById('novoCurso').value, _token : document.querySelector('meta[name="csrf-token"]').getAttribute('content')})
+                .then(response => {
                    this.cursos.push(response.data);
                     this.$snotify.success('Curso cadastrado com sucesso', {
                         position        : "rightTop",
@@ -108,12 +103,13 @@
                 });            
             },
             carregaCursos: function(){
-                axios.get( this.baseUrl + '/cursos/get').then(response=>{
+                this.$http.get(`/cursos/get`).then(response=>{
                     this.cursos = response.data;
                 });
             },
             alteraCurso:function(id){
-                axios({
+                this.$http.post()
+                ({
                     method  : 'post',
                     url     : this.baseUrl + '/cursos/alter',
                     data    : {id: id , value : document.getElementById("alterarCurso").value }
