@@ -1,12 +1,33 @@
 require("./bootstrap");
-window.Vue = require("vue");
+const Vue = require("vue");
 const VeeValidate = require("vee-validate");
 const Snotify = require("vue-snotify");
 const VueRouter = require("vue-router");
+const VueSweetalert2 = require("vue-sweetalert2");
+const axios = require("axios");
 
 Vue.use(VeeValidate);
 Vue.use(Snotify);
 Vue.use(VueRouter);
+Vue.use(VueSweetalert2);
+
+Vue.prototype.$http = axios.create({
+  baseURL: "http://localhost:8000"
+});
+
+Vue.prototype.$toast = function(tipo, mensagem) {
+  Vue.swal
+    .mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000
+    })
+    .fire({
+      type: tipo,
+      title: mensagem
+    });
+};
 
 Vue.component("example-component", require("./components/Example.vue").default);
 //Dashboard components
@@ -27,6 +48,12 @@ Vue.component(
   "aluno",
   require("./components/dashboard/alunos/AlunoComponent.vue").default
 );
+
+Vue.component(
+  "aluno-router",
+  require("./components/dashboard/alunos/AlunoRouterComponent.vue").default
+);
+
 Vue.component(
   "manter-horarios",
   require("./components/dashboard/manter_horarios/ManterHorariosComponent.vue")
@@ -39,12 +66,14 @@ Vue.component(
 );
 Vue.component(
   "infopessoal-aluno",
-  require("./components/dashboard/alunos/perfil/includes/PsicoInformacoesPessoaisComponent.vue").default
+  require("./components/dashboard/alunos/perfil/includes/PsicoInformacoesPessoaisComponent.vue")
+    .default
 );
 Vue.component(
   "infoacademica-aluno",
-  require("./components/dashboard/alunos/perfil/includes/PsicoInformacoesAcademicasComponent.vue").default
-)
+  require("./components/dashboard/alunos/perfil/includes/PsicoInformacoesAcademicasComponent.vue")
+    .default
+);
 
 //alunos components
 Vue.component(
