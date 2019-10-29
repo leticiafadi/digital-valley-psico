@@ -33,7 +33,6 @@
 </template>
 
 <script>
-    import axios    from 'axios';
     import VueCalendar  from 'vuejs-datepicker' 
     import InformacoesPessoais from './includes/InformacoesPessoaisComponent.vue'
     import InformacoesAcademicas from './includes/InformacoesAcademicasComponent.vue'
@@ -43,7 +42,6 @@
     
     export default {
         components:{
-            axios,
             VueCalendar,
             ptBR,
             InformacoesPessoais,
@@ -63,11 +61,11 @@
         methods:{
             carregaAluno: function(){
                 if(this.tipo==1){
-                    axios.get( this.base_url + '/alunos/'+this.id_aluno).then(response=>{
+                    this.$http.get(`/alunos/${this.id_aluno}`).then(response=>{
                     this.aluno = response.data;
                 });
                 }else{
-                    axios.get( this.base_url + '/info/'+this.id_aluno).then(response=>{
+                    this.$http.get(`/info/${this.id_aluno}`).then(response=>{
                         this.aluno = response.data;
                     });
                 }

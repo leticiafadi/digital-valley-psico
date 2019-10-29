@@ -46,15 +46,15 @@ export default {
         
     },
     methods:{
-        carregaPaises: function(){
-            axios.get('http://localhost:8000/paises').then(response=>{
+        carregaPaises(){
+            this.$http.get(`/paises`).then(response=>{
                 this.paises = response.data;
                 for (let i = 0; i < 20; i++) {
                     this.list.push(this.paises[i]);
                 }
             });
         },
-        setaPaises:function(posicao){
+        setaPaises(posicao){
             this.list = [];
             
         }

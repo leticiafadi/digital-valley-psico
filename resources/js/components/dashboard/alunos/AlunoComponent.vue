@@ -48,7 +48,7 @@
                         <td>
                           <a
                             href
-                            v-on:click.prevent="mudaAba('paginaAluno')"
+                            v-on:click.prevent="perfilAluno(aluno.id)"
                           >{{aluno.nome_completo}}</a>
                         </td>
                         <td>{{aluno.matricula}}</td>
@@ -76,7 +76,8 @@ import perfilAluno from "./perfil/GerenciarAlunoComponent";
 
 export default {
   props: {
-    mudaAba: Function
+    mudaAba: Function,
+    carregaAluno: Function
   },
   data: function() {
     return {
@@ -117,7 +118,12 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+    perfilAluno(id_aluno){
+      //this.mudaAba('paginaAluno');
+      this.carregaAluno(id_aluno);
     }
+
   },
   mounted() {
     this.buscar();
