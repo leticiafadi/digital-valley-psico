@@ -2853,6 +2853,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuejs-datepicker */ "./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js");
 /* harmony import */ var vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuejs-datepicker/dist/locale */ "./node_modules/vuejs-datepicker/dist/locale/index.js");
+/* harmony import */ var vue_datetime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-datetime */ "./node_modules/vue-datetime/dist/vue-datetime.js");
+/* harmony import */ var vue_datetime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_datetime__WEBPACK_IMPORTED_MODULE_2__);
 //
 //
 //
@@ -2932,35 +2934,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     VueCalendar: vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"],
-    ptBR: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_1__["ptBR"]
+    ptBR: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_1__["ptBR"],
+    Datetime: vue_datetime__WEBPACK_IMPORTED_MODULE_2__["Datetime"]
   },
-  props: {
-    psicologo: Array
-  },
+  props: {},
   data: function data() {
     return {
       pt: vuejs_datepicker_dist_locale__WEBPACK_IMPORTED_MODULE_1__["ptBR"],
       dataAtendimento: '',
       horariosDisponiveis: [],
       motivoEncaminhamento: '',
-      textMotivoEncaminhamento: ''
+      textMotivoEncaminhamento: '',
+      psicologos: []
     };
   },
   methods: {
-    carregaHorarios: function carregaHorarios() {
-      this.horariosDisponiveis = [1, 2, 3];
+    carregaHorarios: function carregaHorarios(id_psicologo) {
+      this.$http;
     },
     limpaMotivo: function limpaMotivo() {
       this.textMotivoEncaminhamento = '';
+    },
+    carregaPsicologos: function carregaPsicologos() {
+      var _this = this;
+
+      this.$http.get("/psicologos").then(function (response) {
+        _this.psicologos = response.data;
+      });
     }
   },
   mounted: function mounted() {
     this.carregaHorarios();
+    this.carregaPsicologos();
   }
 });
 
@@ -4384,7 +4395,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_sweetalert2__WEBPACK_IMPORTED
       this.$http.get('/horarios/' + this.anoSelecionado + '/' + this.semanaSelecionada).then(function (res) {
         _this.setarSemana(res.data);
 
-        _this.$toast("success", "Carregado com seucesso.");
+        _this.$toast("success", "Carregado com sucesso.");
       })["catch"](function (err) {
         _this.$toast("error", "Erro, essa semana não pode ser carregada.");
       })["finally"](function () {
@@ -4450,7 +4461,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_sweetalert2__WEBPACK_IMPORTED
       this.$http.post("/horarios/".concat(this.anoSelecionado, "/").concat(this.semanaSelecionada), {
         semana: semana
       }).then(function (res) {
-        _this2.$toast("success", "Semana salvada com sucesso.");
+        _this2.$toast("success", "Horario salvo com sucesso.");
       })["catch"](function (err) {
         console.log(err);
       })["finally"](function () {
@@ -91365,7 +91376,39 @@ var render = function() {
             _vm._m(1),
             _vm._v(" "),
             _c("div", { staticClass: "row mt-1" }, [
-              _vm._m(2),
+              _c(
+                "div",
+                { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "motivoAtendimento" } }, [
+                      _vm._v("Psicólogo responsável")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        staticClass: "form-control",
+                        attrs: { name: "id_curso" }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Selecione um psicólogo")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.psicologos, function(psicologo) {
+                          return _c(
+                            "option",
+                            { domProps: { value: psicologo.id } },
+                            [_vm._v(_vm._s(psicologo.nome_completo))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                ]
+              ),
               _vm._v(" "),
               _c(
                 "div",
@@ -91381,7 +91424,6 @@ var render = function() {
                       _vm._v(" "),
                       _c("datetime", {
                         attrs: {
-                          id: "data-atendimento",
                           format: "dd/MM/yyyy",
                           "input-class": "form-control",
                           placeholder: "Selecione a data do atendimento"
@@ -91556,7 +91598,7 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _vm._m(3)
+            _vm._m(2)
           ])
         ])
       ])
@@ -91593,28 +91635,6 @@ var staticRenderFns = [
             }
           })
         ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-12 col-sm-12" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "motivoAtendimento" } }, [
-          _vm._v("Psicólogo responsável")
-        ]),
-        _vm._v(" "),
-        _c(
-          "select",
-          { staticClass: "form-control", attrs: { name: "id_curso" } },
-          [
-            _c("option", { attrs: { value: "" } }, [
-              _vm._v("Selecione um psicólogo")
-            ])
-          ]
-        )
       ])
     ])
   },
