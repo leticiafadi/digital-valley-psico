@@ -1,7 +1,7 @@
 <template>
   <div>
-    <aluno v-if="pagina == 'listarAlunos'" :mudaAba="mudaAba"></aluno>
-    <perfil-aluno v-if="pagina == 'paginaAluno'"></perfil-aluno>
+    <aluno v-if="pagina == 'listarAlunos'"  :carregaAluno='carregaAluno'></aluno>
+    <perfil-aluno v-if="pagina == 'paginaAluno'" :aluno="aluno"></perfil-aluno>
   </div>
 </template>
 
@@ -13,7 +13,8 @@ import PerfilAluno from "./perfil/GerenciarAlunoComponent";
 export default {
   data: function() {
     return {
-      pagina: ""
+			pagina: "",
+			aluno: []
     };
   },
   components: {
@@ -23,6 +24,15 @@ export default {
   methods: {
     mudaAba(nome) {
       this.pagina = nome;
+    },
+    carregaAluno(id_aluno){
+      this.$http.get(`/alunos/${id_aluno}`).then(response=>{
+      	this.aluno = response.data;
+      }).catch(err=>{
+				this.$toast("error","Aluno não encontrado!");
+			}).finally(()=>{
+				this.mudaAba('paginaAluno');
+			});
     }
   },
   mounted() {

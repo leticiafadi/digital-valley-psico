@@ -85,6 +85,9 @@
             VueCalendar,
             ptBR
         },
+        props:{
+            psicologo: Array
+        },
         data: function(){
             return{
                 pt:ptBR,
