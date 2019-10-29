@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <vue-snotify></vue-snotify>
     <div class="row">
       <div class="col col-12">
         <div class="col col-12">
@@ -41,21 +40,19 @@
                       <th class="mybg-azul">Nome</th>
                       <th class="mybg-azul">Matricula</th>
                       <th class="mybg-azul">Curso</th>
-                      <th class="mybg-azul">Opções</th>
                     </tr>
                   </thead>
                   <tbody>
                     <template v-for="aluno in this.alunos">
                       <tr>
-                        <td>{{aluno.nome_completo}}</td>
-                        <td>{{aluno.matricula}}</td>
-                        <td>{{aluno.nome}}</td>
                         <td>
                           <a
                             href
-                            class="btn btn-primary fa-pull-right mynav corLinhaTabela"
-                          >Ver detalhes</a>
+                            v-on:click.prevent="mudaAba('paginaAluno')"
+                          >{{aluno.nome_completo}}</a>
                         </td>
+                        <td>{{aluno.matricula}}</td>
+                        <td>{{aluno.nome}}</td>
                       </tr>
                     </template>
                   </tbody>
@@ -74,26 +71,22 @@
 
 
 <script>
-import axios from "axios";
-import Snotify from "vue-snotify";
 import VeeValidate from "vee-validate";
+import perfilAluno from "./perfil/GerenciarAlunoComponent";
 
 export default {
   props: {
-    base_url: String,
-    cursos: Array
+    mudaAba: Function
   },
   data: function() {
     return {
       alunos: [],
+      cursos: [],
       selected: "",
       nomebusca: ""
     };
   },
-  components: {
-    axios,
-    Snotify
-  },
+  components: {},
   watch: {
     selected() {
       this.buscar();
@@ -103,28 +96,32 @@ export default {
     }
   },
   methods: {
-    carregaAlunos: function() {
-      axios.get("alunos/get").then(response => {
-        this.alunos = response.data.alunos;
-      });
-    },
-    buscar: function() {
-      axios
-        .get(
-          this.base_url +
-            "/alunos/get?query=" +
-            this.nomebusca +
-            "&id_curso=" +
-            this.selected +
-            ""
-        )
+    buscar() {
+      this.$http
+        .get(`/alunos/get?query=${this.nomebusca}&id_curso=${this.selected}`)
         .then(response => {
           this.alunos = response.data.alunos;
+          if (this.alunos.length == 0)
+            this.$toast("info", "Nenhum aluno foi encontrado com a pesquisa.");
+        })
+        .catch(err => {
+          this.$toast("warning", "Não foi possível buscar os alunos");
+        });
+    },
+    carregarCursos() {
+      this.$http
+        .get("/cursos/get")
+        .then(response => {
+          this.cursos = response.data;
+        })
+        .catch(err => {
+          console.log(err);
         });
     }
   },
   mounted() {
-    this.carregaAlunos();
+    this.buscar();
+    this.carregarCursos();
   }
 };
 </script>

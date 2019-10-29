@@ -1,17 +1,33 @@
 require("./bootstrap");
-window.Vue = require("vue");
+const Vue = require("vue");
 const VeeValidate = require("vee-validate");
 const Snotify = require("vue-snotify");
-
-const axios = require('axios');
-
-Vue.prototype.$http = axios.create({
-    baseURL: 'http://127.0.0.1:8000/',
-    timeout: 5000,
-});
+const VueRouter = require("vue-router");
+const VueSweetalert2 = require("vue-sweetalert2");
+const axios = require("axios");
 
 Vue.use(VeeValidate);
 Vue.use(Snotify);
+Vue.use(VueRouter);
+Vue.use(VueSweetalert2);
+
+Vue.prototype.$http = axios.create({
+  baseURL: "http://localhost:8000"
+});
+
+Vue.prototype.$toast = function(tipo, mensagem) {
+  Vue.swal
+    .mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000
+    })
+    .fire({
+      type: tipo,
+      title: mensagem
+    });
+};
 
 Vue.component("example-component", require("./components/Example.vue").default);
 //Dashboard components
@@ -46,6 +62,16 @@ Vue.component(
 Vue.component(
   "perfil-aluno",
   require("./components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue")
+    .default
+);
+Vue.component(
+  "infopessoal-aluno",
+  require("./components/dashboard/alunos/perfil/includes/PsicoInformacoesPessoaisComponent.vue")
+    .default
+);
+Vue.component(
+  "infoacademica-aluno",
+  require("./components/dashboard/alunos/perfil/includes/PsicoInformacoesAcademicasComponent.vue")
     .default
 );
 

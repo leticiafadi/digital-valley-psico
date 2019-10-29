@@ -4,12 +4,12 @@
             <div class="col col-12">
                 <div class="card">
                     <div class="card-header">
-                        <i class="fas fa-fw fa-user"></i>
+                        <i class="fas fa-fw fa-user  pr-2 mycolor-azul"></i>
                         Gerenciar perfil Aluno
                     </div>
                     <div class="card-body">
-                        <informacoes-pessoais   :aluno="this.aluno" :tipo="this.tipo"> </informacoes-pessoais>
-                        <informacoes-academicas :aluno="this.aluno" :tipo="this.tipo"> </informacoes-academicas>
+                        <infopessoal-aluno   :aluno="this.aluno"> </infopessoal-aluno>
+                        <infoacademica-aluno :aluno="this.aluno"> </infoacademica-aluno>
 
                        <!-- <vinculo-ufc> </vinculo-ufc>
 
@@ -36,26 +36,17 @@
 <script>
     import axios    from 'axios';
     import VueCalendar  from 'vuejs-datepicker' 
-    import InformacoesPessoais from './includes/InformacoesPessoaisComponent.vue'
-    import InformacoesAcademicas from './includes/InformacoesAcademicasComponent.vue'
-    import VinculoUfc from './includes/VinculoUfcComponent.vue'
-    import SituacaoPrograma from './includes/SituacaoProgramaComponent.vue'
     import {en, ptBR}   from 'vuejs-datepicker/dist/locale'
     
     export default {
         components:{
             axios,
             VueCalendar,
-            ptBR,
-            InformacoesPessoais,
-            InformacoesAcademicas,
-            VinculoUfc,
-            SituacaoPrograma
+            ptBR
         },
         props:{
             base_url: String,
-            id_aluno: Number,
-            tipo: Number
+            id_aluno: Number
         },
         data: function(){
             return{

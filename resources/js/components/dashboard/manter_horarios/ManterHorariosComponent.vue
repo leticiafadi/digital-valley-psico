@@ -10,21 +10,22 @@
 
                 <div class="card">
                     <div class="card-header">
+                        <i class="fas fa-fw fa-clock  text-primary"></i>
                         Gerenciar horários
                     </div>
                     <div class="card-body">
                         <div class="text-center">
-                            <h5>Selecione o ano e a semana.</h5>
+                            <h4>Selecione o ano e a semana.</h4>
                         </div>
                         <div class="container mt-3">
                             <div class="row">
-                                <div class="col col-6">
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-3">
                                     <select id="" class="form-control" v-model="anoSelecionado">
                                         <option value="">Selecione o ano</option>
                                         <option value="" v-for="ano in anos" v-bind:value="ano">{{ano}}</option>
                                     </select>
                                 </div>
-                                <div class="col col-6">
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                     <select name="" id="" class="form-control" v-model="semanaSelecionada">
                                         <option value="" >Selecione uma semana</option>
                                         <option value="" v-for="(semana, idx) in semanas" v-bind:value="idx+1">Semana {{idx + 1}} de {{formatarData(semana.inicio)}} até {{formatarData(semana.final)}} </option>
@@ -265,15 +266,14 @@
 
 <script>
     import Moment from 'moment';
-    import axios from 'axios';
     import Vue from 'vue';
-    import VueSweetalert2 from 'vue-sweetalert2';
-    import Loading from 'vue-loading-overlay';
+    import sweetAlert from 'vue-sweetalert2';
 
+    import Loading from 'vue-loading-overlay';
     import 'vue-loading-overlay/dist/vue-loading.css';
 
-    Vue.use(VueSweetalert2);
     Vue.use(Loading);
+    Vue.use(sweetAlert);
 
     export default {
 
@@ -448,37 +448,19 @@
                 this.sexta_h    = dias[4].horarios[7] == 1;
 
             },   
-            carregaSemana: function(){
-
+            carregaSemana(){
                 this.isLoading = true;
 
-                this.$http.get('horarios/' + this.anoSelecionado + '/' + this.semanaSelecionada).then(res=>{
+                this.$http.get('/horarios/' + this.anoSelecionado + '/' + this.semanaSelecionada).then(res=>{
                     this.setarSemana(res.data);
-                    this.isLoading = false;
-
+                    this.$toast("success", "Carregado com seucesso.");
                 }).catch(err=>{
-              
-                    const Toast = Vue.swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000
-                    });
-
-                    Toast.fire({
-                        type: 'error',
-                        title: 'Semana não encontrada. Talvez você não possa alterar essa semana.'
-                    });
-
+                    this.$toast("error", "Erro, essa semana não pode ser carregada.");
+                }).finally(()=>{
                     this.isLoading = false;
-
-
-                });
+                })
             },
-            salvarSemana: function() {
-
-                this.isLoading = true;
-
+            salvarSemana() {
                 var semana = {
                     segunda : {
                         a: this.segunda_a,
@@ -532,25 +514,14 @@
                     }
                 };
 
-                console.log(semana);
+                 this.isLoading = true;
 
-                axios.post('http://localhost:8000/horarios/' + this.anoSelecionado + '/' + this.semanaSelecionada, {semana: semana}).then(res=>{
-
-                    const Toast = Vue.swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000
-                    });
-
-                    Toast.fire({
-                        type: 'success',
-                        title: 'Os dados foram salvos com sucesso.'
-                    });
-
+                this.$http.post(`/horarios/${this.anoSelecionado}/${this.semanaSelecionada}`, {semana: semana}).then(res=>{
+                    this.$toast("success", "Semana salvada com sucesso.");
+                }).catch(err=>{
+                    console.log(err);
+                }).finally(()=>{
                     this.isLoading = false;
-
-
                 });
             }
         },

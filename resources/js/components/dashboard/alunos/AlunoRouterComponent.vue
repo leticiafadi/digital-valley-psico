@@ -1,10 +1,14 @@
 <template>
-  <aluno></aluno>
+  <div>
+    <aluno v-if="pagina == 'listarAlunos'" :mudaAba="mudaAba"></aluno>
+    <perfil-aluno v-if="pagina == 'paginaAluno'"></perfil-aluno>
+  </div>
 </template>
 
 <script>
 import Vue from "vue";
 import Aluno from "./AlunoComponent";
+import PerfilAluno from "./perfil/GerenciarAlunoComponent";
 
 export default {
   data: function() {
@@ -13,10 +17,16 @@ export default {
     };
   },
   components: {
-    Aluno
+    Aluno,
+    PerfilAluno
   },
-  monted() {
-    this.pagina = "listarAluno";
+  methods: {
+    mudaAba(nome) {
+      this.pagina = nome;
+    }
+  },
+  mounted() {
+    this.pagina = "listarAlunos";
   }
 };
 </script>

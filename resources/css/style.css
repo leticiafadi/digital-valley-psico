@@ -36,6 +36,17 @@
     font-weight: normal;
 }
 
+.mycolor-azul{
+    color: #407AB9 !important;
+}
+
+.mysombra{
+    box-shadow:#bdbebd 0.1em 0.1em 0.2em !important;
+}
+.mysombra-card{
+    box-shadow:#808080 0.1em 0.1em 0.2em !important;
+}
+
 
 .mybtn{
     background: #ffffff !important;
@@ -46,12 +57,25 @@
 
 .mybtn:hover{
     /* background: rgba(240, 132, 0, 0.84) !important; */
-    background: rgb(64,122,185, 0.5) !important;
+    background: rgb(64,122,185) !important;
 
     color: #ffffff !important;
    
     border: 3px solid #F28500;
 
+}
+
+.mybtn-table{
+    background: #407AB9 !important;
+    color: #ffffff !important;
+    border-radius: 20px!important;
+    border: 3px solid #407AB9 !important;
+}
+.mybtn-table:hover{
+    background: #ffffff !important;
+    color: #407AB9 !important;
+    border-radius: 20px!important;
+ 
 }
 
 
