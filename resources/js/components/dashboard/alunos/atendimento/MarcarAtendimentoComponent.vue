@@ -101,7 +101,9 @@
         },
         methods:{
             carregaHorarios(id_psicologo){
-                this.$http;
+                this.$http.get(`/psicologo/${$id_psicologo}`).then(response=> {
+                    this.horariosDisponiveis = response.data;
+                });
             },
             limpaMotivo(){
                 this.textMotivoEncaminhamento = '';
