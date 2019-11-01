@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8 mt-4">
             <div class="card">
-                <div class="card-header"> <i class="fas fa-user-plus"></i> Solicitação de cadastro</div>
+                <div class="card-header"> <i class="fas fa-user-plus text-primary"></i> Solicitação de cadastro</div>
                     <div class="card-body">
 
                     <form method="POST" action="{{route('verificarPedidoCadastro')}}">

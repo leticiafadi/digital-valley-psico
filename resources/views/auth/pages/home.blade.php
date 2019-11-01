@@ -13,7 +13,7 @@
                     <div class="icon">
                         <i class="fas fa-calendar"></i>
                     </div>-->
-                    <img src="{{ asset ('imagens/template/atendimentos.png') }}" class="img-fluid" alt="">
+                    <img src="{{ asset ('imagens/template/atendimentos.jpg') }}" class="img-fluid" alt="">
                     
                     <h4 class="small-box-footer">Atendimentos<h4>
 
@@ -32,7 +32,7 @@
                     <div class="icon">
                         <i class="fas fa-fw fa-graduation-cap"></i>
                     </div>-->
-                    <img src="{{ asset ('imagens/template/cursos.jpg') }}" class="img-fluid" alt="">
+                    <img src="{{ asset ('imagens/template/alunos.jpg') }}" class="img-fluid" alt="">
             
                     <h4 class="small-box-footer">Alunos</h4>
                     
@@ -52,7 +52,7 @@
         <div class="row justify-content-center">
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
                 <div class="small-box mynav  text-center pb-2  mysombra-card">
-                    <img src="{{ asset ('imagens/template/estatisticas.png') }}" class="img-fluid" alt="">
+                    <img src="{{ asset ('imagens/template/estatísticas.jpg') }}" class="img-fluid" alt="">
                     
                     <h4 class="small-box-footer">Horários</h4>
                 
@@ -71,7 +71,7 @@
                         <div class="icon">
                             <i class="fas fa-user"></i>
                         </div>-->
-                        <img src="{{ asset ('imagens/template/psicologo-trabalhando.jpg') }}" class="img-fluid" alt="">
+                        <img src="{{ asset ('imagens/template/psicólogos.jpg') }}" class="img-fluid" alt="">
                         
                         <h4 class="small-box-footer">Psicólogos</h4>
                         

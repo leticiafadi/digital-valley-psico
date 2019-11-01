@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+<nav class="navbar navbar-expand-md navbar-light navbar-laravel mysombra">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img class="img-fluid" src="{{ asset ('imagens/template/psico.png') }}" alt="" width="170" >
+            <img class="img-fluid" src="{{ asset ('imagens/template/logo psico.png') }}" alt="" width="170" >
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
