@@ -5,7 +5,7 @@
         <div class="col col-12">
           <div class="card">
             <div class="card-header">
-              <i class="fas fa-fw fa-user-graduate text-primary"></i>
+              <i class="fas fa-fw fa-user-graduate mycolor-azul"></i>
               <span>Visualizar alunos</span>
             </div>
             <div class="card-body">

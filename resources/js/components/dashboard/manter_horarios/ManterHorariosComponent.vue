@@ -10,7 +10,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <i class="fas fa-fw fa-clock  text-primary"></i>
+                        <i class="fas fa-fw fa-clock  mycolor-azul"></i>
                         Gerenciar horários
                     </div>
                     <div class="card-body">
