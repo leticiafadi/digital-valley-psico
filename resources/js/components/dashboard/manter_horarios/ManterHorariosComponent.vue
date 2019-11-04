@@ -400,6 +400,8 @@
 
 
                 console.log(dias);
+                
+            
 
                 this.dias = dias;
                 this.segunda_a  = dias[0].horarios[0] == 1;
