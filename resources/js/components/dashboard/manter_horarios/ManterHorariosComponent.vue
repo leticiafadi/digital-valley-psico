@@ -10,7 +10,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <i class="fas fa-fw fa-clock  text-primary"></i>
+                        <i class="fas fa-fw fa-clock  mycolor-azul"></i>
                         Gerenciar horários
                     </div>
                     <div class="card-body">
@@ -455,7 +455,7 @@
 
                 this.$http.get('/horarios/' + this.anoSelecionado + '/' + this.semanaSelecionada).then(res=>{
                     this.setarSemana(res.data);
-                    this.$toast("success", "Carregado com seucesso.");
+                    this.$toast("success", "Carregado com sucesso.");
                 }).catch(err=>{
                     this.$toast("error", "Erro, essa semana não pode ser carregada.");
                 }).finally(()=>{
@@ -519,7 +519,7 @@
                  this.isLoading = true;
 
                 this.$http.post(`/horarios/${this.anoSelecionado}/${this.semanaSelecionada}`, {semana: semana}).then(res=>{
-                    this.$toast("success", "Semana salvada com sucesso.");
+                    this.$toast("success", "Horario salvo com sucesso.");
                 }).catch(err=>{
                     console.log(err);
                 }).finally(()=>{

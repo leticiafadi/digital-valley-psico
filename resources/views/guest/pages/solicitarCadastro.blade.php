@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <i class="fas fa-sign-in-alt"></i>&nbsp;Solicitar Cadastro
+                    <i class="fas fa-sign-in-alt mycolor-azul"></i>&nbsp;Solicitar Cadastro
                 </div>
 
                 <div class="card-body">

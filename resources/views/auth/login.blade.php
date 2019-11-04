@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <i class="fas fa-sign-in-alt"></i>&nbsp;Entrar no sistema
+                    <i class="fas fa-sign-in-alt mycolor-azul"></i>&nbsp;Entrar no sistema
                 </div>
 
                 <div class="card-body">

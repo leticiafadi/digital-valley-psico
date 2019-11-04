@@ -4,7 +4,7 @@
             <div class="col col-12">
                 <div class="card">
                     <div class="card-header">
-                        <i class="fas fa-fw fa-calendar"></i>
+                        <i class="fas fa-fw fa-calendar mycolor-azul"></i>
                         Marcar atendimento 
                     </div>
                     <div class="card-body">
@@ -22,7 +22,7 @@
                                     <label for="motivoAtendimento">Psicólogo responsável</label>
                                     <select name="id_curso" class="form-control">
                                             <option value="">Selecione um psicólogo</option>
-                                            <!--<option v-for="psicologo in p" v-bind:value="curso.id">{{curso.nome}}</option>-->
+                                            <option v-for="psicologo in psicologos" v-bind:key="psicologo.id">{{psicologo.nome_completo}}</option>
                                     </select>    
                                 </div>
                             </div>
@@ -30,7 +30,8 @@
                                 <div class="form-group">
                                     <label for="data-atendimento">Data de atendimento</label>
                                     <!--<vue-calendar id="data-atendimento" format="dd/MM/yyyy" :language="pt" placeholder="Selecione a data do atendimento" v-model="dataAtendimento" ></vue-calendar>-->
-                                    <datetime id="data-atendimento" v-model="dataAtendimento" format="dd/MM/yyyy" input-class="form-control" placeholder="Selecione a data do atendimento"></datetime>
+                                    <datetime v-model="dataAtendimento" format="dd/MM/yyyy" input-class="form-control" placeholder="Selecione a data do atendimento"></datetime>
+                                    {{dataAtendimento}}
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
@@ -38,7 +39,7 @@
                                     <label for="horarios-atendimento">Horário de atendimento</label>
                                     <select name="" id="" class="form-control">
                                         <option value="">Selecione o horário de atendimento</option>
-                                        <option value="" v-for="horario in horariosDisponiveis">{{horario}}</option>
+                                        <option value="" v-for="horario in horariosDisponiveis" v-bind:key="horario.id">{{horario}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -80,13 +81,14 @@
 <script>
     import VueCalendar  from 'vuejs-datepicker' 
     import {en, ptBR}   from 'vuejs-datepicker/dist/locale'
+    import { Datetime } from 'vue-datetime'
     export default {
         components:{
             VueCalendar,
-            ptBR
+            ptBR,
+            Datetime
         },
         props:{
-            psicologo: Array
         },
         data: function(){
             return{
@@ -94,19 +96,27 @@
                 dataAtendimento: '',
                 horariosDisponiveis: [],
                 motivoEncaminhamento: '',
-                textMotivoEncaminhamento: ''
+                textMotivoEncaminhamento: '',
+                psicologos: []
             }
         },
         methods:{
-            carregaHorarios: function(){
-                this.horariosDisponiveis = [1,2,3];
+            carregaHorarios(id_psicologo){
+                this.$http.get(`/psicologo/${$id_psicologo}`).then(response=> {
+                    this.horariosDisponiveis = response.data;
+                });
             },
-            limpaMotivo: function(){
+            limpaMotivo(){
                 this.textMotivoEncaminhamento = '';
+            },
+            carregaPsicologos(){
+                this.$http.get(`/psicologos`).then(response => {
+                    this.psicologos = response.data;
+                })
             }
         },
         mounted(){
-            this.carregaHorarios();
+            this.carregaPsicologos();
         }
     }
 </script>
