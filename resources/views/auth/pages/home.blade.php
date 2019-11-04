@@ -15,6 +15,10 @@
                     </div>-->
                     <img src="{{ asset ('imagens/template/atendimentos.jpg') }}" class="img-fluid" alt="">
                     
+                    <!--<a href="https://br.freepik.com/fotos-vetores-gratis/fundo">
+                        Fundo foto criado por pressfoto - br.freepik.com
+                    </a>-->
+
                     <h4 class="small-box-footer">Atendimentos<h4>
 
                     <form method="GET" action="{{ route('consultas.all') }}">
@@ -33,7 +37,11 @@
                         <i class="fas fa-fw fa-graduation-cap"></i>
                     </div>-->
                     <img src="{{ asset ('imagens/template/alunos.jpg') }}" class="img-fluid" alt="">
-            
+                    
+                    <!--<a href="https://br.freepik.com/fotos-vetores-gratis/pessoas">
+                        Pessoas foto criado por freepik - br.freepik.com
+                    </a> -->
+
                     <h4 class="small-box-footer">Alunos</h4>
                     
                     <form method="GET" action="{{ route('alunos.all') }}">
@@ -54,6 +62,10 @@
                 <div class="small-box mynav  text-center pb-2  mysombra-card">
                     <img src="{{ asset ('imagens/template/estatísticas.jpg') }}" class="img-fluid" alt="">
                     
+                    <!--<a href="https://br.freepik.com/fotos-vetores-gratis/negocio">
+                        Negócio foto criado por jannoon028 - br.freepik.com
+                    </a>-->
+
                     <h4 class="small-box-footer">Horários</h4>
                 
                     <form method="GET" action="{{ route('horario') }}">
@@ -73,6 +85,10 @@
                         </div>-->
                         <img src="{{ asset ('imagens/template/psicólogos.jpg') }}" class="img-fluid" alt="">
                         
+                        <!--<a href="https://br.freepik.com/fotos-vetores-gratis/escritorio">
+                            Escritório foto criado por freepik - br.freepik.com
+                        </a>-->
+
                         <h4 class="small-box-footer">Psicólogos</h4>
                         
                         <form method="GET" action="{{ route('usuarios.all') }}">
