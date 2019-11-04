@@ -38,6 +38,7 @@
                     <!--<vue-calendar input-class="form-control" placeholder="Clique aqui e selecione sua data de nascimento" v-model="dataNascimento" format="dd/MM/yyyy" :language="pt" :bootstrap-styling="true" :full-month-name="true" :calendar-button="true" calendar-button-icon="fas fa-calendar" name="data_nascimento" v-validate="'date_format:dd/MM/yyyy'" :input-class="'bg-white'" :disabledDates="this.disabled_dates" :open-date="this.open_date">
                     </vue-calendar>-->
                     <datetime v-model="dataNascimento" format="dd/MM/yyyy" :class="{'is-invalid' : errors.has('dataNascimento'), 'is-valid': this.validaData()}" input-class="form-control" name="data_nascimento"></datetime>  
+                    {{dataNascimento}}
                 </div>
             </div>
         </div>        
@@ -56,6 +57,7 @@
     import VueCalendar  from 'vuejs-datepicker' 
     import {en, ptBR}   from 'vuejs-datepicker/dist/locale'
     import VeeValidate  from 'vee-validate'
+    import { Datetime } from 'vue-datetime'
     
     export default {
         props: {
@@ -66,7 +68,8 @@
         components:{
             MaskedInput,
             VueCalendar,
-            ptBR
+            ptBR,
+            Datetime
         },
         data:function(){
             return {

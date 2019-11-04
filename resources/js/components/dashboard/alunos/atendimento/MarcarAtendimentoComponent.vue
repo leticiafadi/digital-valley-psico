@@ -22,7 +22,7 @@
                                     <label for="motivoAtendimento">Psicólogo responsável</label>
                                     <select name="id_curso" class="form-control">
                                             <option value="">Selecione um psicólogo</option>
-                                            <option v-for="psicologo in psicologos" v-bind:value="psicologo.id">{{psicologo.nome_completo}}</option>
+                                            <option v-for="psicologo in psicologos" v-bind:key="psicologo.id">{{psicologo.nome_completo}}</option>
                                     </select>    
                                 </div>
                             </div>
@@ -31,6 +31,7 @@
                                     <label for="data-atendimento">Data de atendimento</label>
                                     <!--<vue-calendar id="data-atendimento" format="dd/MM/yyyy" :language="pt" placeholder="Selecione a data do atendimento" v-model="dataAtendimento" ></vue-calendar>-->
                                     <datetime v-model="dataAtendimento" format="dd/MM/yyyy" input-class="form-control" placeholder="Selecione a data do atendimento"></datetime>
+                                    {{dataAtendimento}}
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
@@ -38,7 +39,7 @@
                                     <label for="horarios-atendimento">Horário de atendimento</label>
                                     <select name="" id="" class="form-control">
                                         <option value="">Selecione o horário de atendimento</option>
-                                        <option value="" v-for="horario in horariosDisponiveis">{{horario}}</option>
+                                        <option value="" v-for="horario in horariosDisponiveis" v-bind:key="horario.id">{{horario}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -115,7 +116,6 @@
             }
         },
         mounted(){
-            this.carregaHorarios();
             this.carregaPsicologos();
         }
     }
