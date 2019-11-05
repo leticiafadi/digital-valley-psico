@@ -14,13 +14,11 @@ trait BuscarFuncionario{
     }
 
     private function horarioPsicologo($id){
-        //$semana = Semana::where('id_funcionario','=',$id)->get();
-        //dd($Semana);
-        $horario = Semana::where('id_funcionario','=',$id)->join('Horario_Semana','Semana.id','=','Horario_Semana.id_semana')->get();
-        /*$horario1=  HorarioSemana::join('Semana',function ($join){
-            $join->on('HorarioSemana.id_semana','=','Semana.id')->where('Semana.id_funcionario','=',$id);
-        })->get();
-        */
+        $semana = date("y-m-d");
+        $date = explode("-", $semana);
+        $date  = mktime(0, 0, 0, $date[1], $date[2], $date[0]);
+        $semana  = (int)date('W', $date);
+        $horario = Semana::select('Semana.id','Horario_Semana.id','Horario_Semana.dia','Horario_Semana.horario')->where('id_funcionario','=',$id)->where('Semana.numero_semana','>=',$semana)->join('Horario_Semana','Semana.id','=','Horario_Semana.id_semana')->get();
         return $horario;
     }
 
