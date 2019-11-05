@@ -34,24 +34,26 @@
             </div>
             <div class="card-body">
               <ul class="list-group" v-if="alunos != ''">
-                <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th class="mybg-azul">Nome</th>
-                      <th class="mybg-azul">Matricula</th>
-                      <th class="mybg-azul">Curso</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <template v-for="aluno in this.alunos">
-                      <tr v-on:click.prevent="perfilAluno(aluno.id)" style="cursor: pointer">
-                        <td>{{aluno.nome_completo}}</td>
-                        <td>{{aluno.matricula}}</td>
-                        <td>{{aluno.nome}}</td>
+                <div class="table table-responsive">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th class="mybg-azul">Nome</th>
+                        <th class="mybg-azul">Matricula</th>
+                        <th class="mybg-azul">Curso</th>
                       </tr>
-                    </template>
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      <template v-for="aluno in this.alunos">
+                        <tr v-on:click.prevent="perfilAluno(aluno.id)" style="cursor: pointer">
+                          <td>{{aluno.nome_completo}}</td>
+                          <td>{{aluno.matricula}}</td>
+                          <td>{{aluno.nome}}</td>
+                        </tr>
+                      </template>
+                    </tbody>
+                  </table>
+                </div>
               </ul>
               <ul v-else>
                 <strong></strong>
