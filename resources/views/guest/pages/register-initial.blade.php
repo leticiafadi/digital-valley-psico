@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8 mt-4">
             <div class="card">
-                <div class="card-header"> <i class="fas fa-user-plus text-primary"></i> Solicitação de cadastro</div>
+                <div class="card-header"> <i class="fas fa-user-plus mycolor-azul"></i> Solicitação de cadastro</div>
                     <div class="card-body">
 
                     <form method="POST" action="{{route('verificarPedidoCadastro')}}">
@@ -18,9 +18,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">Matricula</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">Matrícula</label>
                             <div class="col-md-6">
-                                <input id="email" type="text" class="form-control" placeholder="Digite a sua Matricula" name="matricula" maxlength="6" >
+                                <input id="email" type="text" class="form-control" placeholder="Digite a sua Matrícula" name="matricula" maxlength="6" >
                             </div>
                         </div>
 
