@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col col-12 col-lg-3 text-center">
             <button class="btn btn-circle btn-xl" v-bind:class="[aba == 'informacoesPessoais' ? 'btn-primary' : 'btn-outline-primary']" type="button">
-                <i class="fas fa-user mycolor-azul"></i>
+                <i class="fas fa-user "></i>
             </button>
             <div>
                 Informações pessoais

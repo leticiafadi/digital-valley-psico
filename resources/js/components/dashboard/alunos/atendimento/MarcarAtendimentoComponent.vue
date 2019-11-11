@@ -20,10 +20,10 @@
                             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                                 <div class="form-group">
                                     <label for="motivoAtendimento">Psicólogo responsável</label>
-                                    <select name="id_curso" class="form-control">
+                                    <select v-model="idPsico" name="id_curso" class="form-control">
                                             <option value="">Selecione um psicólogo</option>
-                                            <option v-for="psicologo in psicologos" v-bind:key="psicologo.id">{{psicologo.nome_completo}}</option>
-                                    </select>    
+                                            <option v-for="(psicologo,key) in psicologos"  v-bind:value="psicologo.id">{{psicologo.nome_completo}}</option>
+                                    </select>   
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
@@ -37,9 +37,9 @@
                             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                                 <div class="form-group">
                                     <label for="horarios-atendimento">Horário de atendimento</label>
-                                    <select name="" id="" class="form-control">
+                                    <select v-on:click.prevent="carregaHorario()" name="" id="" class="form-control">
                                         <option value="">Selecione o horário de atendimento</option>
-                                        <option value="" v-for="horario in horariosDisponiveis" v-bind:key="horario.id">{{horario}}</option>
+                                        <option  value="" v-for="horario in horariosDisponiveis" v-bind:key="horario.id">{{horario}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -97,14 +97,26 @@
                 horariosDisponiveis: [],
                 motivoEncaminhamento: '',
                 textMotivoEncaminhamento: '',
-                psicologos: []
+                psicologos: [],
+                idPsico: 0
             }
         },
+        watch:{
+        },
         methods:{
-            carregaHorarios(id_psicologo){
-                this.$http.get(`/psicologo/${$id_psicologo}`).then(response=> {
-                    this.horariosDisponiveis = response.data;
-                });
+            carregaHorario(){
+                if(this.idPsico!=0){
+                    this.$http.get(`/psicologo/${this.idPsico}`).then(response=> {
+                        this.horariosDisponiveis = response.data;
+                        //alert(response.data)
+                        if(this.horariosDisponiveis.length == 0){
+                            this.$toast("info","Nenhum Horario neste dia está disponível");
+                        }
+                    }).catch(err => {
+                        this.$toast("warning", "Não foi possível buscar os horarios");
+                    });
+                }
+                
             },
             limpaMotivo(){
                 this.textMotivoEncaminhamento = '';
@@ -113,7 +125,10 @@
                 this.$http.get(`/psicologos`).then(response => {
                     this.psicologos = response.data;
                 })
-            }
+            },
+            recebeId($id_psicologo){
+                this.idPsico = psicologos.id_psicologo;
+            },
         },
         mounted(){
             this.carregaPsicologos();
