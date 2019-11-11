@@ -5735,6 +5735,10 @@ body.sidebar-toggled footer.sticky-footer {
     color: #407AB9 !important;
 }
 
+.mycolor-branco{
+    color: white !important;
+}
+
 .mysombra{
     box-shadow:#bdbebd 0.1em 0.1em 0.2em !important;
 }

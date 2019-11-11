@@ -17,13 +17,13 @@
 											Nome
 										</th>
 										<th class="mybg-azul">
-											Matricula
+											Matrícula
 										</th>
 										<th class="mybg-azul">
 											Curso
 										</th>
 										<th class="mybg-azul">
-											Data & horário do pedido
+											Data e horário do pedido
 										</th>
 										<th class="mybg-azul">
 											Opções
