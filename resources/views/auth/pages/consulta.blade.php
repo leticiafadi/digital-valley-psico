@@ -67,10 +67,10 @@
 									</button>
 									</div>
 									<div class="modal-body">
-									...
+						
 									</div>
 									<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-dismiss="modal">Não, me arrependi</button>
+									<button type="button" class="btn mybtn-table py-1 px-4" data-dismiss="modal">Não, me arrependi</button>
 									<a href=" {{route('consulta.excluir', $hashVisualizar->encode($consulta->id))}} " class="btn mybtn-table py-1 px-4">Sim, desejo excluir</a>
 									</div>
 								</div>

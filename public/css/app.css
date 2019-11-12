@@ -5754,6 +5754,7 @@ body.sidebar-toggled footer.sticky-footer {
 
 }
 
+
 .mybtn:hover{
     /* background: rgba(240, 132, 0, 0.84) !important; */
     background: rgb(64,122,185) !important;
@@ -5770,6 +5771,8 @@ body.sidebar-toggled footer.sticky-footer {
     border-radius: 20px!important;
     border: 3px solid #407AB9 !important;
 }
+
+
 .mybtn-table:hover{
     background: #ffffff !important;
     color: #407AB9 !important;

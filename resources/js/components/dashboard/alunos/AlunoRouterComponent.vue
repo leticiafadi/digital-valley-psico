@@ -2,6 +2,13 @@
   <div>
     <aluno v-if="pagina == 'listarAlunos'"  :carregaAluno='carregaAluno'></aluno>
     <perfil-aluno v-if="pagina == 'paginaAluno'" :aluno="aluno"></perfil-aluno>
+    <!--<div v-show="pagina == 'paginaAluno'" class="row">
+      <div class="col col-12">
+          <div class="fa fa-pull-right">
+              <button class="btn mybtn-table btn-lg" @click="voltar()">Retornar para a lista dos alunos</button>
+          </div>
+      </div>
+    </div>-->
   </div>
 </template>
 
@@ -24,6 +31,9 @@ export default {
   methods: {
     mudaAba(nome) {
       this.pagina = nome;
+    },
+    voltar(){
+      this.pagina = 'listarAlunos';
     },
     carregaAluno(id_aluno){
       this.$http.get(`/alunos/${id_aluno}`).then(response=>{

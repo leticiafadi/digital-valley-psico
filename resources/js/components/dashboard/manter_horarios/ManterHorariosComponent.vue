@@ -249,7 +249,7 @@
                                     <div class="row">
                                         <div class="col col-12">
                                             <div class="fa fa-pull-right">
-                                                <button class="btn btn-primary btn-lg" v-on:click="salvarSemana">Salvar</button>
+                                                <button class="btn mybtn-table btn-lg" v-on:click="salvarSemana">Salvar</button>
                                             </div>
                                         </div>
                                     </div>
