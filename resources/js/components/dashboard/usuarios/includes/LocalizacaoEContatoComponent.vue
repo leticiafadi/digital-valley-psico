@@ -109,10 +109,10 @@
         <div class="row">
             <div class="col col-12">
                 <div class="fa fa-pull-left">
-                    <button type="button" class="btn btn-primary btn-lg" @click="this.anterior"> <i class="fas fa-chevron-left"></i> Anterior</button>
+                    <button type="button" class="btn mybtn-table" @click="this.anterior"> <i class="fas fa-chevron-left"></i> Anterior</button>
                 </div>
                 <div class="fa-pull-right">
-                    <button type="button" class="btn btn-primary btn-lg" :disabled="!this.isValid()"  @click="this.proximo" >Próximo <i class="fas fa-chevron-right"></i></button>
+                    <button type="button" class="btn mybtn-table" :disabled="!this.isValid()"  @click="this.proximo" >Próximo <i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>

@@ -39,11 +39,11 @@
 
                                 <div v-if="this.anoSelecionado != '' && this.semanaSelecionada != ''">
                                     <div class="mt-4 mb-4">
-                                        Semana {{this.semanaSelecionada}} do ano de {{this.anoSelecionado}}
+                                        <!--Semana {{this.semanaSelecionada}} do ano de {{this.anoSelecionado}}-->
                                     </div>
-                                
+                                    
                                     {{dias.segunda}}
-
+                                    
                                     <div class="table-responsive">
                                         <table class="table table-striped">
                                             <thead>

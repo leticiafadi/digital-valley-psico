@@ -40,6 +40,10 @@
     color: #407AB9 !important;
 }
 
+.mycolor-branco{
+    color: white !important;
+}
+
 .mysombra{
     box-shadow:#bdbebd 0.1em 0.1em 0.2em !important;
 }
