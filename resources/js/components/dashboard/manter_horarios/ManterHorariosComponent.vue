@@ -516,7 +516,7 @@
                     }
                 };
 
-                 this.isLoading = true;
+                this.isLoading = true;
 
                 this.$http.post(`/horarios/${this.anoSelecionado}/${this.semanaSelecionada}`, {semana: semana}).then(res=>{
                     this.$toast("success", "Horario salvo com sucesso.");

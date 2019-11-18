@@ -47,11 +47,11 @@ export default {
 }
 
 .btn-show-pass:hover {
-  color: #57b846;
+  color: #407AB9;
 }
 
 .btn-show-pass.active {
-  color: #57b846;
+  color: #407AB9;
 }
 
 </style>
