@@ -38,7 +38,7 @@
             <div class="col col-9">
                 <div class="form-group">
                     <label for="nascimento">Data de nascimento *</label>
-                    <datetime v-model="dataNascimento" class="theme-blue" format="dd/MM/yyyy" input-class="form-control" name="data_nascimento"></datetime> 
+                    <datetime v-model="dataNascimento" class="theme-blue" format="dd/MM/yyyy" :class="{'is-invalid' : errors.has('dataNascimento'), 'is-valid': this.validaData()}" input-class="form-control" name="data_nascimento"></datetime> 
                 </div>
             </div>  
         </div>    
@@ -87,7 +87,8 @@
                 return this.nome.length >= 3 && /^[a-zA-Zäáàãâëéèêẽíìîöóòôúùñûç ]+$/.test(this.nome);
             },
             validaData:function(){
-                return this.dataNascimento != '';
+                var ano = this.dataNascimento.split("-", 1);
+                return this.dataNascimento != '' && ano <= 2001;
             },
             validaGenero:function(){
                 return this.genero != '';

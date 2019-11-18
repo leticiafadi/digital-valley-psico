@@ -28,7 +28,7 @@
                          @endif
 
                          <div class="col col-12 mt-3">
-                            <a href="users/create" class=" btn mybtn-table btn fa-pull-right">Criar novo administrador</a>
+                            <a href="users/create" class=" btn mybtn-table btn fa-pull-right">Cadastrar novo psicólogo</a>
                         </div>
 
                     </div>
