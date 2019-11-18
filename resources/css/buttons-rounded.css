@@ -26,12 +26,15 @@
 
   .btn-circle.btn-xl:hover{
     background: #407AB9 !important;
-
+    border: #407AB9;
   }
 
   .btn-circle.btn-xl:hover > i{
     color: #ffffff !important;
 
   }
-   
+  
+  .btn-primary{
+    background: #407AB9;
+  }
  
