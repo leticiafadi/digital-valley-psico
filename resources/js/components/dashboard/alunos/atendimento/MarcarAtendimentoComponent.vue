@@ -266,7 +266,7 @@
                         <div class="row mt-2">
                             <div class="col col-12">
                                 <div class="fa-pull-right">
-                                    <button type="submit" class="btn btn-primary btn-lg">
+                                    <button type="submit" class="btn mybtn-table btn-lg">
                                             Marcar atendimento
                                     </button>
                                 </div>

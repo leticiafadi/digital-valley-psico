@@ -10,6 +10,7 @@
                     <div class="card-body">
                         <infopessoal-aluno   :aluno="this.aluno"> </infopessoal-aluno>
                         <infoacademica-aluno :aluno="this.aluno"> </infoacademica-aluno>
+  
 
                        <!-- <vinculo-ufc> </vinculo-ufc>
 

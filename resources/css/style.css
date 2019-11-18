@@ -40,6 +40,10 @@
     color: #407AB9 !important;
 }
 
+.mycolor-branco{
+    color: white !important;
+}
+
 .mysombra{
     box-shadow:#bdbebd 0.1em 0.1em 0.2em !important;
 }
@@ -54,6 +58,7 @@
     border-radius: 20px!important;
 
 }
+
 
 .mybtn:hover{
     /* background: rgba(240, 132, 0, 0.84) !important; */
@@ -71,6 +76,8 @@
     border-radius: 20px!important;
     border: 3px solid #407AB9 !important;
 }
+
+
 .mybtn-table:hover{
     background: #ffffff !important;
     color: #407AB9 !important;
