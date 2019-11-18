@@ -39,6 +39,7 @@
                     </vue-calendar>-->
                     <datetime v-model="dataNascimento" class="theme-blue" format="dd/MM/yyyy" :class="{'is-invalid' : errors.has('dataNascimento'), 'is-valid': this.validaData()}" input-class="form-control" name="data_nascimento"></datetime>  
                     <!--{{dataNascimento}}-->
+
                 </div>
             </div>
         </div>        

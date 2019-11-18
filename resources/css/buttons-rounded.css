@@ -23,3 +23,15 @@
     line-height: 1.33;
     border-radius: 35px;
   }
+
+  .btn-circle.btn-xl:hover{
+    background: #407AB9 !important;
+
+  }
+
+  .btn-circle.btn-xl:hover > i{
+    color: #ffffff !important;
+
+  }
+   
+ 
