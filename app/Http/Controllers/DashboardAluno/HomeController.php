@@ -37,7 +37,9 @@ class HomeController extends Controller
         return response($this->listarPsicologos(),200)->header('Content-Type','text/json');
     }
 
-    public function horariopsico(Request $request,$id){
-        return response($this->horarioPsicologo($id),200)->header('Content-Type','text/json');
+    public function horariopsico(Request $request){
+        $id = $request->get('id');
+        $semana = $request->get('query');
+        return response($this->horarioPsicologo($id,$semana),200)->header('Content-Type','text/json');
     }
 }
