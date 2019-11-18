@@ -39,7 +39,7 @@
                     <thead>
                       <tr>
                         <th class="mybg-azul">Nome</th>
-                        <th class="mybg-azul">Matricula</th>
+                        <th class="mybg-azul">Matrícula</th>
                         <th class="mybg-azul">Curso</th>
                       </tr>
                     </thead>
