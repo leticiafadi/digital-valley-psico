@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
-                    <label for="matricula">Matricula</label>
+                    <label for="matricula">Matrícula</label>
                     <input type="text" class="form-control" name="Matricula" v-model="this.aluno.matricula" :disabled="true">
                 </div>
             </div>

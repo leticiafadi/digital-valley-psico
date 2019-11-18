@@ -492,9 +492,6 @@
                     this.psicologos = response.data;
                 })
             },
-            recebeId($id_psicologo){
-                this.idPsico = psicologos.id_psicologo;
-            },
         },
         mounted(){
             this.carregaPsicologos();
