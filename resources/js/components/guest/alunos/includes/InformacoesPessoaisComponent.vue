@@ -38,7 +38,7 @@
             <div class="col col-9">
                 <div class="form-group">
                     <label for="nascimento">Data de nascimento *</label>
-                    <datetime v-model="dataNascimento" format="dd/MM/yyyy" input-class="form-control" name="data_nascimento"></datetime> 
+                    <datetime v-model="dataNascimento" class="theme-blue" format="dd/MM/yyyy" input-class="form-control" name="data_nascimento"></datetime> 
                 </div>
             </div>  
         </div>    

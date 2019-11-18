@@ -45,11 +45,16 @@
 												{{date('d/m/Y h:m', strtotime($consulta->created_at))}}
 												</td>
 												<td>
-												<button type="button" class="btn mybtn-table btn-danger py-1 px-4" data-toggle="modal" data-target="#modalExemplo">
-													Excluir
-												</button>
-												<a href=" {{route('consulta.visualizar', $hashVisualizar->encode($consulta->id))}} " class="btn mybtn-table py-1 px-4 fa-pull-right">Ver detalhes</a>									
-												
+												<div class="row ">
+													<div class=" col-lg-12 col-md-12 col-sm-12 col-xl-6 mb-2">
+														<button type="button" class="btn mybtn-table btn-danger py-1 px-4" data-toggle="modal" data-target="#modalExemplo">
+															Excluir
+														</button>
+													</div>
+													<div class=" col-xl-6 col-lg-12 col-md-12 col-sm-12">
+														<a href=" {{route('consulta.visualizar', $hashVisualizar->encode($consulta->id))}} " class="btn mybtn-table py-1 px-4">Detalhes</a>									
+													</div>
+												</div>
 												</td>
 											</tr>
 										@endforeach

@@ -30,7 +30,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}">
-                                <i class="fas fa-sign-out-alt"></i>&nbsp;Sair do sistema
+                                <i class="fas fa-sign-out-alt mycolor-azul"></i>&nbsp;Sair do sistema
                             </a>                                  
                         </div>
                     </li>
