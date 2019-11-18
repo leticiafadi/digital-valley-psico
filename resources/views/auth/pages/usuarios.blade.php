@@ -10,7 +10,7 @@
             <div class="col col-12">
                 <div class="card">
                     <div class="card-header">
-                        <i class="fas fa-users mycolor-azul"></i>&nbsp;Gerenciar usuários
+                        <i class="fas fa-users mycolor-azul"></i>&nbsp;Gerenciar Psicólogos
                     </div>
                     <div class="card-body">
                         @if($funcionarios)
