@@ -98,5 +98,8 @@
   color: #407AB9;
 }
 
+.novoHover:hover > td{
+    background-color: #e9e9e9;
+}
 
 
