@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-header">
                 <i class="fas fa-user mycolor-azul"></i>
-                <span>Cadastrar funcionário</span>
+                <span>Cadastrar psicólogo</span>
             </div>
             <div class="card-body">
 

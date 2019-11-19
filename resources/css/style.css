@@ -3,6 +3,7 @@
     
 }
 
+
 .wi{
     color: #ffffff;
 }
@@ -85,9 +86,17 @@
  
 }
 
+.theme-blue .vdatetime-popup__header,
+.theme-blue .vdatetime-calendar__month__day--selected > span > span,
+.theme-blue .vdatetime-calendar__month__day--selected:hover > span > span {
+  background: #407AB9;
+}
 
-
-    
+.theme-blue .vdatetime-year-picker__item--selected,
+.theme-blue .vdatetime-time-picker__item--selected,
+.theme-blue .vdatetime-popup__actions__button {
+  color: #407AB9;
+}
 
 
 

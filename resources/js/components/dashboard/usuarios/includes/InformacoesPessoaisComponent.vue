@@ -37,7 +37,7 @@
                     <label for="nascimento">Data de nascimento *</label>
                     <!--<vue-calendar input-class="form-control" placeholder="Clique aqui e selecione sua data de nascimento" v-model="dataNascimento" format="dd/MM/yyyy" :language="pt" :bootstrap-styling="true" :full-month-name="true" :calendar-button="true" calendar-button-icon="fas fa-calendar" name="data_nascimento" v-validate="'date_format:dd/MM/yyyy'" :input-class="'bg-white'" :disabledDates="this.disabled_dates" :open-date="this.open_date">
                     </vue-calendar>-->
-                    <datetime v-model="dataNascimento" format="dd/MM/yyyy" :class="{'is-invalid' : errors.has('dataNascimento'), 'is-valid': this.validaData()}" input-class="form-control" name="data_nascimento"></datetime>  
+                    <datetime v-model="dataNascimento" class="theme-blue" format="dd/MM/yyyy" :class="{'is-invalid' : errors.has('dataNascimento'), 'is-valid': this.validaData()}" input-class="form-control" name="data_nascimento"></datetime>  
                 </div>
             </div>
         </div>        
@@ -77,7 +77,7 @@
                 genero : 'm',
                 pt: ptBR, 
                 disabled_dates: {},
-                open_date : new Date()
+                open_date : new Date(),
             }
         },
         methods:{
@@ -85,7 +85,8 @@
                 return this.nome.length >= 3 && /^[a-zA-Zäáàãâëéèêẽíìîöóòôúùñûç ]+$/.test(this.nome);
             },
             validaData:function(){
-                return this.dataNascimento != '';
+                var ano = this.dataNascimento.split("-", 1);
+                return this.dataNascimento != '' && ano <= 2001;
             },
             isValid:function(){
                 return this.validaNome() && this.validaData(); 
@@ -116,4 +117,6 @@
     [name=data_nascimento]{
         background-color: red;
     }
+
+
  </style>

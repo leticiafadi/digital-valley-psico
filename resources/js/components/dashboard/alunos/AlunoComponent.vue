@@ -112,7 +112,7 @@ export default {
         .then(response => {
           this.alunos = response.data.alunos;
           if (this.alunos.length == 0)
-            this.$toast("info", "Nenhum aluno foi encontrado com a pesquisa.");
+            this.$toast("warning", "Nenhum aluno foi encontrado com a pesquisa.");
         })
         .catch(err => {
           this.$toast("warning", "Não foi possível buscar os alunos");
