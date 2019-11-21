@@ -68,7 +68,7 @@
             <div class="col col-12 col-md-3">
                 <div class="form-group">
                     <label for="bairro">Bairro *</label>
-                    <input type="text" class="form-control" :class="{'is-invalid' : errors.has('bairro'), 'is-valid': this.validaBairro()}"  name="bairro" id="bairro" placeholder="Ex: Centro" v-model="bairro" v-validate="'required|min:5'">
+                    <input type="text" class="form-control" :class="{'is-invalid' : errors.has('bairro'), 'is-valid': this.validaBairro()}"  name="bairro" id="bairro" placeholder="Ex: Centro" v-model="bairro" v-validate="'required|min:3'">
 
                     <span>{{errors.first('bairro')}}</span>
 
@@ -109,7 +109,7 @@
         </div>
         <div class="row">
             <div class="col col-12">
-                <div class="fa fa-pull-left">
+                <div class="fa-pull-left">
                     <button type="button" class="btn mybtn-table btn-lg" @click="this.anterior"> <i class="fas fa-chevron-left"></i> Anterior</button>
                 </div>
                 <div class="fa-pull-right">
@@ -202,7 +202,7 @@
                 return this.endereco.length >= 5;
             },
             validaBairro:function(){
-                return this.bairro.length >= 5;
+                return this.bairro.length >= 3;
             },
             validaNumeroPeloTamanho(){
                 return this.numero.length >= 1;
