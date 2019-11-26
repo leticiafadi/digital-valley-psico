@@ -52,7 +52,7 @@
 <body id="page-top">
 	<div id="app">
 
-		@include('aluno.includes.navbar')
+			@include('aluno.includes.navbar')
 
 
 		@if(session('success'))

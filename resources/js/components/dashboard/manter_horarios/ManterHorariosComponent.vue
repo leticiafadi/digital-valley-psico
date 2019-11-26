@@ -37,14 +37,14 @@
 
                             <div class="col col-12">
 
-                                <div v-if="this.anoSelecionado != '' && this.semanaSelecionada != ''">
+                                <div v-if="mostrarSemana">
                                     <div class="mt-4 mb-4">
                                         Semana {{this.semanaSelecionada}} do ano de {{this.anoSelecionado}}
                                     </div>
                                 
                                     {{dias.segunda}}
 
-                                    <div class="table-responsive">
+                                    <div class="table table-bordered">
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr>
@@ -158,7 +158,7 @@
                                                 <tr>
                                                     <td>
                                                         <div class="text-center text-bold">
-                                                            13:30 - 14:30
+                                                            13:00 - 14:00
                                                         </div>
                                                     </td>
                                                     <td>
@@ -180,7 +180,7 @@
                                                 <tr>
                                                     <td>
                                                         <div class="text-center text-bold">
-                                                            14:30 - 15:30
+                                                            14:00 - 15:00
                                                         </div>
                                                     </td>
                                                     <td>
@@ -202,7 +202,7 @@
                                                 <tr>
                                                     <td>
                                                         <div class="text-center text-bold">
-                                                            15:30 - 16:30
+                                                            15:00 - 16:00
                                                         </div>
                                                     </td>
                                                     <td>
@@ -224,7 +224,7 @@
                                                 <tr>
                                                     <td>
                                                         <div class="text-center text-bold">
-                                                            16:30 - 17:30
+                                                            16:00 - 17:00
                                                         </div>
                                                     </td>
                                                     <td>
@@ -241,6 +241,57 @@
                                                     </td>
                                                     <td>
                                                         <input type="checkbox" v-model="sexta_h" id="">
+                                                    </td>
+                                                </tr>
+                                                   <tr>
+                                                    <td colspan="6">
+                                                        <div class="text-center">
+                                                            Noite
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="text-center text-bold">
+                                                            17:00 - 18:00
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="checkbox" v-model="segunda_i" id="">
+                                                    </td>
+                                                    <td>
+                                                        <input type="checkbox" v-model="terca_i" id="">
+                                                    </td>
+                                                    <td>
+                                                        <input type="checkbox" v-model="quarta_i" id="">
+                                                    </td>
+                                                    <td>
+                                                        <input type="checkbox" v-model="quinta_i" id="">
+                                                    </td>
+                                                    <td>
+                                                        <input type="checkbox" v-model="sexta_i" id="">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="text-center text-bold">
+                                                            18:00 - 19:00
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="checkbox" v-model="segunda_j" id="">
+                                                    </td>
+                                                    <td>
+                                                        <input type="checkbox" v-model="terca_j" id="">
+                                                    </td>
+                                                    <td>
+                                                        <input type="checkbox" v-model="quarta_j" id="">
+                                                    </td>
+                                                    <td>
+                                                        <input type="checkbox" v-model="quinta_j" id="">
+                                                    </td>
+                                                    <td>
+                                                        <input type="checkbox" v-model="sexta_j" id="">
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -295,9 +346,9 @@
                 semanas : [],
                 anoSelecionado : '',
                 semanaSelecionada : '',
-                dias:{
-                   
-                },
+
+                mostrarSemana: false,
+
                 segunda_a: false,
                 segunda_b: false,
                 segunda_c: false,
@@ -306,6 +357,8 @@
                 segunda_f: false,
                 segunda_g: false,
                 segunda_h: false,
+                segunda_i: false,
+                segunda_j: false,
 
                 terca_a: false,
                 terca_b: false,
@@ -315,6 +368,8 @@
                 terca_f: false,
                 terca_g: false,
                 terca_h: false,
+                terca_i: false,
+                terca_j: false,
 
                 quarta_a: false,
                 quarta_b: false,
@@ -324,6 +379,8 @@
                 quarta_f: false,
                 quarta_g: false,
                 quarta_h: false,
+                quarta_i: false,
+                quarta_j: false,
 
                 quinta_a: false,
                 quinta_b: false,
@@ -333,7 +390,9 @@
                 quinta_f: false,
                 quinta_g: false,
                 quinta_h: false,
-
+                quinta_i: false,
+                quinta_j: false,
+                
                 sexta_a: false,
                 sexta_b: false,
                 sexta_c: false,
@@ -341,7 +400,9 @@
                 sexta_e: false,
                 sexta_f: false,
                 sexta_g: false,
-                sexta_h: false
+                sexta_h: false,
+                sexta_i: false,
+                sexta_j: false             
 
             }
         },
@@ -398,10 +459,8 @@
             },
             setarSemana: function(dias){
 
-
-                console.log(dias);
-
                 this.dias = dias;
+
                 this.segunda_a  = dias[0].horarios[0] == 1;
                 this.segunda_b  = dias[0].horarios[1] == 1;
                 this.segunda_c  = dias[0].horarios[2] == 1;
@@ -410,6 +469,8 @@
                 this.segunda_f  = dias[0].horarios[5] == 1;
                 this.segunda_g  = dias[0].horarios[6] == 1;
                 this.segunda_h  = dias[0].horarios[7] == 1;
+                this.segunda_i  = dias[0].horarios[8] == 1;
+                this.segunda_j  = dias[0].horarios[9] == 1;
 
                 this.terca_a    = dias[1].horarios[0] == 1;
                 this.terca_b    = dias[1].horarios[1] == 1;
@@ -419,24 +480,30 @@
                 this.terca_f    = dias[1].horarios[5] == 1;
                 this.terca_g    = dias[1].horarios[6] == 1;
                 this.terca_h    = dias[1].horarios[7] == 1;
+                this.terca_i    = dias[1].horarios[8] == 1;
+                this.terca_j    = dias[1].horarios[9] == 1;
 
-                this.quarta_a    = dias[2].horarios[0] == 1;
-                this.quarta_b    = dias[2].horarios[1] == 1;
-                this.quarta_c    = dias[2].horarios[2] == 1;
-                this.quarta_d    = dias[2].horarios[3] == 1;
-                this.quarta_e    = dias[2].horarios[4] == 1;
-                this.quarta_f    = dias[2].horarios[5] == 1;
-                this.quarta_g    = dias[2].horarios[6] == 1;
-                this.quarta_h    = dias[2].horarios[7] == 1;
+                this.quarta_a   = dias[2].horarios[0] == 1;
+                this.quarta_b   = dias[2].horarios[1] == 1;
+                this.quarta_c   = dias[2].horarios[2] == 1;
+                this.quarta_d   = dias[2].horarios[3] == 1;
+                this.quarta_e   = dias[2].horarios[4] == 1;
+                this.quarta_f   = dias[2].horarios[5] == 1;
+                this.quarta_g   = dias[2].horarios[6] == 1;
+                this.quarta_h   = dias[2].horarios[7] == 1;
+                this.quarta_i   = dias[2].horarios[8] == 1;
+                this.quarta_j   = dias[2].horarios[9] == 1;
 
-                this.quinta_a    = dias[3].horarios[0] == 1;
-                this.quinta_b    = dias[3].horarios[1] == 1;
-                this.quinta_c    = dias[3].horarios[2] == 1;
-                this.quinta_d    = dias[3].horarios[3] == 1;
-                this.quinta_e    = dias[3].horarios[4] == 1;
-                this.quinta_f    = dias[3].horarios[5] == 1;
-                this.quinta_g    = dias[3].horarios[6] == 1;
-                this.quinta_h    = dias[3].horarios[7] == 1;
+                this.quinta_a   = dias[3].horarios[0] == 1;
+                this.quinta_b   = dias[3].horarios[1] == 1;
+                this.quinta_c   = dias[3].horarios[2] == 1;
+                this.quinta_d   = dias[3].horarios[3] == 1;
+                this.quinta_e   = dias[3].horarios[4] == 1;
+                this.quinta_f   = dias[3].horarios[5] == 1;
+                this.quinta_g   = dias[3].horarios[6] == 1;
+                this.quinta_h   = dias[3].horarios[7] == 1;
+                this.quinta_i   = dias[3].horarios[8] == 1;
+                this.quinta_j   = dias[3].horarios[9] == 1;
 
                 this.sexta_a    = dias[4].horarios[0] == 1;
                 this.sexta_b    = dias[4].horarios[1] == 1;
@@ -446,6 +513,9 @@
                 this.sexta_f    = dias[4].horarios[5] == 1;
                 this.sexta_g    = dias[4].horarios[6] == 1;
                 this.sexta_h    = dias[4].horarios[7] == 1;
+                this.sexta_i    = dias[4].horarios[8] == 1;
+                this.sexta_j    = dias[4].horarios[9] == 1;
+               
 
             },   
             carregaSemana(){
@@ -454,7 +524,9 @@
                 this.$http.get('/horarios/' + this.anoSelecionado + '/' + this.semanaSelecionada).then(res=>{
                     this.setarSemana(res.data);
                     this.$toast("success", "Carregado com seucesso.");
+                    this.mostrarSemana = true;
                 }).catch(err=>{
+                    this.mostrarSemana = false;
                     this.$toast("error", "Erro, essa semana não pode ser carregada.");
                 }).finally(()=>{
                     this.isLoading = false;
@@ -470,7 +542,9 @@
                         e: this.segunda_e,
                         f: this.segunda_f,
                         g: this.segunda_g,
-                        h: this.segunda_h
+                        h: this.segunda_h,
+                        i: this.segunda_i,
+                        j: this.segunda_j
                     },
                     terca : {
                         a: this.terca_a,
@@ -480,7 +554,9 @@
                         e: this.terca_e,
                         f: this.terca_f,
                         g: this.terca_g,
-                        h: this.terca_h
+                        h: this.terca_h,
+                        i: this.terca_i,
+                        j: this.terca_j
                     },
                     quarta : {
                         a: this.quarta_a,
@@ -490,7 +566,9 @@
                         e: this.quarta_e,
                         f: this.quarta_f,
                         g: this.quarta_g,
-                        h: this.quarta_h
+                        h: this.quarta_h,
+                        i: this.quarta_i,
+                        j: this.quarta_j
                     },
                     quinta : {
                         a: this.quinta_a,
@@ -500,7 +578,9 @@
                         e: this.quinta_e,
                         f: this.quinta_f,
                         g: this.quinta_g,
-                        h: this.quinta_h
+                        h: this.quinta_h,
+                        i: this.quinta_i,
+                        j: this.quinta_j
                     },
                     sexta : {
                         a: this.sexta_a,
@@ -510,7 +590,9 @@
                         e: this.sexta_e,
                         f: this.sexta_f,
                         g: this.sexta_g,
-                        h: this.sexta_h
+                        h: this.sexta_h,
+                        i: this.sexta_i,
+                        j: this.sexta_j
                     }
                 };
 
@@ -519,7 +601,7 @@
                 this.$http.post(`/horarios/${this.anoSelecionado}/${this.semanaSelecionada}`, {semana: semana}).then(res=>{
                     this.$toast("success", "Semana salvada com sucesso.");
                 }).catch(err=>{
-                    console.log(err);
+                    this.$toast("Error", "Erro ao salvar semana");
                 }).finally(()=>{
                     this.isLoading = false;
                 });

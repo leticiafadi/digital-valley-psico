@@ -15,7 +15,7 @@ Vue.prototype.$http = axios.create({
   baseURL: "http://localhost:8000"
 });
 
-Vue.prototype.$toast = function(tipo, mensagem) {
+Vue.prototype.$toast = function (tipo, mensagem) {
   Vue.swal
     .mixin({
       toast: true,
@@ -34,7 +34,7 @@ Vue.component("example-component", require("./components/Example.vue").default);
 Vue.component(
   "cadastrar-usuario",
   require("./components/dashboard/usuarios/CadastrarUsuarioComponent.vue")
-    .default
+  .default
 );
 Vue.component(
   "localizacao",
@@ -57,22 +57,22 @@ Vue.component(
 Vue.component(
   "manter-horarios",
   require("./components/dashboard/manter_horarios/ManterHorariosComponent.vue")
-    .default
+  .default
 );
 Vue.component(
   "perfil-aluno",
   require("./components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue")
-    .default
+  .default
 );
 Vue.component(
   "infopessoal-aluno",
   require("./components/dashboard/alunos/perfil/includes/PsicoInformacoesPessoaisComponent.vue")
-    .default
+  .default
 );
 Vue.component(
   "infoacademica-aluno",
   require("./components/dashboard/alunos/perfil/includes/PsicoInformacoesAcademicasComponent.vue")
-    .default
+  .default
 );
 
 //alunos components
@@ -83,17 +83,22 @@ Vue.component(
 Vue.component(
   "marcar-atendimento",
   require("./components/dashboard/alunos/atendimento/MarcarAtendimentoComponent.vue")
-    .default
+  .default
+);
+Vue.component(
+  "manter-informacoes",
+  require("./components/dashboard/alunos/manter_informacoes/ManterInformacoesComponent.vue")
+  .default
 );
 Vue.component(
   "gerenciar-perfil",
   require("./components/dashboard/alunos/perfil/GerenciarPerfilComponent.vue")
-    .default
+  .default
 );
 Vue.component(
   "gerenciar-atendimentos",
   require("./components/dashboard/alunos/atendimento/GerenciarAtendimentosComponent.vue")
-    .default
+  .default
 );
 //re-captcha
 Vue.component(
@@ -105,6 +110,11 @@ Vue.component(
   "mostrar-senha",
   require("./components/form/mostrarSenhaComponent.vue").default
 );
+
+Vue.component(
+  "manter-semestre",
+  require("./components/dashboard/manter_semestre/ManterSemestreComponent.vue").default
+)
 
 const app = new Vue({
   el: "#app"

@@ -84,6 +84,16 @@ Route::get('/alunos/get','Dashboard\AlunoController@getAlunos')->middleware('aut
 Route::get('/alunos/{id}','Dashboard\AlunoController@getAluno')->middleware('auth')->middleware('funcionario');
 Route::get('/aluno/{id}', "Dashboard\AlunoController@mostrarPerfilAluno")->middleware('auth')->middleware('funcionario')->name('aluno.buscar');
 
+Route::get('/manter-semestre', 'Dashboard\ManterSemestreController@mostrarPaginaSemestre')->name("semestre.all");
+
+route::get('/semestres', 'Dashboard\ManterSemestreController@index');
+
+
+
+
+Route::get('/manter-informacoes', 'DashboardAluno\InformacoesController@manterInformacoesSemestre');
+Route::post('/manter-informacoes', 'DashboardAluno\InformacoesController@atualizarInfoSemestre');
+
 
 Route::options('{any}', function () {
     return response('OK', \Illuminate\Http\Response::HTTP_NO_CONTENT)

@@ -53,7 +53,7 @@
 
  <script>
     import MaskedInput  from 'vue-masked-input'
-    import VueCalendar  from 'vuejs-datepicker' 
+    import { Datetime } from 'vue-datetime';    
     import {en, ptBR}   from 'vuejs-datepicker/dist/locale'
     import VeeValidate  from 'vee-validate'
     
@@ -65,7 +65,7 @@
         },
         components:{
             MaskedInput,
-            VueCalendar,
+            Datetime,
             ptBR
         },
         data:function(){
@@ -104,7 +104,7 @@
             }
 
             this.nome           = this.old.nome;
-            this.genero         = this.old.genero;
+            this.genero         = this.old.genero ? this.old.genero : 'm';
             this.dataNascimento = this.old.data_nascimento;
         }
     }
