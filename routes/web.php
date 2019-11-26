@@ -45,9 +45,9 @@ Route::post('/redefinirSenha', 'Auth\ForgotPasswordController@redefinirSenha')->
 
 //alunos routes
 Route::get('/dashboard', "DashboardAluno\HomeController@home");
-Route::get('/info/{id}', "DashboardAluno\HomeController@getAluno")->middleware('auth');
-Route::get('/psicologos',"DashboardAluno\HomeController@psicologos")->middleware('auth');
-Route::get('/psicologo/get',"DashboardAluno\HomeController@horariopsico")->middleware('auth');
+Route::get('/info/{id}', "DashboardAluno\RestAlunoController@getAluno")->middleware('auth');
+Route::get('/psicologos',"DashboardAluno\RestAlunoController@psicologos")->middleware('auth');
+Route::get('/psicologo/get',"DashboardAluno\RestAlunoController@horariopsico")->middleware('auth');
 
 
 Route::get('/consultas', 'Dashboard\ConsultaController@mostarPaginaConsultas')->name('consultas.all')->middleware('auth');
