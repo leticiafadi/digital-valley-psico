@@ -88,9 +88,6 @@
             },
             validaData:function(){
                 var ano = this.dataNascimento.split("-", 1);
-                if(ano > 2001){
-                    this.$toast("warning", "Menor de idade não pode se cadastrar no sistema.");
-                }
                 return this.dataNascimento != '' && ano <= 2001;
             },
             validaGenero:function(){
