@@ -9,7 +9,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<<title>Fênix Psicologia</title>
+	<title>Fênix Psicologia</title>
 
 	<!-- Bootstrap core CSS-->
 	<link href="{{asset('admin/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">

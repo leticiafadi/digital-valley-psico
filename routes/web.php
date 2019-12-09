@@ -12,8 +12,8 @@
 */
 
 Route::get('/', 'PaginaInicialController@mostrarPaginaInicial')->name("pagina-inicial");
-route::get('/pedidoCadastro', 'Site\AlunoController@mostrarformularioPedidoCadastro');
-route::post('/pedidoCadastro', 'Site\AlunoController@verificarPedidoCadastro')->name('verificarPedidoCadastro');  
+Route::get('/pedidoCadastro', 'Site\AlunoController@mostrarformularioPedidoCadastro');
+Route::post('/pedidoCadastro', 'Site\AlunoController@verificarPedidoCadastro')->name('verificarPedidoCadastro');  
 Route::get('/realizarCadastro', 'Site\AlunoController@mostrarFormularioCadastrarAluno');
 Route::post('/realizarCadastro', 'Aluno\RegistrarAlunoController@registrarAluno');
 Route::get("/solicitarCadastro", 'Site\AlunoController@mostrarFormularioSolicitarCadastro')->name("solicitarCadastro");
@@ -53,6 +53,7 @@ Route::get('/psicologo/get',"DashboardAluno\RestAlunoController@horariopsico")->
 Route::get('/consultas', 'Dashboard\ConsultaController@mostarPaginaConsultas')->name('consultas.all')->middleware('auth');
 Route::get('/consulta/{id}','Dashboard\ConsultaController@verConsulta')->name('consulta.visualizar')->middleware('auth');
 Route::get('/consulta/deletar/{id}', 'Dashboard\ConsultaController@deletarConsulta')->name('consulta.excluir')->middleware('auth');
+Route::get('/atendimento/get', 'Dashboard\AtendimentoController@mostrarAtendimentos')->name('atendimeto.get')->middleware('auth')->middleware('funcionario');
 
 //gerenciamento de usuarios
 Route::get('/users', 'Dashboard\UsersController@usuarios')->name('usuarios.all')->middleware('auth');
@@ -63,7 +64,7 @@ Route::post('/users/createFuncionario', 'Funcionario\RegistrarFuncionarioControl
 Route::get('/cursos',           'Dashboard\CursoController@mostrarPaginaCursos')->name('cursos.all')->middleware('auth');
 Route::get('/cursos/get',       'Dashboard\CursoController@getCursos')->middleware('auth');
 Route::post('/cursos/create',   'Dashboard\CursoController@createCurso')->middleware('auth');
-route::post('/cursos/alter',    'Dashboard\CursoController@alterCurso')->name('curso.alterar')->middleware('auth');
+Route::post('/cursos/alter',    'Dashboard\CursoController@alterCurso')->name('curso.alterar')->middleware('auth');
 
 //gerenciamento de horarios
 Route::get('/horarios', 'Dashboard\ManterHorariosController@mostrarPaginaManterHorarios')->name('horario')->middleware('auth')->middleware('funcionario');
@@ -93,3 +94,4 @@ Route::options('{any}', function () {
           ->header('Access-Control-Allow-Methods', implode(',', config('cors.default_profile.allow_methods')))
           ->header('Access-Control-Allow-Headers', implode(',', config('cors.default_profile.allow_headers')));
 });
+

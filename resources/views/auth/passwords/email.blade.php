@@ -1,4 +1,4 @@
-@extends('guest.layouts.layout-basic')
+@extends('auth.layouts.layout-navbar')
 
 @section('content')
 <div class="container">
