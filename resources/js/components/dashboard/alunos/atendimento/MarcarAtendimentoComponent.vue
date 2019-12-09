@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div v-if="this.idPsico!=0 && this.nrsemana!=0">
+                        <div v-if="this.idPsico!=0 && this.nrsemana!=0 && this.dias.length > 0">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                     <div class="mt-4 mb-4">
                                     </div>
@@ -408,6 +408,7 @@
                             this.$toast("info","Não tem nenhum horario disponível");
                         }
                     }).catch(err => {
+                        this.dias = [];
                         this.$toast("warning", "Não foi possível buscar os horarios");
                     });
                 }
