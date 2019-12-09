@@ -28,5 +28,9 @@ class AtendimentoController extends Controller
         
         return $confirmação;
     }
+
+    public static function mostrarAtendimentos(Request $request,$id){
+        return response(Atendimento::where('id_aluno','=',$id)->get(),200)->header('Content-Type','text/json');
+    }
     
 }
