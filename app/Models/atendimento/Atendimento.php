@@ -12,9 +12,11 @@ class Atendimento extends Model
 
     public static function create(array $data){
         $atendimento = new Atendimento();
-        $atendimento->id_aluno   = $data['id_aluno'];
-        $atendimento->id_horario = $data['id_horario'];
-        $atendimento->status     = $data['status'];
+        $atendimento->id_aluno       = $data['id_aluno'];
+        $atendimento->id_horario     = $data['id_horario'];
+        $atendimento->status         = $data['status'];
+        $atendimento->motivo         = $data['motivo'];
+        $atendimento->encaminhamento = $data['encaminhamento'];
         $atendimento->save();
 
         return $atendimento;
