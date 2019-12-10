@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Hashidds\Hashids;
 use App\Models\aluno\Aluno;
+use App\Models\aluno\ObservacaoAluno;
 use App\Models\curso\Curso;
 use App\Http\Controllers\Traits\BuscarAluno;
 
@@ -44,6 +45,17 @@ class AlunoController extends Controller
 
     public function mostrarPerfilAluno(Request $request,$id){
         return view('auth.pages.alunos.informacoes', ['base_url' => config('app.url'), 'idaluno' => $id]);
+    }
+
+    public function addObsercacaoAluno(Request $request, int $id){
+
+
+        $obs = ObservacaoAluno::create([
+            'comentario'    => $request->observacao,
+            'id_aluno'      => $id
+        ]);
+
+        return response($obs,201)->header('Content-Type','text/json');
     }
 
 

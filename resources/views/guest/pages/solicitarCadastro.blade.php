@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <i class="fas fa-sign-in-alt"></i>&nbsp;Solicitar Cadastro
+                    <i class="fas fa-sign-in-alt mycolor-azul"></i>&nbsp;Solicitar Cadastro
                 </div>
 
                 <div class="card-body">
@@ -20,10 +20,10 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="matricula" class="col-md-4 col-form-label text-md-right"> Matricula </label>
+                            <label for="matricula" class="col-md-4 col-form-label text-md-right"> Matrícula </label>
 
                             <div class="col-md-6">
-                                <input id="matricula" type="password" class="form-control" required  placeholder="Matricula" name="matricula">
+                                <input id="matricula" type="password" class="form-control" required  placeholder="Matrícula" name="matricula">
                             </div>
                         </div>
                         <div class="form-group row mb-0">

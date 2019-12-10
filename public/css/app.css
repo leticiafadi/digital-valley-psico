@@ -5519,7 +5519,22 @@ body.sidebar-toggled footer.sticky-footer {
     font-size: 24px;
     line-height: 1.33;
     border-radius: 35px;
-  }nav img{
+  }
+
+  .btn-circle.btn-xl:hover{
+    background: #407AB9 !important;
+    border: #407AB9;
+  }
+
+  .btn-circle.btn-xl:hover > i{
+    color: #ffffff !important;
+
+  }
+  
+  .btn-primary{
+    background: #407AB9;
+  }
+ nav img{
     max-width: 40px;
     height: auto;
 }/*!
@@ -5698,6 +5713,7 @@ body.sidebar-toggled footer.sticky-footer {
     
 }
 
+
 .wi{
     color: #ffffff;
 }
@@ -5735,6 +5751,10 @@ body.sidebar-toggled footer.sticky-footer {
     color: #407AB9 !important;
 }
 
+.mycolor-branco{
+    color: white !important;
+}
+
 .mysombra{
     box-shadow:#bdbebd 0.1em 0.1em 0.2em !important;
 }
@@ -5749,6 +5769,7 @@ body.sidebar-toggled footer.sticky-footer {
     border-radius: 20px!important;
 
 }
+
 
 .mybtn:hover{
     /* background: rgba(240, 132, 0, 0.84) !important; */
@@ -5766,6 +5787,8 @@ body.sidebar-toggled footer.sticky-footer {
     border-radius: 20px!important;
     border: 3px solid #407AB9 !important;
 }
+
+
 .mybtn-table:hover{
     background: #ffffff !important;
     color: #407AB9 !important;
@@ -5773,9 +5796,17 @@ body.sidebar-toggled footer.sticky-footer {
  
 }
 
+.theme-blue .vdatetime-popup__header,
+.theme-blue .vdatetime-calendar__month__day--selected > span > span,
+.theme-blue .vdatetime-calendar__month__day--selected:hover > span > span {
+  background: #407AB9;
+}
 
-
-    
+.theme-blue .vdatetime-year-picker__item--selected,
+.theme-blue .vdatetime-time-picker__item--selected,
+.theme-blue .vdatetime-popup__actions__button {
+  color: #407AB9;
+}
 
 
 

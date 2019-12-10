@@ -4,7 +4,7 @@
             <div class="col col-12">
                 <div class="card">
                     <div class="card-header">
-                        <i class="fas fa-fw fa-home"></i>
+                        <i class="fas fa-fw fa-home mycolor-azul"></i>
 			            Gerenciar atendimentos
                     </div>
                     <div class="card-body">
@@ -16,7 +16,7 @@
 											Atendimento
 										</th>
 										<th class="corLinhaTabela">
-											Data & horário do Atendimento
+											Data e horário do Atendimento
 										</th>
 										<th class="corLinhaTabela">
 											Opções
@@ -32,8 +32,8 @@
                                             <strong>Adicionar a data do Atendimento</strong>
                                         </td>
                                         <td>
-                                            <button class="btn btn-primary fa-pull-right" @click="mostrarDetalhes()">Ver mais</button>
-											<button @click="cancelarAtendimento()" class="btn btn-danger fa-pull-left" :disabled="!this.isValid()" >Cancelar</button>
+                                            <button class="btn mybtn-table fa-pull-right" @click="mostrarDetalhes()">Ver mais</button>
+											<button @click="cancelarAtendimento()" class="btn mybtn-table fa-pull-left" :disabled="!this.isValid()" >Cancelar</button>
                                         </td>
 									</tr>
 								</tbody>

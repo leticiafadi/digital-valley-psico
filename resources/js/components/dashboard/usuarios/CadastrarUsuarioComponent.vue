@@ -2,8 +2,8 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <i class="fas fa-user "></i>
-                <span>Cadastrar funcionário</span>
+                <i class="fas fa-user mycolor-azul"></i>
+                <span>Cadastrar psicólogo</span>
             </div>
             <div class="card-body">
 

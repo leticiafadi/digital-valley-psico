@@ -13,7 +13,7 @@ class ManterSemestreController extends Controller
 {
     public function __construct()
     {
-		$this->middleware('funcionario');   
+		  $this->middleware('funcionario');   
     }
 
     public function mostrarPaginaSemestre(Request $request) {
@@ -22,6 +22,16 @@ class ManterSemestreController extends Controller
 
     public function index(Request $request)
     {
-      return response(["semestres" => Semestre::all()], 200)->header('Content-Type','text/json');
+      	return response(["semestres" => Semestre::all()], 200)->header('Content-Type','text/json');
+    }
+
+    public function create(Request $request)
+    {
+		$semestre = Semestre::create([
+			'ano' 		=> $request->ano,
+			'periodo'	=> $request->periodo
+		]);
+
+		return response(["semestre" => $semestre], 200)->header('Content-Type', 'text/json');
     }
 }

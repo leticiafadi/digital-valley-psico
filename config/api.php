@@ -2,6 +2,6 @@
 
 return [
 
-    'base_url' => 'http://mock:10222/'
+    'base_url' => 'http://172.28.0.1:10555/'
 
 ];

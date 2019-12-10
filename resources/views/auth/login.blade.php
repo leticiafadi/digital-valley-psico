@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <i class="fas fa-sign-in-alt"></i>&nbsp;Entrar no sistema
+                    <i class="fas fa-sign-in-alt mycolor-azul"></i>&nbsp;Entrar no sistema
                 </div>
 
                 <div class="card-body">
@@ -21,7 +21,7 @@
                             <div class="col-md-6">
                                 {{--<input id="usuario" type="text" class="form-control{{ $errors->has('usuario') ? ' is-invalid' : '' }}" name="usuario" value="{{ old('usuario') }}" required  placeholder="Matrícula, email ou siape." autofocus>--}}
 
-                                <input id="usuario" type="text" class="form-control{{ $errors->has('usuario') ? ' is-invalid' : '' }}" name="usuario" value="{{ old('usuario') }}" required  placeholder="Email ou Matricula." autofocus>
+                                <input id="usuario" type="text" class="form-control{{ $errors->has('usuario') ? ' is-invalid' : '' }}" name="usuario" value="{{ old('usuario') }}" required  placeholder="Email ou Matrícula." autofocus>
 
                                 @if ($errors->has('usuario'))
                                     <span class="invalid-feedback" role="alert">
@@ -66,7 +66,7 @@
                         --}}
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary btn-lg">
+                                <button type="submit" class="btn mybtn-table">
                                     Entrar no sistema
                                 </button>                                
                             </div>

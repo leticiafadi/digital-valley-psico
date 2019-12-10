@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel mysombra">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <a class="navbar-brand " href="{{ url('/') }}">
-                <img class="img-fluid" src="{{ asset ('imagens/template/psico.png') }}" alt="" width="170" >
+                <img class="img-fluid" src="{{ asset ('imagens/template/logo psico.png') }}" alt="" width="170" >
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}">
-                                    <i class="fas fa-sign-out-alt"></i>&nbsp;Sair do sistema
+                                    <i class="fas fa-sign-out-alt mycolor-azul"></i>&nbsp;Sair do sistema
                                 </a>                                  
                             </div>
                         </li>

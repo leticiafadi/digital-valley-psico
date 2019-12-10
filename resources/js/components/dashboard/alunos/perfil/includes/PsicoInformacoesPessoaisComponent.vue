@@ -62,7 +62,7 @@
             </div>
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">E-mail</label>
                     <input type="text" class="form-control" v-model="this.aluno.contatos[0].contato" name="email" :disabled="false">
                 </div>
             </div>
@@ -104,7 +104,7 @@ export default {
             ptBR
     },
     props:{
-        aluno: Array
+        aluno: Object
     },
     data: function(){
         return {

@@ -46,6 +46,8 @@ Route::post('/redefinirSenha', 'Auth\ForgotPasswordController@redefinirSenha')->
 //alunos routes
 Route::get('/dashboard', "DashboardAluno\HomeController@home");
 Route::get('/info/{id}', "DashboardAluno\HomeController@getAluno")->middleware('auth');
+Route::get('/psicologos',"DashboardAluno\HomeController@psicologos")->middleware('auth');
+Route::get('/psicologo/get',"DashboardAluno\HomeController@horariopsico")->middleware('auth');
 
 
 Route::get('/consultas', 'Dashboard\ConsultaController@mostarPaginaConsultas')->name('consultas.all')->middleware('auth');
@@ -83,10 +85,13 @@ Route::get('/alunos',           'Dashboard\AlunoController@mostrarPaginaAlunos')
 Route::get('/alunos/get','Dashboard\AlunoController@getAlunos')->middleware('auth')->middleware('funcionario');
 Route::get('/alunos/{id}','Dashboard\AlunoController@getAluno')->middleware('auth')->middleware('funcionario');
 Route::get('/aluno/{id}', "Dashboard\AlunoController@mostrarPerfilAluno")->middleware('auth')->middleware('funcionario')->name('aluno.buscar');
+Route::post('aluno/observacao-aluno/{id}', "Dashboard\AlunoController@addObsercacaoAluno")->middleware('funcionario');
 
 Route::get('/manter-semestre', 'Dashboard\ManterSemestreController@mostrarPaginaSemestre')->name("semestre.all");
 
 route::get('/semestres', 'Dashboard\ManterSemestreController@index');
+route::post('/semestres', 'Dashboard\ManterSemestreController@create');
+
 
 
 

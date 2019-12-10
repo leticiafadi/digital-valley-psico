@@ -10,7 +10,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <i class="fas fa-fw fa-clock  text-primary"></i>
+                        <i class="fas fa-fw fa-clock  mycolor-azul"></i>
                         Gerenciar horários
                     </div>
                     <div class="card-body">
@@ -39,12 +39,12 @@
 
                                 <div v-if="mostrarSemana">
                                     <div class="mt-4 mb-4">
-                                        Semana {{this.semanaSelecionada}} do ano de {{this.anoSelecionado}}
+                                        <!--Semana {{this.semanaSelecionada}} do ano de {{this.anoSelecionado}}-->
                                     </div>
-                                
+                                    
                                     {{dias.segunda}}
-
-                                    <div class="table table-bordered">
+                                    
+                                    <div class="table-responsive">
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr>
@@ -67,19 +67,19 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="segunda_a" id="">
+                                                        <input type="checkbox" v-model="segunda_a" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="terca_a" id="">
+                                                        <input type="checkbox" v-model="terca_a" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="quarta_a" id="">
+                                                        <input type="checkbox" v-model="quarta_a" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="quinta_a" id="">
+                                                        <input type="checkbox" v-model="quinta_a" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="sexta_a" id="">
+                                                        <input type="checkbox" v-model="sexta_a" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -89,19 +89,19 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="segunda_b" id="">
+                                                        <input type="checkbox" v-model="segunda_b" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="terca_b" id="">
+                                                        <input type="checkbox" v-model="terca_b" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="quarta_b" id="">
+                                                        <input type="checkbox" v-model="quarta_b" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="quinta_b" id="">
+                                                        <input type="checkbox" v-model="quinta_b" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="sexta_b" id="">
+                                                        <input type="checkbox" v-model="sexta_b" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -111,19 +111,19 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="segunda_c" id="">
+                                                        <input type="checkbox" v-model="segunda_c" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="terca_c" id="">
+                                                        <input type="checkbox" v-model="terca_c" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="quarta_c" id="">
+                                                        <input type="checkbox" v-model="quarta_c" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="quinta_c" id="">
+                                                        <input type="checkbox" v-model="quinta_c" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="sexta_c" id="">
+                                                        <input type="checkbox" v-model="sexta_c" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                 </tr>
                                                  <tr>
@@ -133,19 +133,19 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="segunda_d" id="">
+                                                        <input type="checkbox" v-model="segunda_d" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="terca_d" id="">
+                                                        <input type="checkbox" v-model="terca_d" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="quarta_d" id="">
+                                                        <input type="checkbox" v-model="quarta_d" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="quinta_d" id="">
+                                                        <input type="checkbox" v-model="quinta_d" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="sexta_d" id="">
+                                                        <input type="checkbox" v-model="sexta_d" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -162,19 +162,19 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="segunda_e" id="">
+                                                        <input type="checkbox" v-model="segunda_e" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="terca_e" id="">
+                                                        <input type="checkbox" v-model="terca_e" id=""  :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="quarta_e" id="">
+                                                        <input type="checkbox" v-model="quarta_e" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="quinta_e" id="">
+                                                        <input type="checkbox" v-model="quinta_e" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="sexta_e" id="">
+                                                        <input type="checkbox" v-model="sexta_e" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -184,19 +184,19 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="segunda_f" id="">
+                                                        <input type="checkbox" v-model="segunda_f" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="terca_f" id="">
+                                                        <input type="checkbox" v-model="terca_f" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="quarta_f" id="">
+                                                        <input type="checkbox" v-model="quarta_f" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="quinta_f" id="">
+                                                        <input type="checkbox" v-model="quinta_f" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="sexta_f" id="">
+                                                        <input type="checkbox" v-model="sexta_f" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -206,19 +206,19 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="segunda_g" id="">
+                                                        <input type="checkbox" v-model="segunda_g" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="terca_g" id="">
+                                                        <input type="checkbox" v-model="terca_g" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="quarta_g" id="">
+                                                        <input type="checkbox" v-model="quarta_g" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="quinta_g" id="">
+                                                        <input type="checkbox" v-model="quinta_g" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="sexta_g" id="">
+                                                        <input type="checkbox" v-model="sexta_g" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -228,19 +228,19 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="segunda_h" id="">
+                                                        <input type="checkbox" v-model="segunda_h" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="terca_h" id="">
+                                                        <input type="checkbox" v-model="terca_h" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="quarta_h" id="">
+                                                        <input type="checkbox" v-model="quarta_h" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="quinta_h" id="">
+                                                        <input type="checkbox" v-model="quinta_h" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" v-model="sexta_h" id="">
+                                                        <input type="checkbox" v-model="sexta_h" id="" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>
                                                     </td>
                                                 </tr>
                                                    <tr>
@@ -300,7 +300,7 @@
                                     <div class="row">
                                         <div class="col col-12">
                                             <div class="fa fa-pull-right">
-                                                <button class="btn btn-primary btn-lg" v-on:click="salvarSemana">Salvar</button>
+                                                <button class="btn mybtn-table btn-lg" v-on:click="salvarSemana" :disabled='this.semanaSelecionada < this.semanaAtual? true:false'>Salvar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -346,9 +346,10 @@
                 semanas : [],
                 anoSelecionado : '',
                 semanaSelecionada : '',
-
-                mostrarSemana: false,
-
+                semanaAtual: 0,
+                dias:{
+                   
+                },
                 segunda_a: false,
                 segunda_b: false,
                 segunda_c: false,
@@ -438,12 +439,13 @@
                 while(Moment(primeiro).format('dddd') != 'Monday')            
                     primeiro = new Date(primeiro.getTime() - dia);
                     
-
+                
                 //pega cada semana ate 15 dias após o dia de hoje
                 while(primeiro < new Date(new Date().getTime() + dia * 20)){
                     this.semanas.push({inicio : primeiro, final : new Date(primeiro.getTime() + dia * 4)});
                     primeiro = new Date(primeiro.getTime() + dia*7);
                 }
+
 
                 this.isLoading = false;
 
@@ -457,7 +459,7 @@
                 }
 
             },
-            setarSemana: function(dias){
+            setarSemana: function(dias){          
 
                 this.dias = dias;
 
@@ -596,10 +598,12 @@
                     }
                 };
 
-                 this.isLoading = true;
+                this.isLoading = true;
 
-                this.$http.post(`/horarios/${this.anoSelecionado}/${this.semanaSelecionada}`, {semana: semana}).then(res=>{
-                    this.$toast("success", "Semana salvada com sucesso.");
+                this.$http.post(`/horarios/${this.anoSelecionado}/${this.semanaSelecionada}`,
+                 {semana: semana}
+                 ).then(res=>{
+                    this.$toast("success", "Horario salvo com sucesso.");
                 }).catch(err=>{
                     this.$toast("Error", "Erro ao salvar semana");
                 }).finally(()=>{
@@ -609,6 +613,9 @@
         },
         mounted(){
             this.carregaAnos();
+
+            var dia = new Date();
+            this.semanaAtual = Moment(dia).format('W');
         }
         
     }

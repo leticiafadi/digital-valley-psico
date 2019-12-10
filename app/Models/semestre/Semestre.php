@@ -10,7 +10,7 @@ class Semestre extends Model{
     protected   $primaryKey = 'id';
     public      $timestamps = false;
 
-    protected $filiable = [
+    protected $fillable = [
         'ano',
         'periodo'
     ];
