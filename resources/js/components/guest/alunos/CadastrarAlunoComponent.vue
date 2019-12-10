@@ -10,7 +10,7 @@
 
                 <form action="/realizarCadastro" method="POST">
 
-                    <cabecalho  id="cabecalho" :aba="this.aba"/> 
+                    <cabecalho  id="cabecalho" :aba="this.aba" :mudaAba="this.mudaAba"/> 
 
                     <input type="hidden" name="_token" :value="csrf">
                     

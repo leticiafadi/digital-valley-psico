@@ -37,7 +37,8 @@
 
                             <div class="col col-12">
 
-                                <div v-if="this.anoSelecionado != '' && this.semanaSelecionada != ''">
+                                <div v-if="this.anoSelecionado != '' && this.semanaSelecionada != '' && this.statusSemana == 1">
+                                    
                                     <div class="mt-4 mb-4">
                                         <!--Semana {{this.semanaSelecionada}} do ano de {{this.anoSelecionado}}-->
                                     </div>
@@ -296,6 +297,7 @@
                 anoSelecionado : '',
                 semanaSelecionada : '',
                 semanaAtual: 0,
+                statusSemana: -1,
                 dias:{
                    
                 },
@@ -458,7 +460,9 @@
                 this.$http.get('/horarios/' + this.anoSelecionado + '/' + this.semanaSelecionada).then(res=>{
                     this.setarSemana(res.data);
                     this.$toast("success", "Carregado com sucesso.");
+                    this.statusSemana = 1;
                 }).catch(err=>{
+                    this.statusSemana = 0;
                     this.$toast("error", "Erro, essa semana não pode ser carregada.");
                 }).finally(()=>{
                     this.isLoading = false;
