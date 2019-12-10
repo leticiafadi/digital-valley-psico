@@ -1,6 +1,6 @@
 <template>
   <div>
-    <aluno v-if="pagina == 'listarAlunos'"  :carregaAluno='carregaAluno'></aluno>
+    <aluno v-if="pagina == 'listarAlunos'" :carregaAluno="carregaAluno"></aluno>
     <perfil-aluno v-if="pagina == 'paginaAluno'" :aluno="aluno"></perfil-aluno>
     <!--<div v-show="pagina == 'paginaAluno'" class="row">
       <div class="col col-12">
@@ -20,8 +20,8 @@ import PerfilAluno from "./perfil/GerenciarAlunoComponent";
 export default {
   data: function() {
     return {
-			pagina: "",
-			aluno: []
+      pagina: "",
+      aluno: []
     };
   },
   components: {
@@ -32,17 +32,22 @@ export default {
     mudaAba(nome) {
       this.pagina = nome;
     },
-    voltar(){
-      this.pagina = 'listarAlunos';
+    voltar() {
+      this.pagina = "listarAlunos";
     },
-    carregaAluno(id_aluno){
-      this.$http.get(`/alunos/${id_aluno}`).then(response=>{
-      	this.aluno = response.data;
-      }).catch(err=>{
-				this.$toast("error","Aluno não encontrado!");
-			}).finally(()=>{
-				this.mudaAba('paginaAluno');
-			});
+    carregaAluno(id_aluno) {
+      this.$http
+        .get(`/alunos/${id_aluno}`)
+        .then(response => {
+          this.aluno = response.data;
+          this.aluno.id = id_aluno;
+        })
+        .catch(err => {
+          this.$toast("error", "Aluno não encontrado!");
+        })
+        .finally(() => {
+          this.mudaAba("paginaAluno");
+        });
     }
   },
   mounted() {
@@ -51,5 +56,5 @@ export default {
 };
 </script>
 
-<style>
+	<style>
 </style>

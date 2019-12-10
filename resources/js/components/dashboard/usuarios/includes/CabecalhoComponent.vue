@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col col-12 col-lg-3 text-center">
-            <button class="btn btn-circle btn-xl" @click="mudaAba('informacoesPessoais')" v-bind:class="[aba == 'informacoesPessoais' ? 'btn-primary' : 'btn-outline-primary']" type="button">
+            <button class="btn btn-circle btn-xl" v-bind:class="[aba == 'informacoesPessoais' ? 'btn-primary' : 'btn-outline-primary']" type="button">
                 <i class="fas fa-user" v-bind:class="[aba == 'informacoesPessoais' ? 'mycolor-branco' : 'mycolor-azul']"></i>
             </button>
             <div>
@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="col col-12 col-lg-3 text-center">
-            <button class="btn btn-circle btn-xl" @click="mudaAba('informacoesProfissionais')" v-bind:class="[aba == 'informacoesProfissionais' ? 'btn-primary' : 'btn-outline-primary']" type="button" :disabled="!aba == 'informacoesProfissionais'">
+            <button class="btn btn-circle btn-xl" v-bind:class="[aba == 'informacoesProfissionais' ? 'btn-primary' : 'btn-outline-primary']" type="button" :disabled="!aba == 'informacoesProfissionais'">
                 <i class="fas fa-user-tie" v-bind:class="[aba == 'informacoesProfissionais' ? 'mycolor-branco' : 'mycolor-azul']"></i>
             </button>
             <div>
@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="col col-12 col-lg-3 text-center">
-            <button class="btn btn-circle btn-xl" type="button" @click="mudaAba('localizacaoEContato')" v-bind:class="[aba == 'localizacaoEContato' ? 'btn-primary' : 'btn-outline-primary']">
+            <button class="btn btn-circle btn-xl" type="button" v-bind:class="[aba == 'localizacaoEContato' ? 'btn-primary' : 'btn-outline-primary']">
                 <i class="fas fa-map-marked-alt" v-bind:class="[aba == 'localizacaoEContato' ? 'mycolor-branco' : 'mycolor-azul']"></i>
             </button>
             <div>
@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="col col-12 col-lg-3 text-center">
-            <button class="btn btn-circle btn-xl" type="button" @click="mudaAba('dadosDeConta')"  v-bind:class="[aba == 'dadosDeConta' ? 'btn-primary' : 'btn-outline-primary']" >
+            <button class="btn btn-circle btn-xl" type="button"  v-bind:class="[aba == 'dadosDeConta' ? 'btn-primary' : 'btn-outline-primary']" >
                 <i class="fas fa-lock" v-bind:class="[aba == 'dadosDeConta' ? 'mycolor-branco' : 'mycolor-azul']"></i>
             </button>
             <div>
@@ -37,10 +37,7 @@
 
 <script>
     export default {
-        props:{
-            aba: String,
-            mudaAba: Function
-        },
+        props:['aba'],
         data:function(){
             return{
                 

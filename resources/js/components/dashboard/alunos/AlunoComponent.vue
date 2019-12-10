@@ -112,7 +112,10 @@ export default {
         .then(response => {
           this.alunos = response.data.alunos;
           if (this.alunos.length == 0)
-            this.$toast("warning", "Nenhum aluno foi encontrado com a pesquisa.");
+            this.$toast(
+              "warning",
+              "Nenhum aluno foi encontrado com a pesquisa."
+            );
         })
         .catch(err => {
           this.$toast("warning", "Não foi possível buscar os alunos");
@@ -128,16 +131,14 @@ export default {
           console.log(err);
         });
     },
-    perfilAluno(id_aluno){
+    perfilAluno(id_aluno) {
       //this.mudaAba('paginaAluno');
       this.carregaAluno(id_aluno);
     }
-
   },
   mounted() {
     this.buscar();
     this.carregarCursos();
   }
 };
-
 </script>

@@ -31,7 +31,7 @@ class Semana extends Model{
         for($i = 0; $i < 5; $i++){
             $dia = [];
             $horario = 97;
-            for($j = 0; $j < 8; $j++){
+            for($j = 0; $j < 10; $j++){
                 //se for o dia e o horario especificado
                 if( $aux < sizeof($horarios) && $horarios[$aux]->dia == $dia_auxiliar && $horarios[$aux]->horario == chr($horario)){
                     array_push($dia, $horarios[$aux]->id);
