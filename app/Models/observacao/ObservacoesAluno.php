@@ -11,12 +11,12 @@ class ObservacoesAluno extends Model
     public $timestamps    = false;
 
     public static function create(array $data){
-        $observacoes_aluno = new Observacoes_aluno();
-        $observacoes_aluno->id_aluno   = $data['id_aluno'];
-        $observacoes_aluno->comentario = $data['comentario'];
-        $observacoes_aluno->save();
+        $observacoesAluno = new ObservacoesAluno();
+        $observacoesAluno->id_aluno   = $data['id_aluno'];
+        $observacoesAluno->comentario = $data['comentario'];
+        $observacoesAluno->save();
 
-        return $observacoes_aluno;
+        return $observacoesAluno;
     }
 
 }
