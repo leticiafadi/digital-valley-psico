@@ -37,8 +37,7 @@
 
                             <div class="col col-12">
 
-                                <div v-if="this.anoSelecionado != '' && this.semanaSelecionada != '' && this.statusSemana == 1">
-                                    
+                                <div v-if="this.anoSelecionado != '' && this.semanaSelecionada != '' && this.dias.length > 0">
                                     <div class="mt-4 mb-4">
                                         <!--Semana {{this.semanaSelecionada}} do ano de {{this.anoSelecionado}}-->
                                     </div>
@@ -408,50 +407,50 @@
             
 
                 this.dias = dias;
-                this.segunda_a  = dias[0].horarios[0] == 1;
-                this.segunda_b  = dias[0].horarios[1] == 1;
-                this.segunda_c  = dias[0].horarios[2] == 1;
-                this.segunda_d  = dias[0].horarios[3] == 1;
-                this.segunda_e  = dias[0].horarios[4] == 1;
-                this.segunda_f  = dias[0].horarios[5] == 1;
-                this.segunda_g  = dias[0].horarios[6] == 1;
-                this.segunda_h  = dias[0].horarios[7] == 1;
+                this.segunda_a  = dias[0].horarios[0] != 0;
+                this.segunda_b  = dias[0].horarios[1] != 0;
+                this.segunda_c  = dias[0].horarios[2] != 0;
+                this.segunda_d  = dias[0].horarios[3] != 0;
+                this.segunda_e  = dias[0].horarios[4] != 0;
+                this.segunda_f  = dias[0].horarios[5] != 0;
+                this.segunda_g  = dias[0].horarios[6] != 0;
+                this.segunda_h  = dias[0].horarios[7] != 0;
 
-                this.terca_a    = dias[1].horarios[0] == 1;
-                this.terca_b    = dias[1].horarios[1] == 1;
-                this.terca_c    = dias[1].horarios[2] == 1;
-                this.terca_d    = dias[1].horarios[3] == 1;
-                this.terca_e    = dias[1].horarios[4] == 1;
-                this.terca_f    = dias[1].horarios[5] == 1;
-                this.terca_g    = dias[1].horarios[6] == 1;
-                this.terca_h    = dias[1].horarios[7] == 1;
+                this.terca_a    = dias[1].horarios[0] != 0;
+                this.terca_b    = dias[1].horarios[1] != 0;
+                this.terca_c    = dias[1].horarios[2] != 0;
+                this.terca_d    = dias[1].horarios[3] != 0;
+                this.terca_e    = dias[1].horarios[4] != 0;
+                this.terca_f    = dias[1].horarios[5] != 0;
+                this.terca_g    = dias[1].horarios[6] != 0;
+                this.terca_h    = dias[1].horarios[7] != 0;
 
-                this.quarta_a    = dias[2].horarios[0] == 1;
-                this.quarta_b    = dias[2].horarios[1] == 1;
-                this.quarta_c    = dias[2].horarios[2] == 1;
-                this.quarta_d    = dias[2].horarios[3] == 1;
-                this.quarta_e    = dias[2].horarios[4] == 1;
-                this.quarta_f    = dias[2].horarios[5] == 1;
-                this.quarta_g    = dias[2].horarios[6] == 1;
-                this.quarta_h    = dias[2].horarios[7] == 1;
+                this.quarta_a    = dias[2].horarios[0] != 0;
+                this.quarta_b    = dias[2].horarios[1] != 0;
+                this.quarta_c    = dias[2].horarios[2] != 0;
+                this.quarta_d    = dias[2].horarios[3] != 0;
+                this.quarta_e    = dias[2].horarios[4] != 0;
+                this.quarta_f    = dias[2].horarios[5] != 0;
+                this.quarta_g    = dias[2].horarios[6] != 0;
+                this.quarta_h    = dias[2].horarios[7] != 0;
 
-                this.quinta_a    = dias[3].horarios[0] == 1;
-                this.quinta_b    = dias[3].horarios[1] == 1;
-                this.quinta_c    = dias[3].horarios[2] == 1;
-                this.quinta_d    = dias[3].horarios[3] == 1;
-                this.quinta_e    = dias[3].horarios[4] == 1;
-                this.quinta_f    = dias[3].horarios[5] == 1;
-                this.quinta_g    = dias[3].horarios[6] == 1;
-                this.quinta_h    = dias[3].horarios[7] == 1;
+                this.quinta_a    = dias[3].horarios[0] != 0;
+                this.quinta_b    = dias[3].horarios[1] != 0;
+                this.quinta_c    = dias[3].horarios[2] != 0;
+                this.quinta_d    = dias[3].horarios[3] != 0;
+                this.quinta_e    = dias[3].horarios[4] != 0;
+                this.quinta_f    = dias[3].horarios[5] != 0;
+                this.quinta_g    = dias[3].horarios[6] != 0;
+                this.quinta_h    = dias[3].horarios[7] != 0;
 
-                this.sexta_a    = dias[4].horarios[0] == 1;
-                this.sexta_b    = dias[4].horarios[1] == 1;
-                this.sexta_c    = dias[4].horarios[2] == 1;
-                this.sexta_d    = dias[4].horarios[3] == 1;
-                this.sexta_e    = dias[4].horarios[4] == 1;
-                this.sexta_f    = dias[4].horarios[5] == 1;
-                this.sexta_g    = dias[4].horarios[6] == 1;
-                this.sexta_h    = dias[4].horarios[7] == 1;
+                this.sexta_a    = dias[4].horarios[0] != 0;
+                this.sexta_b    = dias[4].horarios[1] != 0;
+                this.sexta_c    = dias[4].horarios[2] != 0;
+                this.sexta_d    = dias[4].horarios[3] != 0;
+                this.sexta_e    = dias[4].horarios[4] != 0;
+                this.sexta_f    = dias[4].horarios[5] != 0;
+                this.sexta_g    = dias[4].horarios[6] != 0;
+                this.sexta_h    = dias[4].horarios[7] != 0;
 
             },   
             carregaSemana(){
@@ -462,7 +461,7 @@
                     this.$toast("success", "Carregado com sucesso.");
                     this.statusSemana = 1;
                 }).catch(err=>{
-                    this.statusSemana = 0;
+                    this.dias = [];
                     this.$toast("error", "Erro, essa semana não pode ser carregada.");
                 }).finally(()=>{
                     this.isLoading = false;

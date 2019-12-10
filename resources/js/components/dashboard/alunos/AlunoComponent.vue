@@ -45,7 +45,7 @@
                     </thead>
                     <tbody>
                       <template v-for="aluno in this.alunos">
-                        <tr class="novoHover" v-on:click.prevent="perfilAluno(aluno.id)" style="cursor: pointer">
+                        <tr v-on:click.prevent="perfilAluno(aluno.id)" class="select" style="cursor: pointer">
                           <td>{{aluno.nome_completo}}</td>
                           <td>{{aluno.matricula}}</td>
                           <td>{{aluno.nome}}</td>

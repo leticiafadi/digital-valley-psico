@@ -60,7 +60,7 @@
         <div class="row justify-content-center">
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
                 <div class="small-box mynav  text-center pb-2  mysombra-card">
-                    <img src="{{ asset ('imagens/template/estatísticas.jpg') }}" width="100%;" height="250px;" class="img-fluid" alt="">
+                    <img src="{{ asset ('imagens/template/horarios.jpg') }}" width="100%;" height="250px;" class="img-fluid" alt="">
                     
                     <!--<a href="https://br.freepik.com/fotos-vetores-gratis/negocio">
                         Negócio foto criado por jannoon028 - br.freepik.com
