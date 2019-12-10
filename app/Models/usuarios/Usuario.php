@@ -10,6 +10,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 
+use App\Models\aluno\Aluno;
+
 class Usuario extends Authenticatable{
 
 	use Notifiable;
@@ -46,6 +48,10 @@ class Usuario extends Authenticatable{
 	
 	public function funcionario(){
 		//return $this->belogsTo('')
+	}
+
+	public function aluno(){
+		return Aluno::where('id_usuario','=',$this->id)->first();
 	}
 
 }

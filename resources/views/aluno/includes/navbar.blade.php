@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel mysombra">
-    <div class="container">
+    <div class="container-fluid">
         <a class="navbar-brand" href="{{ url('/') }}">
             <img class="img-fluid" src="{{ asset ('imagens/template/logo psico.png') }}" alt="" width="170" >
         </a>

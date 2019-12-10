@@ -11,12 +11,12 @@ class ObservacaoAtendimento extends Model
     public $timestamps = false;
 
     public static function create(array $data){
-        $obversacao_atendimento = new Observacao_atendimento();
-        $obversacao_atendimento->id_atendimento = $data['id_atendimento'];
-        $obversacao_atendimento->observacao     = $data['observacao'];
-        $obversacao_atendimento->save();
+        $obversacaoAtendimento = new ObservacaoAtendimento();
+        $obversacaoAtendimento->id_atendimento = $data['id_atendimento'];
+        $obversacaoAtendimento->observacao     = $data['observacao'];
+        $obversacaoAtendimento->save();
 
-        return $obversacao_atendimento;
+        return $obversacaoAtendimento;
     }
 
 }

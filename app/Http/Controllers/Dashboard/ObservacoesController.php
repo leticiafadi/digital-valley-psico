@@ -13,11 +13,11 @@ class ObservacoesController extends Controller
     public static function salvarObservacaoAluno(Request $request){
 
         this.validate($request,[
-            'id_atendimento' => 'require|exists:aluno,id' 
+            'id_aluno' => 'require|exists:aluno,id' 
         ]);
 
         $observacao = [
-            'id_atendimento' => $request->get('id_atendimento'),
+            'id_aluno' => $request->get('id_aluno'),
             'comentario'     => $request->get('comentario')
         ];
 
