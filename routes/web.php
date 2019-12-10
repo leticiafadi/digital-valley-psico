@@ -55,6 +55,9 @@ Route::get('/consultas', 'Dashboard\ConsultaController@mostarPaginaConsultas')->
 Route::get('/consulta/{id}','Dashboard\ConsultaController@verConsulta')->name('consulta.visualizar')->middleware('auth');
 Route::get('/consulta/deletar/{id}', 'Dashboard\ConsultaController@deletarConsulta')->name('consulta.excluir')->middleware('auth');
 Route::get('/atendimento/{id}', 'Dashboard\AtendimentoController@mostrarAtendimentos')->name('atendimeto.get')->middleware('auth')->middleware('funcionario');
+Route::get('/observacao/{id}','Dashboard\ObservacoesController@mostrarObservacaoAtendimento')->name('observacaoAtendimento')->middleware('auth')->middleware('funcionario');
+Route::get('/observacoees/{id}', 'Dashboard\ObsercoesController@mostrarObservacaoAluno')->name('observacaoAtendimento')->middleware('auth')->middleware('funcionario');
+
 
 //gerenciamento de usuarios
 Route::get('/users', 'Dashboard\UsersController@usuarios')->name('usuarios.all')->middleware('auth');
