@@ -39,6 +39,7 @@
 		</a>
 	</li>
 
+<<<<<<< HEAD
 	<li class="nav-item ">
 		<a class="nav-link pt-4 myborder pb-4" href="{{route('semestre.all')}}">
 			<i class="fas fa-fw fa-calendar wi"></i>
@@ -46,4 +47,6 @@
 		</a>
 	</li>
 
+=======
+>>>>>>> 0c45ef3110c3e4f17c0ebd76570500371b6e8527
 </ul>

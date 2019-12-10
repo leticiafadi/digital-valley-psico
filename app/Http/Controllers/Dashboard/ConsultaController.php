@@ -19,6 +19,7 @@ class ConsultaController extends Controller
 	   public function __construct(){
 			$this->hashVisualizar = new Hashids(config('hashIds.consultas.VISUALIZARCONSULTA'), 32);
 			$this->hashExcluir = new Hashids(config('hashIds.consultas.DELETARCONSULTA'), 32);
+			$this->middleware('auth');
 			$this->middleware('funcionario');   
 	   }
 	

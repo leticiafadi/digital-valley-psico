@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Traits;
 use App\Models\endereco\Endereco;
 use App\Models\usuarios\Usuario;
 use App\Models\aluno\Aluno;
-use App\Models\aluno\ObservacaoAluno;
 use App\Models\localizacao\Cidade;
 use App\Models\localizacao\Estado;
 use App\Models\localizacao\Pais;
@@ -25,7 +24,6 @@ trait BuscarAluno{
         $pais     = Pais::find($estado->country_id);
         $contato  = Contato::where('id_usuario',$usuario->id)->get();
         $curso    = Curso::find($aluno->id_curso);
-        $observacoes    = ObservacaoAluno::where("id_aluno", $id)->get();
 
         $dados_aluno=[
             'nome_completo'      => $usuario->nome_completo,
@@ -42,7 +40,6 @@ trait BuscarAluno{
                 'pais'   => $pais->name,
             ],
             'contatos' => $this->formatContat($contato),
-            'observacoes'   =>    $observacoes,
             'curso'    => $curso->nome,
             'id_curso' => $curso->id
         ];
@@ -62,17 +59,15 @@ trait BuscarAluno{
         return $contatos;
     }
 
-
     private function BuscarInfo($id){
                 
-        $aluno          = Aluno::where('id_usuario',$id)->first();
-        $usuario        = Usuario::find($id);
-        $endereco       = Endereco::find($usuario->id_endereco);
-        $cidade         = Cidade::find($endereco->id_cidade);
-        $estado         = Estado::find($cidade->state_id);
-        $pais           = Pais::find($estado->country_id);
-        $contato        = Contato::where('id_usuario',$usuario->id)->get();
-     
+        $aluno    = Aluno::where('id_usuario',$id)->first();
+        $usuario  = Usuario::find($id);
+        $endereco = Endereco::find($usuario->id_endereco);
+        $cidade   = Cidade::find($endereco->id_cidade);
+        $estado   = Estado::find($cidade->state_id);
+        $pais     = Pais::find($estado->country_id);
+        $contato  = Contato::where('id_usuario',$usuario->id)->get();
         //dd($aluno);
         $curso    = Curso::find($aluno->id_curso);
 
@@ -90,10 +85,9 @@ trait BuscarAluno{
                 'estado' => $estado->name,
                 'pais'   => $pais->name,
             ],
-            'contatos'  => $this->formatContat($contato),
-            'observacoes'   => 'jfkjskfa',
-            'curso'     => $curso->nome,
-            'id_curso'  => $curso->id
+            'contatos' => $this->formatContat($contato),
+            'curso'    => $curso->nome,
+            'id_curso' => $curso->id
         ];
         return $dados_aluno;
     }

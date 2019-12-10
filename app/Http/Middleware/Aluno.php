@@ -25,8 +25,6 @@ class Aluno
             else
                 return redirect()->back()->withErrors(['nao_permitido' => 'Você não possui acesso a essa área']);
 
-        
-
         return $next($request);
     }
 }

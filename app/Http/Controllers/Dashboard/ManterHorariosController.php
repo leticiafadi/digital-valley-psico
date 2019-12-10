@@ -36,12 +36,7 @@ class ManterHorariosController extends Controller{
             //verifica se uma nova semana pode ser criada.
             //Criei uma regra de negocio, o funcionario so pode agendar seu horarios 03 semanas posteriores a semana atual.
 
-
-            $semanaAtual = intval(date('W'));
-
-
-
-            if($semanaAtual < $numeroSemana && $numeroSemana <= $semanaAtual + 3 ){
+            if(date('W') < $numeroSemana && $numeroSemana <= ( date('W', strtotime( '+3 weeks') ) )){
                 $arraySemana = [
                     'ano'               => $ano,
                     //o id do funcionario
