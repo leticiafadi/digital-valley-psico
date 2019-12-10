@@ -436,50 +436,50 @@
             },
             setarSemana: function(){                
                 
-                this.segunda_a  = this.dias[0].horarios[0] == 1;
-                this.segunda_b  = this.dias[0].horarios[1] == 1;
-                this.segunda_c  = this.dias[0].horarios[2] == 1;
-                this.segunda_d  = this.dias[0].horarios[3] == 1;
-                this.segunda_e  = this.dias[0].horarios[4] == 1;
-                this.segunda_f  = this.dias[0].horarios[5] == 1;
-                this.segunda_g  = this.dias[0].horarios[6] == 1;
-                this.segunda_h  = this.dias[0].horarios[7] == 1;
+                this.segunda_a  = this.dias[0].horarios[0];
+                this.segunda_b  = this.dias[0].horarios[1];
+                this.segunda_c  = this.dias[0].horarios[2];
+                this.segunda_d  = this.dias[0].horarios[3];
+                this.segunda_e  = this.dias[0].horarios[4];
+                this.segunda_f  = this.dias[0].horarios[5];
+                this.segunda_g  = this.dias[0].horarios[6];
+                this.segunda_h  = this.dias[0].horarios[7];
 
-                this.terca_b    = this.dias[1].horarios[1] == 1;
-                this.terca_c    = this.dias[1].horarios[2] == 1;
-                this.terca_d    = this.dias[1].horarios[3] == 1;
-                this.terca_e    = this.dias[1].horarios[4] == 1;
-                this.terca_a    = this.dias[1].horarios[0] == 1;
-                this.terca_f    = this.dias[1].horarios[5] == 1;
-                this.terca_g    = this.dias[1].horarios[6] == 1;
-                this.terca_h    = this.dias[1].horarios[7] == 1;
+                this.terca_b    = this.dias[1].horarios[1];
+                this.terca_c    = this.dias[1].horarios[2];
+                this.terca_d    = this.dias[1].horarios[3];
+                this.terca_e    = this.dias[1].horarios[4];
+                this.terca_a    = this.dias[1].horarios[0];
+                this.terca_f    = this.dias[1].horarios[5];
+                this.terca_g    = this.dias[1].horarios[6];
+                this.terca_h    = this.dias[1].horarios[7];
 
-                this.quarta_a    = this.dias[2].horarios[0] == 1;
-                this.quarta_b    = this.dias[2].horarios[1] == 1;
-                this.quarta_c    = this.dias[2].horarios[2] == 1;
-                this.quarta_d    = this.dias[2].horarios[3] == 1;
-                this.quarta_e    = this.dias[2].horarios[4] == 1;
-                this.quarta_f    = this.dias[2].horarios[5] == 1;
-                this.quarta_g    = this.dias[2].horarios[6] == 1;
-                this.quarta_h    = this.dias[2].horarios[7] == 1;
+                this.quarta_a    = this.dias[2].horarios[0];
+                this.quarta_b    = this.dias[2].horarios[1];
+                this.quarta_c    = this.dias[2].horarios[2];
+                this.quarta_d    = this.dias[2].horarios[3];
+                this.quarta_e    = this.dias[2].horarios[4];
+                this.quarta_f    = this.dias[2].horarios[5];
+                this.quarta_g    = this.dias[2].horarios[6];
+                this.quarta_h    = this.dias[2].horarios[7];
 
-                this.quinta_a    = this.dias[3].horarios[0] == 1;
-                this.quinta_b    = this.dias[3].horarios[1] == 1;
-                this.quinta_c    = this.dias[3].horarios[2] == 1;
-                this.quinta_d    = this.dias[3].horarios[3] == 1;
-                this.quinta_e    = this.dias[3].horarios[4] == 1;
-                this.quinta_f    = this.dias[3].horarios[5] == 1;
-                this.quinta_g    = this.dias[3].horarios[6] == 1;
-                this.quinta_h    = this.dias[3].horarios[7] == 1;
+                this.quinta_a    = this.dias[3].horarios[0];
+                this.quinta_b    = this.dias[3].horarios[1];
+                this.quinta_c    = this.dias[3].horarios[2];
+                this.quinta_d    = this.dias[3].horarios[3];
+                this.quinta_e    = this.dias[3].horarios[4];
+                this.quinta_f    = this.dias[3].horarios[5];
+                this.quinta_g    = this.dias[3].horarios[6];
+                this.quinta_h    = this.dias[3].horarios[7];
 
-                this.sexta_a    = this.dias[4].horarios[0] == 1;
-                this.sexta_b    = this.dias[4].horarios[1] == 1;
-                this.sexta_c    = this.dias[4].horarios[2] == 1;
-                this.sexta_d    = this.dias[4].horarios[3] == 1;
-                this.sexta_e    = this.dias[4].horarios[4] == 1;
-                this.sexta_f    = this.dias[4].horarios[5] == 1;
-                this.sexta_g    = this.dias[4].horarios[6] == 1;
-                this.sexta_h    = this.dias[4].horarios[7] == 1;
+                this.sexta_a    = this.dias[4].horarios[0];
+                this.sexta_b    = this.dias[4].horarios[1];
+                this.sexta_c    = this.dias[4].horarios[2];
+                this.sexta_d    = this.dias[4].horarios[3];
+                this.sexta_e    = this.dias[4].horarios[4];
+                this.sexta_f    = this.dias[4].horarios[5];
+                this.sexta_g    = this.dias[4].horarios[6];
+                this.sexta_h    = this.dias[4].horarios[7];
 
             },
             salvarHorario(){

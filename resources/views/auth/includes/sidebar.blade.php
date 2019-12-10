@@ -39,4 +39,11 @@
 		</a>
 	</li>
 
+	<li class="nav-item ">
+		<a class="nav-link pt-4 myborder pb-4" href="{{route('semestre.all')}}">
+			<i class="fas fa-fw fa-calendar"></i>
+			<span>Gerenciar Semestres</span>
+		</a>
+	</li>
+
 </ul>

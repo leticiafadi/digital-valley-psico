@@ -99,46 +99,59 @@
                     </div>
                     </div>
                 </div>
+              </form>
             </div>
+            <h5 class="mt-2">Observacoes do aluno</h5>
+            <ul class="list-group mt-4">
+              <li
+                v-for="obs in aluno.observacoes"
+                :key="obs"
+                class="list-group-item"
+              >{{obs.comentario}}</li>
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-    import axios    from 'axios';
-    import VueCalendar  from 'vuejs-datepicker' 
-    import {en, ptBR}   from 'vuejs-datepicker/dist/locale'
-    
-    export default {
-        components:{
-            axios,
-            VueCalendar,
-            ptBR
-        },
-        props:{
-            base_url: String,
-            aluno: Object
-        },
-        data: function(){
-            return{
-                state: 0
-            }
-        },
-        methods:{
-            State(){
-                if (this.state==0) {
-                    this.state=1;
-                    return true;
-                }else{
-                    this.state = 0;
-                    return false;
-                }
+import axios from "axios";
+import VueCalendar from "vuejs-datepicker";
+import { en, ptBR } from "vuejs-datepicker/dist/locale";
 
-            }
-        },
-        mounted(){
-            
-        }
+export default {
+  components: {
+    axios,
+    VueCalendar,
+    ptBR
+  },
+  props: {
+    aluno: Object
+  },
+  data: function() {
+    return {
+      observacao: ""
+    };
+  },
+  methods: {
+    adicionarObservacao() {
+      this.$http
+        .post(`/aluno/observacao-aluno/${this.aluno.id}`, {
+          observacao: this.observacao
+        })
+        .then(res => {
+          this.$toast("success", "Adicionado com sucesso");
+          this.aluno.observacoes.push(res.data);
+          this.observacao = "";
+        })
+        .catch(exception => {
+          console.log(exception);
+        });
     }
+  },
+  mounted() {}
+};
 </script>
 

@@ -23,18 +23,18 @@ class Semana extends Model{
     }
     //retorna os horarios difponiveis daquela semana
     public function horarios(){
-        $horarios = DB::select('SELECT dia, horario FROM horario_semana WHERE id_semana = ? ORDER BY dia, horario', [$this->id]);
-
+        $horarios = DB::select('SELECT dia, horario, id FROM horario_semana WHERE id_semana = ? ORDER BY dia, horario', [$this->id]);
+        
         $retorno = [];
         $dia_auxiliar = $this->data_inicio;
         $aux = 0;
         for($i = 0; $i < 5; $i++){
             $dia = [];
             $horario = 97;
-            for($j = 0; $j < 8; $j++){
+            for($j = 0; $j < 10; $j++){
                 //se for o dia e o horario especificado
                 if( $aux < sizeof($horarios) && $horarios[$aux]->dia == $dia_auxiliar && $horarios[$aux]->horario == chr($horario)){
-                    array_push($dia, 1);
+                    array_push($dia, $horarios[$aux]->id);
                     $aux++;
                 }else{
                     array_push($dia, 0);

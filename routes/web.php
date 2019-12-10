@@ -48,12 +48,16 @@ Route::get('/dashboard', "DashboardAluno\HomeController@home");
 Route::get('/info/{id}', "DashboardAluno\RestAlunoController@getAluno")->middleware('auth');
 Route::get('/psicologos',"DashboardAluno\RestAlunoController@psicologos")->middleware('auth');
 Route::get('/psicologo/get',"DashboardAluno\RestAlunoController@horariopsico")->middleware('auth');
+Route::get('/atendimentos/{id}', 'DashboardAluno\AtendimentoController@mostrarAtendimentos')->middleware('auth');
 
 
 Route::get('/consultas', 'Dashboard\ConsultaController@mostarPaginaConsultas')->name('consultas.all')->middleware('auth');
 Route::get('/consulta/{id}','Dashboard\ConsultaController@verConsulta')->name('consulta.visualizar')->middleware('auth');
 Route::get('/consulta/deletar/{id}', 'Dashboard\ConsultaController@deletarConsulta')->name('consulta.excluir')->middleware('auth');
-Route::get('/atendimento/get', 'Dashboard\AtendimentoController@mostrarAtendimentos')->name('atendimeto.get')->middleware('auth')->middleware('funcionario');
+Route::get('/atendimento/{id}', 'Dashboard\AtendimentoController@mostrarAtendimentos')->name('atendimeto.get')->middleware('auth')->middleware('funcionario');
+Route::get('/observacao/{id}','Dashboard\ObservacoesController@mostrarObservacaoAtendimento')->name('observacaoAtendimento')->middleware('auth')->middleware('funcionario');
+Route::get('/observacoees/{id}', 'Dashboard\ObsercoesController@mostrarObservacaoAluno')->name('observacaoAtendimento')->middleware('auth')->middleware('funcionario');
+
 
 //gerenciamento de usuarios
 Route::get('/users', 'Dashboard\UsersController@usuarios')->name('usuarios.all')->middleware('auth');
@@ -86,6 +90,19 @@ Route::get('/alunos',           'Dashboard\AlunoController@mostrarPaginaAlunos')
 Route::get('/alunos/get','Dashboard\AlunoController@getAlunos')->middleware('auth')->middleware('funcionario');
 Route::get('/alunos/{id}','Dashboard\AlunoController@getAluno')->middleware('auth')->middleware('funcionario');
 Route::get('/aluno/{id}', "Dashboard\AlunoController@mostrarPerfilAluno")->middleware('auth')->middleware('funcionario')->name('aluno.buscar');
+Route::post('aluno/observacao-aluno/{id}', "Dashboard\AlunoController@addObsercacaoAluno")->middleware('funcionario');
+
+Route::get('/manter-semestre', 'Dashboard\ManterSemestreController@mostrarPaginaSemestre')->name("semestre.all");
+
+route::get('/semestres', 'Dashboard\ManterSemestreController@index');
+route::post('/semestres', 'Dashboard\ManterSemestreController@create');
+
+
+
+
+
+Route::get('/manter-informacoes', 'DashboardAluno\InformacoesController@manterInformacoesSemestre');
+Route::post('/manter-informacoes', 'DashboardAluno\InformacoesController@atualizarInfoSemestre');
 
 
 Route::options('{any}', function () {

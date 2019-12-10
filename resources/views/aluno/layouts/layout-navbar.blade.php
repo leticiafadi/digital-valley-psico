@@ -10,22 +10,21 @@
 	<meta name="author" content="">
 
 	<title>Fênix Psicologia</title>
+<<<<<<< HEAD
+=======
 
 	<!-- Bootstrap core CSS-->
 	<link href="{{asset('admin/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
 	<!-- Custom fonts for this template-->
 	<link href="{{asset('admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+>>>>>>> 764795c241255ac12a36b4fcfc04e3600cb6b688
 
 	<!-- Page level plugin CSS-->
 	<link href="{{asset('admin/vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
 
-	<!--CSS basic for the ATENDIMENTO-->
-	<link rel="stylesheet" href="{{asset('css/atendimento.css')}}">
 
-	<!-- Custom styles for this template-->
-	<link href="{{asset('admin/css/sb-admin.css')}}" rel="stylesheet">
-	
+
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	
@@ -42,8 +41,6 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-	<!-- My stu=yles-->
-	<link rel="stylesheet" href="{{asset('css/libs/button-rounded.css')}}">
 
 </head>
 
@@ -83,18 +80,13 @@
 	</div>
 		
 
-
 	<script src="{{ asset('js/app.js') }}" ></script>
 
 	<script src="{{asset('admin/vendor/jquery/jquery.js')}}"></script>
 
 	<script src="{{asset('js/libs/vue.min.js')}}" type="text/javascript"></script>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	<script src="{{asset('js/dashboard/registrar-funcionario.js')}}" type="text/javascript"></script>
-
 		
-	<script src="{{asset('js/mask/jquery-mask.js')}}" type="text/javascript"></script>	
-	<script src="{{asset('js/mask/mymasks.js')}}" type="text/javascript"></script>
 
 
 
@@ -106,3 +98,4 @@
 </body>
 
 </html>
+
