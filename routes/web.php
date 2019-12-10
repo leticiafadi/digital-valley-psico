@@ -23,7 +23,7 @@ Route::get("/solicitarCadastro", 'Site\AlunoController@mostrarFormularioSolicita
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/gerenciarPerfil', 'DashboardAluno\HomeController@mostrarPaginaGerenciarPerfil')->name('gerenciarPerfil');
 Route::get('/marcarAtendimento', 'DashboardAluno\HomeController@mostrarPaginaMarcarAtendimento')->name('marcarAtendimento');
-
+Route::post('/salvarAtendimento', 'DashboardAluno\AtendimentoController@salvarAtendimento')->middleware('auth')->name('salvarAtendimento');
 //consulta
 Route::post('/consulta', 'Site\ConsultaController@cadastrarConsulta')->name('consulta.marcar');
 
