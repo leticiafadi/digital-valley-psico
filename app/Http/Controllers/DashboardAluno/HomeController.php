@@ -4,14 +4,11 @@ namespace App\Http\Controllers\DashboardAluno;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Traits\BuscarAluno;
-use App\Models\funcionario\Funcionario;
-use App\Http\Controllers\Traits\BuscarFuncionario;
+
+
 
 class HomeController extends Controller
 {
-    use BuscarAluno;
-    use BuscarFuncionario;
 
     public function __construct(){
         $this->middleware('aluno');
