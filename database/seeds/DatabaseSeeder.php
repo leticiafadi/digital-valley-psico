@@ -21,5 +21,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ItemLoginTableSeeder::class);
         $this->call(FuncionarioTableSeeder::class);
         $this->call(AlunoTableSeeder::class);
+        $this->call(SemestreTableSeeder::class);
+        $this->call(InfoAlunoSemestreTableSeeder::class);
+        $this->call(ContatoTableSeeder::class);
     }
 }
