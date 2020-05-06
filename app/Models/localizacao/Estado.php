@@ -9,6 +9,9 @@ class Estado extends Model
 {
     protected $table 		= 'estado';
 	protected $primaryKey 	= 'id';
+
+	public $timestamps = false;
+	
 	protected $hidden = [
 		
 	];

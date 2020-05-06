@@ -12,7 +12,7 @@ trait SalvarSemana {
     private function manterSemana(  Semana  $semana,
                                     array   $dias, 
                                     int     $ano,
-                                    int     $numeroSemana) : array{
+                                    int     $numeroSemana){
 
         $dia = Data::primeiraSegundaFeiraSemana($ano, $numeroSemana);
         $horario = 'a';

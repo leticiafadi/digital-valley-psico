@@ -61,7 +61,7 @@
 									@endif
 								</tbody>
 							</table>
-
+							@if(count($consultas)>0)
 							<div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-centered" role="document">
 								<div class="modal-content">
@@ -81,7 +81,7 @@
 								</div>
 								</div>
 							</div>
-							
+							@endif
 						</div>
 					</div>
 				</div>
