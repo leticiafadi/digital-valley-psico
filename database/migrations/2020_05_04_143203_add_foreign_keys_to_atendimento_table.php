@@ -16,6 +16,7 @@ class AddForeignKeysToAtendimentoTable extends Migration {
 		{
 			$table->foreign('id_aluno', 'atendimento_FK')->references('id')->on('aluno')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('id_horario', 'atendimento_FK_1')->references('id')->on('horario_semana')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('id_psicologo', 'atendimento_FK_2')->references('id')->on('funcionario')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
