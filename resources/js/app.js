@@ -12,7 +12,7 @@ Vue.use(VueRouter);
 Vue.use(VueSweetalert2);
 
 Vue.prototype.$http = axios.create({
-  baseURL: "http://localhost:8000"
+  baseURL: "http://localhost:80"
 });
 
 Vue.prototype.$toast = function (tipo, mensagem) {

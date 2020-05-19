@@ -51,14 +51,8 @@ trait BuscarAluno{
 
     private function formatContat($contato){
         $contatos = [];
-        $i = 0;
-        foreach($contato as $c){
-            $contatos[$i] = [
-                'contato' => $c->contato,
-                'tipo'    => $c->tipo
-            ];
-            $i++;
-        }
+        foreach($contato as $c)
+            $contatos[$c->tipo] = $c->contato;
         return $contatos;
     }
 

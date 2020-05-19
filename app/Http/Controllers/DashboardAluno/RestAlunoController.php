@@ -13,7 +13,7 @@ class RestAlunoController extends Controller
     use BuscarAluno;
     use BuscarFuncionario;
 
-    public function getAluno(Request $request,$id){
+    public function getAluno($id){
         return response($this->BuscarInfo($id),200)->header('Content-Type','text/json');
     }
     

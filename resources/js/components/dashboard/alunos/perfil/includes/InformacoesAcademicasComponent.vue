@@ -71,7 +71,7 @@ export default {
             ptBR
     },
     props:{
-        aluno: Array,
+        aluno: Object,
         tipo: Number
     },
     data: function(){

@@ -63,7 +63,7 @@
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="email">E-mail</label>
-                    <input type="text" class="form-control" v-model="this.aluno.contatos[0].contato" name="email" :disabled="true">
+                    <input type="text" class="form-control" v-model="this.aluno.contatos.email" name="email" :disabled="true">
                 </div>
             </div>
         </div>
@@ -71,22 +71,22 @@
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="telefoneCelular">Telefone celular</label>
-                    <input type="text" class="form-control" v-model="this.aluno.contatos[1].contato" name="telefoneCelular" :disabled="true">
+                    <input type="text" class="form-control" v-model="this.aluno.contatos.celular" name="telefoneCelular" :disabled="true">
                 </div>
             </div>            
-            <template v-if="this.aluno.contatos.indexOf(2) == -1">
+            <template v-if="this.aluno.contatos.telefone == null">
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                <div class="form-group">
-                    <label for="telefoneResidencial">Telefone residencial</label>
-                    <input type="text" class="form-control" name="telefoneResidencial" :disabled="true">
+                    <div class="form-group">
+                        <label for="telefoneResidencial">Telefone residencial</label>
+                        <input type="text" class="form-control" name="telefoneResidencial" :disabled="true">
+                    </div>
                 </div>
-            </div>
             </template>
            <template v-else>
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="telefoneResidencial">Telefone residencial</label>
-                    <input type="text" class="form-control" v-model="this.aluno.contatos[2].contato" name="telefoneResidencial" :disabled="true">
+                    <input type="text" class="form-control" v-model="this.aluno.contatos.telefone" name="telefoneResidencial" :disabled="true">
                 </div>
             </div>
             </template>
@@ -104,7 +104,7 @@ export default {
             ptBR
     },
     props:{
-        aluno: Array
+        aluno: Object
     },
     data: function(){
         return {

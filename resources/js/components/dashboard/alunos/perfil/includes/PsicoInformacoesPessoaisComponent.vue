@@ -63,7 +63,7 @@
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="email">E-mail</label>
-                    <input type="text" class="form-control" v-model="this.aluno.contatos[0].contato" name="email" :disabled="false">
+                    <input type="text" class="form-control" v-model="this.aluno.contatos.email" name="email" :disabled="false">
                 </div>
             </div>
         </div>
@@ -71,10 +71,10 @@
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="telefoneCelular">Telefone celular</label>
-                    <input type="text" class="form-control" v-model="this.aluno.contatos[1].contato" name="telefoneCelular" :disabled="false">
+                    <input type="text" class="form-control" v-model="this.aluno.contatos.celular" name="telefoneCelular" :disabled="false">
                 </div>
             </div>            
-            <template v-if="this.aluno.contatos.indexOf(2) == -1">
+            <template v-if="this.aluno.contatos.telefone == null">
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="telefoneResidencial">Telefone residencial</label>
@@ -86,7 +86,7 @@
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="telefoneResidencial">Telefone residencial</label>
-                    <input type="text" class="form-control" v-model="this.aluno.contatos[2].contato" name="telefoneResidencial" :disabled="false">
+                    <input type="text" class="form-control" v-model="this.aluno.contatos.telefone" name="telefoneResidencial" :disabled="false">
                 </div>
             </div>
             </template>

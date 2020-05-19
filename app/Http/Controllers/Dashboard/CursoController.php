@@ -40,7 +40,7 @@ class CursoController extends Controller
             $curso->nome = $request->value;
             $curso->save();
             echo '{"success" : true}';
-        }catch(Exception $e){
+        }catch(\Exception $e){
             echo $e;
         }
     }

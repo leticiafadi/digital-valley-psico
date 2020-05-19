@@ -30,7 +30,7 @@ class HomeController extends Controller
         return view('aluno.gerenciarPerfil',['base_url' => config('app.url')]);
     }
 
-    public function getAluno(Request $request,$id)
+    public function getAluno(Request $request, $id)
     {
         return response($this->BuscarInfo($id),200)->header('Content-Type','text/json');
     }

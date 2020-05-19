@@ -26,10 +26,9 @@ class ManterHorariosController extends Controller{
         return view('auth.pages.manter-horarios.manter-horarios');
     }
 
-    public function carregarSemana(Request $request, int $ano, int $numeroSemana){
+    public function carregarSemana($ano, $numeroSemana){
         //pega a semana do banco de dados
         $semana = Semana::where('ano', $ano)->where('numero_semana', $numeroSemana)->where('id_funcionario', Funcionario::where('id_usuario', Auth::user()->id)->first()->id)->first();
-
 
         //se a semana ainda não existir
         if($semana == null){
@@ -63,7 +62,7 @@ class ManterHorariosController extends Controller{
 
     }
 
-    public function salvarSemana(Request $request, int $ano, int $numeroSemana) {
+    public function salvarSemana($request, $ano, $numeroSemana) {
         $semana = Semana::where('ano', $ano)->where('numero_semana', $numeroSemana)->where('id_funcionario', Funcionario::where('id_usuario', Auth::user()->id)->first()->id)->first();
 
         $dias = $this->manterSemana($semana,

@@ -7,10 +7,10 @@
             <i class="fas fa-fw fa-user pr-2 mycolor-azul"></i>
             Gerenciar perfil
           </div>
-
+          <template v-if="Object.keys(this.aluno).length !== 0">
           <informacoes-pessoais :aluno="this.aluno"></informacoes-pessoais>
           <informacoes-academicas :aluno="this.aluno"></informacoes-academicas>
-
+          </template>
           <!-- <vinculo-ufc> </vinculo-ufc>
 
           <situacao-programa> </situacao-programa>-->
@@ -54,7 +54,7 @@ export default {
   },
   data: function() {
     return {
-      aluno: []
+      aluno: {}
     };
   },
   methods: {
@@ -72,7 +72,7 @@ export default {
   },
   mounted() {
     this.carregaAluno();
-  }
+  },
 };
 </script>
 
