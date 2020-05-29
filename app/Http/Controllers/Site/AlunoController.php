@@ -54,9 +54,9 @@ class AlunoController extends Controller
         } 
     }
 
-    private function verificarAluno(int $id)
+    private function verificarAluno($matricula)
     {
-        $aluno = Aluno::where('matricula', $id)->first();
+        $aluno = Aluno::where('matricula', $matricula)->first();
         return $aluno != null;
     }
 
