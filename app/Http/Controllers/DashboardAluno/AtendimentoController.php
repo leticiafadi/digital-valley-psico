@@ -27,7 +27,7 @@ class AtendimentoController extends Controller
             'id_aluno'       => Auth::user()->aluno()->id,
             'id_horario'     => $request->get('id_horario'),
             'id_psicologo'   => $request->get('id_psicologo'),
-            'status'         => 'não_ocorrido',
+            'status'         => 'nao_ocorrido',
             'motivo'         => $request->get('motivo'),
             'encaminhamento' => $request->get('encaminhamento')
         ];
