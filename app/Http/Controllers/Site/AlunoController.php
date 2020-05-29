@@ -8,6 +8,7 @@ use App\Models\curso\Curso;
 use GuzzleHttp;
 use \Guzzle\Http\Exception\ConnectException;
 use App\Models\aluno\Aluno;
+use Illuminate\Support\Facades\Validator;
 
 class AlunoController extends Controller
 {
@@ -31,6 +32,14 @@ class AlunoController extends Controller
 
     public function verificarPedidoCadastro(Request $request)
     {
+
+        $validacao = Validator::make($request->input(), [
+            'nome' => 'required',
+            'matricula' => 'required'
+        ]);
+
+        if ($validacao->fails())
+            return redirect()->back()->withErrors($validacao);
 
         if($this->verificarAluno($request->matricula))
             return redirect()->back()->withErrors(['credenciais' => 'A matrícula informada já pertence a outro usuário.']);
