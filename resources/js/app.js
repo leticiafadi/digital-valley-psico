@@ -1,22 +1,22 @@
-import "./bootstrap";
-import Vue, { use, prototype, swal, component } from "vue";
-import VeeValidate from "vee-validate";
-import Snotify from "vue-snotify";
-import VueRouter from "vue-router";
-import VueSweetalert2 from "vue-sweetalert2";
-import { create } from "axios";
+require("./bootstrap");
+const Vue = require("vue");
+const VeeValidate = require("vee-validate");
+const Snotify = require("vue-snotify");
+const VueRouter = require("vue-router");
+const VueSweetalert2 = require("vue-sweetalert2");
+const axios = require("axios");
 
-use(VeeValidate);
-use(Snotify);
-use(VueRouter);
-use(VueSweetalert2);
+Vue.use(VeeValidate);
+Vue.use(Snotify);
+Vue.use(VueRouter);
+Vue.use(VueSweetalert2);
 
-prototype.$http = create({
+Vue.prototype.$http = axios.create({
   baseURL: "http://localhost:80"
 });
 
-prototype.$toast = function (tipo, mensagem) {
-  swal
+Vue.prototype.$toast = function (tipo, mensagem) {
+  Vue.swal
     .mixin({
       toast: true,
       position: "top-end",
@@ -29,89 +29,89 @@ prototype.$toast = function (tipo, mensagem) {
     });
 };
 
-component("example-component", require("./components/Example.vue").default);
+Vue.component("example-component", require("./components/Example.vue").default);
 //Dashboard components
-component(
+Vue.component(
   "cadastrar-usuario",
   require("./components/dashboard/usuarios/CadastrarUsuarioComponent.vue")
   .default
 );
-component(
+Vue.component(
   "localizacao",
   require("./components/dashboard/localizacao/LocalizacaoComponent.vue").default
 );
-component(
+Vue.component(
   "curso",
   require("./components/dashboard/cursos/CursoComponent.vue").default
 );
-component(
+Vue.component(
   "aluno",
   require("./components/dashboard/alunos/AlunoComponent.vue").default
 );
 
-component(
+Vue.component(
   "aluno-router",
   require("./components/dashboard/alunos/AlunoRouterComponent.vue").default
 );
 
-component(
+Vue.component(
   "manter-horarios",
   require("./components/dashboard/manter_horarios/ManterHorariosComponent.vue")
   .default
 );
-component(
+Vue.component(
   "perfil-aluno",
   require("./components/dashboard/alunos/perfil/GerenciarAlunoComponent.vue")
   .default
 );
-component(
+Vue.component(
   "infopessoal-aluno",
   require("./components/dashboard/alunos/perfil/includes/PsicoInformacoesPessoaisComponent.vue")
   .default
 );
-component(
+Vue.component(
   "infoacademica-aluno",
   require("./components/dashboard/alunos/perfil/includes/PsicoInformacoesAcademicasComponent.vue")
   .default
 );
 
 //alunos components
-component(
+Vue.component(
   "cadastrar-aluno",
   require("./components/guest/alunos/CadastrarAlunoComponent.vue").default
 );
-component(
+Vue.component(
   "marcar-atendimento",
   require("./components/dashboard/alunos/atendimento/MarcarAtendimentoComponent.vue")
   .default
 );
-component(
+Vue.component(
   "manter-informacoes",
   require("./components/dashboard/alunos/manter_informacoes/ManterInformacoesComponent.vue")
   .default
 );
-component(
+Vue.component(
   "gerenciar-perfil",
   require("./components/dashboard/alunos/perfil/GerenciarPerfilComponent.vue")
   .default
 );
-component(
+Vue.component(
   "gerenciar-atendimentos",
   require("./components/dashboard/alunos/atendimento/GerenciarAtendimentosComponent.vue")
   .default
 );
 //re-captcha
-component(
+Vue.component(
   "submit-button",
   require("./components/guest/SubmitButtonComponent.vue").default
 );
 
-component(
+Vue.component(
   "mostrar-senha",
   require("./components/form/mostrarSenhaComponent.vue").default
 );
 
-component(
+Vue.component(
   "manter-semestre",
   require("./components/dashboard/manter_semestre/ManterSemestreComponent.vue").default
 )
