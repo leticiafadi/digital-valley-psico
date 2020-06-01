@@ -31,7 +31,7 @@ class ManterHorariosController extends Controller{
         $semana = Semana::where('ano', $ano)->where('numero_semana', $numeroSemana)->where('id_funcionario', Funcionario::where('id_usuario', Auth::user()->id)->first()->id)->first();
 
         //se a semana ainda não existir
-        if($semana == null){
+        if($semana === null){
             //verifica se uma nova semana pode ser criada.
             //Criei uma regra de negocio, o funcionario so pode agendar seu horarios 03 semanas posteriores a semana atual.
 
@@ -40,7 +40,7 @@ class ManterHorariosController extends Controller{
 
 
 
-            if($semanaAtual < $numeroSemana && $numeroSemana <= $semanaAtual + 3 ){
+            if($semanaAtual <= $numeroSemana && $numeroSemana <= $semanaAtual + 3 ){
                 $arraySemana = [
                     'ano'               => $ano,
                     //o id do funcionario
@@ -62,7 +62,7 @@ class ManterHorariosController extends Controller{
 
     }
 
-    public function salvarSemana($request, $ano, $numeroSemana) {
+    public function salvarSemana(Request $request, $ano, $numeroSemana) {
         $semana = Semana::where('ano', $ano)->where('numero_semana', $numeroSemana)->where('id_funcionario', Funcionario::where('id_usuario', Auth::user()->id)->first()->id)->first();
 
         $dias = $this->manterSemana($semana,
