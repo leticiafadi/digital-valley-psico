@@ -11,8 +11,9 @@
             <div class="row">
               <div class="col col-12">
                 <div class="form-group">
-                  <label for="motivoAtendimento">Motivo do atendimento</label>
+                  <label for="motivoAtendimento">Motivo do atendimento </label>
                   <input
+                    id="marcarAtendimento"
                     type="text"
                     name="motivoAtendimento"
                     v-model="motivoAtendimento"
@@ -25,31 +26,49 @@
               <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                   <label for="id_curso">Psicólogo responsável</label>
-                  <select v-model="idPsico" name="id_curso" class="form-control">
+                  <select
+                    v-model="idPsico"
+                    name="id_curso"
+                    class="form-control"
+                  >
                     <option :value="0" selected>Selecione um psicólogo</option>
                     <option
                       v-for="psicologoItr in psicologos"
                       v-bind:value="psicologoItr.id"
                       :key="psicologoItr.id"
-                    >{{psicologoItr.nome_completo}}</option>
+                      >{{ psicologoItr.nome_completo }}</option
+                    >
                   </select>
                 </div>
               </div>
               <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                   <label for="id_semana">Semana Disponivel</label>
-                  <select v-model="nrsemana" name="id_semana" class="form-control">
-                    <option :value="0" selected>Selecione uma Semana Disponível</option>
+                  <select
+                    v-model="nrsemana"
+                    name="id_semana"
+                    class="form-control"
+                  >
+                    <option :value="0" selected
+                      >Selecione uma Semana Disponível</option
+                    >
                     <option
                       v-for="semana_itr in semanas"
                       v-bind:value="semana_itr.numeroSemana"
                       :key="semana_itr.numeroSemana"
-                    >Semana {{semana_itr.numeroSemana}} de {{formatarData(semana_itr.inicio)}} até {{formatarData(semana_itr.final)}}</option>
+                      >Semana {{ semana_itr.numeroSemana }} de
+                      {{ formatarData(semana_itr.inicio) }} até
+                      {{ formatarData(semana_itr.final) }}</option
+                    >
                   </select>
                 </div>
               </div>
             </div>
-            <div v-if="this.idPsico!=0 && this.nrsemana!=0 && this.dias.length > 0">
+            <div
+              v-if="
+                this.idPsico != 0 && this.nrsemana != 0 && this.dias.length > 0
+              "
+            >
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <div class="mt-4 mb-4"></div>
                 <div class="table-responsive">
@@ -58,7 +77,9 @@
                     <thead>
                       <tr>
                         <th scope="col">Horas/Dias</th>
-                        <th v-for="(diaItr, idz) in dias" :key="idz">{{formatarDiaSemana(diaItr)}}</th>
+                        <th v-for="(diaItr, idz) in dias" :key="idz">
+                          {{ formatarDiaSemana(diaItr) }}
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -76,7 +97,12 @@
                             type="checkbox"
                             @click="desativa(semana.segunda.segunda_a_bool)"
                             id
-                            :disabled="desativar(this.semana.segunda.segunda_a_id, this.semana.segunda.segunda_a_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.segunda.segunda_a_id,
+                                this.semana.segunda.segunda_a_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -84,7 +110,12 @@
                             type="checkbox"
                             @click="desativa(semana.terca.terca_a_bool)"
                             id
-                            :disabled="desativar(this.semana.terca.terca_a_id, this.semana.terca.terca_a_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.terca.terca_a_id,
+                                this.semana.terca.terca_a_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -92,7 +123,12 @@
                             type="checkbox"
                             @click="desativa(semana.quarta.quarta_a_bool)"
                             id
-                            :disabled="desativar(this.semana.quarta.quarta_a_id, this.semana.quarta.quarta_a_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.quarta.quarta_a_id,
+                                this.semana.quarta.quarta_a_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -100,7 +136,12 @@
                             type="checkbox"
                             @click="desativa(semana.quinta.quinta_a_bool)"
                             id
-                            :disabled="desativar(this.semana.quinta.quinta_a_id, this.semana.quinta.quinta_a_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.quinta.quinta_a_id,
+                                this.semana.quinta.quinta_a_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -108,7 +149,12 @@
                             type="checkbox"
                             @click="desativa(semana.sexta.sexta_a_bool)"
                             id
-                            :disabled="desativar(this.semana.sexta.sexta_a_id, this.semana.sexta.sexta_a_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.sexta.sexta_a_id,
+                                this.semana.sexta.sexta_a_bool.value
+                              )
+                            "
                           />
                         </td>
                       </tr>
@@ -121,7 +167,12 @@
                             type="checkbox"
                             @click="desativa(semana.segunda.segunda_b_bool)"
                             id
-                            :disabled="desativar(this.semana.segunda.segunda_b_id, this.semana.segunda.segunda_b_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.segunda.segunda_b_id,
+                                this.semana.segunda.segunda_b_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -129,7 +180,12 @@
                             type="checkbox"
                             @click="desativa(semana.terca.terca_b_bool)"
                             id
-                            :disabled="desativar(this.semana.terca.terca_b_id, this.semana.terca.terca_b_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.terca.terca_b_id,
+                                this.semana.terca.terca_b_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -137,7 +193,12 @@
                             type="checkbox"
                             @click="desativa(semana.quarta.quarta_b_bool)"
                             id
-                            :disabled="desativar(this.semana.quarta.quarta_b_id, this.semana.quarta.quarta_b_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.quarta.quarta_b_id,
+                                this.semana.quarta.quarta_b_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -145,7 +206,12 @@
                             type="checkbox"
                             @click="desativa(semana.quinta.quinta_b_bool)"
                             id
-                            :disabled="desativar(this.semana.quinta.quinta_b_id, this.semana.quinta.quinta_b_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.quinta.quinta_b_id,
+                                this.semana.quinta.quinta_b_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -153,7 +219,12 @@
                             type="checkbox"
                             @click="desativa(semana.sexta.sexta_b_bool)"
                             id
-                            :disabled="desativar(this.semana.sexta.sexta_b_id, this.semana.sexta.sexta_b_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.sexta.sexta_b_id,
+                                this.semana.sexta.sexta_b_bool.value
+                              )
+                            "
                           />
                         </td>
                       </tr>
@@ -166,7 +237,12 @@
                             type="checkbox"
                             @click="desativa(semana.segunda.segunda_c_bool)"
                             id
-                            :disabled="desativar(this.semana.segunda.segunda_c_id, this.semana.segunda.segunda_c_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.segunda.segunda_c_id,
+                                this.semana.segunda.segunda_c_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -174,7 +250,12 @@
                             type="checkbox"
                             @click="desativa(semana.terca.terca_c_bool)"
                             id
-                            :disabled="desativar(this.semana.terca.terca_c_id, this.semana.terca.terca_c_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.terca.terca_c_id,
+                                this.semana.terca.terca_c_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -182,7 +263,12 @@
                             type="checkbox"
                             @click="desativa(semana.quarta.quarta_c_bool)"
                             id
-                            :disabled="desativar(this.semana.quarta.quarta_c_id, this.semana.quarta.quarta_c_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.quarta.quarta_c_id,
+                                this.semana.quarta.quarta_c_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -190,7 +276,12 @@
                             type="checkbox"
                             @click="desativa(semana.quinta.quinta_c_bool)"
                             id
-                            :disabled="desativar(this.semana.quinta.quinta_c_id, this.semana.quinta.quinta_c_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.quinta.quinta_c_id,
+                                this.semana.quinta.quinta_c_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -198,7 +289,12 @@
                             type="checkbox"
                             @click="desativa(semana.sexta.sexta_c_bool)"
                             id
-                            :disabled="desativar(this.semana.sexta.sexta_c_id, this.semana.sexta.sexta_c_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.sexta.sexta_c_id,
+                                this.semana.sexta.sexta_c_bool.value
+                              )
+                            "
                           />
                         </td>
                       </tr>
@@ -211,7 +307,12 @@
                             type="checkbox"
                             @click="desativa(semana.segunda.segunda_d_bool)"
                             id
-                            :disabled="desativar(this.semana.segunda.segunda_d_id, this.semana.segunda.segunda_d_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.segunda.segunda_d_id,
+                                this.semana.segunda.segunda_d_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -219,7 +320,12 @@
                             type="checkbox"
                             @click="desativa(semana.terca.terca_d_bool)"
                             id
-                            :disabled="desativar(this.semana.terca.terca_d_id, this.semana.terca.terca_d_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.terca.terca_d_id,
+                                this.semana.terca.terca_d_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -227,7 +333,12 @@
                             type="checkbox"
                             @click="desativa(semana.quarta.quarta_d_bool)"
                             id
-                            :disabled="desativar(this.semana.quarta.quarta_d_id, this.semana.quarta.quarta_d_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.quarta.quarta_d_id,
+                                this.semana.quarta.quarta_d_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -235,7 +346,12 @@
                             type="checkbox"
                             @click="desativa(semana.quinta.quinta_d_bool)"
                             id
-                            :disabled="desativar(this.semana.quinta.quinta_d_id, this.semana.quinta.quinta_d_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.quinta.quinta_d_id,
+                                this.semana.quinta.quinta_d_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -243,7 +359,12 @@
                             type="checkbox"
                             @click="desativa(semana.sexta.sexta_d_bool)"
                             id
-                            :disabled="desativar(this.semana.sexta.sexta_d_id, this.semana.sexta.sexta_d_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.sexta.sexta_d_id,
+                                this.semana.sexta.sexta_d_bool.value
+                              )
+                            "
                           />
                         </td>
                       </tr>
@@ -262,7 +383,12 @@
                             type="checkbox"
                             @click="desativa(semana.segunda.segunda_e_bool)"
                             id
-                            :disabled="desativar(this.semana.segunda.segunda_e_id, this.semana.segunda.segunda_e_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.segunda.segunda_e_id,
+                                this.semana.segunda.segunda_e_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -270,7 +396,12 @@
                             type="checkbox"
                             @click="desativa(semana.terca.terca_e_bool)"
                             id
-                            :disabled="desativar(this.semana.terca.terca_e_id, this.semana.terca.terca_e_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.terca.terca_e_id,
+                                this.semana.terca.terca_e_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -278,7 +409,12 @@
                             type="checkbox"
                             @click="desativa(semana.quarta.quarta_e_bool)"
                             id
-                            :disabled="desativar(this.semana.quarta.quarta_e_id, this.semana.quarta.quarta_e_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.quarta.quarta_e_id,
+                                this.semana.quarta.quarta_e_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -286,7 +422,12 @@
                             type="checkbox"
                             @click="desativa(semana.quinta.quinta_e_bool)"
                             id
-                            :disabled="desativar(this.semana.quinta.quinta_e_id, this.semana.quinta.quinta_e_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.quinta.quinta_e_id,
+                                this.semana.quinta.quinta_e_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -294,7 +435,12 @@
                             type="checkbox"
                             @click="desativa(semana.sexta.sexta_e_bool)"
                             id
-                            :disabled="desativar(this.semana.sexta.sexta_e_id, this.semana.sexta.sexta_e_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.sexta.sexta_e_id,
+                                this.semana.sexta.sexta_e_bool.value
+                              )
+                            "
                           />
                         </td>
                       </tr>
@@ -307,7 +453,12 @@
                             type="checkbox"
                             @click="desativa(semana.segunda.segunda_f_bool)"
                             id
-                            :disabled="desativar(this.semana.segunda.segunda_f_id, this.semana.segunda.segunda_f_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.segunda.segunda_f_id,
+                                this.semana.segunda.segunda_f_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -315,7 +466,12 @@
                             type="checkbox"
                             @click="desativa(semana.terca.terca_f_bool)"
                             id
-                            :disabled="desativar(this.semana.terca.terca_f_id, this.semana.terca.terca_f_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.terca.terca_f_id,
+                                this.semana.terca.terca_f_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -323,7 +479,12 @@
                             type="checkbox"
                             @click="desativa(semana.quarta.quarta_f_bool)"
                             id
-                            :disabled="desativar(this.semana.quarta.quarta_f_id, this.semana.quarta.quarta_f_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.quarta.quarta_f_id,
+                                this.semana.quarta.quarta_f_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -331,7 +492,12 @@
                             type="checkbox"
                             @click="desativa(semana.quinta.quinta_f_bool)"
                             id
-                            :disabled="desativar(this.semana.quinta.quinta_f_id, this.semana.quinta.quinta_f_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.quinta.quinta_f_id,
+                                this.semana.quinta.quinta_f_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -339,7 +505,12 @@
                             type="checkbox"
                             @click="desativa(semana.sexta.sexta_f_bool)"
                             id
-                            :disabled="desativar(this.semana.sexta.sexta_f_id, this.semana.sexta.sexta_f_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.sexta.sexta_f_id,
+                                this.semana.sexta.sexta_f_bool.value
+                              )
+                            "
                           />
                         </td>
                       </tr>
@@ -352,7 +523,12 @@
                             type="checkbox"
                             @click="desativa(semana.segunda.segunda_g_bool)"
                             id
-                            :disabled="desativar(this.semana.segunda.segunda_g_id, this.semana.segunda.segunda_g_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.segunda.segunda_g_id,
+                                this.semana.segunda.segunda_g_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -360,7 +536,12 @@
                             type="checkbox"
                             @click="desativa(semana.terca.terca_g_bool)"
                             id
-                            :disabled="desativar(this.semana.terca.terca_g_id, this.semana.terca.terca_g_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.terca.terca_g_id,
+                                this.semana.terca.terca_g_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -368,7 +549,12 @@
                             type="checkbox"
                             @click="desativa(semana.quarta.quarta_g_bool)"
                             id
-                            :disabled="desativar(this.semana.quarta.quarta_g_id, this.semana.quarta.quarta_g_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.quarta.quarta_g_id,
+                                this.semana.quarta.quarta_g_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -376,7 +562,12 @@
                             type="checkbox"
                             @click="desativa(semana.quinta.quinta_g_bool)"
                             id
-                            :disabled="desativar(this.semana.quinta.quinta_g_id, this.semana.quinta.quinta_g_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.quinta.quinta_g_id,
+                                this.semana.quinta.quinta_g_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -384,7 +575,12 @@
                             type="checkbox"
                             @click="desativa(semana.sexta.sexta_g_bool)"
                             id
-                            :disabled="desativar(this.semana.sexta.sexta_g_id, this.semana.sexta.sexta_g_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.sexta.sexta_g_id,
+                                this.semana.sexta.sexta_g_bool.value
+                              )
+                            "
                           />
                         </td>
                       </tr>
@@ -397,7 +593,12 @@
                             type="checkbox"
                             @click="desativa(semana.segunda.segunda_h_bool)"
                             id
-                            :disabled="desativar(this.semana.segunda.segunda_h_id, this.semana.segunda.segunda_h_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.segunda.segunda_h_id,
+                                this.semana.segunda.segunda_h_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -405,7 +606,12 @@
                             type="checkbox"
                             @click="desativa(semana.terca.terca_h_bool)"
                             id
-                            :disabled="desativar(this.semana.terca.terca_h_id, this.semana.terca.terca_h_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.terca.terca_h_id,
+                                this.semana.terca.terca_h_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -413,7 +619,12 @@
                             type="checkbox"
                             @click="desativa(semana.quarta.quarta_h_bool)"
                             id
-                            :disabled="desativar(this.semana.quarta.quarta_h_id, this.semana.quarta.quarta_h_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.quarta.quarta_h_id,
+                                this.semana.quarta.quarta_h_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -421,7 +632,12 @@
                             type="checkbox"
                             @click="desativa(semana.quinta.quinta_h_bool)"
                             id
-                            :disabled="desativar(this.semana.quinta.quinta_h_id, this.semana.quinta.quinta_h_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.quinta.quinta_h_id,
+                                this.semana.quinta.quinta_h_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -429,7 +645,12 @@
                             type="checkbox"
                             @click="desativa(semana.sexta.sexta_h_bool)"
                             id
-                            :disabled="desativar(this.semana.sexta.sexta_h_id, this.semana.sexta.sexta_h_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.sexta.sexta_h_id,
+                                this.semana.sexta.sexta_h_bool.value
+                              )
+                            "
                           />
                         </td>
                       </tr>
@@ -442,7 +663,12 @@
                             type="checkbox"
                             @click="desativa(semana.segunda.segunda_i_bool)"
                             id
-                            :disabled="desativar(this.semana.segunda.segunda_i_id, this.semana.segunda.segunda_i_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.segunda.segunda_i_id,
+                                this.semana.segunda.segunda_i_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -450,7 +676,12 @@
                             type="checkbox"
                             @click="desativa(semana.terca.terca_i_bool)"
                             id
-                            :disabled="desativar(this.semana.terca.terca_i_id, this.semana.terca.terca_i_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.terca.terca_i_id,
+                                this.semana.terca.terca_i_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -458,7 +689,12 @@
                             type="checkbox"
                             @click="desativa(semana.quarta.quarta_i_bool)"
                             id
-                            :disabled="desativar(this.semana.quarta.quarta_i_id, this.semana.quarta.quarta_i_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.quarta.quarta_i_id,
+                                this.semana.quarta.quarta_i_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -466,7 +702,12 @@
                             type="checkbox"
                             @click="desativa(semana.quinta.quinta_i_bool)"
                             id
-                            :disabled="desativar(this.semana.quinta.quinta_i_id, this.semana.quinta.quinta_i_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.quinta.quinta_i_id,
+                                this.semana.quinta.quinta_i_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -474,7 +715,12 @@
                             type="checkbox"
                             @click="desativa(semana.sexta.sexta_i_bool)"
                             id
-                            :disabled="desativar(this.semana.sexta.sexta_i_id, this.semana.sexta.sexta_i_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.sexta.sexta_i_id,
+                                this.semana.sexta.sexta_i_bool.value
+                              )
+                            "
                           />
                         </td>
                       </tr>
@@ -487,7 +733,12 @@
                             type="checkbox"
                             @click="desativa(semana.segunda.segunda_j_bool)"
                             id
-                            :disabled="desativar(this.semana.segunda.segunda_j_id, this.semana.segunda.segunda_j_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.segunda.segunda_j_id,
+                                this.semana.segunda.segunda_j_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -495,7 +746,12 @@
                             type="checkbox"
                             @click="desativa(semana.terca.terca_j_bool)"
                             id
-                            :disabled="desativar(this.semana.terca.terca_j_id, this.semana.terca.terca_j_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.terca.terca_j_id,
+                                this.semana.terca.terca_j_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -503,7 +759,12 @@
                             type="checkbox"
                             @click="desativa(semana.quarta.quarta_j_bool)"
                             id
-                            :disabled="desativar(this.semana.quarta.quarta_j_id, this.semana.quarta.quarta_j_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.quarta.quarta_j_id,
+                                this.semana.quarta.quarta_j_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -511,7 +772,12 @@
                             type="checkbox"
                             @click="desativa(semana.quinta.quinta_j_bool)"
                             id
-                            :disabled="desativar(this.semana.quinta.quinta_j_id, this.semana.quinta.quinta_j_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.quinta.quinta_j_id,
+                                this.semana.quinta.quinta_j_bool.value
+                              )
+                            "
                           />
                         </td>
                         <td>
@@ -519,7 +785,12 @@
                             type="checkbox"
                             @click="desativa(semana.sexta.sexta_j_bool)"
                             id
-                            :disabled="desativar(this.semana.sexta.sexta_j_id, this.semana.sexta.sexta_j_bool.value)"
+                            :disabled="
+                              desativar(
+                                this.semana.sexta.sexta_j_id,
+                                this.semana.sexta.sexta_j_bool.value
+                              )
+                            "
                           />
                         </td>
                       </tr>
@@ -538,7 +809,9 @@
                     class="form-control"
                     v-model="motivoEncaminhamento"
                   >
-                    <option @click="limpaMotivo()" value>Selecione a forma de encaminhamento</option>
+                    <option @click="limpaMotivo()" value
+                      >Selecione a forma de encaminhamento</option
+                    >
                     <option value="espontaneo">Espontânea vontade</option>
                     <option value="recomendado">Outro motivo</option>
                   </select>
@@ -549,8 +822,11 @@
                 v-show="motivoEncaminhamento == 'recomendado'"
               >
                 <div class="form-group">
-                  <label for="motivoEncaminhamento">Descreva quem o encaminhou</label>
+                  <label for="motivoEncaminhamento"
+                    >Descreva quem o encaminhou</label
+                  >
                   <input
+                    id="marcarAtendimento"
                     type="text"
                     name="motivoEncaminhamento"
                     placeholder="EX: encaminhado pela psicóloga"
@@ -566,7 +842,9 @@
                     type="submit"
                     @click="salvarHorario"
                     class="btn mybtn-table btn-lg"
-                  >Marcar atendimento</button>
+                  >
+                    Marcar atendimento
+                  </button>
                 </div>
               </div>
             </div>
@@ -586,7 +864,7 @@ export default {
   components: {
     VueCalendar,
     ptBR,
-    Datetime
+    Datetime,
   },
   props: {},
   data: function() {
@@ -624,7 +902,7 @@ export default {
           segunda_g_bool: { value: false },
           segunda_h_bool: { value: false },
           segunda_i_bool: { value: false },
-          segunda_j_bool: { value: false }
+          segunda_j_bool: { value: false },
         },
         terca: {
           terca_a_id: 0,
@@ -647,7 +925,7 @@ export default {
           terca_g_bool: { value: false },
           terca_h_bool: { value: false },
           terca_i_bool: { value: false },
-          terca_j_bool: { value: false }
+          terca_j_bool: { value: false },
         },
         quarta: {
           quarta_a_id: 0,
@@ -670,7 +948,7 @@ export default {
           quarta_g_bool: { value: false },
           quarta_h_bool: { value: false },
           quarta_i_bool: { value: false },
-          quarta_j_bool: { value: false }
+          quarta_j_bool: { value: false },
         },
         quinta: {
           quinta_a_id: 0,
@@ -693,7 +971,7 @@ export default {
           quinta_g_bool: { value: false },
           quinta_h_bool: { value: false },
           quinta_i_bool: { value: false },
-          quinta_j_bool: { value: false }
+          quinta_j_bool: { value: false },
         },
         sexta: {
           sexta_a_id: 0,
@@ -716,26 +994,26 @@ export default {
           sexta_g_bool: { value: false },
           sexta_h_bool: { value: false },
           sexta_i_bool: { value: false },
-          sexta_j_bool: { value: false }
-        }
-      }
+          sexta_j_bool: { value: false },
+        },
+      },
     };
   },
   watch: {
-    nrsemana: "carregaHorario"
+    nrsemana: "carregaHorario",
   },
   methods: {
     carregaHorario() {
       if (this.idPsico != 0) {
         this.$http
           .get(`/psicologo/get?query=${this.nrsemana}&id=${this.idPsico}`)
-          .then(response => {
+          .then((response) => {
             this.dias = response.data;
             if (this.dias.length == 0)
               this.$toast("info", "Não tem nenhum horario disponível");
             else this.setarSemana();
           })
-          .catch(err => {
+          .catch((err) => {
             this.dias = [];
             this.$toast("warning", "Não foi possível buscar os horarios");
           });
@@ -753,7 +1031,7 @@ export default {
         this.semanas.push({
           numeroSemana: Moment(dia).format("W"),
           inicio: dia,
-          final: new Date(dia.getTime() + tamanhoDia * 4)
+          final: new Date(dia.getTime() + tamanhoDia * 4),
         });
         dia = new Date(dia.getTime() + tamanhoDia * 7);
       }
@@ -844,13 +1122,13 @@ export default {
           encaminhamento:
             this.motivoEncaminhamento == "recomendado"
               ? this.textMotivoEncaminhamento
-              : this.motivoEncaminhamento
+              : this.motivoEncaminhamento,
         })
-        .then(res => {
+        .then((res) => {
           this.$toast("success", "Atendimento Marcado com sucesso.");
           // setTimeout(() => (window.location.href = "/"), 1000);
         })
-        .catch(err => {
+        .catch((err) => {
           this.$toast("error", "Erro ao marcar atendimento");
         });
     },
@@ -858,7 +1136,7 @@ export default {
       this.textMotivoEncaminhamento = "";
     },
     carregaPsicologos() {
-      this.$http.get(`/psicologos`).then(response => {
+      this.$http.get(`/psicologos`).then((response) => {
         this.psicologos = response.data;
       });
     },
@@ -876,12 +1154,12 @@ export default {
         return false;
       }
       // return bool ? false :  ? true : false;
-    }
+    },
   },
   mounted() {
     this.carregaPsicologos();
     this.carregasemana();
-  }
+  },
 };
 </script>
 
@@ -891,7 +1169,7 @@ export default {
   width: 100%;
 }
 
-input {
+input#marcarAtendimento { 
   width: 100%;
   padding: 5px;
 }
