@@ -1126,7 +1126,7 @@ export default {
         })
         .then((res) => {
           this.$toast("success", "Atendimento Marcado com sucesso.");
-          // setTimeout(() => (window.location.href = "/"), 1000);
+          setTimeout(() => (window.location.href = "/"), 1000);
         })
         .catch((err) => {
           this.$toast("error", "Erro ao marcar atendimento");

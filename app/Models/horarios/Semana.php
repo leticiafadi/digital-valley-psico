@@ -23,8 +23,7 @@ class Semana extends Model{
     }
     //retorna os horarios difponiveis daquela semana
     public function horarios(){
-        $horarios = DB::select('SELECT dia, horario, id FROM horario_semana WHERE id_semana = ? ORDER BY dia, horario', [$this->id]);
-        
+        $horarios = DB::select('SELECT horario_semana.dia, horario_semana.horario, horario_semana.id FROM horario_semana JOIN atendimento ON horario_semana.id <> atendimento.id_horario WHERE id_semana = ? ORDER BY dia, horario', [$this->id]);
         $retorno = [];
         $dia_auxiliar = $this->data_inicio;
         $aux = 0;

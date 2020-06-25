@@ -18,7 +18,7 @@
                     <label for="curso" id="label-curso">Curso *</label>
                     <select name="id_curso" id="curso" :class="{'is-invalid' : errors.has('id_curso'), 'is-valid': this.cursoIsValid()}" class="form-control" v-model="curso">
                         <option value="">Selecione seu curso</option>
-                        <option v-for="curso in cursos" v-bind:value="curso.id">{{curso.nome}}</option>
+                        <option v-for="curso in cursos" :key="curso.id" :value="curso.id">{{curso.nome}}</option>
                     </select>
 
                     <span>{{errors.first('curso')}}</span>

@@ -19,28 +19,40 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(atendimento, id) in atendimentos" :key='id'>
-                    <td>
-                      <strong>{{id+1}}</strong>
-                    </td>
-                    <td>
-                      <strong>{{atendimento.psicologo}}</strong>
-                    </td>
-                    <td>
-                      <strong>{{formatarData(atendimento.dia)}} de {{atendimento.horario}}</strong>
-                    </td>
-                    <td>
-                      <button
-                        class="btn mybtn-table fa-pull-right"
-                        @click="mostrarDetalhes()"
-                      >Ver mais</button>
-                      <button
-                        @click="cancelarAtendimento()"
-                        class="btn mybtn-table fa-pull-left"
-                        :disabled="false"
-                      >Cancelar</button>
-                    </td>
-                  </tr>
+                  <template v-if="atendimentos.length > 0">
+
+                    <tr v-for="(atendimento, id) in atendimentos" :key='id'>
+                      <td class="td-class">
+                        <strong>{{id+1}}</strong>
+                      </td>
+                      <td class="td-class">
+                        <strong>{{atendimento.psicologo}}</strong>
+                      </td>
+                      <td class="td-class">
+                        <strong>{{formatarData(atendimento.dia)}} de {{atendimento.horario}}</strong>
+                      </td>
+                      <td class="td-class">
+                        <button
+                          class="btn mybtn-table py-1 px-4"
+                          @click="mostrarDetalhes()"
+                        >Ver mais</button>
+                        <button
+                          @click="cancelarAtendimento()"
+                          class="btn mybtn-table py-1 px-4"
+                          :disabled="false"
+                        >Cancelar</button>
+                      </td>
+                    </tr>
+                  </template>
+                  <template v-else>
+                    <tr>
+                      <td colspan="4" class="td-class">
+                        <strong>
+                          Nenhum Atendimento Cadastrado!
+                        </strong>
+                      </td>
+                    </tr>
+                  </template>
                 </tbody>
               </table>
             </div>
@@ -96,3 +108,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+.td-class{
+  text-align: center;
+}
+</style>

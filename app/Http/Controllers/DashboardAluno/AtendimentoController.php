@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\DashboardAluno;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\atendimento\Atendimento;
+use App\Models\funcionario\Funcionario;
+use App\Mail\SendMailPsicologo;
 
 class AtendimentoController extends Controller
 {
@@ -22,7 +25,6 @@ class AtendimentoController extends Controller
         $this->validate($request, [
             'id_horario' => 'required|exists:horario_semana,id'
         ]);
-        // var_dump($request);
         $atendimento = [
             'id_aluno'       => Auth::user()->aluno()->id,
             'id_horario'     => $request->get('id_horario'),
@@ -33,14 +35,15 @@ class AtendimentoController extends Controller
         ];
 
         $confirmacao = Atendimento::create($atendimento);
+        #controller
+        // $user = Funcionario::where('id', $request->get('id_psicologo'))->join("usuario", 'funcionario.id_usuario', 'usuario.id')->join("users", 'usuario.id', 'users')->first();
+        // var_dump($)
+        // Mail::to("guikar741lol@gmail.com")->send(new SendMailPsicologo($atendimento));
+        // Mail::to($user->email)->send(new SendMailPsicologo($atendimento));
 
         return response($confirmacao, 200)->header('Content-Type', 'text/json');
     }
 
-    // public function mostrarAtendimento($id)
-    // {
-    //     return response(Atendimento::select('id', 'id_aluno', 'id_horario', 'status')->where('id_aluno', '=', $id)->get(), 200)->header('Content-Type', 'text/json');
-    // }
     public function mostrarAtendimentos()
     {
         $horarios = [

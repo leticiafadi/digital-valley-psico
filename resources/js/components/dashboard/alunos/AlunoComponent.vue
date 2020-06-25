@@ -26,7 +26,7 @@
                     <label id="label-curso">Selecione o filtro de busca</label>
                     <select name="id_curso" class="form-control" v-model="selected">
                       <option value>Todos</option>
-                      <option v-for="curso in cursos" v-bind:value="curso.id">{{curso.nome}}</option>
+                      <option v-for="curso in cursos" :key="curso.id" :value="curso.id">{{curso.nome}}</option>
                     </select>
                   </div>
                 </div>
@@ -45,7 +45,7 @@
                     </thead>
                     <tbody>
                       <template v-for="aluno in this.alunos">
-                        <tr v-on:click.prevent="perfilAluno(aluno.id)" class="select" style="cursor: pointer">
+                        <tr :key="aluno.id" @click.prevent="perfilAluno(aluno.id)" class="select" style="cursor: pointer">
                           <td>{{aluno.nome_completo}}</td>
                           <td>{{aluno.matricula}}</td>
                           <td>{{aluno.nome}}</td>

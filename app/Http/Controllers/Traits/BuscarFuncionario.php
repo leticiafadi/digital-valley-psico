@@ -14,7 +14,10 @@ trait BuscarFuncionario{
     }
 
     private function horarioPsicologo($id,$semana){
-        return Semana::where('id_funcionario','=',$id)->where('semana.numero_semana','=',$semana)->first()->horarios();
+        return Semana::
+        where('id_funcionario','=',$id)->
+        where('semana.numero_semana','=',$semana)->
+        first()->horarios();
     }
 
 }

@@ -23,7 +23,7 @@ $this->get('/home', 'HomeController@index')->name('home');
 $this->get('/gerenciarPerfil', 'DashboardAluno\HomeController@mostrarPaginaGerenciarPerfil')->name('gerenciarPerfil');
 $this->get('/marcarAtendimento', 'DashboardAluno\HomeController@mostrarPaginaMarcarAtendimento')->name('marcarAtendimento');
 
-//consulta
+// //consulta
 $this->post('/consulta', 'Site\ConsultaController@cadastrarConsulta')->name('consulta.marcar');
 
 //Auth Routes |||||||||
@@ -51,9 +51,10 @@ $this->get('/atendimentos', 'DashboardAluno\AtendimentoController@mostrarAtendim
 $this->post('/atendimentos', 'DashboardAluno\AtendimentoController@salvarAtendimento')->middleware('auth');
 
 
-$this->get('/consultas', 'Dashboard\ConsultaController@mostarPaginaConsultas')->name('consultas.all')->middleware('auth');
+$this->get('/consultasPsicologo', 'Dashboard\ConsultaController@listarAtendimentos')->name('consultas.all')->middleware('auth');
+$this->get('/consulta', 'Dashboard\ConsultaController@mostarPaginaConsultas')->name('consultas.all')->middleware('auth');
 $this->get('/consulta/{id}', 'Dashboard\ConsultaController@verConsulta')->name('consulta.visualizar')->middleware('auth');
-$this->get('/consulta/deletar/{id}', 'Dashboard\ConsultaController@deletarConsulta')->name('consulta.excluir')->middleware('auth');
+// $this->get('/consulta/deletar/{id}', 'Dashboard\ConsultaController@deletarConsulta')->name('consulta.excluir')->middleware('auth');
 $this->get('/atendimento/{id}', 'Dashboard\AtendimentoController@mostrarAtendimentos')->name('atendimeto.get')->middleware('auth')->middleware('funcionario');
 $this->get('/observacao/{id}', 'Dashboard\ObservacoesController@mostrarObservacaoAtendimento')->name('observacaoAtendimento')->middleware('auth')->middleware('funcionario');
 $this->get('/observacoes/{id}', 'Dashboard\ObsercoesController@mostrarObservacaoAluno')->name('observacaoAtendimento')->middleware('auth')->middleware('funcionario');
@@ -110,4 +111,22 @@ $this->options('{any}', function () {
         ->header('Access-Control-Allow-Origin', implode(',', config('cors.default_profile.allow_origins')))
         ->header('Access-Control-Allow-Methods', implode(',', config('cors.default_profile.allow_methods')))
         ->header('Access-Control-Allow-Headers', implode(',', config('cors.default_profile.allow_headers')));
+});
+
+
+$this->get('/mail', function () {
+    $email = new App\Mail\SendMailPsicologo([]);
+    Mail::to('guikar741lol@gmail.com')->send($email);
+
+    // return view('mail.exemplo');
+    $markdown = new \Illuminate\Mail\Markdown(view(), [
+        'theme' => 'default',
+        'paths' => [
+            resource_path('views/vendor/mail'),
+        ]
+    ]);
+
+    return $markdown->render('mail.exemplo', [
+        'user' => 'Guilherme N'
+    ]);
 });

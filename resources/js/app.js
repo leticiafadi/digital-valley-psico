@@ -5,6 +5,7 @@ const Snotify = require("vue-snotify");
 const VueRouter = require("vue-router");
 const VueSweetalert2 = require("vue-sweetalert2");
 const axios = require("axios");
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 Vue.use(VeeValidate);
 Vue.use(Snotify);
@@ -113,6 +114,12 @@ Vue.component(
 Vue.component(
   "manter-semestre",
   require("./components/dashboard/manter_semestre/ManterSemestreComponent.vue")
+    .default
+);
+
+Vue.component(
+  "ver-consultas",
+  require("./components/dashboard/consultas/VerConsultasComponent.vue")
     .default
 );
 

@@ -70,6 +70,7 @@
                                 type="checkbox"
                                 v-model="terca_a"
                                 id
+                                :value="true"
                                 :disabled="verificar(dias[1].dia)"
                               />
                             </td>
@@ -839,9 +840,9 @@ export default {
         });
     },
     verificar(dia){
-      let diaAtual = Moment();
+      let diaAtual = Moment(new Date());
       let diaVerificado = Moment(dia, 'YYYY-MM-DD');
-      return diaVerificado.weekday() < diaAtual.weekday();
+      return diaAtual.isSame(diaVerificado, 'day') ? false : diaAtual.isAfter(diaVerificado);
     }
   },
   mounted() {
