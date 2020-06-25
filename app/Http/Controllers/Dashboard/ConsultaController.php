@@ -29,7 +29,7 @@ class ConsultaController extends Controller
 
 		public function listarAtendimentos(){
 			$atendimentos = Atendimento::
-			select("usuario.nome_completo as nome", "aluno.matricula", "atendimento.motivo", "atendimento.encaminhamento", 'horario_semana.horario', 'horario_semana.dia')->
+			select("atendimento.id", "usuario.nome_completo as nome", "aluno.matricula", "atendimento.motivo", "atendimento.encaminhamento", 'horario_semana.horario', 'horario_semana.dia', 'atendimento.status')->
 			where("id_psicologo", Auth::user()->id)->
 			join("horario_semana", 'atendimento.id_horario', '=', 'horario_semana.id')->
 			join('aluno', 'atendimento.id_psicologo', '=', 'aluno.id')->
@@ -70,4 +70,40 @@ class ConsultaController extends Controller
 			}
 
 		}
+
+    public function cancelarConsulta(Request $request)
+    {
+        $atendimento = Atendimento::find($request->atid);
+        $psicologoId = Auth::id();
+
+        if(($atendimento == null) OR ($atendimento->id_psicologo != $psicologoId))
+        {
+            //Atendimento não existe ou não pertece a esse psicologo
+            return response()->json([
+                'sucesso' => false,
+                'code' => 404,
+                'msg' => 'O atendimento selecionado não existe!',
+            ], 404);
+        }
+
+        if ($atendimento->status == 'ocorrido' OR $atendimento->status == 'cancelado')
+        {
+            //Atendimento já ocorrido, não pode ser cancelado
+            return response()->json([
+                'sucesso' => false,
+                'code' => 403,
+                'msg' => 'Este atendimento não pode ser cancelado!',
+            ], 403);
+        }
+
+        //Cancelar o atendimento
+        $atendimento->status = 'cancelado';
+        $atendimento->save();
+
+        return response()->json([
+            'sucesso' => true,
+            'code' => 200,
+            'msg' => 'Atendimento cancelado com sucesso!',
+        ], 200);
+    }
 }
