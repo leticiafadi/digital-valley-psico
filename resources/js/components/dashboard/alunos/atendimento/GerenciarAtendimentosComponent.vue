@@ -33,14 +33,14 @@
                       </td>
                       <td class="td-class">
                         <button
-                          class="btn mybtn-table py-1 px-4"
-                          @click="mostrarDetalhes()"
-                        >Ver mais</button>
-                        <button
-                          @click="cancelarAtendimento()"
-                          class="btn mybtn-table py-1 px-4"
-                          :disabled="false"
+                                @click="modalCancelamento(atendimento.id)"
+                                class="btn mybtn-table py-1 px-4"
+                                :disabled="statusBotaoCancelar(atendimento.status)"
                         >Cancelar</button>
+                        <button
+                          class="btn mybtn-table py-1 px-4"
+                          @click="modalDetalhes(atendimento.id)"
+                        >Ver mais</button>
                       </td>
                     </tr>
                   </template>
@@ -58,6 +58,8 @@
             </div>
           </div>
         </div>
+        <cancelar-atendimento ref="modalCancel"></cancelar-atendimento>
+        <detalhes-atendimento ref="modalDetails"></detalhes-atendimento>
       </div>
     </div>
   </div>
@@ -67,13 +69,18 @@ import axios from "axios";
 import Snotify from "vue-snotify";
 import VeeValidate from "vee-validate";
 import Moment from "moment";
+import CancelarAtendimento from "./CancelarAtendimentoComponent";
+import DetalhesAtendimento from "./DetalhesAtendimentoComponent";
+
 export default {
   props: {
     baseUrl: String
   },
   components: {
     axios,
-    Snotify
+    Snotify,
+    CancelarAtendimento,
+    DetalhesAtendimento,
   },
   data: function() {
     return {
@@ -83,11 +90,21 @@ export default {
     };
   },
   methods: {
+    statusBotaoCancelar: function (status) {
+      if (status === 'cancelado' || status === 'ocorrido'){
+        return true;
+      }
+      return false;
+    },
     formatarData(data){
         return Moment(data).format("DD/MM/YYYY");
     },
-    cancelarAtendimento: function() {},
-    mostrarDetalhes: function() {},
+    modalCancelamento(atid) {
+      this.$refs.modalCancel.show(atid);
+    },
+    modalDetalhes: function(atid) {
+      this.$refs.modalDetails.show(atid);
+    },
     carregaAtendimentos: function() {
       axios
         .get("/atendimentos")

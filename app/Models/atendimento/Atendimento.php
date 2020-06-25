@@ -2,6 +2,8 @@
 
 namespace App\Models\atendimento;
 
+use App\Models\aluno\Aluno;
+use App\Models\observacao\ObservacaoAtendimento;
 use Illuminate\Database\Eloquent\Model;
 
 class Atendimento extends Model
@@ -21,5 +23,15 @@ class Atendimento extends Model
         $atendimento->save();
 
         return $atendimento;
+    }
+
+    public function aluno()
+    {
+        return $this->belongsTo(Aluno::class, 'id_aluno');
+    }
+
+    public function observacoes()
+    {
+        return $this->hasMany(ObservacaoAtendimento::class, 'id_atendimento');
     }
 }

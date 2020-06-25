@@ -31,7 +31,7 @@
                 <!-- </div>
                 <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12"> -->
                   <a
-                    href=" {route('consulta.visualizar', $hashVisualizar->encode($consulta->id))}} "
+                    href=""
                     class="btn mybtn-table py-1 px-4"
                   >Detalhes</a>
                 <!-- </div> -->
@@ -78,7 +78,7 @@
               data-dismiss="modal"
             >Não, me arrependi</button>
             <a
-              href=" {route('consulta.excluir', $hashVisualizar->encode($consulta->id))}} "
+              href=""
               class="btn mybtn-table py-1 px-4"
             >Sim, desejo excluir</a>
           </div>

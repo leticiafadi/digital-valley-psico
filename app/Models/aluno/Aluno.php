@@ -2,6 +2,7 @@
 
 namespace App\Models\aluno;
 
+use App\Models\atendimento\Atendimento;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\usuarios\Usuario;
 use Illuminate\Support\Facades\DB;
@@ -44,8 +45,9 @@ class Aluno extends Model
          return $data;
      }
 
-
-
-
+     public function usuario()
+     {
+         return $this->belongsTo(Usuario::class, 'id_usuario');
+     }
 
 }

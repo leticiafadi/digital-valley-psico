@@ -70,17 +70,4 @@ class ConsultaController extends Controller
 			}
 
 		}
-	
-		public function deletarConsulta($id = 0){
-			
-			
-			//Caso a o codigo da consulta seja invalido
-			if(!$this->hashExcluir->decode($id))
-				return  redirect()->back();
-
-			
-			$this->deleta($this->hashExcluir->decode($id));
-			
-			return redirect()->back();
-		}
 }
