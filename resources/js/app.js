@@ -50,6 +50,11 @@ Vue.component(
 );
 
 Vue.component(
+    "ver-calendario",
+    require("./components/dashboard/consultas/VerCalendarioComponent").default
+);
+
+Vue.component(
   "aluno-router",
   require("./components/dashboard/alunos/AlunoRouterComponent.vue").default
 );
@@ -114,12 +119,6 @@ Vue.component(
 Vue.component(
   "manter-semestre",
   require("./components/dashboard/manter_semestre/ManterSemestreComponent.vue")
-    .default
-);
-
-Vue.component(
-  "ver-consultas",
-  require("./components/dashboard/consultas/VerConsultasComponent.vue")
     .default
 );
 

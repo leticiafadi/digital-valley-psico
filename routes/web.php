@@ -57,8 +57,8 @@ $this->get('/consultasPsicologo', 'Dashboard\ConsultaController@listarAtendiment
 $this->get('/consulta', 'Dashboard\ConsultaController@mostarPaginaConsultas')->name('consultas.all')->middleware('auth');
 $this->get('/consulta/{id}', 'Dashboard\ConsultaController@verConsulta')->name('consulta.visualizar')->middleware('auth');
 $this->get('/atendimento/{id}', 'Dashboard\AtendimentoController@mostrarAtendimentos')->name('atendimeto.get')->middleware('auth')->middleware('funcionario');
-$this->get('/observacao/{id}', 'Dashboard\ObservacoesController@mostrarObservacaoAtendimento')->name('observacaoAtendimento')->middleware('auth')->middleware('funcionario');
-$this->get('/observacoes/{id}', 'Dashboard\ObsercoesController@mostrarObservacaoAluno')->name('observacaoAtendimento')->middleware('auth')->middleware('funcionario');
+$this->get('/observacao/{id}', 'Dashboard\ObservacoesController@mostrarObservacoesAtendimento')->name('observacaoAtendimento')->middleware('auth')->middleware('funcionario');
+$this->post('/observacao/apagar', 'Dashboard\ObservacoesController@apagarObservacaoAtendimento')->middleware('auth')->middleware('funcionario');
 $this->post('/consulta/cancelar', 'Dashboard\ConsultaController@cancelarConsulta')->name('consulta.excluir')->middleware('auth');
 
 

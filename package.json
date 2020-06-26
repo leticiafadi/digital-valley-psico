@@ -26,6 +26,11 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.13.1",
+        "@fullcalendar/core": "^5.0.0",
+        "@fullcalendar/daygrid": "^5.0.1",
+        "@fullcalendar/timegrid": "^5.0.1",
+        "@fullcalendar/vue": "^5.0.0",
         "admin-lte": "^2.4.18",
         "bootstrap-sass": "^3.4.1",
         "dateformat": "^3.0.3",

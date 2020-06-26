@@ -87,11 +87,7 @@
                 return Moment(data).format("DD/MM/YYYY");
             },
             existeObservacoes() {
-                if (Object.keys(this.atendimento.detalhes.observacoes).length === 0)
-                {
-                    return false;
-                }
-                return true;
+                return Object.keys(this.atendimento.detalhes.observacoes).length !== 0;
             }
         }
     }
@@ -114,6 +110,15 @@
     .modal-wrapper {
         display: table-cell;
         vertical-align: middle;
+    }
+
+     .modal-wrapper {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .modal-dialog{
+        overflow-y: initial !important
     }
 
     ul {

@@ -1,50 +1,53 @@
 <?php
 
-namespace App\Http\Controllers\DashboardAluno;
+namespace App\Http\Controllers\Dashboard;
 
+use App\Models\atendimento\Atendimento;
+use App\Models\funcionario\Funcionario;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-use App\Models\observacao\ObservacoesAluno;
 use App\Models\observacao\ObservacaoAtendimento;
+use Illuminate\Support\Facades\Auth;
 
 class ObservacoesController extends Controller
 {
-    public static function salvarObservacaoAluno(Request $request){
-
-        this.validate($request,[
-            'id_aluno' => 'require|exists:aluno,id' 
-        ]);
-
-        $observacao = [
-            'id_aluno' => $request->get('id_aluno'),
-            'comentario'     => $request->get('comentario')
-        ];
-
-        return ObservacoesAluno::create($observacao);
+    public function __construct()
+    {
+        $this->middleware('funcionario');
     }
 
-    public static function salvarObservacaoAtendimento(Request $request){
+    public function apagarObservacaoAtendimento(Request $request){
+        $observacao = ObservacaoAtendimento::find($request->id);
 
-        this.validate($request,[
-            'id_atendimento' => 'require|exists:atendimento,id' 
-        ]);
+        //Verificar se existe observações para esse atendimento
+        if ($observacao == null)
+        {
+            return response()->json([
+                'sucesso' => false,
+                'code' => 404,
+                'msg' => 'Não há observações para esse atendimento!',
+            ], 404);
+        }
 
-        $observacao = [
-            'id_atendimento' => $request->get('id_atendimento'),
-            'observacao'     => $request->get('observacao')
-        ];
+        //Verificar se a observação pertece ao atendimento do psicologo logado
+        $psicoLogado = Funcionario::where('id_usuario', Auth::id())->first();
+        $responsavel = Atendimento::find($observacao->id_atendimento)->first();
 
-        return ObservacaoAtendimento::create($observacao);
+        if ($responsavel->id_psicologo != $psicoLogado->id)
+        {
+            return response()->json([
+                'sucesso' => false,
+                'code' => 403,
+                'msg' => 'Você não pode apagar esta observação!',
+            ], 403);
+        }
+
+        //Apagar a observacao
+        $observacao->delete();
+        return response()->json([
+            'sucesso' => true,
+            'code' => 200,
+            'msg' => 'Observação apagada com sucesso!'
+        ], 200);
     }
-
-
-    public static function mostrarObservacaoAtendimento(Request $reques,$id){
-        return response(ObservacaoAtendimento::where('id_atendimento','=',$id)->get(),200)->header('Content-Type','text/json');
-    }
-
-    public static function mostrarObservacaoAluno(Request $request,$id){
-        return response(ObservacoesAluno::where('id_aluno','=',$id)->get(),200)->header('Content-Type','text/json');
-    }
-
 }

@@ -11,6 +11,7 @@
         "hashids/hashids": "2.0.0",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
+        "league/fractal": "^0.19.2",
         "mews/captcha": "^2.2"
     },
     "require-dev": {

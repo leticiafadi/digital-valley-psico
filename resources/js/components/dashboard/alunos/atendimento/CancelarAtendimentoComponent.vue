@@ -53,7 +53,7 @@
                         .getAttribute("content"),
                     atid: this.atendimentoId
                 }).then(response => {
-                    this.$toast("success", "Atendimento cancelado comm sucesso!");
+                    this.$toast("success", "Atendimento cancelado com sucesso!");
                 }, response => {
                     if (response.status == 404)
                     {

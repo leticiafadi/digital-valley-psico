@@ -39,3 +39,7 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+.swal2-container.swal2-top-end.swal2-shown {
+  z-index: 9999;
+}
