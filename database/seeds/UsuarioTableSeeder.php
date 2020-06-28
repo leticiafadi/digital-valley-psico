@@ -23,15 +23,5 @@ class UsuarioTableSeeder extends Seeder
             "tipo" => 'funcionario',
             'id_endereco' => $endereco['id']
         ]);
-        $enderecos = (array) Endereco::all();
-        $key = array_rand($enderecos);
-        $endereco = $enderecos[$key][array_rand($enderecos[$key])];
-        Usuario::create([
-            "nome_completo" => "Aluno",
-            "data_nascimento" => '2000-01-01',
-            "genero" => 'm',
-            "tipo" => 'aluno',
-            'id_endereco' => $endereco['id']
-        ]);
     }
 }

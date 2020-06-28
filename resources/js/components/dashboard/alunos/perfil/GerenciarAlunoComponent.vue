@@ -10,22 +10,6 @@
           <div class="card-body">
             <infopessoal-aluno :aluno="this.aluno"></infopessoal-aluno>
             <infoacademica-aluno :aluno="this.aluno"></infoacademica-aluno>
-
-            <!-- <vinculo-ufc> </vinculo-ufc>
-
-            <situacao-programa> </situacao-programa>-->
-
-            <!--<div class="card-body">
-                        <div class="row">
-                            <div class="col col-12">
-                                <div class="fa-pull-right">
-                                    <button v-show="this.estadoCivil != ''" type="submit" class="btn btn-primary btn-lg">
-                                            Salvar
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-            </div>-->
             <div class="card-body">
               <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -124,15 +108,8 @@
         </div>
         <!-- </form> -->
       </div>
-      <h5 class="mt-2">Observacoes do aluno</h5>
-      <ul class="list-group mt-4">
-        <li v-for="obs in aluno.observacoes" :key="obs" class="list-group-item">{{obs.comentario}}</li>
-      </ul>
     </div>
   </div>
-  <!-- </div>
-    </div>
-  </div>-->
 </template>
 
 <script>
@@ -147,7 +124,7 @@ export default {
     ptBR
   },
   props: {
-    aluno: Object
+    aluno: {}
   },
   data: function() {
     return {
@@ -156,7 +133,9 @@ export default {
     };
   },
   methods: {
+
     adicionarObservacao() {
+
       this.$http
         .post(`/aluno/observacao-aluno/${this.aluno.id}`, {
           observacao: this.observacao
@@ -171,7 +150,8 @@ export default {
         });
     }
   },
-  mounted() {}
+  mounted() {
+  }
 };
 </script>
 

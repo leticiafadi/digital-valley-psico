@@ -53,5 +53,4 @@ class CursoController extends Controller
     public function getCursos(){
         echo Curso::all();
     }
-
 }

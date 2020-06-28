@@ -179,4 +179,24 @@
     .tg .tg-0lax {
         vertical-align: top
     }
+
+    #endChat {
+        float: left;
+    }
+
+    #sendMessage {
+        float: right;
+    }
+
+    .form-group {
+        overflow: hidden;
+    }
+
+    #messageArea {
+        width: 100%;
+    }
+
+    #endChat, #sendMessage {
+        height: 110px;
+    }
 </style>

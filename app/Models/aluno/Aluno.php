@@ -3,6 +3,7 @@
 namespace App\Models\aluno;
 
 use App\Models\atendimento\Atendimento;
+use App\Models\curso\Curso;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\usuarios\Usuario;
 use Illuminate\Support\Facades\DB;
@@ -50,4 +51,8 @@ class Aluno extends Model
          return $this->belongsTo(Usuario::class, 'id_usuario');
      }
 
+    public function curso()
+    {
+        return $this->belongsTo(Curso::class, 'id_curso');
+    }
 }

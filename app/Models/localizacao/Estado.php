@@ -20,4 +20,8 @@ class Estado extends Model
 		return $this->hasMany('App\Models\localizacao\Cidade', 'state_id', 'id');
 	}
 
+	public function pais(){
+	    return $this->hasOne(Pais::class, 'id', 'country_id');
+    }
+
 }

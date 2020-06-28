@@ -2,61 +2,71 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Models\usuarios\Usuario;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Hashidds\Hashids;
 use App\Models\aluno\Aluno;
 use App\Models\aluno\ObservacaoAluno;
 use App\Models\curso\Curso;
-use App\Http\Controllers\Traits\BuscarAluno;
+use Illuminate\Support\Facades\Auth;
 
 class AlunoController extends Controller
 {
-
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
-		$this->middleware('funcionario');   
-
+        $this->middleware('funcionario');
     }
 
-    use BuscarAluno;
-
-    public function mostrarPaginaAlunos(){
+    public function mostrarPaginaAlunos()
+    {
         return view('auth.pages.alunos.alunos', ['cursos' => Curso::all(), 'base_url' => config('app.url')]);
     }
 
-    //services, refatorar 
-    public function getAlunos(Request $request){
-        $query = $request->get('query');
-        $page = $request->get('page');
-        $id_curso = $request->get('id_curso');
-        if($id_curso == null){
-            return response((Aluno::buscaAlunos($query,$page)),200)->header('Content-Type','text/json');
-        }else {
-            return response((Aluno::buscaAlunosCurso($query,$page,$id_curso)),200)->header('Content-Type','text/json');
-        }
-        
+    public function listarAlunos()
+    {
+        $alunos = Aluno::join('usuario', 'aluno.id_usuario', '=', 'usuario.id')
+            ->join('curso', 'aluno.id_curso', '=', 'curso.id')
+            ->select('aluno.id as id_aluno', 'usuario.id as id_usuario', 'usuario.nome_completo', 'aluno.matricula', 'curso.nome as curso')
+            ->get();
+
+        return response()->json($alunos);
     }
 
-    
-    public function getAluno(Request $request,$id){
-        return response($this->Buscar($id),200)->header('Content-Type','text/json');
+    public function getAluno(Request $request, $id)
+    {
+        $alunoInfo = Usuario::where('usuario.id', $id)
+            ->with(['aluno' => function ($query) {
+                $query->select('id_usuario', 'id_curso', 'matricula', 'semestre_matricula');
+            }, 'aluno.curso' => function ($query) {
+                $query->select('id', 'nome');
+            }, 'endereco' => function ($query) {
+                $query->select('id', 'id_cidade', 'endereco as rua', 'numero', 'bairro');
+            }, 'endereco.cidade' => function ($query) {
+                $query->select('id', 'state_id', 'name as nome');
+            }, 'endereco.cidade.estado' => function ($query) {
+                $query->select('id', 'country_id', 'name as nome');
+            }, 'endereco.cidade.estado.pais' => function ($query) {
+                $query->select('id', 'name as nome');
+            }, 'contatos' => function ($query) {
+                $query->select('id_usuario', 'contato');
+            }])->get();
+
+        return response()->json($alunoInfo->toArray());
     }
 
-    public function mostrarPerfilAluno(Request $request,$id){
+    public function mostrarPerfilAluno(Request $request, $id)
+    {
         return view('auth.pages.alunos.informacoes', ['base_url' => config('app.url'), 'idaluno' => $id]);
     }
 
-    public function addObsercacaoAluno(Request $request, int $id){
-
-
+    public function addObsercacaoAluno(Request $request, int $id)
+    {
         $obs = ObservacaoAluno::create([
-            'comentario'    => $request->observacao,
-            'id_aluno'      => $id
+            'comentario' => $request->observacao,
+            'id_aluno' => $id
         ]);
 
-        return response($obs,201)->header('Content-Type','text/json');
+        return response($obs, 201)->header('Content-Type', 'text/json');
     }
-
-
 }

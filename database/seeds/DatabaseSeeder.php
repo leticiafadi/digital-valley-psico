@@ -17,10 +17,12 @@ class DatabaseSeeder extends Seeder
         $this->call(EnderecoTableSeeder::class);
         $this->call(CursoTableSeeder::class);
         $this->call(UsuarioTableSeeder::class);
-        $this->call(LoginTableSeeder::class);
-        $this->call(ItemLoginTableSeeder::class);
-        $this->call(FuncionarioTableSeeder::class);
         $this->call(AlunoTableSeeder::class);
+        $this->call(LoginTableSeeder::class);
+        $this->call(LoginAlunoTableSeeder::class);
+        $this->call(ItemLoginTableSeeder::class);
+        $this->call(ItemLoginAlunoTableSeeder::class);
+        $this->call(FuncionarioTableSeeder::class);
         $this->call(SemestreTableSeeder::class);
         $this->call(InfoAlunoSemestreTableSeeder::class);
         $this->call(ContatoTableSeeder::class);

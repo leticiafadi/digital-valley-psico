@@ -2,6 +2,7 @@
 
 namespace App\Models\endereco;
 
+use App\Models\localizacao\Cidade;
 use Illuminate\Database\Eloquent\Model;
 
 class Endereco extends Model
@@ -23,7 +24,7 @@ class Endereco extends Model
     }
     
     public function cidade(){
-        return $this->hasOne('App\Models\localizacao\Cidade', 'id', 'id_cidade');
+        return $this->hasOne(Cidade::class,  'id', 'id_cidade');
     }
 
 }

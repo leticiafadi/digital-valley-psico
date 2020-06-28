@@ -5776,3 +5776,9 @@ textarea {
   z-index: 9999;
 }
 
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #417bba;
+}
+

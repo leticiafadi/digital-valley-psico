@@ -20,6 +20,6 @@ class Cidade extends Model
 	];
 
 	public function estado(){
-		return $this->hasOne("App\Models\localizacao\Estado", 'id' , 'id_estado');
+		return $this->hasOne(Estado::class, 'id' , 'state_id');
 	}
 }

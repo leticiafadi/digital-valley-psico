@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.13.1",
+        "@fullcalendar/bootstrap": "^5.0.0",
         "@fullcalendar/core": "^5.0.0",
         "@fullcalendar/daygrid": "^5.0.1",
         "@fullcalendar/timegrid": "^5.0.1",
@@ -46,6 +47,7 @@
         "vee-validate": "^2.2.15",
         "vue-datepicker-ui": "^0.1.2",
         "vue-datetime": "^1.0.0-beta.13",
+        "vue-good-table": "^2.19.5",
         "vue-loading-overlay": "^3.3.2",
         "vue-masked-input": "^0.5.2",
         "vue-recaptcha": "^1.3.0",

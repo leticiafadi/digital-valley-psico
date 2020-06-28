@@ -6,9 +6,11 @@
 </template>
 <script>
     import {Calendar} from '@fullcalendar/core';
+    import bootstrapPlugin from '@fullcalendar/bootstrap';
     import timeGridPlugin from '@fullcalendar/timegrid';
     import ptBrLocale from '@fullcalendar/core/locales/pt-br';
     import DetalhesConsulta from "./DetalhesConsultaComponent";
+
     export default {
         name: "VerCalendario",
         components: {
@@ -28,9 +30,10 @@
         mounted: function () {
             let vm = this, calendarEl = vm.$refs.calendar;
             vm.calendar = new Calendar(calendarEl, {
-                plugins: [timeGridPlugin],
+                plugins: [timeGridPlugin, bootstrapPlugin],
                 editable: false,
                 initialView: 'timeGridWeek',
+                themeSystem: 'bootstrap',
                 allDaySlot: false,
                 hiddenDays: [0, 6],
                 locale: ptBrLocale,
@@ -48,7 +51,7 @@
                     meridiem: false
                 },
                 headerToolbar: {
-                    left: 'today',
+                    left: '',
                     center: 'title',
                     right: 'prev,next'
                 }
@@ -69,5 +72,11 @@
     }
     .fc-timegrid-event .fc-event-main:hover {
         cursor: pointer;
+    }
+    th.fc-col-header-cell.fc-day {
+        background-color: #407ab9;
+        height: 50px;
+        color: white;
+        vertical-align: middle;
     }
 </style>

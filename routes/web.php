@@ -68,10 +68,10 @@ $this->get('/users/create', 'Dashboard\UsersController@formularioCriarUsuarios')
 $this->post('/users/createFuncionario', 'Funcionario\RegistrarFuncionarioController@registrarFuncionario')->name('usuarios.create')->middleware('auth');
 
 //gerenciamento de cursos
-$this->get('/cursos',           'Dashboard\CursoController@mostrarPaginaCursos')->name('cursos.all')->middleware('auth');
-$this->get('/cursos/get',       'Dashboard\CursoController@getCursos')->middleware('auth');
-$this->post('/cursos/create',   'Dashboard\CursoController@createCurso')->middleware('auth');
-$this->post('/cursos/alter',    'Dashboard\CursoController@alterCurso')->name('curso.alterar')->middleware('auth');
+$this->get('/cursos', 'Dashboard\CursoController@mostrarPaginaCursos')->name('cursos.all')->middleware('auth');
+$this->get('/cursos/get', 'Dashboard\CursoController@getCursos')->middleware('auth');
+$this->post('/cursos/create', 'Dashboard\CursoController@createCurso')->middleware('auth');
+$this->post('/cursos/alter', 'Dashboard\CursoController@alterCurso')->name('curso.alterar')->middleware('auth');
 
 //gerenciamento de horarios
 $this->get('/horarios', 'Dashboard\ManterHorariosController@mostrarPaginaManterHorarios')->name('horario')->middleware('auth')->middleware('funcionario');
@@ -90,7 +90,7 @@ $this->get('/localizacao', 'Dashboard\LocalizacaoController@localizacao');
 
 //rota de listar os alunos
 $this->get('/alunos', 'Dashboard\AlunoController@mostrarPaginaAlunos')->name('alunos.all')->middleware('auth');
-$this->get('/alunos/get', 'Dashboard\AlunoController@getAlunos')->middleware('auth')->middleware('funcionario');
+$this->get('/alunos/get', 'Dashboard\AlunoController@listarAlunos')->middleware('auth')->middleware('funcionario');
 $this->get('/alunos/{id}', 'Dashboard\AlunoController@getAluno')->middleware('auth')->middleware('funcionario');
 $this->get('/aluno/{id}', "Dashboard\AlunoController@mostrarPerfilAluno")->middleware('auth')->middleware('funcionario')->name('aluno.buscar');
 $this->post('aluno/observacao-aluno/{id}', "Dashboard\AlunoController@addObsercacaoAluno")->middleware('funcionario');
@@ -99,9 +99,6 @@ $this->get('/manter-semestre', 'Dashboard\ManterSemestreController@mostrarPagina
 
 $this->get('/semestres', 'Dashboard\ManterSemestreController@index');
 $this->post('/semestres', 'Dashboard\ManterSemestreController@create');
-
-
-
 
 
 $this->get('/manter-informacoes', 'DashboardAluno\InformacoesController@manterInformacoesSemestre');

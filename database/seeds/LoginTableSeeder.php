@@ -17,9 +17,5 @@ class LoginTableSeeder extends Seeder
             "senha" => "senha1234",
             'id_usuario' => Usuario::where("tipo", 'funcionario')->first()->id
         ]);
-        Login::create([
-            "senha" => "senha1234",
-            'id_usuario' => Usuario::where("tipo", 'aluno')->first()->id
-        ]);
     }
 }

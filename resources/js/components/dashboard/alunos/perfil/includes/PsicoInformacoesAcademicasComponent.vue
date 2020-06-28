@@ -9,7 +9,7 @@
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="matricula">Matrícula</label>
-                    <input type="text" class="form-control" name="Matricula" v-model="this.aluno.matricula" :disabled="false">
+                    <input type="text" class="form-control" name="Matricula" v-model="this.aluno[0].aluno.matricula" :disabled="false">
                 </div>
             </div>
             <!--<div class="col col-3">
@@ -27,13 +27,13 @@
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="curso">Curso atual</label>
-                    <input type="text" class="form-control" v-model="this.aluno.curso" name="curso" :disabled="false">
+                    <input type="text" class="form-control" v-model="this.aluno[0].aluno.curso.nome" name="curso" :disabled="false">
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="semestreIngresso">Semestre de ingresso</label>
-                    <input type="text" class="form-control" v-model="this.aluno.semestre_matricula" name="semestreIngresso" :disabled="false">
+                    <input type="text" class="form-control" v-model="this.aluno[0].aluno.semestre_matricula" name="semestreIngresso" :disabled="false">
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@ export default {
             ptBR
     },
     props:{
-        aluno: Object
+        aluno: {}
     },
     data: function(){
         return {
@@ -79,6 +79,8 @@ export default {
         }
     },
     methods:{
+    },
+    mounted() {
     }
 }
 </script>

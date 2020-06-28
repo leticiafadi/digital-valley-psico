@@ -27,7 +27,7 @@ class AtendimentoController extends Controller
             'id_horario' => 'required|exists:horario_semana,id'
         ]);
         $atendimento = [
-            'id_aluno'       => Auth::user()->aluno()->id,
+            'id_aluno'       => Auth::user()->aluno->id,
             'id_horario'     => $request->get('id_horario'),
             'id_psicologo'   => $request->get('id_psicologo'),
             'status'         => 'nao_ocorrido',
@@ -59,7 +59,7 @@ class AtendimentoController extends Controller
             'i' => "17:00 as 18:00",
             'j' => "18:00 as 19:00",
         ];
-        $atendimento = Atendimento::select('atendimento.id', "usuario.nome_completo as psicologo", 'atendimento.motivo', 'horario_semana.dia', 'horario_semana.horario', 'atendimento.status')->join('funcionario', 'atendimento.id_psicologo', '=', 'funcionario.id')->join('usuario', 'funcionario.id_usuario', '=', 'usuario.id')->join('horario_semana', 'atendimento.id_horario', '=', 'horario_semana.id')->where('id_aluno', '=', Auth::user()->aluno()->id)->get();
+        $atendimento = Atendimento::select('atendimento.id', "usuario.nome_completo as psicologo", 'atendimento.motivo', 'horario_semana.dia', 'horario_semana.horario', 'atendimento.status')->join('funcionario', 'atendimento.id_psicologo', '=', 'funcionario.id')->join('usuario', 'funcionario.id_usuario', '=', 'usuario.id')->join('horario_semana', 'atendimento.id_horario', '=', 'horario_semana.id')->where('id_aluno', '=', Auth::user()->aluno->id)->get();
         foreach ($atendimento as $atend)
             $atend->horario = $horarios[$atend->horario];
         return response($atendimento, 200)->header('Content-Type', 'text/json');
