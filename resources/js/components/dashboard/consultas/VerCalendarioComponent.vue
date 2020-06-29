@@ -41,9 +41,18 @@
                 slotMaxTime: "19:00",
                 slotDuration: {hours: 1},
                 contentHeight: 'auto',
+                nowIndicator: true,
+                expandRows: true,
+                slotLabelClassNames: 'teste',
                 events: '/consultasPsicologo',
                 eventClick: function (info) {
                     vm.openModal(info.event);
+                },
+                slotLabelFormat: {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    omitZeroMinute: false,
+                    meridiem: 'short'
                 },
                 eventTimeFormat: {
                     hour: '2-digit',

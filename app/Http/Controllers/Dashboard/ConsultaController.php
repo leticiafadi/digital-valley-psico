@@ -27,7 +27,7 @@ class ConsultaController extends Controller
         $atendimentos = Atendimento::select("atendimento.id", "usuario.nome_completo as nome", "aluno.matricula", 'horario_semana.horario', 'horario_semana.dia', 'atendimento.status', 'atendimento.motivo')->
         where("id_psicologo", Auth::user()->id)
             ->join("horario_semana", 'atendimento.id_horario', '=', 'horario_semana.id')
-            ->join('aluno', 'atendimento.id_psicologo', '=', 'aluno.id')
+            ->join('aluno', 'atendimento.id_aluno', '=', 'aluno.id')
             ->join('usuario', 'aluno.id_usuario', '=', 'usuario.id')
             ->with('observacoes')
             ->get();
