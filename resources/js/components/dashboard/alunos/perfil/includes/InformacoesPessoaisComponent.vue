@@ -23,13 +23,13 @@
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="cidadeNatal">Cidade natal</label>
-                    <input type="text" class="form-control" name="cidadeNatal" v-model="this.aluno.endereco.cidade" :disabled="true">
+                    <input type="text" class="form-control" name="cidadeNatal" v-model="this.aluno.endereco.cidade.nome" :disabled="true">
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="estadoNatal">Estado natal</label>
-                    <input type="text" class="form-control" name="estadoNatal" v-model="this.aluno.endereco.estado" :disabled="true">
+                    <input type="text" class="form-control" name="estadoNatal" v-model="this.aluno.endereco.cidade.estado.nome" :disabled="true">
                 </div>
             </div>    
         </div>

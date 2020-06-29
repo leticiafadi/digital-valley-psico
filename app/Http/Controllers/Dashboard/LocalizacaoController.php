@@ -20,6 +20,6 @@ class LocalizacaoController extends Controller
 
     public function paises($id){
         $paises = Pais::where('id','>=', $id)->take(20);
-        echo $paises;
+        return response()->json($paises);
     }
 }

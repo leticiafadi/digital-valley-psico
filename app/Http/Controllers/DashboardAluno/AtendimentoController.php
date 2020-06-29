@@ -42,7 +42,7 @@ class AtendimentoController extends Controller
         // Mail::to("guikar741lol@gmail.com")->send(new SendMailPsicologo($atendimento));
         // Mail::to($user->email)->send(new SendMailPsicologo($atendimento));
 
-        return response($confirmacao, 200)->header('Content-Type', 'text/json');
+        return response()->json($confirmacao, 200);
     }
 
     public function mostrarAtendimentos()
@@ -62,7 +62,7 @@ class AtendimentoController extends Controller
         $atendimento = Atendimento::select('atendimento.id', "usuario.nome_completo as psicologo", 'atendimento.motivo', 'horario_semana.dia', 'horario_semana.horario', 'atendimento.status')->join('funcionario', 'atendimento.id_psicologo', '=', 'funcionario.id')->join('usuario', 'funcionario.id_usuario', '=', 'usuario.id')->join('horario_semana', 'atendimento.id_horario', '=', 'horario_semana.id')->where('id_aluno', '=', Auth::user()->aluno->id)->get();
         foreach ($atendimento as $atend)
             $atend->horario = $horarios[$atend->horario];
-        return response($atendimento, 200)->header('Content-Type', 'text/json');
+        return response()->json($atendimento, 200);
     }
 
     public function cancelarAtendimento(Request $request)

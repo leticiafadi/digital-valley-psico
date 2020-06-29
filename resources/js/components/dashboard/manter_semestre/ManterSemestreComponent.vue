@@ -20,22 +20,23 @@
               <form class="mt-4" v-on:submit.prevent="criarSemestre">
                 <div class="container-fluid">
                   <div class="row">
-                    <div class="col col-8">
+                    <div class="col col-lg-6">
                       <div class="form-group">
                         <label for="ano">Ano</label>
                         <masked-input
+                          id="anoSemestre"
                           name="ano"
                           mask="2111"
                           placeholder="Digite o ano"
                           minlength="4"
-                          v-model="ano"
+                          v-model="semestre.ano"
                         />
                       </div>
                     </div>
-                    <div class="col col-4">
+                    <div class="col col-lg-6">
                       <div class="form-group">
                         <label for="periodo">Período</label>
-                        <select name="periodo" class="form-control" v-model="periodo">
+                        <select name="periodo" class="form-control" v-model="semestre.periodo">
                           <option value="1">1</option>
                           <option value="2">2</option>
                         </select>
@@ -84,8 +85,8 @@ export default {
     criarSemestre() {
       this.$http
         .post("/semestres", {
-          ano: this.ano,
-          periodo: this.periodo
+          ano: this.semestre.ano,
+          periodo: this.semestre.periodo
         })
         .then(res => {
           this.$toast("success", "Semestre criado com sucesso");
@@ -95,8 +96,8 @@ export default {
           this.$toast("error", "err");
         })
         .finally(() => {
-          this.ano = "";
-          this.periodo = "";
+          this.semestre.ano = "";
+          this.semestre.periodo = "";
         });
     }
   },
@@ -105,3 +106,10 @@ export default {
   }
 };
 </script>
+
+<style>
+input#anoSemestre { 
+  width: 100%;
+  padding: 5px;
+}
+</style>

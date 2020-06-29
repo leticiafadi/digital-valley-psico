@@ -32,7 +32,7 @@ class HomeController extends Controller
 
     public function getAluno(Request $request, $id)
     {
-        return response($this->BuscarInfo($id),200)->header('Content-Type','text/json');
+        return response()->json($this->BuscarInfo($id));
     }
 
     public function manterInformacoesSemestre()
@@ -41,12 +41,12 @@ class HomeController extends Controller
     }
 
     public function psicologos(){
-        return response($this->listarPsicologos(),200)->header('Content-Type','text/json');
+        return response()->json($this->listarPsicologos(), 200);
     }
 
     public function horariopsico(Request $request){
         $id = $request->get('id');
         $semana = $request->get('query');
-        return response($this->horarioPsicologo($id,$semana),200)->header('Content-Type','text/json');
+        return response()->json($this->horarioPsicologo($id, $semana), 200);
     }
 }

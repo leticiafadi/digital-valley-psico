@@ -9,7 +9,7 @@
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="matricula">Matrícula</label>
-                    <input type="text" class="form-control" name="Matricula" v-model="this.aluno.matricula" :disabled="true">
+                    <input type="text" class="form-control" name="Matricula" v-model="this.aluno.aluno.matricula" :disabled="true">
                 </div>
             </div>
             <!--<div class="col col-3">
@@ -27,13 +27,13 @@
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="curso">Curso atual</label>
-                    <input type="text" class="form-control" v-model="this.aluno.curso" name="curso" :disabled="true">
+                    <input type="text" class="form-control" v-model="this.aluno.aluno.curso.nome" name="curso" :disabled="true">
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label for="semestreIngresso">Semestre de ingresso</label>
-                    <input type="text" class="form-control" v-model="this.aluno.semestre_matricula" name="semestreIngresso" :disabled="true">
+                    <input type="text" class="form-control" v-model="this.aluno.aluno.semestre_matricula" name="semestreIngresso" :disabled="true">
                 </div>
             </div>
         </div>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\DashboardAluno;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Traits\BuscarAluno;
 use App\Models\aluno\Aluno;
 use \App\Models\semestre\Semestre;
 use App\Models\aluno\InformacoesAluno;
@@ -12,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class InformacoesController extends Controller
 {
-    use BuscarAluno;
 
     public function __construct(){
         $this->middleware('aluno');
@@ -49,6 +47,7 @@ class InformacoesController extends Controller
             'tipo_bolsa'        => $request->tipo_bolsa,
             'possui_filhos'     => $request->possui_filhos
         ]);
+        return response()->json($info, 201);
     }
 
 }

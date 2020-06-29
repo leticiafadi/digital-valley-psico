@@ -22,7 +22,7 @@ class ManterSemestreController extends Controller
 
     public function index(Request $request)
     {
-      	return response(["semestres" => Semestre::all()], 200)->header('Content-Type','text/json');
+      	return response()->json(["semestres" => Semestre::orderByRaw('ano, periodo asc')->get()], 200);
     }
 
     public function create(Request $request)
@@ -32,6 +32,6 @@ class ManterSemestreController extends Controller
 			'periodo'	=> $request->periodo
 		]);
 
-		return response(["semestre" => $semestre], 200)->header('Content-Type', 'text/json');
+		return response()->json(["semestre" => $semestre], 200);
     }
 }

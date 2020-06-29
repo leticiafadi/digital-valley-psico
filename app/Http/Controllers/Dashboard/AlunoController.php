@@ -67,6 +67,6 @@ class AlunoController extends Controller
             'id_aluno' => $id
         ]);
 
-        return response($obs, 201)->header('Content-Type', 'text/json');
+        return response()->json($obs, 201);
     }
 }

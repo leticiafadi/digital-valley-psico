@@ -26,7 +26,7 @@ class CursoController extends Controller
         $curso = Curso::create($request);
 
 
-        echo $curso;
+        return response()->json($curso);
 
     }
 
@@ -51,6 +51,6 @@ class CursoController extends Controller
 
     //services
     public function getCursos(){
-        echo Curso::all();
+        return response()->json(Curso::all());
     }
 }

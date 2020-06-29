@@ -51,13 +51,13 @@ class ManterHorariosController extends Controller{
                 ];
                 $semana = Semana::create($arraySemana);
 
-                return response(json_encode($semana->horarios()), 200)->header("Content-type", "text/json");
+                return response()->json(($semana->horarios()), 200);
 
             }else{
-                return response(json_encode(["errors" => "Semana não encontrada."]), 404)->header("Content-type", "text/json");
+                return response()->json((["errors" => "Semana não encontrada."]), 404);
             }
         }else{
-            return response(json_encode($semana->horarios()), 200)->header("Content-type", "text/json");
+            return response()->json(($semana->horarios()));
         }
 
     }
@@ -70,7 +70,7 @@ class ManterHorariosController extends Controller{
                                     $ano,
                                     $request->numeroSemana );
        
-        return response(json_encode($dias), 200)->header("Content-type", "text/json");
+        return response()->json(($dias), 200);
     }
 
 

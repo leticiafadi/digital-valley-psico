@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Site;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\localizacao\Pais;
 use App\Models\localizacao\Estado;
-use App\Models\localizacao\Cidade;
 
 class LocalizacaoController extends Controller
 {
@@ -16,15 +14,15 @@ class LocalizacaoController extends Controller
     }
 
     public function pais(){
-        return response(Pais::all(), 200)->header('Content-Type', 'text/json');
+        return response()->json(Pais::all(), 200);
     }
 
     public function estados($idPais){
-        return response((Pais::find($idPais)->estados),200)->header('Content-Type','text/json');
+        return response()->json(Pais::find($idPais)->estados);
     }
 
     public function cidades($idEstado){
-        return response((Estado::find($idEstado)->cidades),200)->header('Content-Type','text/json');
+        return response()->json(Estado::find($idEstado)->cidades);
     }
 
 }
