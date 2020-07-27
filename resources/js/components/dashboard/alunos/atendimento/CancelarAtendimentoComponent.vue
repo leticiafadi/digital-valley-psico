@@ -55,7 +55,7 @@
                 }).then(response => {
                     this.$toast("success", "Atendimento cancelado com sucesso!");
                 }, response => {
-                    if (response.status == 404)
+                    if (response.status === 404)
                     {
                         this.$toast("error", "Esse atendimento não foi localizado!");
                     } else {

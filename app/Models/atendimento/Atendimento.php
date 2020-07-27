@@ -3,6 +3,7 @@
 namespace App\Models\atendimento;
 
 use App\Models\aluno\Aluno;
+use App\Models\funcionario\Funcionario;
 use App\Models\observacao\ObservacaoAtendimento;
 use Illuminate\Database\Eloquent\Model;
 
@@ -33,5 +34,10 @@ class Atendimento extends Model
     public function observacoes()
     {
         return $this->hasMany(ObservacaoAtendimento::class, 'id_atendimento');
+    }
+
+    public function psicologo()
+    {
+        return $this->hasOne(Funcionario::class, 'id_psicologo');
     }
 }

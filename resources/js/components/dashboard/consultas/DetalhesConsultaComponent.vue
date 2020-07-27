@@ -3,7 +3,7 @@
         <transition name="modal">
             <div class="modal-mask">
                 <div class="modal-wrapper">
-                    <div class="modal-dialog mw-100 w-75" role="document">
+                    <div class="modal-dialog" :class="{ 'mw-100 w-75' : existeObservacoes() }" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title">Detalhes do Atendimento</h5>
@@ -11,9 +11,9 @@
                                     <span aria-hidden="true" @click="close">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body" :class="{ 'modal-body-extended': existeObservacoes() }">
                                 <div class="container">
-                                    <p>
+                                    <div class="mt-2">
                                         <b>Nome: </b>
                                         {{ detalhesConsulta.title }}
                                         <br/>
@@ -22,11 +22,12 @@
                                         <br/>
                                         <b>Encaminhamento: </b>
                                         {{ detalhesConsulta.extendedProps.encaminhamento }}
-                                    </p>
-                                    <p>
-                                        Observações do atendimento
-                                    </p>
-                                    <table v-if="existeObservacoes()" class="tg">
+                                        <br/>
+                                        <b>Motivo: </b>
+                                        {{ detalhesConsulta.extendedProps.motivo }}
+                                    </div>
+
+                                    <table v-if="existeObservacoes()" class="tg mt-5">
                                         <thead>
                                         <tr>
                                             <th class="tg-0lax w-75">Observação</th>
@@ -41,15 +42,18 @@
                                                 {{ formatarData(obs.created_at) }}
                                             </td>
                                             <td class="tg-0lax text-center">
-                                                <button @click="ativarModalApagarObservacao(obs.id, index)" class="btn btn-sm btn-danger">
-                                                    <i class="far fa-trash-alt" ></i>
+                                                <button @click="ativarModalApagarObservacao(obs.id, index)"
+                                                        class="btn btn-sm btn-danger">
+                                                    <i class="far fa-trash-alt"></i>
                                                 </button>
                                             </td>
                                         </tr>
                                         </tbody>
                                     </table>
-                                    <p v-else>
-                                        Não há observações registradas!
+                                    <p class="mt-5" v-else>
+                                        <b>
+                                            Não há observações registradas!
+                                        </b>
                                     </p>
                                 </div>
                             </div>
@@ -70,6 +74,7 @@
 <script>
     import Moment from "moment";
     import ApagarObservacao from "./ApagarObservacaoComponent";
+
     export default {
         components: {
             ApagarObservacao
@@ -83,30 +88,40 @@
             }
         },
         methods: {
-            show: function (detalhesConsulta) {
-                //Salvar as observacoes
-                this.observacoes = detalhesConsulta.extendedProps.observacoes;
+            show: async function (detalhesConsulta) {
+                //Carregar as observacoes
+                await this.carregarObservacoes(detalhesConsulta.extendedProps.id_atendimento);
+
                 //Salvar os detalhes da consulta
                 this.detalhesConsulta = detalhesConsulta;
+
                 //Abrir o modal
                 this.modalConsulta = true;
             },
             close() {
                 this.modalConsulta = false;
             },
-            ativarModalApagarObservacao: function(observacaoId, index){
+            ativarModalApagarObservacao: function (observacaoId, index) {
                 this.$refs.modalApagarObservacao.show(observacaoId, index);
             },
             formatarData(data) {
-                return Moment(data).format("DD/MM/YYYY");
+                return Moment(data).locale('pt-br').format("LLL");
             },
             existeObservacoes() {
                 return Object.keys(this.observacoes).length !== 0;
             },
-            refresh: function(index){
+            refresh: function (index) {
                 this.$delete(this.observacoes, index);
+            },
+            carregarObservacoes: async function (id_atendimento) {
+                await axios.patch(`/observacao/${id_atendimento}`)
+                    .then(response => {
+                        this.observacoes = response.data;
+                    })
+                    .catch(response => {
+                    });
             }
-        }
+        },
     }
 
 </script>
@@ -134,8 +149,11 @@
     }
 
     .modal-body {
-        height: 450px;
         overflow-y: auto;
+    }
+
+    .modal-body-extended {
+        height: 450px;
     }
 
     ul {
@@ -177,26 +195,6 @@
     }
 
     .tg .tg-0lax {
-        vertical-align: top
-    }
-
-    #endChat {
-        float: left;
-    }
-
-    #sendMessage {
-        float: right;
-    }
-
-    .form-group {
-        overflow: hidden;
-    }
-
-    #messageArea {
-        width: 100%;
-    }
-
-    #endChat, #sendMessage {
-        height: 110px;
+        vertical-align: top;
     }
 </style>
