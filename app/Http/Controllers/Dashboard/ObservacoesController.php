@@ -16,12 +16,12 @@ class ObservacoesController extends Controller
         $this->middleware('funcionario');
     }
 
-    public function apagarObservacaoAtendimento(Request $request)
-    {
+    public function apagarObservacaoAtendimento(Request $request){
         $observacao = ObservacaoAtendimento::find($request->id);
 
         //Verificar se existe observações para esse atendimento
-        if ($observacao == null) {
+        if ($observacao == null)
+        {
             return response()->json([
                 'sucesso' => false,
                 'code' => 404,
@@ -33,7 +33,8 @@ class ObservacoesController extends Controller
         $psicoLogado = Funcionario::where('id_usuario', Auth::id())->first();
         $responsavel = Atendimento::find($observacao->id_atendimento)->first();
 
-        if ($responsavel->id_psicologo != $psicoLogado->id) {
+        if ($responsavel->id_psicologo != $psicoLogado->id)
+        {
             return response()->json([
                 'sucesso' => false,
                 'code' => 403,
@@ -48,65 +49,5 @@ class ObservacoesController extends Controller
             'code' => 200,
             'msg' => 'Observação apagada com sucesso!'
         ], 200);
-    }
-
-    public function adicionarObservacao(Request $request)
-    {
-        /*
-         *  VALIDAR A OBSERVAÇÃO
-         */
-        $validacao = \Validator::make($request->input(), [
-            'observacao' => 'required|min:5',
-        ], [
-            'required' => 'O campo observação é obrigatório!',
-            'min' => 'O campo observação deve ter no mínimo 5 caracteres!'
-        ]);
-
-        if ($validacao->fails()) {
-            return response()->json([
-                'sucesso' => false,
-                'code' => 400,
-                'msg' => '',
-                'errors' => $validacao->errors()
-            ], 400);
-        }
-
-        /*
-         * VALIDAR O FUNCIONÁRIO QUE ESTÁ ENVIANDO A REQUISIÇÃO
-         */
-
-        $responsavelAtendimento = Atendimento::select(['id', 'id_psicologo'])
-            ->where('id', '=', $request->input('id_atendimento'))
-            ->get()
-            ->toArray();
-
-        if(@$responsavelAtendimento[0]['id_psicologo'] != Auth::id()){
-            return response()
-                ->json([], 401);
-        }
-
-        $novaObservacao = ObservacaoAtendimento::create($request->input());
-
-        return response()->json([
-            'sucesso' => true,
-            'code' => 201,
-            'msg' => 'Observação criada com sucesso!',
-            'data' => $novaObservacao
-        ], 201);
-    }
-
-    public function mostrarObservacoesAtendimento(Request $request)
-    {
-        $listaObservacoes = ObservacaoAtendimento::where('id_atendimento', '=', $request->id)
-            ->orderByDesc('created_at')
-            ->get();
-
-        if ($listaObservacoes->isEmpty())
-        {
-            return response()
-                ->json([], 404);
-        }
-
-        return response()->json($listaObservacoes, 200);
     }
 }

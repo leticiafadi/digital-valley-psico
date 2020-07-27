@@ -1,19 +1,7 @@
 <template>
     <div>
-        <!-- CALENDARIO -->
         <div ref="calendar"></div>
-
-        <!-- MODAL DE DETALHES DA CONSULTA -->
         <detalhes-consulta ref="modalConsulta"></detalhes-consulta>
-
-        <!-- MODAL DE ALTERAÇÃO DA SITUACAO DO ATENDIMENTO -->
-        <alterar-situacao ref="modalAlterarSituacao"></alterar-situacao>
-
-        <!-- MODAL DE AÇÕES -->
-        <acoes-atendimento ref="modalAcoes"></acoes-atendimento>
-
-        <!-- MODAL DE ADICIONAR OBSERVACAO -->
-        <adicionar-observacao ref="modalAdicionarObservacao"></adicionar-observacao>
     </div>
 </template>
 <script>
@@ -22,40 +10,21 @@
     import timeGridPlugin from '@fullcalendar/timegrid';
     import ptBrLocale from '@fullcalendar/core/locales/pt-br';
     import DetalhesConsulta from "./DetalhesConsultaComponent";
-    import AcoesAtendimento from "./AcoesAtendimentoComponent";
-    import AlterarSituacao from "./AlterarSituacaoComponent";
-    import AdicionarObservacao from "./AdicionarObservacaoComponent";
 
     export default {
         name: "VerCalendario",
         components: {
-            DetalhesConsulta,
-            AcoesAtendimento,
-            AlterarSituacao,
-            AdicionarObservacao
+            DetalhesConsulta
         },
         data() {
             return {
                 evento: {},
-                calendar: {},
-                dadosAtendimento: null,
+                calendar: {}
             }
         },
-        methods: {
-            openAcoesModal: function () {
-                this.$refs.modalAcoes.show();
-            },
-            openAlterarSituacaoModal: function (){
-              this.$refs.modalAlterarSituacao.show(this.dadosAtendimento);
-            },
-            openAdicionarObservacaoModal: function (){
-                this.$refs.modalAdicionarObservacao.show(this.dadosAtendimento.extendedProps.id_atendimento);
-            },
-            openDetalhesModal: function () {
-                this.$refs.modalConsulta.show(this.dadosAtendimento);
-            },
-            async atualizarCalendario () {
-                await this.calendar.refetchEvents();
+        methods:{
+            openModal(detalhes) {
+                this.$refs.modalConsulta.show(detalhes);
             }
         },
         mounted: function () {
@@ -77,11 +46,7 @@
                 slotLabelClassNames: 'teste',
                 events: '/consultasPsicologo',
                 eventClick: function (info) {
-                    //Salvar dados do atendimento selecionado
-                    vm.dadosAtendimento = info.event;
-
-                    //Abrir o modal de ações
-                    vm.openAcoesModal();
+                    vm.openModal(info.event);
                 },
                 slotLabelFormat: {
                     hour: 'numeric',
@@ -108,19 +73,15 @@
     .fc .fc-timegrid-slot {
         height: 3.5em;
     }
-
     .fc-event-title.fc-sticky {
         font-size: 1rem;
     }
-
     .fc-timegrid-event .fc-event-main {
         padding: 2px 2px 0;
     }
-
     .fc-timegrid-event .fc-event-main:hover {
         cursor: pointer;
     }
-
     th.fc-col-header-cell.fc-day {
         background-color: #407ab9;
         height: 50px;
