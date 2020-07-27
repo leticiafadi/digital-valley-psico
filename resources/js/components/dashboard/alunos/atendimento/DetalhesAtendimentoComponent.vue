@@ -3,7 +3,7 @@
         <transition name="modal">
             <div class="modal-mask">
                 <div class="modal-wrapper">
-                    <div class="modal-dialog" role="document">
+                    <div class="modal-dialog" :class="{ 'mw-100 w-75' : existeObservacoes() }" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title">Detalhes do Atendimento</h5>
@@ -11,9 +11,9 @@
                                     <span aria-hidden="true" @click="close">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body" :class="{ 'modal-body-extended': existeObservacoes() }">
                                 <div class="container">
-                                    <p>
+                                    <div class="mt-2">
                                         <b>Nome: </b>
                                         {{ atendimento.detalhes.nome_aluno }}
                                         <br/>
@@ -22,12 +22,12 @@
                                         <br/>
                                         <b>Encaminhamento: </b>
                                         {{ atendimento.detalhes.encaminhamento }}
-                                    </p>
-                                    <p>
-                                        Observações do atendimento
-                                    </p>
+                                        <br />
+                                        <b>Motivo: </b>
+                                        {{ atendimento.detalhes.motivo }}
+                                    </div>
 
-                                    <table v-if="existeObservacoes()" class="tg">
+                                    <table v-if="existeObservacoes()" class="tg mt-5">
                                         <thead>
                                         <tr>
                                             <th class="tg-0lax">Observação</th>
@@ -41,8 +41,8 @@
                                         </tr>
                                         </tbody>
                                     </table>
-                                    <p v-else>
-                                        Não há observações registradas!
+                                    <p class="mt-5" v-else>
+                                        <b>Não há observações registradas!</b>
                                     </p>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@
                 this.modalDetalhes = false;
             },
             formatarData(data){
-                return Moment(data).format("DD/MM/YYYY");
+                return Moment(data).locale('pt-br').format("LLL");
             },
             existeObservacoes() {
                 return Object.keys(this.atendimento.detalhes.observacoes).length !== 0;
@@ -112,13 +112,16 @@
         vertical-align: middle;
     }
 
-     .modal-wrapper {
-        display: table-cell;
-        vertical-align: middle;
+    .modal-dialog {
+        overflow-y: initial !important
     }
 
-    .modal-dialog{
-        overflow-y: initial !important
+    .modal-body {
+        overflow-y: auto;
+    }
+
+    .modal-body-extended {
+        height: 450px;
     }
 
     ul {

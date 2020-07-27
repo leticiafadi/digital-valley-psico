@@ -24,12 +24,11 @@ class ConsultaController extends Controller
 
     public function listarAtendimentos()
     {
-        $atendimentos = Atendimento::select("atendimento.id", "usuario.nome_completo as nome", "aluno.matricula", 'horario_semana.horario', 'horario_semana.dia', 'atendimento.status', 'atendimento.motivo')->
+        $atendimentos = Atendimento::select("atendimento.id", "usuario.nome_completo as nome", "aluno.matricula", 'horario_semana.horario', 'horario_semana.dia', 'atendimento.status', 'atendimento.encaminhamento', 'atendimento.motivo')->
         where("id_psicologo", Auth::user()->id)
             ->join("horario_semana", 'atendimento.id_horario', '=', 'horario_semana.id')
             ->join('aluno', 'atendimento.id_aluno', '=', 'aluno.id')
             ->join('usuario', 'aluno.id_usuario', '=', 'usuario.id')
-            ->with('observacoes')
             ->get();
 
         $horarios = [
@@ -53,11 +52,12 @@ class ConsultaController extends Controller
                 'id_atendimento' => $atendimento['id'],
                 'title' => $atendimento['nome'],
                 'matricula' => $atendimento['matricula'],
-                'encaminhamento' => $atendimento['motivo'],
+                'encaminhamento' => $atendimento['encaminhamento'],
+                'motivo' => $atendimento['motivo'],
                 'start' => "{$atendimento['dia']} {$horarios[$atendimento['horario']][0]}",
                 'end' => "{$atendimento['dia']} {$horarios[$atendimento['horario']][1]}",
+                'status' => $atendimento['status'],
                 'color' => ($atendimento['status'] == 'cancelado') ? '#dc3545' : (($atendimento['status'] == 'ocorrido') ? '#28a745' : '#6c757d'),
-                'observacoes' => $atendimento['observacoes']
             ];
         });
 
@@ -67,7 +67,6 @@ class ConsultaController extends Controller
 
     public function verConsulta($id = 1)
     {
-
         try {
             return view('auth.pages.item-consulta.item-consulta')->with('consulta');
         } catch (\Exception $e) {
@@ -76,9 +75,10 @@ class ConsultaController extends Controller
 
     }
 
-    public function cancelarConsulta(Request $request)
+    public function atualizarStatusAtendimento(Request $request)
     {
-        $atendimento = Atendimento::find($request->atid);
+        $atendimento = Atendimento::find($request->input('id_atendimento'));
+        $status = $request->input('status');
         $psicologoId = Auth::id();
 
         if (($atendimento == null) or ($atendimento->id_psicologo != $psicologoId)) {
@@ -90,23 +90,24 @@ class ConsultaController extends Controller
             ], 404);
         }
 
-        if ($atendimento->status == 'ocorrido' or $atendimento->status == 'cancelado') {
-            //Atendimento já ocorrido, não pode ser cancelado
+        //Verificar se o status passado é válido de acordo com uma lista de status pré-definidas
+        if (empty($status) OR !in_array($status, ['nao_ocorrido', 'ocorrido', 'cancelado']))
+        {
             return response()->json([
                 'sucesso' => false,
-                'code' => 403,
-                'msg' => 'Este atendimento não pode ser cancelado!',
-            ], 403);
+                'code' => 401,
+                'msg' => 'O status selecionado é inválido!',
+            ], 401);
         }
 
-        //Cancelar o atendimento
-        $atendimento->status = 'cancelado';
+        //Atualizar o status do atendimento
+        $atendimento->status = $status;
         $atendimento->save();
 
         return response()->json([
             'sucesso' => true,
             'code' => 200,
-            'msg' => 'Atendimento cancelado com sucesso!',
+            'msg' => 'Situação alterada com sucesso!',
         ], 200);
     }
 }

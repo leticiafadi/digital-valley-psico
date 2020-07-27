@@ -18,6 +18,7 @@ class CreateObservacaoAtendimentoTable extends Migration {
 			$table->integer('id_atendimento')->unsigned()->index('observacao_atendimento_FK');
 			$table->string('observacao');
             $table->dateTime('created_at');
+            $table->dateTime('updated_at');
 		});
 	}
 
