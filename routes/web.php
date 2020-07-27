@@ -65,7 +65,9 @@ $this->post('/consulta/cancelar', 'Dashboard\ConsultaController@cancelarConsulta
 //gerenciamento de usuarios
 $this->get('/users', 'Dashboard\UsersController@usuarios')->name('usuarios.all')->middleware('auth');
 $this->get('/users/create', 'Dashboard\UsersController@formularioCriarUsuarios')->name('usuarios.create')->middleware('auth');
-$this->post('/users/createFuncionario', 'Funcionario\RegistrarFuncionarioController@registrarFuncionario')->name('usuarios.create')->middleware('auth');
+$this->get('/users/edit/{id}', 'Dashboard\UsersController@formularioEditarUsuario')->name('usuarios.edit')->middleware('auth');
+$this->post('/users/edit/{tipo}', 'Dashboard\UsersController@atualizaUsuario')->name('usuarios.editTipo')->middleware('auth');
+$this->post('/users/createFuncionario', 'Funcionario\RegistrarFuncionarioController@registrarFuncionario')->name('usuarios.createFuncionario')->middleware('auth');
 
 //gerenciamento de cursos
 $this->get('/cursos', 'Dashboard\CursoController@mostrarPaginaCursos')->name('cursos.all')->middleware('auth');
@@ -92,7 +94,10 @@ $this->get('/localizacao', 'Dashboard\LocalizacaoController@localizacao');
 $this->get('/alunos', 'Dashboard\AlunoController@mostrarPaginaAlunos')->name('alunos.all')->middleware('auth');
 $this->get('/alunos/get', 'Dashboard\AlunoController@listarAlunos')->middleware('auth')->middleware('funcionario');
 $this->get('/alunos/{id}', 'Dashboard\AlunoController@getAluno')->middleware('auth')->middleware('funcionario');
-$this->get('/aluno/{id}', "Dashboard\AlunoController@mostrarPerfilAluno")->middleware('auth')->middleware('funcionario')->name('aluno.buscar');
+// $this->get('/aluno/{id}', "Dashboard\AlunoController@mostrarPerfilAluno")->middleware('auth')->middleware('funcionario')->name('aluno.buscar');
+$this->post('/aluno/pessoal', "Dashboard\AlunoController@editAlunoPessoal")->middleware('auth')->middleware('funcionario')->name('aluno.pessoal');
+$this->post('/aluno/academico', "Dashboard\AlunoController@editAlunoAcademico")->middleware('auth')->middleware('funcionario')->name('aluno.academico');
+$this->post('/aluno/contato', "Dashboard\AlunoController@editAlunoContato")->middleware('auth')->middleware('funcionario')->name('aluno.contato');
 $this->post('aluno/observacao-aluno/{id}', "Dashboard\AlunoController@addObsercacaoAluno")->middleware('funcionario');
 
 $this->get('/manter-semestre', 'Dashboard\ManterSemestreController@mostrarPaginaSemestre')->name("semestre.all");
@@ -125,7 +130,7 @@ $this->get('/mail', function () {
         ]
     ]);
 
-    return $markdown->render('mail.exemplo', [
+    return $markdown->render('mail.novo-atendimento', [
         'user' => 'Guilherme N'
     ]);
 });

@@ -19,7 +19,11 @@
                                 <div class="col col-12">
                                     <ul class="list-group">
                                         @foreach($funcionarios as $funcionario)
-                                            <li class="list-group-item">{{$funcionario->usuario->nome_completo}}</li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                {{$funcionario->usuario->nome_completo}}
+                                                <a href="users/edit/{{$funcionario->id}}" class="btn mybtn-table btn-primary">Editar</a>
+                                                {{-- <span class="badge badge-primary badge-pill">2</span> --}}
+                                            </li>
                                         @endforeach
                                     </ul>
                                 </div>

@@ -15,7 +15,7 @@ Vue.use(VueRouter);
 Vue.use(VueSweetalert2);
 
 Vue.prototype.$http = axios.create({
-    baseURL: "http://digital-valley-psico.test",
+    baseURL: "http://localhost",
 });
 
 Vue.prototype.$toast = function (tipo, mensagem) {
@@ -41,6 +41,26 @@ Vue.component(
 Vue.component(
     "cadastrar-usuario",
     require("./components/dashboard/usuarios/CadastrarUsuarioComponent.vue")
+        .default
+);
+Vue.component(
+    "editar-usuario",
+    require("./components/dashboard/usuarios/EditarUsuarioComponent.vue")
+        .default
+);
+Vue.component(
+    "informacoes-pessoais-usuario",
+    require("./components/dashboard/usuarios/includesEditar/InformacoesPessoaisComponent.vue")
+        .default
+);
+Vue.component(
+    "informacoes-profissionais-usuario",
+    require("./components/dashboard/usuarios/includesEditar/InformacoesProfissionaisComponent.vue")
+        .default
+);
+Vue.component(
+    "informacoes-contato-usuario",
+    require("./components/dashboard/usuarios/includesEditar/InformacoesContatoComponent.vue")
         .default
 );
 Vue.component(
@@ -84,6 +104,12 @@ Vue.component(
 Vue.component(
     "infoacademica-aluno",
     require("./components/dashboard/alunos/perfil/includes/PsicoInformacoesAcademicasComponent.vue")
+        .default
+);
+
+Vue.component(
+    "infocontato-aluno",
+    require("./components/dashboard/alunos/perfil/includes/PsicoInformacoesContatoComponent.vue")
         .default
 );
 

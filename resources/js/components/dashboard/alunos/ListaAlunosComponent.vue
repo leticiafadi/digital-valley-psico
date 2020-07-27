@@ -25,12 +25,12 @@
                         Não há registros.
                     </div>
                     <template slot="table-row" slot-scope="props">
-                                    <span v-if="props.column.field == 'acao'">
-                                        <button @click="abrirPerfil(props.row.id_usuario)"
-                                                class="btn mybtn-table py-1 px-4">
-                                            Ver perfil
-                                        </button>
-                                    </span>
+                        <span v-if="props.column.field == 'acao'">
+                            <button @click="abrirPerfil(props.row.id_usuario)"
+                                    class="btn mybtn-table py-1 px-4">
+                                Ver perfil
+                            </button>
+                        </span>
                         <span v-else>
                             {{props.formattedRow[props.column.field]}}
                         </span>

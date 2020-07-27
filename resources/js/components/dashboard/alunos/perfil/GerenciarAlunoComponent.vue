@@ -4,12 +4,16 @@
       <div class="col col-12">
         <div class="card">
           <div class="card-header">
+            <a class="btn btn-outline-light" @click='voltar' href="#" role="button">
+              <i class="fas fa-fw fa-arrow-alt-circle-left pr-2 mycolor-azul"></i>
+            </a>
             <i class="fas fa-fw fa-user pr-2 mycolor-azul"></i>
             Gerenciar perfil Aluno
           </div>
           <div class="card-body">
             <infopessoal-aluno :aluno="this.aluno"></infopessoal-aluno>
             <infoacademica-aluno :aluno="this.aluno"></infoacademica-aluno>
+            <infocontato-aluno :aluno="this.aluno"></infocontato-aluno>
             <div class="card-body">
               <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -133,9 +137,10 @@ export default {
     };
   },
   methods: {
-
+    voltar(id) {
+      this.$parent.voltar();
+    },
     adicionarObservacao() {
-
       this.$http
         .post(`/aluno/observacao-aluno/${this.aluno.id}`, {
           observacao: this.observacao
@@ -154,4 +159,3 @@ export default {
   }
 };
 </script>
-
