@@ -14,7 +14,7 @@ class LoginTableSeeder extends Seeder
     public function run()
     {
         Login::create([
-            "senha" => "senha1234",
+            "senha" => "1234",
             'id_usuario' => Usuario::where("tipo", 'funcionario')->first()->id
         ]);
     }

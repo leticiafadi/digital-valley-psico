@@ -12,10 +12,12 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                No momento este atendimento está <b>{{ atendimento.status.atual |
-                                statusAtendimento }}</b>.
+                                No momento este atendimento está
+                                <b>
+                                    {{ dadosAtendimento.extendedProps.status | statusAtendimento }}
+                                </b>.
 
-                                <form>
+                                <form @submit.prevent="atualizarStatus">
                                     <fieldset class="form-group mt-4">
                                         <div class="row">
                                             <legend class="col-form-label col-sm-3 pt-0">Alterar para:</legend>
@@ -23,8 +25,7 @@
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="status"
                                                            id="emAberto" value="nao_ocorrido"
-                                                           @change="atualizarStatus()"
-                                                           v-model="atendimento.status.novo">
+                                                           v-model="status">
                                                     <label class="form-check-label" for="emAberto">
                                                         Em aberto
                                                     </label>
@@ -32,8 +33,7 @@
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="status"
                                                            id="concluido" value="ocorrido"
-                                                           @change="atualizarStatus()"
-                                                           v-model="atendimento.status.novo">
+                                                           v-model="status">
                                                     <label class="form-check-label" for="concluido">
                                                         Concluído
                                                     </label>
@@ -41,22 +41,23 @@
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="status"
                                                            id="cancelado" value="cancelado"
-                                                           @change="atualizarStatus()"
-                                                           v-model="atendimento.status.novo">
+                                                           v-model="status">
                                                     <label class="form-check-label" for="cancelado">
                                                         Cancelado
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="row mt-4">
+                                            <div class="col-sm-12">
+                                                <button class="btn btn-success btn-block">
+                                                    Atualizar
+                                                </button>
+                                            </div>
+                                        </div>
                                     </fieldset>
                                 </form>
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" @click="close">
-                                    Fechar
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -72,13 +73,8 @@
         data: function () {
             return {
                 modalAlterarSituacao: false,
-                atendimento: {
-                    id: null,
-                    status: {
-                        atual: null,
-                        novo: null, //novo terá o mesmo status de atual por conta do checked que leva em conta o v-model
-                    }
-                }
+                dadosAtendimento: [],
+                status: null,
             }
         },
         methods: {
@@ -87,13 +83,8 @@
             },
             show(dados) {
                 //Salvar dados do atendimento
-                this.atendimento = {
-                    id: dados.extendedProps.id_atendimento,
-                    status: {
-                        atual: dados.extendedProps.status,
-                        novo: dados.extendedProps.status,
-                    }
-                };
+                this.dadosAtendimento = dados;
+                this.status = dados.extendedProps.status
 
                 this.modalAlterarSituacao = true;
             },
@@ -102,8 +93,8 @@
             },
             atualizarStatus: async function () {
                 await axios.patch(`/atendimento/status`, {
-                    id_atendimento: this.atendimento.id,
-                    status: this.atendimento.status.novo
+                    id_atendimento: this.dadosAtendimento.extendedProps.id_atendimento,
+                    status: this.status
                 })
                     .then(response => {
                         this.$toast("success", response.data.msg);

@@ -19,7 +19,7 @@ class LoginAlunoTableSeeder extends Seeder
         foreach($usuarios as $chave => $usuario)
         {
             $logins[$chave]['id_usuario'] = $usuario['id'];
-            $logins[$chave]['senha'] = bcrypt('senha1234');
+            $logins[$chave]['senha'] = bcrypt('1234');
         }
         Login::insert($logins);
     }

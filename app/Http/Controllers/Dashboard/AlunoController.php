@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Models\observacao\ObservacoesAluno;
 use App\Models\usuarios\Usuario;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\aluno\Aluno;
-use App\Models\aluno\ObservacaoAluno;
 use App\Models\curso\Curso;
 use App\Models\endereco\Endereco;
 use App\Models\dataTempo\Data;
@@ -81,7 +81,7 @@ class AlunoController extends Controller
         $aluno->matricula = $request->matricula;
         $aluno->semestre_matricula = $request->semestre;
         $aluno->id_curso = $request->curso;
-        $aluno->save(); 
+        $aluno->save();
         return response()->json($aluno);
     }
 
@@ -108,13 +108,83 @@ class AlunoController extends Controller
         return view('auth.pages.alunos.informacoes', ['base_url' => config('app.url'), 'idaluno' => $id]);
     }
 
-    public function addObsercacaoAluno(Request $request, int $id)
+    public function addObsercacaoAluno(Request $request)
     {
-        $obs = ObservacaoAluno::create([
-            'comentario' => $request->observacao,
-            'id_aluno' => $id
+        /*
+         *  VALIDAR A OBSERVAÇÃO
+         */
+        $validacao = \Validator::make($request->input(), [
+            'observacao' => 'required|min:5',
+        ], [
+            'required' => 'O campo observação é obrigatório!',
+            'min' => 'O campo observação deve ter no mínimo 5 caracteres!'
         ]);
 
-        return response()->json($obs, 201);
+        if ($validacao->fails()) {
+            return response()->json([
+                'sucesso' => false,
+                'code' => 400,
+                'msg' => '',
+                'errors' => $validacao->errors()
+            ], 400);
+        }
+
+        /*
+         * INSERIR A OBSERVACAO
+         */
+        $obs = ObservacoesAluno::create([
+            'comentario' => $request->input('observacao'),
+            'id_aluno' => $request->input('id_aluno')
+        ]);
+
+        return response()->json([
+            'sucesso' => true,
+            'code' => 201,
+            'msg' => 'Observação criada com sucesso!',
+            'data' => $obs
+        ], 201);
+    }
+
+    public function listarObservacoes(Request $request)
+    {
+        $listaObservacoes = ObservacoesAluno::where('id_aluno', '=', $request->id_aluno)->orderByDesc('created_at')->get();
+
+        if($listaObservacoes->isEmpty())
+        {
+            return response()->json([], 404);
+        }
+
+        return response()->json([
+            'sucesso' => true,
+            'code' => 200,
+            'msg' => 'Observações carregadas com sucesso!',
+            'data' => $listaObservacoes
+        ], 200);
+    }
+
+    public function apagarObservacao(Request $request)
+    {
+        $observacao = ObservacoesAluno::find($request->id_observacao);
+
+        if (!$observacao->exists())
+        {
+            return response()->json([
+                'sucesso' => false,
+                'code' => 403,
+                'msg' => 'Não foi possível apagar essa observação!',
+                'data' => ''
+            ], 403);
+        }
+
+        /*
+         * APAGAR OBSERVACAO
+         */
+        $observacao->delete();
+        return response()->json([
+            'sucesso' => true,
+            'code' => 200,
+            'msg' => 'Observação apagada com sucesso!',
+            'data' => ''
+        ], 200);
     }
 }

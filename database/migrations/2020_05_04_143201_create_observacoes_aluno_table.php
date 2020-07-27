@@ -18,6 +18,7 @@ class CreateObservacoesAlunoTable extends Migration {
 			$table->integer('id', true);
 			$table->integer('id_aluno')->unsigned()->index('observacoes_aluno_FK');
             $table->dateTime('created_at');
+            $table->dateTime('updated_at');
 		});
 	}
 

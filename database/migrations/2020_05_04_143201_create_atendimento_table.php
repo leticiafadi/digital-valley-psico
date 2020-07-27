@@ -18,7 +18,7 @@ class CreateAtendimentoTable extends Migration {
 			$table->integer('id_aluno')->unsigned()->index('atendimento_FK');
 			$table->integer('id_horario')->index('atendimento_FK_1');
 			$table->integer('id_psicologo')->unsigned()->index('atendimento_FK_2');
-			$table->string('motivo', 50);
+			$table->string('motivo', 50)->default('Não informado.');
 			$table->string('encaminhamento', 200);
 			$table->enum('status', array('ocorrido','nao_ocorrido','cancelado'));
 		});

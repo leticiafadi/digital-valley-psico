@@ -13,9 +13,9 @@
                                 <thead class="mynav">
                                 <tr>
                                     <th class="corLinhaTabela">Atendimento</th>
-                                    <th class="corLinhaTabela">Psicologo</th>
-                                    <th class="corLinhaTabela">Data e horário do Atendimento</th>
-                                    <th class="corLinhaTabela">Opções</th>
+                                    <th class="corLinhaTabela">Psicólogo</th>
+                                    <th class="corLinhaTabela">Data/Horário do Atendimento</th>
+                                    <th class="corLinhaTabela">Ações</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -42,7 +42,7 @@
                                             <button
                                                     class="btn mybtn-table py-1 px-4"
                                                     @click="modalDetalhes(atendimento.id)"
-                                            >Ver mais
+                                            >Detalhes
                                             </button>
                                         </td>
                                     </tr>

@@ -11,17 +11,13 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
-                    {{--   <form method="POST" action="{{ route('login') }}">--}}
-
                         {{csrf_field()}}
 
                         <div class="form-group row">
                             <label for="usuario" class="col-md-4 col-form-label text-md-right">Usuário</label>
 
                             <div class="col-md-6">
-                                {{--<input id="usuario" type="text" class="form-control{{ $errors->has('usuario') ? ' is-invalid' : '' }}" name="usuario" value="{{ old('usuario') }}" required  placeholder="Matrícula, email ou siape." autofocus>--}}
-
-                                <input id="usuario" type="text" class="form-control{{ $errors->has('usuario') ? ' is-invalid' : '' }}" name="usuario" value="{{ old('usuario') }}" required  placeholder="Email ou Matrícula." autofocus>
+                                <input id="usuario" type="text" class="form-control{{ $errors->has('usuario') ? ' is-invalid' : '' }}" name="usuario" value="{{ old('usuario') }}" placeholder="E-mail ou matrícula" required autofocus autocomplete="off">
 
                                 @if ($errors->has('usuario'))
                                     <span class="invalid-feedback" role="alert">
@@ -46,24 +42,9 @@
                         </div>
                         <div class="form-group row">
                             <div class="col col-md-8 offset-md-4">
-                                <a href="{{route('passwordreset.show-link-request-form')}}">Esqueceu sua senha ?</a>
+                                <a href="{{route('passwordreset.show-link-request-form')}}">Esqueceu sua senha?</a>
                             </div>
                         </div>
-
-                        {{--
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        --}}
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn mybtn-table">
@@ -74,7 +55,7 @@
 
                         <div class="form-group row mt-3">
                             <div class="col col-md-8 offset-md-4">
-                                <a href="{{route('verificarPedidoCadastro')}}">É novo aqui ? Registrar-se</a>
+                                <a href="{{route('verificarPedidoCadastro')}}">É novo aqui? Registrar-se</a>
                             </div>
                         </div>
                     </form>

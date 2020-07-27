@@ -1,5 +1,5 @@
 <template>
-    <div v-if="modalApagarObservacao">
+    <div v-if="modalApagarObservacaoAluno">
         <transition name="modal">
             <div class="modal-mask">
                 <div class="modal-wrapper">
@@ -29,45 +29,34 @@
 
 <script>
     export default {
-        name: "ApagarObservacao",
+        name: "apagarObservacaoAluno",
         data: function () {
             return {
-                observacaoId: Number,
+                modalApagarObservacaoAluno: false,
+                id_observacao: Number,
                 index: Number,
-                modalApagarObservacao: false,
             }
         },
         methods: {
-            confirmar() {
-                this.$http.post(`/observacao/apagar`, {
-                    _token: document
-                        .querySelector('meta[name="csrf-token"]')
-                        .getAttribute("content"),
-                    id: this.observacaoId
-                }).then(response => {
-                    this.$toast("success", "Observação apagada com sucesso!");
+            show(id, index) {
+                //Abre o modal
+                this.modalApagarObservacaoAluno = true;
 
-                    //Recarregar as observações
-                    this.$parent.refresh(this.index);
-                }, response => {
-                    if (response.status === 404)
-                    {
-                        this.$toast("error", "Essa observação não foi localizada!");
-                    } else {
-                        this.$toast("error", "Você não pode apagar essa observação!");
-                    }
-                });
+                //Salva o ID do atendimento
+                this.id_observacao = id;
 
-                //Fechar o modal
-                this.close();
+                //Salvar o index da observacao
+                this.index = index;
             },
             close() {
-                this.modalApagarObservacao = false;
+                this.modalApagarObservacaoAluno = false;
             },
-            show(observacaoId, index) {
-                this.observacaoId = observacaoId;
-                this.index = index;
-                this.modalApagarObservacao = true;
+            confirmar() {
+                //Recarregar os atendimentos
+                this.$parent.apagarObservacao(this.id_observacao, this.index);
+
+                //Fechar o modal
+                this.close()
             }
         }
     }

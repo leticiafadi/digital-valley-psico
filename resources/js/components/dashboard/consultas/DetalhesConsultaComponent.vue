@@ -99,7 +99,14 @@
                 this.modalConsulta = true;
             },
             close() {
+                //Limpar os dados para evitar erros nas próximas consultas de atendimentos
+                this.limparInformacoes();
+
                 this.modalConsulta = false;
+            },
+            limparInformacoes: function () {
+                this.detalhesConsulta = [];
+                this.observacoes = [];
             },
             ativarModalApagarObservacao: function (observacaoId, index) {
                 this.$refs.modalApagarObservacao.show(observacaoId, index);
@@ -119,7 +126,6 @@
                         this.observacoes = response.data;
                     })
                     .catch(e => {
-                        this.observacoes = []
                     });
             }
         },

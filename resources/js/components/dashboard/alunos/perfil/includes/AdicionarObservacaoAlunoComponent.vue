@@ -1,5 +1,5 @@
 <template>
-    <div v-if="modalAdicionarObservacao">
+    <div v-if="modalAdicionarObservacaoAluno">
         <transition name="modal">
             <div class="modal-mask">
                 <div class="modal-wrapper">
@@ -40,11 +40,13 @@
 
 <script>
     export default {
-        name: "AdicionarObservacao",
+        name: "AdicionarObservacaoAluno",
+        props: {
+            aluno: Object
+        },
         data: function () {
             return {
-                modalAdicionarObservacao: false,
-                id_atendimento: null,
+                modalAdicionarObservacaoAluno: false,
                 observacao: '',
                 erros: [],
             }
@@ -54,17 +56,17 @@
             * MÉTODOS PARA CONTROLAR AS OBSERVACOES
             * */
             adicionarObservacao: async function () {
-                await axios.post('/observacao', {
-                    id_atendimento: this.id_atendimento,
+                await axios.post('/aluno/observacoes', {
+                    id_aluno: this.aluno.id,
                     observacao: this.observacao
                 }).then(response => {
                     this.$toast("success", "Observação criada com sucesso!");
-
+                    console.log(response);
                     //Limpa o formulário
                     this.limparObservacao();
 
-                    //Atualizar atendimentos
-                    this.$parent.atualizarCalendario();
+                    //Adiciona novo comentário ao componente pai
+                    this.$parent.pushNovoComentario(response.data.data);
 
                     //Fecha esse modal
                     this.close();
@@ -81,6 +83,7 @@
             limparObservacao: function () {
                 this.observacao = '';
             },
+
             /*
             *   METODOS PARA CONTROLE DE ERROS
             * */
@@ -101,11 +104,11 @@
             *   METODOS PARA CONTROLE DO MODAL
             * */
             close() {
-                this.modalAdicionarObservacao = false;
+                this.modalAdicionarObservacaoAluno = false;
             },
             show(dados) {
                 this.id_atendimento = dados;
-                this.modalAdicionarObservacao = true;
+                this.modalAdicionarObservacaoAluno = true;
             }
         },
     }
