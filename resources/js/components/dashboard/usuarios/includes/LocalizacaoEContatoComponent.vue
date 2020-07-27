@@ -150,8 +150,8 @@
             }
         },
         watch:{
-            id_pais: 'carregaEstados',
-            id_estado: 'carregaCidades'
+                // id_pais: 'carregaEstados',
+                // id_estado: 'carregaCidades'
         },
         components:{
             MaskedInput,
@@ -229,9 +229,9 @@
         },
         async mounted(){
 
-            this.carregaPaises().then(response=>{
-                this.id_pais = this.old.id_pais != '' ? this.old.id_pais : 30;
-            });
+            // this.carregaPaises().then(response=>{
+            //     this.id_pais = this.old.id_pais != '' ? this.old.id_pais : 30;
+            // });
             this.id_estado = this.old.id_estado != '' ? this.old.id_estado : 517;
             this.endereco = this.old.endereco;
             this.bairro = this.old.bairro;

@@ -12,7 +12,6 @@ class Funcionario extends Model
     public $timestamps = false;
 
     protected $hidden = [
-        'id'
     ];
 
     public static function create(array $data){

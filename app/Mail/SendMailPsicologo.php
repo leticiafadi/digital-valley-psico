@@ -5,6 +5,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\Models\horarios\HorarioSemana;
 
 class SendMailPsicologo extends Mailable
 {
@@ -30,10 +31,23 @@ class SendMailPsicologo extends Mailable
      */
     public function build()
     {
-        
-        // return $this->view('mail.novo-atendimento');
-        return $this->markdown('mail.exemplo')->with([
-            'user' => 'Guilherme N'
+        $horarios = [
+            'a' => "08:00 as 09:00",
+            'b' => "09:00 as 10:00",
+            'c' => "10:00 as 11:00",
+            'd' => "11:00 as 12:00",
+            'e' => "13:00 as 14:00",
+            'f' => "14:00 as 15:00",
+            'g' => "15:00 as 16:00",
+            'h' => "16:00 as 17:00",
+            'i' => "17:00 as 18:00",
+            'j' => "18:00 as 19:00",
+        ];
+        return $this->markdown('mail.novo-atendimento')->with([
+            'user' => $this->atendimento['nome_psicologo'],
+            'aluno' => $this->atendimento['nome_aluno'],
+            'dia' => date('d/m/y', strtotime($this->atendimento['dia'])),
+            'hora' => $horarios[$this->atendimento['hora']],
         ]);
     }
 }

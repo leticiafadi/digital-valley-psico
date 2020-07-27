@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Models\aluno\Aluno;
 use App\Models\aluno\ObservacaoAluno;
 use App\Models\curso\Curso;
+use App\Models\endereco\Endereco;
+use App\Models\dataTempo\Data;
 use Illuminate\Support\Facades\Auth;
 
 class AlunoController extends Controller
@@ -49,10 +51,56 @@ class AlunoController extends Controller
             }, 'endereco.cidade.estado.pais' => function ($query) {
                 $query->select('id', 'name as nome');
             }, 'contatos' => function ($query) {
-                $query->select('id_usuario', 'contato');
+                $query->select('id_usuario', 'tipo', 'contato');
             }])->get();
 
-        return response()->json($alunoInfo->toArray());
+        return response()->json($alunoInfo->toArray()[0]);
+    }
+
+    public function editAlunoPessoal(Request $request)
+    {
+        $aluno = Usuario::find($request->id);
+        $aluno->nome_completo = $request->nome;
+        $aluno->data_nascimento = $request->dtnascimento;
+        $endereco = Endereco::where('id_cidade', '=', $request->id_cidade)
+            ->where('endereco', '=', $request->endereco)
+            ->where('bairro', '=', $request->bairro)
+            ->where('numero', '=', $request->numero)
+            ->get();
+        if (count($endereco) == 0) {
+            $endereco = Endereco::create($request->only(['id_cidade', 'endereco', 'bairro', 'numero']))['id'];
+            $aluno->id_endereco = $endereco;
+        }
+        $aluno->save();
+        return response()->json($aluno);
+    }
+
+    public function editAlunoAcademico(Request $request)
+    {
+        $aluno = Usuario::find($request->id)->aluno;
+        $aluno->matricula = $request->matricula;
+        $aluno->semestre_matricula = $request->semestre;
+        $aluno->id_curso = $request->curso;
+        $aluno->save(); 
+        return response()->json($aluno);
+    }
+
+    public function editAlunoContato(Request $request)
+    {
+        $aluno = Usuario::find($request->id)->contatos;
+        foreach ($aluno as $cont) {
+            if ($cont->tipo == 'telefone') {
+                $cont->contato = $request->telefone;
+                $cont->save();
+            } else if ($cont->tipo == 'celular') {
+                $cont->contato = $request->celular;
+                $cont->save();
+            } else if ($cont->tipo == 'email') {
+                $cont->contato = $request->email;
+                $cont->save();
+            }
+        }
+        return response()->json($aluno);
     }
 
     public function mostrarPerfilAluno(Request $request, $id)
