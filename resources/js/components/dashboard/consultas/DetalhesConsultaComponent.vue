@@ -114,11 +114,12 @@
                 this.$delete(this.observacoes, index);
             },
             carregarObservacoes: async function (id_atendimento) {
-                await axios.patch(`/observacao/${id_atendimento}`)
+                await axios.get(`/observacao/${id_atendimento}`)
                     .then(response => {
                         this.observacoes = response.data;
                     })
-                    .catch(response => {
+                    .catch(e => {
+                        this.observacoes = []
                     });
             }
         },
