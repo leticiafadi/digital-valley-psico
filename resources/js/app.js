@@ -15,7 +15,7 @@ Vue.use(VueRouter);
 Vue.use(VueSweetalert2);
 
 Vue.prototype.$http = axios.create({
-    baseURL: "http://psico.test",
+    baseURL: "http://localhost",
 });
 
 Vue.prototype.$toast = function (tipo, mensagem) {
@@ -76,6 +76,11 @@ Vue.component(
 Vue.component(
     "ver-calendario",
     require("./components/dashboard/consultas/VerCalendarioComponent").default
+);
+
+Vue.component(
+    "editar-atendimento",
+    require("./components/dashboard/consultas/EditarAtendimentoComponent").default
 );
 
 Vue.component(

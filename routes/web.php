@@ -56,6 +56,8 @@ $this->get('/atendimentos/detalhes/{id}', 'DashboardAluno\AtendimentoController@
 $this->get('/consultasPsicologo', 'Dashboard\ConsultaController@listarAtendimentos')->name('consultas.all')->middleware('auth');
 $this->get('/consulta', 'Dashboard\ConsultaController@mostarPaginaConsultas')->name('consultas.all')->middleware('auth');
 $this->get('/consulta/{id}', 'Dashboard\ConsultaController@verConsulta')->name('consulta.visualizar')->middleware('auth');
+$this->get('/editar-atendimento/{id}', 'Dashboard\ConsultaController@editarAtendimento')->name('consulta.editar')->middleware('auth');
+$this->post('/editar-atendimento/{id}', 'Dashboard\ConsultaController@attAtendimento')->name('consulta.editarAtt')->middleware('auth');
 $this->get('/atendimento/{id}', 'Dashboard\AtendimentoController@mostrarAtendimentos')->name('atendimeto.get')->middleware('auth')->middleware('funcionario');
 $this->patch('/atendimento/status', 'Dashboard\ConsultaController@atualizarStatusAtendimento')->middleware('auth')->middleware('funcionario');
 $this->post('/observacao', 'Dashboard\ObservacoesController@adicionarObservacao')->middleware('auth')->middleware('funcionario');

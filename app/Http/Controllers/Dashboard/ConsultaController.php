@@ -19,7 +19,7 @@ class ConsultaController extends Controller
 
     public function mostarPaginaConsultas()
     {
-        return view('auth.pages.calendario');
+        return view('auth.pages.calendario', ['base_url' => config('app.url')]);
     }
 
     public function listarAtendimentos()
@@ -109,5 +109,25 @@ class ConsultaController extends Controller
             'code' => 200,
             'msg' => 'Situação alterada com sucesso!',
         ], 200);
+    }
+
+    public function editarAtendimento(Request $request, $id)
+    {
+        $atendimento = Atendimento::find($id);
+        $atendimento->aluno->toArray();
+        $atendimento->horario->toArray();
+        return view('auth.pages.editar-atendimento.EditarAtendimento', ['atendimento' => $atendimento]);
+    }
+
+    public function attAtendimento(Request $request, $id)
+    {
+        $this->validate($request, [
+            'id_horario' => 'required|exists:horario_semana,id'
+        ]);
+        $atendimento = Atendimento::find($id);
+        $atendimento->id_horario = $request->id_horario;
+        $atendimento->save();
+
+        return response()->json($atendimento, 200);
     }
 }

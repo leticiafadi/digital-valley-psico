@@ -29,11 +29,13 @@
                                         </button>
                                     </div>
                                     <div class="col-3">
-                                        <button class="btn btn-lg btn-primary btn-block py-4 rounded">
-                                            <i class="far fa-clock fa-2x"></i>
-                                            <br/>
-                                            Alterar horário
-                                        </button>
+                                        <a :href="base_url + '/editar-atendimento/' + dadosAtendimento.id_atendimento">
+                                            <button class="btn btn-lg btn-primary btn-block py-4 rounded">
+                                                <i class="far fa-clock fa-2x"></i>
+                                                <br/>
+                                                Alterar horário
+                                            </button>
+                                        </a>
                                     </div>
                                     <div class="col-3">
                                         <button @click="openAlterarSituacaoModal" class="btn btn-lg btn-primary btn-block py-4 rounded">
@@ -56,6 +58,11 @@
     export default {
         components: {},
         name: "AcoesConsulta",
+        props: {
+            base_url: {
+                type: String
+            }
+        },
         data: function () {
             return {
                 modalAcoes: false,

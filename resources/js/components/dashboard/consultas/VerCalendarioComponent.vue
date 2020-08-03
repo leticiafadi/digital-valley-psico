@@ -10,7 +10,7 @@
         <alterar-situacao ref="modalAlterarSituacao"></alterar-situacao>
 
         <!-- MODAL DE AÇÕES -->
-        <acoes-atendimento ref="modalAcoes"></acoes-atendimento>
+        <acoes-atendimento ref="modalAcoes" :base_url="base_url"></acoes-atendimento>
 
         <!-- MODAL DE ADICIONAR OBSERVACAO -->
         <adicionar-observacao ref="modalAdicionarObservacao"></adicionar-observacao>
@@ -34,6 +34,11 @@
             AlterarSituacao,
             AdicionarObservacao
         },
+        props: {
+            base_url: {
+                type: String
+            }
+        },
         data() {
             return {
                 evento: {},
@@ -43,7 +48,7 @@
         },
         methods: {
             openAcoesModal: function () {
-                this.$refs.modalAcoes.show();
+                this.$refs.modalAcoes.show(this.dadosAtendimento.extendedProps);
             },
             openAlterarSituacaoModal: function (){
               this.$refs.modalAlterarSituacao.show(this.dadosAtendimento);

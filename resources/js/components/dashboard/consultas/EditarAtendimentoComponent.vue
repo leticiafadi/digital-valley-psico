@@ -16,38 +16,21 @@
                     id="marcarAtendimento"
                     type="text"
                     name="motivoAtendimento"
-                    v-model="motivoAtendimento"
+                    :disabled='true'
+                    v-model="atendimento.motivo"
                     placeholder="EX: Não estou conseguindo conciliar os meus horários da faculdade"
                   />
                 </div>
               </div>
             </div>
             <div class="row mt-1">
-              <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                <div class="form-group">
-                  <label for="id_curso">Psicólogo responsável</label>
-                  <select
-                    v-model="idPsico"
-                    name="id_curso"
-                    class="form-control"
-                  >
-                    <option :value="0" selected>Selecione um psicólogo</option>
-                    <option
-                      v-for="psicologoItr in psicologos"
-                      v-bind:value="psicologoItr.id"
-                      :key="psicologoItr.id"
-                      >{{ psicologoItr.nome_completo }}</option
-                    >
-                  </select>
-                </div>
-              </div>
-              <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+              <div class="col col-12">
                 <div class="form-group">
                   <label for="id_semana">Semana Disponivel</label>
                   <select
                     v-model="nrsemana"
                     name="id_semana"
-                    class="form-control"
+                    class="form-control atend"
                   >
                     <option :value="0" selected
                       >Selecione uma Semana Disponível</option
@@ -66,7 +49,7 @@
             </div>
             <div
               v-if="
-                this.idPsico != 0 && this.nrsemana != 0 && this.dias.length > 0
+                this.nrsemana != 0 && this.dias.length > 0
               "
             >
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -96,7 +79,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.segunda.segunda_a_bool)"
-                            id
+                            v-model='semana.segunda.segunda_a_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.segunda.segunda_a_id,
@@ -109,7 +92,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.terca.terca_a_bool)"
-                            id
+                            v-model='semana.terca.terca_a_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.terca.terca_a_id,
@@ -122,7 +105,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.quarta.quarta_a_bool)"
-                            id
+                            v-model='semana.quarta.quarta_a_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.quarta.quarta_a_id,
@@ -135,7 +118,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.quinta.quinta_a_bool)"
-                            id
+                            v-model='semana.quinta.quinta_a_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.quinta.quinta_a_id,
@@ -148,7 +131,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.sexta.sexta_a_bool)"
-                            id
+                            v-model='semana.sexta.sexta_a_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.sexta.sexta_a_id,
@@ -166,7 +149,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.segunda.segunda_b_bool)"
-                            id
+                            v-model='semana.segunda.segunda_b_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.segunda.segunda_b_id,
@@ -179,7 +162,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.terca.terca_b_bool)"
-                            id
+                            v-model='semana.terca.terca_b_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.terca.terca_b_id,
@@ -192,7 +175,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.quarta.quarta_b_bool)"
-                            id
+                            v-model='semana.quarta.quarta_b_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.quarta.quarta_b_id,
@@ -205,7 +188,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.quinta.quinta_b_bool)"
-                            id
+                            v-model='semana.quinta.quinta_b_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.quinta.quinta_b_id,
@@ -218,7 +201,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.sexta.sexta_b_bool)"
-                            id
+                            v-model='semana.sexta.sexta_b_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.sexta.sexta_b_id,
@@ -236,7 +219,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.segunda.segunda_c_bool)"
-                            id
+                            v-model='semana.segunda.segunda_c_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.segunda.segunda_c_id,
@@ -249,7 +232,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.terca.terca_c_bool)"
-                            id
+                            v-model='semana.terca.terca_c_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.terca.terca_c_id,
@@ -262,7 +245,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.quarta.quarta_c_bool)"
-                            id
+                            v-model='semana.quarta.quarta_c_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.quarta.quarta_c_id,
@@ -275,7 +258,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.quinta.quinta_c_bool)"
-                            id
+                            v-model='semana.quinta.quinta_c_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.quinta.quinta_c_id,
@@ -288,7 +271,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.sexta.sexta_c_bool)"
-                            id
+                            v-model='semana.sexta.sexta_c_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.sexta.sexta_c_id,
@@ -306,7 +289,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.segunda.segunda_d_bool)"
-                            id
+                            v-model='semana.segunda.segunda_d_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.segunda.segunda_d_id,
@@ -319,7 +302,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.terca.terca_d_bool)"
-                            id
+                            v-model='semana.terca.terca_d_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.terca.terca_d_id,
@@ -332,7 +315,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.quarta.quarta_d_bool)"
-                            id
+                            v-model='semana.quarta.quarta_d_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.quarta.quarta_d_id,
@@ -345,7 +328,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.quinta.quinta_d_bool)"
-                            id
+                            v-model='semana.quinta.quinta_d_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.quinta.quinta_d_id,
@@ -358,7 +341,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.sexta.sexta_d_bool)"
-                            id
+                            v-model='semana.sexta.sexta_d_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.sexta.sexta_d_id,
@@ -382,7 +365,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.segunda.segunda_e_bool)"
-                            id
+                            v-model='semana.segunda.segunda_e_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.segunda.segunda_e_id,
@@ -395,7 +378,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.terca.terca_e_bool)"
-                            id
+                            v-model='semana.terca.terca_e_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.terca.terca_e_id,
@@ -408,7 +391,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.quarta.quarta_e_bool)"
-                            id
+                            v-model='semana.quarta.quarta_e_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.quarta.quarta_e_id,
@@ -421,7 +404,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.quinta.quinta_e_bool)"
-                            id
+                            v-model='semana.quinta.quinta_e_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.quinta.quinta_e_id,
@@ -434,7 +417,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.sexta.sexta_e_bool)"
-                            id
+                            v-model='semana.sexta.sexta_e_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.sexta.sexta_e_id,
@@ -452,7 +435,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.segunda.segunda_f_bool)"
-                            id
+                            v-model='semana.segunda.segunda_f_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.segunda.segunda_f_id,
@@ -465,7 +448,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.terca.terca_f_bool)"
-                            id
+                            v-model='semana.terca.terca_f_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.terca.terca_f_id,
@@ -478,7 +461,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.quarta.quarta_f_bool)"
-                            id
+                            v-model='semana.quarta.quarta_f_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.quarta.quarta_f_id,
@@ -491,7 +474,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.quinta.quinta_f_bool)"
-                            id
+                            v-model='semana.quinta.quinta_f_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.quinta.quinta_f_id,
@@ -504,7 +487,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.sexta.sexta_f_bool)"
-                            id
+                            v-model='semana.sexta.sexta_f_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.sexta.sexta_f_id,
@@ -522,7 +505,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.segunda.segunda_g_bool)"
-                            id
+                            v-model='semana.segunda.segunda_g_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.segunda.segunda_g_id,
@@ -535,7 +518,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.terca.terca_g_bool)"
-                            id
+                            v-model='semana.terca.terca_g_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.terca.terca_g_id,
@@ -548,7 +531,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.quarta.quarta_g_bool)"
-                            id
+                            v-model='semana.quarta.quarta_g_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.quarta.quarta_g_id,
@@ -561,7 +544,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.quinta.quinta_g_bool)"
-                            id
+                            v-model='semana.quinta.quinta_g_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.quinta.quinta_g_id,
@@ -574,7 +557,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.sexta.sexta_g_bool)"
-                            id
+                            v-model='semana.sexta.sexta_g_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.sexta.sexta_g_id,
@@ -592,7 +575,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.segunda.segunda_h_bool)"
-                            id
+                            v-model='semana.segunda.segunda_h_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.segunda.segunda_h_id,
@@ -605,7 +588,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.terca.terca_h_bool)"
-                            id
+                            v-model='semana.terca.terca_h_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.terca.terca_h_id,
@@ -618,7 +601,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.quarta.quarta_h_bool)"
-                            id
+                            v-model='semana.quarta.quarta_h_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.quarta.quarta_h_id,
@@ -631,7 +614,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.quinta.quinta_h_bool)"
-                            id
+                            v-model='semana.quinta.quinta_h_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.quinta.quinta_h_id,
@@ -644,7 +627,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.sexta.sexta_h_bool)"
-                            id
+                            v-model='semana.sexta.sexta_h_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.sexta.sexta_h_id,
@@ -662,7 +645,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.segunda.segunda_i_bool)"
-                            id
+                            v-model='semana.segunda.segunda_i_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.segunda.segunda_i_id,
@@ -675,7 +658,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.terca.terca_i_bool)"
-                            id
+                            v-model='semana.terca.terca_i_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.terca.terca_i_id,
@@ -688,7 +671,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.quarta.quarta_i_bool)"
-                            id
+                            v-model='semana.quarta.quarta_i_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.quarta.quarta_i_id,
@@ -701,7 +684,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.quinta.quinta_i_bool)"
-                            id
+                            v-model='semana.quinta.quinta_i_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.quinta.quinta_i_id,
@@ -714,7 +697,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.sexta.sexta_i_bool)"
-                            id
+                            v-model='semana.sexta.sexta_i_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.sexta.sexta_i_id,
@@ -732,7 +715,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.segunda.segunda_j_bool)"
-                            id
+                            v-model='semana.segunda.segunda_j_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.segunda.segunda_j_id,
@@ -745,7 +728,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.terca.terca_j_bool)"
-                            id
+                            v-model='semana.terca.terca_j_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.terca.terca_j_id,
@@ -758,7 +741,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.quarta.quarta_j_bool)"
-                            id
+                            v-model='semana.quarta.quarta_j_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.quarta.quarta_j_id,
@@ -771,7 +754,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.quinta.quinta_j_bool)"
-                            id
+                            v-model='semana.quinta.quinta_j_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.quinta.quinta_j_id,
@@ -784,7 +767,7 @@
                           <input
                             type="checkbox"
                             @click="desativa(semana.sexta.sexta_j_bool)"
-                            id
+                            v-model='semana.sexta.sexta_j_bool.value'
                             :disabled="
                               desativar(
                                 this.semana.sexta.sexta_j_id,
@@ -800,37 +783,16 @@
               </div>
             </div>
             <div class="row mt-1">
-              <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+              <div class="col col-12">
                 <div class="form-group">
-                  <label for="horarios-atendimento">Encaminhado por</label>
-                  <select
-                    name="formaEncaminhamento"
-                    id
-                    class="form-control"
-                    v-model="motivoEncaminhamento"
-                  >
-                    <option @click="limpaMotivo()" value
-                      >Selecione a forma de encaminhamento</option
-                    >
-                    <option value="espontaneo">Espontânea vontade</option>
-                    <option value="recomendado">Outro motivo</option>
-                  </select>
-                </div>
-              </div>
-              <div
-                class="col-xl-8 col-lg-8 col-md-12 col-sm-12"
-                v-show="motivoEncaminhamento == 'recomendado'"
-              >
-                <div class="form-group">
-                  <label for="motivoEncaminhamento"
-                    >Descreva quem o encaminhou</label
-                  >
+                  <label for="encaminhamento">Encaminhado por</label>
                   <input
-                    id="marcarAtendimento"
+                    id="encaminhamento"
                     type="text"
-                    name="motivoEncaminhamento"
-                    placeholder="EX: encaminhado pela psicóloga"
-                    v-model="textMotivoEncaminhamento"
+                    name="encaminhamento"
+                    :disabled='true'
+                    class="atend"
+                    v-model="atendimento.encaminhamento"
                   />
                 </div>
               </div>
@@ -866,7 +828,11 @@ export default {
     ptBR,
     Datetime,
   },
-  props: {},
+  props: {
+    atendimento: {
+      type: Object
+    }
+  },
   data: function() {
     return {
       pt: ptBR,
@@ -878,7 +844,7 @@ export default {
       psicologos: [],
       idPsico: 0,
       semanas: [],
-      nrsemana: 0,
+      nrsemana: this.atendimento.horario.id_semana,
       desativarTodos: false,
       semana: {
         segunda: {
@@ -1004,20 +970,39 @@ export default {
   },
   methods: {
     carregaHorario() {
-      if (this.idPsico != 0) {
-        this.$http
-          .get(`/psicologo/get?query=${this.nrsemana}&id=${this.idPsico}`)
-          .then((response) => {
-            this.dias = response.data;
-            if (this.dias.length == 0)
-              this.$toast("info", "Não tem nenhum horario disponível");
-            else this.setarSemana();
-          })
-          .catch((err) => {
-            this.dias = [];
-            this.$toast("warning", "Não foi possível buscar os horarios");
-          });
-      }
+      this.$http
+        .get(`/psicologo/get?query=${this.nrsemana}&id=${this.atendimento.id_psicologo}`)
+        .then((response) => {
+          this.dias = response.data;
+          if (this.dias.length == 0)
+            this.$toast("info", "Não tem nenhum horario disponível");
+          else {
+            this.setarSemana()
+            for (let i in response.data) {
+            if (response.data[i].dia === this.atendimento.horario.dia) {
+              let dia;
+              if (i == 0) {
+                dia = 'segunda'
+              } else if (i == 1) {
+                dia = 'terca'
+              } else if (i == 2) {
+                dia = 'quarta'
+              } else if (i == 3) {
+                dia = 'quinta'
+              } else if (i == 4) {
+                dia = 'sexta'
+              }
+              this.semana[dia][dia + '_' + this.atendimento.horario.horario + '_' + 'id'] = this.atendimento.id_horario
+              this.desativa(this.semana[dia][dia + '_' + this.atendimento.horario.horario + '_' + 'bool'])
+              
+            }
+          }
+          };
+        })
+        .catch((err) => {
+          this.dias = [];
+          this.$toast("warning", "Não foi possível buscar os horarios");
+        });
     },
     carregasemana() {
       var dia = new Date();
@@ -1154,8 +1139,6 @@ export default {
       this.semana.sexta.sexta_j_bool.value = false;
     },
     salvarHorario() {
-      // console.log(this);
-      // console.log(this.semana['segunda']);
       let id;
       for (let i in this.semana) {
         for (let j in this.semana[i]) {
@@ -1163,34 +1146,27 @@ export default {
             id = this.semana[i][j.split("_bool")[0] + "_id"];
         }
       }
-      this.$http
-        .post(`/atendimentos`, {
-          _token: document
-            .querySelector('meta[name="csrf-token"]')
-            .getAttribute("content"),
-          id_horario: id,
-          id_psicologo: this.idPsico,
-          motivo: this.motivoAtendimento,
-          encaminhamento:
-            this.motivoEncaminhamento == "recomendado"
-              ? this.textMotivoEncaminhamento
-              : this.motivoEncaminhamento,
-        })
-        .then((res) => {
-          this.$toast("success", "Atendimento Marcado com sucesso.");
-          setTimeout(() => (window.location.href = "/"), 1000);
-        })
-        .catch((err) => {
-          this.$toast("error", "Erro ao marcar atendimento");
-        });
+      if (id) {
+        this.$http
+          .post(`/editar-atendimento/${this.atendimento.id}`, {
+            _token: document
+              .querySelector('meta[name="csrf-token"]')
+              .getAttribute("content"),
+            id_horario: id,
+          })
+          .then((res) => {
+            this.$toast("success", "Atendimento Atualizado com sucesso.");
+            setTimeout(() => (window.location.href = "/consulta"), 1000);
+          })
+          .catch((err) => {
+            this.$toast("error", "Erro ao marcar atendimento");
+          });
+      }else {
+        this.$toast("error", "Erro ao marcar atendimento");
+      }
     },
     limpaMotivo() {
       this.textMotivoEncaminhamento = "";
-    },
-    carregaPsicologos() {
-      this.$http.get(`/psicologos`).then((response) => {
-        this.psicologos = response.data;
-      });
     },
     desativa(bool) {
       bool.value = !bool.value;
@@ -1209,8 +1185,8 @@ export default {
     },
   },
   mounted() {
-    this.carregaPsicologos();
     this.carregasemana();
+    this.carregaHorario();
   },
 };
 </script>
@@ -1221,7 +1197,7 @@ export default {
   width: 100%;
 }
 
-input#marcarAtendimento { 
+input#marcarAtendimento, .atend{ 
   width: 100%;
   padding: 5px;
 }

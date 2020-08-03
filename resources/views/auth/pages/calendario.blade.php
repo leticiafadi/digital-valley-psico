@@ -9,7 +9,7 @@
                         <span>Atendimentos</span>
                     </div>
                     <div class="card-body">
-                        <ver-calendario><ver-calendario>
+                    <ver-calendario base_url="{{$base_url}}"><ver-calendario>
                     </div>
                 </div>
             </div>
