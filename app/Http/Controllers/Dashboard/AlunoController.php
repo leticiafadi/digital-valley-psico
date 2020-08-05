@@ -39,7 +39,7 @@ class AlunoController extends Controller
     {
         $alunoInfo = Usuario::where('usuario.id', $id)
             ->with(['aluno' => function ($query) {
-                $query->select('id_usuario', 'id_curso', 'matricula', 'semestre_matricula');
+                $query->select('id', 'id_usuario', 'id_curso', 'matricula', 'semestre_matricula');
             }, 'aluno.curso' => function ($query) {
                 $query->select('id', 'nome');
             }, 'endereco' => function ($query) {

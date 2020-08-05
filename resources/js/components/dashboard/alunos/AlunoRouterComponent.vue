@@ -28,12 +28,12 @@
             voltar() {
                 this.pagina = "listaAlunos";
             },
-            carregaAluno(id_aluno) {
+            carregaAluno(id_usuario) {
                 this.$http
-                    .get(`/alunos/${id_aluno}`)
+                    .get(`/alunos/${id_usuario}`)
                     .then(response => {
                         this.aluno = response.data;
-                        this.aluno.id = id_aluno;
+
                     })
                     .catch(err => {
                         this.$toast("error", "Aluno não encontrado!");

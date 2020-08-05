@@ -54,6 +54,7 @@ $this->get('/atendimentos/detalhes/{id}', 'DashboardAluno\AtendimentoController@
 
 //rotas do psicologo
 $this->get('/consultasPsicologo', 'Dashboard\ConsultaController@listarAtendimentos')->name('consultas.all')->middleware('auth');
+$this->get('/consultasAluno/{id_aluno}', 'Dashboard\ConsultaController@listarAtendimentosAluno')->middleware('auth');
 $this->get('/consulta', 'Dashboard\ConsultaController@mostarPaginaConsultas')->name('consultas.all')->middleware('auth');
 $this->get('/consulta/{id}', 'Dashboard\ConsultaController@verConsulta')->name('consulta.visualizar')->middleware('auth');
 $this->get('/editar-atendimento/{id}', 'Dashboard\ConsultaController@editarAtendimento')->name('consulta.editar')->middleware('auth');

@@ -24,6 +24,7 @@
                     <div slot="emptystate" class="text-center">
                         Não há registros.
                     </div>
+
                     <template slot="table-row" slot-scope="props">
                         <span v-if="props.column.field == 'acao'">
                             <button @click="abrirPerfil(props.row.id_usuario)"
@@ -129,6 +130,7 @@
                 placeholder: 'Filtrar por',
                 filterDropdownItems: listaDeCursos,
             });
+
         }
     }
 </script>

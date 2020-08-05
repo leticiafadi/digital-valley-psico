@@ -57,11 +57,11 @@
             * */
             adicionarObservacao: async function () {
                 await axios.post('/aluno/observacoes', {
-                    id_aluno: this.aluno.id,
+                    id_aluno: this.aluno.aluno.id,
                     observacao: this.observacao
                 }).then(response => {
                     this.$toast("success", "Observação criada com sucesso!");
-                    console.log(response);
+
                     //Limpa o formulário
                     this.limparObservacao();
 
