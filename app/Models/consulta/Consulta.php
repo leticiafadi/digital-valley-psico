@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models\consulta;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -56,7 +56,7 @@ class Consulta extends Model{
 	}
 	
 	public function horarios(){
-		return $this->hasMany('App\Turno', 'id_consulta', 'id')->orderBy('horario')->orderBy('dia');
+		return $this->hasMany('App\Models\turno\Turno', 'id_consulta', 'id')->orderBy('horario')->orderBy('dia');
 	}
 	
 	

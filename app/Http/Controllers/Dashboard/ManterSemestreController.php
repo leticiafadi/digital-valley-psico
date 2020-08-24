@@ -27,11 +27,11 @@ class ManterSemestreController extends Controller
 
     public function create(Request $request)
     {
-		$semestre = Semestre::create([
-			'ano' 		=> $request->ano,
-			'periodo'	=> $request->periodo
-		]);
+      $semestre = Semestre::create([
+        'ano' 		=> $request->ano,
+        'periodo'	=> $request->periodo
+      ]);
 
-		return response()->json(["semestre" => $semestre], 200);
+      return response()->json(["semestre" => $semestre], 200);
     }
 }

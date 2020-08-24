@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\aluno\Aluno;
 use App\Models\curso\Curso;
 use App\Models\endereco\Endereco;
+use Illuminate\Support\Facades\Validator;
 use App\Models\dataTempo\Data;
 use Illuminate\Support\Facades\Auth;
 
@@ -113,7 +114,7 @@ class AlunoController extends Controller
         /*
          *  VALIDAR A OBSERVAÇÃO
          */
-        $validacao = \Validator::make($request->input(), [
+        $validacao = Validator::make($request->input(), [
             'observacao' => 'required|min:5',
         ], [
             'required' => 'O campo observação é obrigatório!',

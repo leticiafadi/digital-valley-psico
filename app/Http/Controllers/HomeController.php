@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Consulta;
+use App\Models\consulta\Consulta;
 use App\Models\curso\Curso;
 use App\Models\funcionario\Funcionario;
 

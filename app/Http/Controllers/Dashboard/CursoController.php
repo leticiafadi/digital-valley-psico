@@ -39,7 +39,9 @@ class CursoController extends Controller
             $curso = Curso::find($request->id);
             $curso->nome = $request->value;
             $curso->save();
-            echo '{"success" : true}';
+            return response()->json([
+                'sucesso' => true
+            ], 200);
         }catch(\Exception $e){
             echo $e;
         }

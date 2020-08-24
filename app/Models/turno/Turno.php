@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models\turno;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;

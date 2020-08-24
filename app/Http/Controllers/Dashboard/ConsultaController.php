@@ -4,9 +4,16 @@ namespace App\Http\Controllers\Dashboard;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
 use App\Http\Controllers\Controller;
 use App\Models\atendimento\Atendimento;
 use App\Serializers\JsonDataSerializer;
+
+use App\Models\aluno\Aluno;
+use App\Models\horarios\HorarioSemana;
+use App\Mail\SendMailAluno;
+
 use League\Fractal\Manager as FractalManager;
 use League\Fractal\Resource\Collection as FractalCollection;
 
@@ -152,6 +159,18 @@ class ConsultaController extends Controller
         $atendimento = Atendimento::find($id);
         $atendimento->id_horario = $request->id_horario;
         $atendimento->save();
+
+        $user = Aluno::find($atendimento->id_aluno)->usuario;
+        foreach ($user->contatos as $cont) {
+            if ($cont->tipo == 'email') {
+                $atendimento['nome_psicologo'] = Auth::user()->nome_completo;
+                $atendimento['nome_aluno'] = $user->nome_completo;
+                $horario = HorarioSemana::find($request->get('id_horario'));
+                $atendimento['dia'] = $horario->dia;
+                $atendimento['hora'] = $horario->horario;
+                Mail::to($cont->contato)->send(new SendMailAluno($atendimento));
+            }
+        }
 
         return response()->json($atendimento, 200);
     }

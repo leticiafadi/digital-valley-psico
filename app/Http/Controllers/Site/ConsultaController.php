@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Consulta;
-use App\Turno;
+use App\Models\consulta\Consulta;
+use App\Models\turno\Turno;
 
 
 class ConsultaController extends Controller

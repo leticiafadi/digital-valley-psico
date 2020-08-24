@@ -7,6 +7,7 @@ use App\Models\funcionario\Funcionario;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\observacao\ObservacaoAtendimento;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
 class ObservacoesController extends Controller
@@ -55,7 +56,7 @@ class ObservacoesController extends Controller
         /*
          *  VALIDAR A OBSERVAÇÃO
          */
-        $validacao = \Validator::make($request->input(), [
+        $validacao = Validator::make($request->input(), [
             'observacao' => 'required|min:5',
         ], [
             'required' => 'O campo observação é obrigatório!',
