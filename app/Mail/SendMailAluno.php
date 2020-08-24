@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SendMailPsicologo extends Mailable
+class SendMailAluno extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -42,7 +42,7 @@ class SendMailPsicologo extends Mailable
             'i' => "17:00 as 18:00",
             'j' => "18:00 as 19:00",
         ];
-        return $this->markdown('mail.novo-atendimento')->with([
+        return $this->markdown('mail.atualizacao-atendimento')->with([
             'user' => $this->atendimento['nome_psicologo'],
             'aluno' => $this->atendimento['nome_aluno'],
             'dia' => date('d/m/y', strtotime($this->atendimento['dia'])),
