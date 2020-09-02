@@ -10,7 +10,9 @@
 |
 */
 
-$this->get('/', 'PaginaInicialController@mostrarPaginaInicial')->name("pagina-inicial");
+$this->get('/', function (){
+    return redirect()->route('login');
+});
 $this->get('/pedidoCadastro', 'Site\AlunoController@mostrarformularioPedidoCadastro');
 $this->post('/pedidoCadastro', 'Site\AlunoController@verificarPedidoCadastro')->name('verificarPedidoCadastro');
 $this->get('/realizarCadastro', 'Site\AlunoController@mostrarFormularioCadastrarAluno');

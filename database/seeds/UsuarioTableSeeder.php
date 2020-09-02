@@ -13,15 +13,15 @@ class UsuarioTableSeeder extends Seeder
      */
     public function run()
     {
-        $enderecos = (array) Endereco::all();
-        $key = array_rand($enderecos);
-        $endereco = $enderecos[$key][array_rand($enderecos[$key])];
+//        $enderecos = (array) Endereco::all();
+//        $key = array_rand($enderecos);
+//        $endereco = $enderecos[$key][array_rand($enderecos[$key])];
         Usuario::create([
             "nome_completo" => "Usuario",
             "data_nascimento" => '2000-01-01',
             "genero" => 'm',
             "tipo" => 'funcionario',
-            'id_endereco' => $endereco['id']
+            'id_endereco' => ''
         ]);
     }
 }

@@ -87,10 +87,10 @@ class ConsultaController extends Controller
             'j' => "18:00 às 19:00",
         ];
         $atendimento = Atendimento::select('atendimento.id', "usuario.nome_completo as psicologo", 'atendimento.motivo', 'horario_semana.dia', 'horario_semana.horario', 'atendimento.status')
-        ->join('funcionario', 'atendimento.id_psicologo', '=', 'funcionario.id')
-        ->join('usuario', 'funcionario.id_usuario', '=', 'usuario.id')
-        ->join('horario_semana', 'atendimento.id_horario', '=', 'horario_semana.id')
-        ->where('id_aluno', '=', 13)->get();
+            ->join('funcionario', 'atendimento.id_psicologo', '=', 'funcionario.id')
+            ->join('usuario', 'funcionario.id_usuario', '=', 'usuario.id')
+            ->join('horario_semana', 'atendimento.id_horario', '=', 'horario_semana.id')
+            ->where('id_aluno', '=', 13)->get();
 
         foreach ($atendimento as $atend)
             $atend->horario = $horarios[$atend->horario];

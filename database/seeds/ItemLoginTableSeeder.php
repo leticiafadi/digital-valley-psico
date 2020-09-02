@@ -15,14 +15,7 @@ class ItemLoginTableSeeder extends Seeder
     public function run()
     {
         $funcionario = Usuario::where("tipo", 'funcionario')->first()->id;
-        ItemLogin::create([
-            "usuario" => "11/22112",
-            'id_login' => Login::where("id_usuario", $funcionario)->first()->id
-        ]);
-        ItemLogin::create([
-            "usuario" => "1234567",
-            'id_login' => Login::where("id_usuario", $funcionario)->first()->id
-        ]);
+
         ItemLogin::create([
             "usuario" => "usuario",
             'id_login' => Login::where("id_usuario", $funcionario)->first()->id

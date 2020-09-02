@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\consulta\Consulta;
 use App\Models\curso\Curso;
 use App\Models\funcionario\Funcionario;
 
@@ -26,6 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('auth.pages.home', ['atendimentos' => Consulta::where('visualizado', '0')->count(), 'numeroDeCursos' => Curso::where('ativo', '1')->count(), 'numeroDeFuncionarios' => Funcionario::all()->count() ]);
+        return view('auth.pages.home');
     }
 }
