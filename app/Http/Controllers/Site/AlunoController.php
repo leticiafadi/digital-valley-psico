@@ -59,7 +59,7 @@ class AlunoController extends Controller
                 break;
 
             case 404:
-                return redirect()->back()->withErrors(['credenciais' => 'A matrícula não existe em nossa base de dados.'])->withInput();
+                return redirect()->back()->withErrors(['credenciais' => 'A matrícula não existe em nossa base de dados. Favor entrar em contato com o N2S.'])->withInput();
         } 
     }
 
