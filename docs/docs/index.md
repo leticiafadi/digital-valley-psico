@@ -1,1 +1,0 @@
-## **Manual de uso do Fênix Psicologia**
