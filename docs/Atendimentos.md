@@ -1,8 +1,6 @@
 # Atendimentos
 
-Área de suporte ao gerenciamento de atendimentos.
-
-[TOC]
+---
 
 ## **Gerenciar os atendimentos**
 

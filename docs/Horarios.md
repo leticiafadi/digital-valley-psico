@@ -1,8 +1,6 @@
 # Horários
 
-Área de suporte ao gerenciamento de horários de atendimento.
-
-[TOC]
+---
 
 ## Gerenciar os horários de atendimento
 

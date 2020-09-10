@@ -1,8 +1,6 @@
 # Login
 
-Área de suporte ao *login* do usuário.
-
-[TOC]
+---
 
 ## Como realizar login
 

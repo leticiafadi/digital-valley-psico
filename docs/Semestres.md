@@ -1,8 +1,6 @@
 # Semestres
 
-Área de suporte ao gerenciamento de semestres.
-
-[TOC]
+---
 
 ## Gerenciar semestres
 

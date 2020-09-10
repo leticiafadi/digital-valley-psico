@@ -1,8 +1,6 @@
 # Alunos
 
-Área de suporte ao gerenciamento de alunos.
-
-[TOC]
+---
 
 ## Gerenciar alunos
 

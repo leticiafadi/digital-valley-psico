@@ -1,8 +1,6 @@
 # Psicólogos
 
-Área de suporte aos gerenciamento de psicólogos.
-
-[TOC]
+---
 
 ## Gerenciar os psicólogos
 

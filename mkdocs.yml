@@ -1,0 +1,13 @@
+site_name: Fênix Psicologia
+nav:
+- 'index.md'
+- 'login.md'
+- 'atendimentos.md'
+- 'observacoes.md'
+- 'psicologos.md'
+- 'alunos.md'
+- 'horarios.md'
+- 'semestres.md'
+theme:
+  name: material
+  language: pt
