@@ -1,4 +1,4 @@
-# **Login**
+# Login
 
 Área de suporte ao *login* do usuário.
 

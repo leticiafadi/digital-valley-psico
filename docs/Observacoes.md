@@ -1,4 +1,4 @@
-# **Observações do Atendimento**
+# Observações do Atendimento
 
 Área de suporte às observações do atendimento.
 

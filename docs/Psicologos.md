@@ -1,4 +1,4 @@
-# **Psicólogos**
+# Psicólogos
 
 Área de suporte aos gerenciamento de psicólogos.
 

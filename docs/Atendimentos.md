@@ -1,4 +1,4 @@
-# **Atendimentos**
+# Atendimentos
 
 Área de suporte ao gerenciamento de atendimentos.
 
