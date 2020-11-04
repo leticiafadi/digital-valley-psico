@@ -46,21 +46,24 @@ class AlunoController extends Controller
 
         $res = $this->buscarAlunoApi($request->matricula);
         $statusCode = $res->getStatusCode();
-
         switch($statusCode){
-            case 200:   
+            case 200:
                 $data = json_decode($res->getBody());
-
-                if($data->matricula == $request->matricula && strtoupper($data->nome) == strtoupper($request->nome)){
+                if(count($data) > 0){
+                    $data = $data[0];
+                    if($data->matricula == $request->matricula && strtoupper($data->nome) == strtoupper($request->nome)){
                         return redirect('/realizarCadastro')->with(['dadosPedido' => ['nome' => $data->nome, 'matricula' => $data->matricula]]);
                     }else{
                         return redirect()->back()->withErrors(['credenciais' => 'O nome do aluno informado é inválido'])->withInput();
-                    }
-                break;
-
-            case 404:
+                    }   
+                }else{
+                    return redirect()->back()->withErrors(['credenciais' => 'A matrícula não existe em nossa base de dados. Favor entrar em contato com o N2S.'])->withInput();
+                } 
+            break;
+            default:
                 return redirect()->back()->withErrors(['credenciais' => 'A matrícula não existe em nossa base de dados. Favor entrar em contato com o N2S.'])->withInput();
-        } 
+            break;
+        }
     }
 
     private function verificarAluno($matricula)

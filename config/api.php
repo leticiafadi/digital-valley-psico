@@ -2,6 +2,6 @@
 
 return [
 
-    'base_url' => 'http://172.28.0.1:10555/'
+    'base_url' => 'http://n2s.russas.ufc.br:8080/digital-valley-restapi/aluno/'
 
 ];

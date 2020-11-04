@@ -12,7 +12,7 @@
                     <label for="exampleFormControlSelect1">País de origem*</label>
                     <select class="form-control" id="" :class="{'is-invalid' : errors.has('id_pais'), 'is-valid': this.validaPais()}" v-model="id_pais" name="id_pais" v-validate="'required'" >
                         <option value="" selected>Selecione um pais</option>             
-                        <option v-for="pais in paises" :value="pais.id">{{pais.name}}</option>
+                        <option v-for="(pais, idx) in paises" :key='idx' :value="pais.id">{{pais.name}}</option>
                     </select>
 
                     <span>{{errors.first('id_pais')}}</span>
@@ -23,7 +23,7 @@
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Estado de origem *</label>
                     <select class="form-control" id="" :class="{'is-invalid' : errors.has('id_estado'), 'is-valid': this.validaEstado()}"  v-model="id_estado" name="id_estado" v-validate="'required'">          
-                        <option v-for="estado in estados" :value="estado.id">{{estado.name}}</option>
+                        <option v-for="(estado, idx) in estados" :key='idx' :value="estado.id">{{estado.name}}</option>
                     </select>
 
                     <span>{{errors.first('id_estado')}}</span>
@@ -34,7 +34,7 @@
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Cidade de origem *</label>
                     <select class="form-control" id="" :class="{'is-invalid' : errors.has('id_cidade'), 'is-valid': this.validaCidade()}"  name="id_cidade" v-model="id_cidade" v-validate="'required'">         
-                        <option v-for="cidade in cidades" :value="cidade.id">{{cidade.name}}</option>
+                        <option v-for="(cidade, idx) in cidades" :key='idx'  :value="cidade.id">{{cidade.name}}</option>
                     </select>
 
                     <span>{{errors.first('id_cidade')}}</span>
