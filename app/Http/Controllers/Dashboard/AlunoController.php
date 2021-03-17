@@ -60,7 +60,7 @@ class AlunoController extends Controller
 
     public function editAlunoPessoal($aluno,Request $request)
     {
-        dd($request);
+
         $aluno = Usuario::find($request->id);
         $aluno->nome_completo = $request->nome;
         $aluno->data_nascimento = $request->dtnascimento;
