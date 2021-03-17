@@ -15,6 +15,7 @@ class AddForeignKeysToCidadeTable extends Migration {
 		Schema::table('cidade', function(Blueprint $table)
 		{
 			$table->foreign('state_id')->references('id')->on('estado')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+
 		});
 	}
 

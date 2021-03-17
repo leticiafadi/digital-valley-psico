@@ -25,6 +25,7 @@ class UsersController extends Controller
 	}
 
     public function formularioEditarUsuario(Request $request, $id){
+
         $func = Funcionario::find($id);
         $func->siape = (string) $func->siape;
         $func->usuario->toArray();

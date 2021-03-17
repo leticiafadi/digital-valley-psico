@@ -26,7 +26,7 @@ $this->get('/gerenciarPerfil', 'DashboardAluno\HomeController@mostrarPaginaGeren
 $this->get('/marcarAtendimento', 'DashboardAluno\HomeController@mostrarPaginaMarcarAtendimento')->name('marcarAtendimento');
 
 // //consulta
-$this->post('/consulta', 'Site\ConsultaController@cadastrarConsulta')->name('consulta.marcar');
+//$this->post('/consulta', 'Site\ConsultaController@cadastrarConsulta')->name('consulta.marcar');
 
 //Auth Routes |||||||||
 $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -99,7 +99,7 @@ $this->get('/localizacao', 'Dashboard\LocalizacaoController@localizacao');
 $this->get('/alunos', 'Dashboard\AlunoController@mostrarPaginaAlunos')->name('alunos.all')->middleware('auth');
 $this->get('/alunos/get', 'Dashboard\AlunoController@listarAlunos')->middleware('auth')->middleware('funcionario');
 $this->get('/alunos/{id}', 'Dashboard\AlunoController@getAluno')->middleware('auth')->middleware('funcionario');
-$this->post('/aluno/pessoal', "Dashboard\AlunoController@editAlunoPessoal")->middleware('auth')->middleware('funcionario')->name('aluno.pessoal');
+$this->post('/apluno/pessoal', "Dashboard\AlunoController@editAlunoPessoal")->middleware('auth')->middleware('funcionario')->name('aluno.pessoal');
 $this->post('/aluno/academico', "Dashboard\AlunoController@editAlunoAcademico")->middleware('auth')->middleware('funcionario')->name('aluno.academico');
 $this->post('/aluno/contato', "Dashboard\AlunoController@editAlunoContato")->middleware('auth')->middleware('funcionario')->name('aluno.contato');
 $this->get('/aluno/observacoes/{id_aluno}', "Dashboard\AlunoController@listarObservacoes")->middleware('funcionario');

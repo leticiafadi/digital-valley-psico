@@ -2,7 +2,9 @@
 
 namespace App\Models\funcionario;
 
+use App\Models\endereco\Endereco;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 class Funcionario extends Model
 {
@@ -28,5 +30,6 @@ class Funcionario extends Model
     public function usuario(){
         return $this->hasOne('\App\Models\usuarios\Usuario', 'id', 'id_usuario');
     }
+
 
 }

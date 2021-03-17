@@ -58,8 +58,9 @@ class AlunoController extends Controller
         return response()->json($alunoInfo->toArray()[0]);
     }
 
-    public function editAlunoPessoal(Request $request)
+    public function editAlunoPessoal($aluno,Request $request)
     {
+        dd($request);
         $aluno = Usuario::find($request->id);
         $aluno->nome_completo = $request->nome;
         $aluno->data_nascimento = $request->dtnascimento;

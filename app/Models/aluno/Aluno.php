@@ -27,7 +27,7 @@ class Aluno extends Model
 
     //busca so os alunos REFATORAR
     public static function buscaAlunos($data,$page){
-        $aluno = DB::select(DB::raw('select usuario.nome_completo, usuario.id,aluno.matricula,aluno.id,curso.nome FROM aluno, usuario, curso where usuario.tipo = "aluno" and aluno.id_usuario = usuario.id  and curso.id = aluno.id_curso and usuario.nome_completo like "%'.$data.'%"'));
+        $aluno = DB::select(DB::raw('select usuario.nome_completo, usuario.id, aluno.matricula,aluno.id, curso.nome FROM aluno, usuario, curso where usuario.tipo = "aluno" and aluno.id_usuario = usuario.id  and curso.id = aluno.id_curso and usuario.nome_completo like "%'.$data.'%"'));
         $tamanho = Usuario::where('tipo','aluno')->where('nome_completo','like','%'.$data.'%')->get()->count();
         $data=[
             'alunos' => $aluno,

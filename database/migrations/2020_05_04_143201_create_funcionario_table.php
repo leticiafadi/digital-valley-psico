@@ -15,10 +15,11 @@ class CreateFuncionarioTable extends Migration {
 		Schema::create('funcionario', function(Blueprint $table)
 		{
 			$table->string('cargo', 63);
-			$table->string('crp', 15);
+			$table->string('crp', 15)->unique();
 			$table->increments('id');
 			$table->integer('id_usuario')->unsigned()->index('funcionario_id_usuario_foreign');
-			$table->integer('siape')->unsigned();
+			$table->integer('siape')->unique()->unsigned();
+            $table->timestamps();
 		});
 	}
 

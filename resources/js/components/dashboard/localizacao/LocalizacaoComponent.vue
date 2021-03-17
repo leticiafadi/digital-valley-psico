@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header">
                         <i class="fa fa-map-marked "></i>
-                        <span>Genencie as localizacões do seu sistema.</span>
+                        <span>Gerencie as localizacões do seu sistema.</span>
                     </div>
                     <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs">
